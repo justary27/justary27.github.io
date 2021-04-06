@@ -1,0 +1,140 @@
+*{
+    margin:0px;
+}
+body{
+    background-color: #FFAFAF;
+}
+.navbar{
+    position: sticky;
+    width:auto;
+    height: 100px;
+    left: 0px;
+    top: 0px;
+    width: auto;
+    background: #000000;
+    overflow: auto;
+    filter: drop-shadow(0px 4px 4px);
+}
+.site_icon{
+    float: right;
+    height: 80px;
+    padding-top: 10px;
+    padding-right: 30px;
+    filter: drop-shadow(0px 2px 2px #FFAFAF);
+}
+.site_icon:hover{
+    cursor: pointer;
+}
+.linkers{
+    position:initial;
+    width: fit-content;
+    height: 50px;
+    left: 12px;
+    top: 53px;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    border: none;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #000000;
+    color: #FFFFFF;
+    float: left;
+    padding-right: 30px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 30px;
+}
+a.linkers{
+    text-decoration: none;
+}
+a.linkers:hover{
+    color: #FFAFAF;
+}
+#titlepara {
+    height: 300px;
+    background-image: url(/Linked_sites/Linked_site_media/projects.jpg);
+    background-repeat: no-repeat;
+    width: auto;
+}
+#title{
+    color: #FFFFFF;
+    font-size: 70px;
+    padding-left: 80px;
+    padding-bottom: 10px;
+    padding-top: 200px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+}
+h2{
+    font-size: 40px;
+    margin-left: 15px;
+    font-family: 'Caveat', cursive;
+    color: #ffffff;
+    display: inline;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#pre{
+    font-size: 35px;
+    font-family: Satisfy;
+    padding: 25px;
+    padding-bottom: 0px;
+}
+#jane_ify{
+    font-size: 25px;
+    font-family: Satisfy;
+    padding: 25px;
+    padding-left: 0px;
+    letter-spacing: 1.5px;
+    margin-left: 95px;
+    line-height: 44px;
+}
+.prelog{
+    padding-top: 50px;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-bottom: 50px;
+}
+#log{
+    padding-bottom: 0px;
+}
+footer{
+    width:auto;
+    height: 70px;
+    left: 0px;
+    top: 0px;
+    background: #000000;
+    overflow: auto;
+}
+#contact{
+    height: 70px;
+    margin-left: 50px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+#contact:hover{
+    color: #FFAFAF;
+}
+#kmore{
+    text-decoration: none;
+}
+#kmore:visited{
+    color: #000000;
+}
+#kmore:hover{
+    color: #ffe2e2
+}
+#j_icon{
+    float: left;
+    width: 70px;
+    height: 70px;
+    border-radius: 70px;
+}

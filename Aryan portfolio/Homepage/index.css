@@ -1,0 +1,336 @@
+*{
+    margin:0px;
+}
+.navbar{
+    position: sticky;
+    width:auto;
+    height: 100px;
+    left: 0px;
+    top: 0px;
+    width: auto;
+    background: #000000;
+    overflow: auto;
+    z-index: 4;
+    filter: drop-shadow(0px 4px 4px);
+}
+.site_icon{
+    float: right;
+    height: 80px;
+    padding-top: 10px;
+    padding-right: 30px;
+    filter: drop-shadow(0px 2px 2px #5BFA9A);
+}
+.site_icon:hover{
+    cursor: pointer;
+}
+.linkers{
+    position:initial;
+    width: fit-content;
+    height: 50px;
+    left: 12px;
+    top: 53px;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    border: none;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #000000;
+    color: #FFFFFF;
+    float: left;
+    padding-right: 30px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 30px;
+}
+a.linkers{
+    text-decoration: none;
+}
+a.linkers:hover{
+    color: #5BFA9A;
+}
+.myIdeas{
+    background: #C6C5FF;
+    height: 21.92546584%;
+    font-family: Satisfy;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 58px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    width: 1137px;
+    color: #000000;
+    padding-left: 35px;
+    padding-right: 113px;
+    padding-top: 55px;
+    border: 6px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    height: 395px;
+    width: 1030px;
+}
+
+.myProj{
+    background: #FFAFAF;
+    font-family: Satisfy;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 58px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #000000;
+    padding-left: 58px;
+    padding-right: 71px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 6px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    height: 424px;
+}
+
+.myBlog{
+    background: #DAFA5B;
+    font-family: Satisfy;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 58px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    color: #000000;
+    padding-left: 62px;
+    padding-right: 145px;
+    border: 6px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    height: 450px;
+}
+.myInfo{
+    background: #5BFA9A;
+    font-family: Satisfy;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 58px;
+    display: flex;
+    align-items: center;
+    text-align: right;        
+    color: #000000;
+    border: 6px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding-left: 103px;
+    padding-right: 55px;
+    height: 450px;
+}
+.sec1{
+    background: #5BFA9A;
+    height: 706px;
+    width: auto;
+}
+
+.sec2{
+    background: #C6C5FF;
+    height: 706px;
+    width: auto;
+}
+
+.sec3{
+    background: #FFAFAF;
+    height: 706px;
+    width: auto;
+}
+
+.sec4{
+    background: #DAFA5B;
+    height: 706px;
+    width: auto;
+}
+
+.container1{
+    border: 6px;
+    border-color: #000000;
+    text-align: right;
+    float: right;
+    height: 450px;
+    margin-bottom: 117px;
+    margin-top: 139px;
+    margin-left: 140px;
+    margin-right: 44px;
+}
+.container2{
+    border: 6px;
+    border-color: #000000;
+    text-align: left;
+    float: left;
+    height: 450px;
+    margin-top: 163px;
+    margin-bottom: 93px;
+    margin-left: 38px;
+    margin-right: 87px;
+}
+.container3{
+    border: 6px;
+    border-color: #000000;
+    text-align: right;
+    float: right;
+    height: 434px;
+    margin-left: 208px;
+    margin-right: 27px;
+    margin-top: 189px;
+    margin-bottom: 83px;
+}
+.container4{
+    border: 6px;
+    border-color: #000000;
+    text-align: left;
+    float: left;
+    height: 450px;
+    margin-left: 26px;
+    margin-right: 158px;
+    margin-bottom: 117px;
+    margin-top: 139px;
+}
+
+.tcontainer1{
+    position:absolute;
+    margin-top: 183px;
+    margin-bottom: 132px;
+    margin-left: 43px;
+    margin-right: 1201px;
+    background: #000000;
+    z-index: 2;
+    height: 370px;
+    width: 195px;
+    border-radius: 15px;
+}
+.tinfo{
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 43px;
+    line-height: 80px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 370px;
+
+    color: #FFFFFF;
+
+    transform: rotate(-90deg);
+}
+.tcontainer2{
+    position:absolute;
+    margin-top: 183px;
+    margin-bottom: 132px;
+    margin-left: 1015px;
+    margin-right: 0px;
+    background: #000000;
+    z-index: 2;
+    height: 280px;
+    width: 120px;
+    border-radius: 15px;
+}
+.tinfo2{
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 43px;
+    line-height: 80px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 280px;
+    width: 120px;
+    color: #FFFFFF;
+
+    transform: rotate(-90deg);
+}
+.tcontainer3{
+    position:absolute;
+    margin-top: 207px;
+    margin-bottom: 132px;
+    margin-left: 63px;
+    margin-right: 1201px;
+    background: #000000;
+    z-index: 2;
+    height: 370px;
+    width: 195px;
+    border-radius: 15px;
+}
+.tinfo3{
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 43px;
+    line-height: 80px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 370px;
+
+    color: #FFFFFF;
+
+    transform: rotate(-90deg);
+}
+.tcontainer4{
+    position:absolute;
+    margin-top: 183px;
+    margin-bottom: 132px;
+    margin-left: 980px;
+    margin-right: 60px;
+    background: #000000;
+    z-index: 2;
+    height: 370px;
+    width: 195px;
+    border-radius: 15px;
+}
+.tinfo4{
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 43px;
+    line-height: 80px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 370px;
+
+    color: #FFFFFF;
+
+    transform: rotate(-90deg);
+}
+footer{
+    width:auto;
+    height: 70px;
+    left: 0px;
+    top: 0px;
+    background: #000000;
+    overflow: auto;
+}
+#contact{
+    height: 70px;
+    margin-left: 50px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+a.proj{
+    text-decoration: none;
+}
