@@ -1,0 +1,78 @@
+*{
+    margin:0px;
+}
+body{
+    background-color: #DAFA5B;
+}
+.navbar{
+    position: sticky;
+    width:auto;
+    height: 100px;
+    left: 0px;
+    top: 0px;
+    width: auto;
+    background: #000000;
+    overflow: auto;
+    filter: drop-shadow(0px 4px 4px);
+}
+.site_icon{
+    float: right;
+    height: 80px;
+    padding-top: 10px;
+    padding-right: 30px;
+    filter: drop-shadow(0px 2px 2px #DAFA5B);
+}
+.site_icon:hover{
+    cursor: pointer;
+}
+.linkers{
+    position:initial;
+    width: fit-content;
+    height: 50px;
+    left: 12px;
+    top: 53px;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    border: none;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #000000;
+    color: #FFFFFF;
+    float: left;
+    padding-right: 30px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 30px;
+}
+a.linkers{
+    text-decoration: none;
+}
+a.linkers:hover{
+    color: #DAFA5B;
+    filter: drop-shadow(0px 2px 2px #DAFA5B);
+}
+#titlepara {
+    height: 300px;
+    background-image: url(/_justary27_s__portfolio/Aryan_portfolio/Linked_sites/Linked_site_media/blog.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: auto;
+}
+#title{
+    color: #ecffa1;
+    font-size: 70px;
+    padding-left: 80px;
+    padding-bottom: 10px;
+    padding-top: 200px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: bold;
+}

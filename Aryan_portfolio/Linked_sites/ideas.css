@@ -2,7 +2,7 @@
     margin:0px;
 }
 body{
-    background-color: #DAFA5B;
+    background-color: #C6C5FF;
 }
 .navbar{
     position: sticky;
@@ -20,7 +20,7 @@ body{
     height: 80px;
     padding-top: 10px;
     padding-right: 30px;
-    filter: drop-shadow(0px 2px 2px #DAFA5B);
+    filter: drop-shadow(0px 2px 2px #C6C5FF);
 }
 .site_icon:hover{
     cursor: pointer;
@@ -56,18 +56,18 @@ a.linkers{
     text-decoration: none;
 }
 a.linkers:hover{
-    color: #DAFA5B;
-    filter: drop-shadow(0px 2px 2px #DAFA5B);
+    color: #C6C5FF;
+    filter: drop-shadow(0px 2px 2px #C6C5FF);
 }
 #titlepara {
     height: 300px;
-    background-image: url(/_justary27_s__portfolio/docs/Aryan_portfolio/Linked_sites/Linked_site_media/blog.jpg);
+    background-image: url(/_justary27_s__portfolio/Aryan_portfolio/Linked_sites/Linked_site_media/ideas.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
     width: auto;
+    background-size: cover;
 }
 #title{
-    color: #ecffa1;
+    color: #d7d6ff;
     font-size: 70px;
     padding-left: 80px;
     padding-bottom: 10px;
@@ -75,4 +75,52 @@ a.linkers:hover{
     font-family: Ubuntu;
     font-style: normal;
     font-weight: bold;
+}
+.ideas{
+    padding-top: 50px;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-bottom: 50px;
+}
+h2{
+    font-size: 60px;
+    font-family: 'Caveat', cursive;
+    margin-left: 25px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#summary{
+    font-size: 35px;
+    font-family: Satisfy;
+    padding: 25px;
+}
+#sum1{
+    font-size: 25px;
+    font-family: Satisfy;
+    padding: 25px;
+    letter-spacing: 1.5px;
+}
+h3{
+    font-size: 35px;
+    font-family: 'Caveat', cursive;
+    margin-left: 25px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+footer{
+    width:auto;
+    height: 70px;
+    left: 0px;
+    top: 0px;
+    background: #000000;
+    overflow: auto;
+}
+#contact{
+    height: 70px;
+    margin-left: 50px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+#contact:hover{
+    color: #C6C5FF;
 }
