@@ -2,7 +2,7 @@
     margin:0px;
 }
 body{
-    background-color: #C6C5FF;
+    background-color: #5BFA9A;
 }
 .navbar{
     position: sticky;
@@ -20,7 +20,8 @@ body{
     height: 80px;
     padding-top: 10px;
     padding-right: 30px;
-    filter: drop-shadow(0px 2px 2px #C6C5FF);
+    filter: drop-shadow(0px 2px 2px #5BFA9A);
+    
 }
 .site_icon:hover{
     cursor: pointer;
@@ -56,55 +57,58 @@ a.linkers{
     text-decoration: none;
 }
 a.linkers:hover{
-    color: #C6C5FF;
+    color: #5BFA9A;
+    filter: drop-shadow(0px 2px 2px #5BFA9A);
 }
 #titlepara {
     height: 300px;
-    background-image: url(/Linked_sites/Linked_site_media/ideas.jpg);
+    background-image: url(/Linked_sites/Linked_site_media/about_me.jpg);
     background-repeat: no-repeat;
-    width: auto;
     background-size: cover;
+    width: auto;
 }
 #title{
-    color: #d7d6ff;
+    color: #b6ffd3;
     font-size: 70px;
-    padding-left: 80px;
+    padding-right: 80px;
     padding-bottom: 10px;
     padding-top: 200px;
     font-family: Ubuntu;
     font-style: normal;
     font-weight: bold;
-}
-.ideas{
-    padding-top: 50px;
-    padding-left: 70px;
-    padding-right: 70px;
-    padding-bottom: 50px;
+    text-align: right;
 }
 h2{
-    font-size: 60px;
+    font-size: 90px;
+    padding-top: 70px;
+    padding-left: 70px;
+    padding-bottom: 20px;
     font-family: 'Caveat', cursive;
-    margin-left: 25px;
-    color: #FFFFFF;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-#summary{
-    font-size: 35px;
+#git{
+    margin-left: 450px;
+}
+.profIcons{
+    padding-right: 10px;
+    transition: transform .7s;
+}
+.profIcons:hover img{
+    transform:scale(1.5);
+}
+#me2{
+    padding-top: 30px;
+    padding-left: 70px;
+    padding-right: 370px;
+    padding-bottom: 50px;
+}
+#JustAry27{
+    font-size: 30px;
     font-family: Satisfy;
-    padding: 25px;
-}
-#sum1{
-    font-size: 25px;
-    font-family: Satisfy;
-    padding: 25px;
-    letter-spacing: 1.5px;
-}
-h3{
-    font-size: 35px;
-    font-family: 'Caveat', cursive;
-    margin-left: 25px;
-    color: #FFFFFF;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 6px solid #000000;
+    padding: 30px;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
 }
 footer{
     width:auto;
@@ -121,5 +125,5 @@ footer{
     padding-top: 0px;
 }
 #contact:hover{
-    color: #C6C5FF;
+    color: #5BFA9A;
 }
