@@ -665,7 +665,7 @@ svg{
         transform: rotate(-90deg);
     }
     footer{
-        width:auto;
+        width:100vw;
         height: 35px;
         left: 0px;
         top: 0px;
