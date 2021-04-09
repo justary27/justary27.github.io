@@ -59,26 +59,23 @@ a.linkers:hover{
 }
 .myIdeas{
     background: #C6C5FF;
-    height: 21.92546584%;
     font-family: Satisfy;
     font-style: normal;
     font-weight: normal;
-    font-size: 40px;
+    font-size: 3.16623527vw;
     line-height: 58px;
     display: flex;
     align-items: center;
     text-align: left;
-    width: 1137px;
     color: #000000;
-    padding-left: 35px;
-    padding-right: 113px;
+    padding-left: 2.77045586vw;
+    padding-right: 0.894461463vw;
     padding-top: 55px;
     border: 6px solid #000000;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     height: 395px;
-    width: 1030px;
 }
 
 .myProj{
@@ -86,14 +83,14 @@ a.linkers:hover{
     font-family: Satisfy;
     font-style: normal;
     font-weight: normal;
-    font-size: 40px;
+    font-size: 3.16623527vw;
     line-height: 58px;
     display: flex;
     align-items: center;
     text-align: right;
     color: #000000;
-    padding-left: 58px;
-    padding-right: 71px;
+    padding-left: 4.59104114vw;
+    padding-right: 5.6200676vw;
     padding-top: 10px;
     padding-bottom: 10px;
     border: 6px solid #000000;
@@ -108,14 +105,14 @@ a.linkers:hover{
     font-family: Satisfy;
     font-style: normal;
     font-weight: normal;
-    font-size: 40px;
+    font-size: 3.16623527vw;
     line-height: 58px;
     display: flex;
     align-items: center;
     text-align: left;
     color: #000000;
-    padding-left: 62px;
-    padding-right: 145px;
+    padding-left: 4.90766466vw;
+    padding-right: 11.47760284vw;
     border: 6px solid #000000;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -127,7 +124,7 @@ a.linkers:hover{
     font-family: Satisfy;
     font-style: normal;
     font-weight: normal;
-    font-size: 40px;
+    font-size: 3.16623527vw;
     line-height: 58px;
     display: flex;
     align-items: center;
@@ -137,8 +134,8 @@ a.linkers:hover{
     box-sizing: border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    padding-left: 103px;
-    padding-right: 55px;
+    padding-left: 8.15305581vw;
+    padding-right: 4.35357349vw;
     height: 450px;
 }
 .sec1{
@@ -173,8 +170,8 @@ a.linkers:hover{
     height: 450px;
     margin-bottom: 117px;
     margin-top: 139px;
-    margin-left: 140px;
-    margin-right: 44px;
+    margin-left: 11.08182343vw;
+    margin-right: 3.48285879vw;
 }
 .container2{
     border: 6px;
@@ -184,8 +181,8 @@ a.linkers:hover{
     height: 450px;
     margin-top: 163px;
     margin-bottom: 93px;
-    margin-left: 38px;
-    margin-right: 87px;
+    margin-left: 3.0079235vw;
+    margin-right: 6.88656171vw;
 }
 .container3{
     border: 6px;
@@ -193,8 +190,8 @@ a.linkers:hover{
     text-align: right;
     float: right;
     height: 434px;
-    margin-left: 208px;
-    margin-right: 27px;
+    margin-left: 16.46442339vw;
+    margin-right: 2.13720881vw;
     margin-top: 189px;
     margin-bottom: 83px;
 }
@@ -204,8 +201,8 @@ a.linkers:hover{
     text-align: left;
     float: left;
     height: 450px;
-    margin-left: 26px;
-    margin-right: 158px;
+    margin-left: 2.05805292vw;
+    margin-right: 12.50662931vw;
     margin-bottom: 117px;
     margin-top: 139px;
 }
@@ -213,19 +210,18 @@ a.linkers:hover{
     position:absolute;
     margin-top: 183px;
     margin-bottom: 132px;
-    margin-left: 43px;
-    margin-right: 1201px;
+    margin-left: 3.40370291vw;
     background: #000000;
     z-index: 2;
     height: 370px;
-    width: 195px;
+    width: 15.43539693vw;
     border-radius: 15px;
 }
 .tinfo{
     font-family: Ubuntu;
     font-style: normal;
     font-weight: bold;
-    font-size: 43px;
+    font-size: 3.40459224vw;
     line-height: 80px;
     display: flex;
     align-items: center;
@@ -240,19 +236,18 @@ a.linkers:hover{
     position:absolute;
     margin-top: 183px;
     margin-bottom: 132px;
-    margin-left: 1015px;
-    margin-right: 0px;
+    margin-left: 80.36421219vw;
     background: #000000;
     z-index: 2;
     height: 280px;
-    width: 120px;
+    width: 9.4987058vw;
     border-radius: 15px;
 }
 .tinfo2{
     font-family: Ubuntu;
     font-style: normal;
     font-weight: bold;
-    font-size: 43px;
+    font-size: 3.40459224vw;
     line-height: 80px;
     display: flex;
     align-items: center;
@@ -267,19 +262,18 @@ a.linkers:hover{
     position:absolute;
     margin-top: 207px;
     margin-bottom: 132px;
-    margin-left: 63px;
-    margin-right: 1201px;
+    margin-left: 4.98682055vw;
     background: #000000;
     z-index: 2;
     height: 370px;
-    width: 195px;
+    width: 15.43539693vw;
     border-radius: 15px;
 }
 .tinfo3{
     font-family: Ubuntu;
     font-style: normal;
     font-weight: bold;
-    font-size: 43px;
+    font-size: 3.40459224vw;
     line-height: 80px;
     display: flex;
     align-items: center;
@@ -294,19 +288,18 @@ a.linkers:hover{
     position:absolute;
     margin-top: 183px;
     margin-bottom: 132px;
-    margin-left: 980px;
-    margin-right: 60px;
+    margin-left: 77.572764044vw;
     background: #000000;
     z-index: 2;
     height: 370px;
-    width: 195px;
+    width: 15.43539693vw;
     border-radius: 15px;
 }
 .tinfo4{
     font-family: Ubuntu;
     font-style: normal;
     font-weight: bold;
-    font-size: 43px;
+    font-size: 3.40459224vw;
     line-height: 80px;
     display: flex;
     align-items: center;
@@ -419,22 +412,20 @@ svg{
         font-family: Satisfy;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
+        /* font-size: 16px; */
         line-height: 29px;
         display: flex;
         align-items: center;
         text-align: left;
-        width: 568.5px;
         color: #000000;
-        padding-left: 17.5px;
-        padding-right: 56.5px;
+        /* padding-left: 17.5px; */
+        /* padding-right: 56.5px; */
         padding-top: 27.5px;
         border: 3px solid #000000;
         box-sizing: border-box;
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
         height: 197.5px;
-        width: 515px;
     }
     
     .myProj{
@@ -442,14 +433,14 @@ svg{
         font-family: Satisfy;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
+        /* font-size: 16px; */
         line-height: 29px;
         display: flex;
         align-items: center;
         text-align: right;
         color: #000000;
-        padding-left: 29px;
-        padding-right: 35.5px;
+        /* padding-left: 29px; */
+        /* padding-right: 35.5px; */
         padding-top: 5px;
         padding-bottom: 5px;
         border: 3px solid #000000;
@@ -464,14 +455,14 @@ svg{
         font-family: Satisfy;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
+        /* font-size: 16px; */
         line-height: 29px;
         display: flex;
         align-items: center;
         text-align: left;
         color: #000000;
-        padding-left: 31px;
-        padding-right: 72.5px;
+        /* padding-left: 31px; */
+        /* padding-right: 72.5px; */
         border: 3px solid #000000;
         box-sizing: border-box;
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
@@ -483,7 +474,7 @@ svg{
         font-family: Satisfy;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
+        /* font-size: 16px; */
         line-height: 29px;
         display: flex;
         align-items: center;
@@ -493,8 +484,8 @@ svg{
         box-sizing: border-box;
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
         border-radius: 10px;
-        padding-left: 52.5px;
-        padding-right: 27.5px;
+        /* padding-left: 52.5px; */
+        /* padding-right: 27.5px; */
         height: 225px;
     }
     .sec1{
@@ -529,8 +520,8 @@ svg{
         height: 225px;
         margin-bottom: 58.5px;
         margin-top: 69.5px;
-        margin-left: 70px;
-        margin-right: 2px;
+        /* margin-left: 70px; */
+        /* margin-right: 2px; */
     }
     .container2{
         border: 3px;
@@ -540,8 +531,8 @@ svg{
         height: 225px;
         margin-top: 81.5px;
         margin-bottom: 46.5px;
-        margin-left: 19px;
-        margin-right: 43.5px;
+        /* margin-left: 19px; */
+        /* margin-right: 43.5px; */
     }
     .container3{
         border: 3px;
@@ -549,8 +540,8 @@ svg{
         text-align: right;
         float: right;
         height: 217px;
-        margin-left: 104px;
-        margin-right: 13.5px;
+        /* margin-left: 104px; */
+        /* margin-right: 13.5px; */
         margin-top: 94.5px;
         margin-bottom: 41.5px;
     }
@@ -560,8 +551,8 @@ svg{
         text-align: left;
         float: left;
         height: 225px;
-        margin-left: 13px;
-        margin-right: 79px;
+        /* margin-left: 13px; */
+        /* margin-right: 79px; */
         margin-bottom: 58.5px;
         margin-top: 69.5px;
     }
@@ -569,8 +560,8 @@ svg{
         position:absolute;
         margin-top: 91.5px;
         margin-bottom: 66px;
-        margin-left: 21.5px;
-        margin-right: 600.5px;
+        /* margin-left: 21.5px; */
+        /* margin-right: 600.5px; */
         background: #000000;
         z-index: 2;
         height: 185px;
@@ -596,8 +587,8 @@ svg{
         position:absolute;
         margin-top: 91.5px;
         margin-bottom: 66px;
-        margin-left: 507.5px;
-        margin-right: 0px;
+        /* margin-left: 507.5px; */
+        /* margin-right: 0px; */
         background: #000000;
         z-index: 2;
         height: 140px;
@@ -623,8 +614,8 @@ svg{
         position:absolute;
         margin-top: 103.5px;
         margin-bottom: 66px;
-        margin-left: 31.5px;
-        margin-right: 600.5px;
+        /* margin-left: 31.5px; */
+        /* margin-right: 600.5px; */
         background: #000000;
         z-index: 2;
         height: 185px;
@@ -650,8 +641,8 @@ svg{
         position:absolute;
         margin-top: 91.5px;
         margin-bottom: 66px;
-        margin-left: 490px;
-        margin-right: 30px;
+        /* margin-left: 490px; */
+        /* margin-right: 30px; */
         background: #000000;
         z-index: 2;
         height: 185px;
