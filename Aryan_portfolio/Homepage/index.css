@@ -565,7 +565,7 @@ svg{
         background: #000000;
         z-index: 2;
         height: 185px;
-        width: 60px;
+        width: 45px;
         border-radius: 7.5px;
     }
     .tinfo{
@@ -592,7 +592,7 @@ svg{
         background: #000000;
         z-index: 2;
         height: 140px;
-        width: 60px;
+        width: 45px;
         border-radius: 7.5px;
     }
     .tinfo2{
@@ -605,7 +605,7 @@ svg{
         align-items: center;
         text-align: center;
         height: 140px;
-        width: 60px;
+        width: 45px;
         color: #FFFFFF;
     
         transform: rotate(-90deg);
@@ -619,7 +619,7 @@ svg{
         background: #000000;
         z-index: 2;
         height: 185px;
-        width: 60px;
+        width: 45px;
         border-radius: 7.5px;
     }
     .tinfo3{
@@ -646,7 +646,7 @@ svg{
         background: #000000;
         z-index: 2;
         height: 185px;
-        width: 60px;
+        width: 45px;
         border-radius: 7.5px;
     }
     .tinfo4{
