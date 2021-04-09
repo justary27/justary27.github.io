@@ -144,6 +144,8 @@ svg{
     margin-top: 12px;
     margin-left: 20px;
     margin-right: 20px;
+    width: 48px;
+    height: 48px;
 }
 @media screen and (max-width:480px) {
     *{
@@ -292,5 +294,7 @@ svg{
         margin-top: 6px;
         margin-left: 10px;
         margin-right: 10px;
+        width: 24px;
+        height: 24px;
     }
 }
