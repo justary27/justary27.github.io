@@ -158,3 +158,165 @@ svg{
     margin-left: 20px;
     margin-right: 20px;
 }
+@media screen and (max-width:480px) {
+    *{
+        margin:0px;
+    }
+    body{
+        background-color: #FFAFAF;
+    }
+    .navbar{
+        position: sticky;
+        width:auto;
+        height: 50px;
+        left: 0px;
+        top: 0px;
+        width: auto;
+        background: #000000;
+        overflow: auto;
+        filter: drop-shadow(0px 4px 4px);
+    }
+    .site_icon{
+        float: right;
+        height: 40px;
+        padding-top: 5px;
+        padding-right: 15px;
+        filter: drop-shadow(0px 2px 2px #FFAFAF);
+    }
+    .site_icon:hover{
+        cursor: pointer;
+    }
+    .linkers{
+        position:initial;
+        width: fit-content;
+        height: 25px;
+        left: 6px;
+        top: 26.5px;
+        left: 0%;
+        right: 0%;
+        top: 0%;
+        bottom: 0%;
+        border: none;
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        background-color: #000000;
+        color: #FFFFFF;
+        float: left;
+        padding-right: 15px;
+        padding-top: 12.5px;
+        padding-bottom: 12.5px;
+        padding-left: 15px;
+    }
+    a.linkers{
+        text-decoration: none;
+    }
+    a.linkers:hover{
+        color: #FFAFAF;
+        filter: drop-shadow(0px 1px 1px #FFAFAF);
+    }
+    #titlepara {
+        height: 150px;
+        background-image: url(/_justary27_s__portfolio/Aryan_portfolio/Linked_sites/Linked_site_media/projects.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: auto;
+    }
+    #title{
+        color: #FFFFFF;
+        font-size: 35px;
+        padding-left: 40px;
+        padding-bottom: 5px;
+        padding-top: 100px;
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: bold;
+    }
+    h2{
+        font-size: 20px;
+        margin-left: 7.5px;
+        font-family: 'Caveat', cursive;
+        color: #ffffff;
+        display: inline;
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    }
+    #pre{
+        font-size: 17.5px;
+        font-family: Satisfy;
+        padding: 12.5px;
+        padding-bottom: 0px;
+    }
+    #jane_ify{
+        font-size: 12.5px;
+        font-family: Satisfy;
+        padding: 12.5px;
+        padding-left: 0px;
+        letter-spacing: 0.75px;
+        margin-left: 47.5px;
+        line-height: 22px;
+    }
+    .prelog{
+        padding-top: 25px;
+        padding-left: 35px;
+        padding-right: 35px;
+        padding-bottom: 25px;
+    }
+    #log{
+        padding-bottom: 0px;
+    }
+    footer{
+        width:auto;
+        height: 35px;
+        left: 0px;
+        top: 0px;
+        background: #000000;
+        overflow: auto;
+    }
+    #contact{
+        height: 35px;
+        margin-left: 25px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+    #contact:hover{
+        color: #FFAFAF;
+    }
+    #kmore{
+        text-decoration: none;
+    }
+    #kmore:visited{
+        color: #000000;
+    }
+    #kmore:hover{
+        color: #ffe2e2
+    }
+    #j_icon{
+        float: left;
+        width: 35px;
+        height: 35px;
+        border-radius: 35px;
+    }
+    a.cbtn-change-color{
+        text-decoration: none;
+        color: #FFFFFF;
+    }
+    a.cbtn-change-color:hover{
+        color:#FFAFAF;
+        filter: drop-shadow(0px 2px 2px 
+    #FFAFAF);
+    }
+    .cbtn{
+        background-color: transparent;
+        transition: color .15s ease-in-out,background-color  .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    svg{
+        margin-top: 6px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
