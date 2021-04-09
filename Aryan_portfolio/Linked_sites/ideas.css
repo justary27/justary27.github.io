@@ -142,3 +142,149 @@ svg{
     margin-left: 20px;
     margin-right: 20px;
 }
+@media screen and (max-width: 480px) {
+    *{
+        margin:0px;
+    }
+    body{
+        background-color: #C6C5FF;
+    }
+    .navbar{
+        position: sticky;
+        width:auto;
+        height: 50px;
+        left: 0px;
+        top: 0px;
+        width: auto;
+        background: #000000;
+        overflow: auto;
+        filter: drop-shadow(0px 4px 4px);
+    }
+    .site_icon{
+        float: right;
+        height: 40px;
+        padding-top: 5px;
+        padding-right: 15px;
+        filter: drop-shadow(0px 1px 1px #C6C5FF);
+    }
+    .site_icon:hover{
+        cursor: pointer;
+    }
+    .linkers{
+        position:initial;
+        width: fit-content;
+        height: 25px;
+        left: 6px;
+        top: 26.5px;
+        left: 0%;
+        right: 0%;
+        top: 0%;
+        bottom: 0%;
+        border: none;
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        background-color: #000000;
+        color: #FFFFFF;
+        float: left;
+        padding-right: 15px;
+        padding-top: 12.5px;
+        padding-bottom: 12.5px;
+        padding-left: 15px;
+    }
+    a.linkers{
+        text-decoration: none;
+    }
+    a.linkers:hover{
+        color: #C6C5FF;
+        filter: drop-shadow(0px 1px 1px #C6C5FF);
+    }
+    #titlepara {
+        height: 150px;
+        background-image: url(/_justary27_s__portfolio/Aryan_portfolio/Linked_sites/Linked_site_media/ideas.jpg);
+        background-repeat: no-repeat;
+        width: auto;
+        background-size: cover;
+    }
+    #title{
+        color: #d7d6ff;
+        font-size: 35px;
+        padding-left: 40px;
+        padding-bottom: 5px;
+        padding-top: 100px;
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: bold;
+    }
+    .ideas{
+        padding-top: 25px;
+        padding-left: 35px;
+        padding-right: 35px;
+        padding-bottom: 25px;
+    }
+    h2{
+        font-size: 30px;
+        font-family: 'Caveat', cursive;
+        margin-left: 12.5px;
+        color: #FFFFFF;
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    }
+    #summary{
+        font-size: 17.5px;
+        font-family: Satisfy;
+        padding: 12.5px;
+    }
+    #sum1{
+        font-size: 12.5px;
+        font-family: Satisfy;
+        padding: 12.5px;
+        letter-spacing: 0.75px;
+    }
+    h3{
+        font-size: 17.5px;
+        font-family: 'Caveat', cursive;
+        margin-left: 12.5px;
+        color: #FFFFFF;
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    }
+    footer{
+        width:auto;
+        height: 35px;
+        left: 0px;
+        top: 0px;
+        background: #000000;
+        overflow: auto;
+    }
+    #contact{
+        height: 35px;
+        margin-left: 25px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+    #contact:hover{
+        color: #C6C5FF;
+    }
+    a.cbtn-change-color{
+        text-decoration: none;
+        color: #FFFFFF;
+    }
+    a.cbtn-change-color:hover{
+        color:#C6C5FF;
+        filter: drop-shadow(0px 2px 2px 
+    #C6C5FF);
+    }
+    .cbtn{
+        background-color: transparent;
+        transition: color .15s ease-in-out,background-color  .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    svg{
+        margin-top: 6px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
