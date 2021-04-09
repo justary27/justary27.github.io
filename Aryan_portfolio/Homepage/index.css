@@ -565,14 +565,14 @@ svg{
         background: #000000;
         z-index: 2;
         height: 185px;
-        width: 40px;
+        width: 60px;
         border-radius: 7.5px;
     }
     .tinfo{
         font-family: Ubuntu;
         font-style: normal;
         font-weight: bold;
-        /* font-size: 21.5px; */
+        font-size: 21.5px;
         line-height: 40px;
         display: flex;
         align-items: center;
@@ -592,20 +592,20 @@ svg{
         background: #000000;
         z-index: 2;
         height: 140px;
-        width: 40px;
+        width: 60px;
         border-radius: 7.5px;
     }
     .tinfo2{
         font-family: Ubuntu;
         font-style: normal;
         font-weight: bold;
-        /* font-size: 21.5px; */
+        font-size: 21.5px;
         line-height: 40px;
         display: flex;
         align-items: center;
         text-align: center;
         height: 140px;
-        width: 40px;
+        width: 60px;
         color: #FFFFFF;
     
         transform: rotate(-90deg);
@@ -619,14 +619,14 @@ svg{
         background: #000000;
         z-index: 2;
         height: 185px;
-        width: 40px;
+        width: 60px;
         border-radius: 7.5px;
     }
     .tinfo3{
         font-family: Ubuntu;
         font-style: normal;
         font-weight: bold;
-        /* font-size: 21.5px; */
+        font-size: 21.5px;
         line-height: 40px;
         display: flex;
         align-items: center;
@@ -646,14 +646,14 @@ svg{
         background: #000000;
         z-index: 2;
         height: 185px;
-        width: 40px;
+        width: 60px;
         border-radius: 7.5px;
     }
     .tinfo4{
         font-family: Ubuntu;
         font-style: normal;
         font-weight: bold;
-        /* font-size: 21.5px; */
+        font-size: 21.5px;
         line-height: 40px;
         display: flex;
         align-items: center;
