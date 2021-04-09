@@ -145,9 +145,9 @@ a.cbtn-change-color{
     color: #FFFFFF;
 }
 a.cbtn-change-color:hover{
-    color:#5BFA9A;
+    color:#FFAFAF;
     filter: drop-shadow(0px 2px 2px 
-#5BFA9A);
+#FFAFAF);
 }
 .cbtn{
     background-color: transparent;
