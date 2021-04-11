@@ -7,7 +7,7 @@
     height: 100px;
     left: 0px;
     top: 0px;
-    width: auto;
+    width: 100vw;
     background: #000000;
     overflow: auto;
     z-index: 4;
@@ -311,7 +311,7 @@ a.linkers:hover{
     transform: rotate(-90deg);
 }
 footer{
-    width:auto;
+    width:100vw;
     height: 70px;
     left: 0px;
     top: 0px;
