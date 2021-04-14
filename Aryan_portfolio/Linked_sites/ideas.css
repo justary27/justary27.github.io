@@ -292,3 +292,119 @@ svg{
         height: 24px;
     }
 }
+@media screen and (max-width:732px) and (min-width:547px){
+    .navbar{
+        position: sticky;
+        width:auto;
+        height: 75px;
+        left: 0px;
+        top: 0px;
+        width: auto;
+        background: #000000;
+        overflow: auto;
+        z-index: 4;
+        filter: drop-shadow(0px 2px 2px);
+    }
+    .site_icon{
+        float: right;
+        height: 60px;
+        padding-top: 7.5px;
+        padding-right: 22.5px;
+        filter: drop-shadow(0px 1.5px 1.5px #C6C5FF);
+    }
+    .site_icon:hover{
+        cursor: pointer;
+    }
+    .linkers{
+        position:initial;
+        width: fit-content;
+        height: 37.5px;
+        left: 9px;
+        top: 39.75px;
+        left: 0%;
+        right: 0%;
+        top: 0%;
+        bottom: 0%;
+        border: none;
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 22.5px;
+        line-height: 30px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        background-color: #000000;
+        color: #FFFFFF;
+        float: left;
+        padding-right: 22.5px;
+        padding-top: 18.75px;
+        padding-bottom: 18.75px;
+        padding-left: 22.5px;
+    }
+    a.linkers{
+        text-decoration: none;
+    }
+    a.linkers:hover{
+        color: #C6C5FF;
+        filter: drop-shadow(0px 1.5px 1.5px #C6C5FF);
+    }
+}
+@media screen and (max-width:547px) and (min-width:480px){
+    .navbar{
+        position: sticky;
+        width:auto;
+        height: 62.5px;
+        left: 0px;
+        top: 0px;
+        width: auto;
+        background: #000000;
+        overflow: auto;
+        z-index: 4;
+        filter: drop-shadow(0px 2px 2px);
+    }
+    .site_icon{
+        float: right;
+        height: 50px;
+        padding-top: 6.25px;
+        padding-right: 17.5px;
+        filter: drop-shadow(0px 1.25px 1.25px #C6C5FF);
+    }
+    .site_icon:hover{
+        cursor: pointer;
+    }
+    .linkers{
+        position:initial;
+        width: fit-content;
+        height: 31.25px;
+        left: 7.5px;
+        top: 33.125px;
+        left: 0%;
+        right: 0%;
+        top: 0%;
+        bottom: 0%;
+        border: none;
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 17.5px;
+        line-height: 25px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        background-color: #000000;
+        color: #FFFFFF;
+        float: left;
+        padding-right: 17.5px;
+        padding-top: 15.625px;
+        padding-bottom: 15.625px;
+        padding-left: 17.5px;
+    }
+    a.linkers{
+        text-decoration: none;
+    }
+    a.linkers:hover{
+        color: #C6C5FF;
+        filter: drop-shadow(0px 1.25px 1.25px #C6C5FF);
+    }
+}
