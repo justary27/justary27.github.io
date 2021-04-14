@@ -196,6 +196,25 @@ a.linkers:hover{
         color: #DAFA5B;
         filter: drop-shadow(0px 1px 1px #DAFA5B);
     }
+    #titlepara {
+        height: 150px;
+        background-image: url(/_justary27_s__portfolio/Aryan_portfolio/Linked_sites/Linked_site_media/blog.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: auto;
+    }
+    #title{
+        color: #b6ffd3;
+        font-size: 35px;
+        padding-right: 40px;
+        padding-bottom: 5px;
+        padding-top: 100px;
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: bold;
+        text-align: right;
+    }
+
 }
 @media screen and (max-width:547px) and (min-width:480px){
     .navbar{
