@@ -198,10 +198,10 @@ svg{
         background-color: #000000;
         color: #FFFFFF;
         float: left;
-        padding-right: 15px;
+        padding-right: 12.5px;
         padding-top: 12.5px;
         padding-bottom: 12.5px;
-        padding-left: 15px;
+        padding-left: 12.5px;
     }
     a.linkers{
         text-decoration: none;
