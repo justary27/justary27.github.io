@@ -110,7 +110,8 @@ class _WorkPageState extends State<WorkPage> {
                         style: GoogleFonts.coveredByYourGrace(
                             textStyle: TextStyle(
                                 color: Color.fromRGBO(22, 133, 111, 1.0),
-                                fontSize: 0.3 * size.height)),
+                                fontSize:
+                                    _cf['heading'][deviceType] * size.width)),
                       ),
                     ),
                     Container(
@@ -178,8 +179,9 @@ class _WorkPageState extends State<WorkPage> {
                                               textStyle: TextStyle(
                                                   color: Color.fromRGBO(
                                                       22, 133, 111, 1.0),
-                                                  fontSize:
-                                                      0.015 * size.width)))
+                                                  fontSize: _cf['projEmphasis']
+                                                          [deviceType] *
+                                                      size.width)))
                                     ])),
                                   ),
                                   Row(children: [
@@ -304,7 +306,9 @@ class _WorkPageState extends State<WorkPage> {
                                                 color: Color.fromRGBO(
                                                         14, 43, 133, 1.0)
                                                     .withOpacity(0.7),
-                                                fontSize: 0.0125 * size.width),
+                                                fontSize: _cf['projEmphasis']
+                                                        [deviceType] *
+                                                    size.width),
                                             fontWeight: FontWeight.bold,
                                           )),
                                       TextSpan(

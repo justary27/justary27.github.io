@@ -70,6 +70,7 @@ class _HomePageState extends State<HomePage>
           ),
         ],
       ),
+      extendBody: true,
     );
   }
 }
