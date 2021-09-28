@@ -276,6 +276,7 @@ class _WorkPageState extends State<WorkPage> {
                                   ),
                                   Text(
                                     "A multi-purpose bot to make your stay at discord comfy.",
+                                    textAlign: TextAlign.right,
                                     style: GoogleFonts.ubuntu(
                                         textStyle: TextStyle(
                                             color: Color.fromRGBO(
