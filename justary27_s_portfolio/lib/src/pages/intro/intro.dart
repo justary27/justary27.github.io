@@ -29,226 +29,217 @@ class _IntroPageState extends State<IntroPage> {
   Widget build(BuildContext context) {
     Size size = widget.size;
     TabController _tabController = widget.tabController;
-    ScrollController _scrollController = ScrollController();
-    return NotificationListener<ScrollEndNotification>(
-      child: SingleChildScrollView(
-        controller: _scrollController,
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  width: size.width,
-                  height: 4.3 * size.height,
-                  child: Column(
-                    children: [
-                      Container(
-                        width: size.width,
-                        height: 3 * size.height,
-                        color: Color.fromRGBO(255, 175, 175, 1),
-                        child: CustomPaint(
-                          painter: dividerPaint(),
-                        ),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              Container(
+                width: size.width,
+                height: 4.3 * size.height,
+                child: Column(
+                  children: [
+                    Container(
+                      width: size.width,
+                      height: 3 * size.height,
+                      color: Color.fromRGBO(255, 175, 175, 1),
+                      child: CustomPaint(
+                        painter: dividerPaint(),
                       ),
-                      Container(
-                        width: size.width,
-                        height: size.height,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomLeft,
-                              colors: [
-                                Color.fromRGBO(218, 224, 224, 1.0),
-                                Color.fromRGBO(183, 193, 192, 1.0)
-                              ]),
-                        ),
-                        child: CustomPaint(
-                          painter: RoorkeePainter(),
-                        ),
+                    ),
+                    Container(
+                      width: size.width,
+                      height: size.height,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomLeft,
+                            colors: [
+                              Color.fromRGBO(218, 224, 224, 1.0),
+                              Color.fromRGBO(183, 193, 192, 1.0)
+                            ]),
                       ),
-                      Container(
-                        width: size.width,
-                        height: 0.3 * size.height,
-                        color: Color.fromRGBO(134, 149, 179, 1.0),
-                      )
-                    ],
-                  ),
+                      child: CustomPaint(
+                        painter: RoorkeePainter(),
+                      ),
+                    ),
+                    Container(
+                      width: size.width,
+                      height: 0.3 * size.height,
+                      color: Color.fromRGBO(134, 149, 179, 1.0),
+                    )
+                  ],
                 ),
-                Container(
-                  width: size.width,
-                  height: 4.3 * size.height,
-                  color: Colors.transparent,
-                  child: Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        width: size.width,
-                        height: size.height,
-                        child: Text(
-                          "Intro.",
-                          style: GoogleFonts.coveredByYourGrace(
-                              textStyle: TextStyle(
-                                  color: Color.fromRGBO(14, 43, 133, 1.0),
-                                  fontSize: 0.3 * size.height)),
-                        ),
+              ),
+              Container(
+                width: size.width,
+                height: 4.3 * size.height,
+                color: Colors.transparent,
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      width: size.width,
+                      height: size.height,
+                      child: Text(
+                        "Intro.",
+                        style: GoogleFonts.coveredByYourGrace(
+                            textStyle: TextStyle(
+                                color: Color.fromRGBO(14, 43, 133, 1.0),
+                                fontSize: 0.3 * size.height)),
                       ),
-                      Container(
-                        alignment: Alignment.center,
-                        width: size.width,
-                        height: size.height,
-                        // color: Color.fromRGBO(255, 175, 175, 1),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 0.02 * size.height),
-                              child: Text("Bonjour!",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.caveatBrush(
-                                      textStyle: TextStyle(
-                                          color: Colors.white.withOpacity(0.7),
-                                          fontSize: 0.02 * size.width))),
-                            ),
-                            Transform.rotate(
-                              angle: -math.pi / 9,
-                              child: Container(
-                                width: 0.015 * size.width,
-                                height: 0.010 * size.height,
-                                color: Color.fromRGBO(20, 62, 188, 1),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 0.2 * size.width,
-                                  vertical: 0.04 * size.height),
-                              child: Text(
-                                "I'm Aryan Ranjan.",
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      width: size.width,
+                      height: size.height,
+                      // color: Color.fromRGBO(255, 175, 175, 1),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 0.02 * size.height),
+                            child: Text("Bonjour!",
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.caveatBrush(
                                     textStyle: TextStyle(
-                                        color: Color.fromRGBO(14, 43, 133, 1.0),
-                                        fontSize: 0.05 * size.width)),
+                                        color: Colors.white.withOpacity(0.7),
+                                        fontSize: 0.02 * size.width))),
+                          ),
+                          Transform.rotate(
+                            angle: -math.pi / 9,
+                            child: Container(
+                              width: 0.015 * size.width,
+                              height: 0.010 * size.height,
+                              color: Color.fromRGBO(20, 62, 188, 1),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 0.2 * size.width,
+                                vertical: 0.04 * size.height),
+                            child: Text(
+                              "I'm Aryan Ranjan.",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.caveatBrush(
+                                  textStyle: TextStyle(
+                                      color: Color.fromRGBO(14, 43, 133, 1.0),
+                                      fontSize: 0.05 * size.width)),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 0.2 * size.width),
+                            child: Text(
+                              "I'm a sophomore at Indian Institute of Technology Roorkee. Currently I'm pursuing a Btech degree in Chemical Enginnering. I'm very fascinated with computers, hence I'm interested in all its major fields like development, competitive programming, data science & UI/UX design.",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.aBeeZee(
+                                textStyle: TextStyle(
+                                    color: Colors.black, fontSize: 20),
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 0.2 * size.width),
-                              child: Text(
-                                "I'm a sophomore at Indian Institute of Technology Roorkee. Currently I'm pursuing a Btech degree in Chemical Enginnering. I'm very fascinated with computers, hence I'm interested in all its major fields like development, competitive programming, data science & UI/UX design.",
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.aBeeZee(
-                                  textStyle: TextStyle(
-                                      color: Colors.black, fontSize: 20),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
+                          )
+                        ],
                       ),
-                      Container(
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      width: size.width,
+                      height: size.height,
+                      // color: Color.fromRGBO(255, 175, 175, 1),
+                      child: Text("Intro"),
+                    ),
+                    Material(
+                      color: Colors.transparent,
+                      child: Container(
                         alignment: Alignment.center,
                         width: size.width,
                         height: size.height,
-                        // color: Color.fromRGBO(255, 175, 175, 1),
-                        child: Text("Intro"),
-                      ),
-                      Material(
-                        color: Colors.transparent,
-                        child: Container(
-                          alignment: Alignment.center,
-                          width: size.width,
-                          height: size.height,
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 0.02 * size.height),
-                                  child: Text("Work",
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.caveatBrush(
-                                          textStyle: TextStyle(
-                                              color:
-                                                  Colors.black.withOpacity(0.5),
-                                              fontSize: 0.02 * size.width))),
-                                ),
-                                Transform.rotate(
-                                  angle: -math.pi / 9,
-                                  child: Container(
-                                    width: 0.015 * size.width,
-                                    height: 0.010 * size.height,
-                                    color: Color.fromRGBO(20, 62, 188, 1),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 0.2 * size.width,
-                                      vertical: 0.04 * size.height),
-                                  child: Text(
-                                    "Check out all of my work!",
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 0.02 * size.height),
+                                child: Text("Work",
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.caveatBrush(
                                         textStyle: TextStyle(
-                                            color: Color.fromRGBO(
-                                                14, 43, 133, 1.0),
-                                            fontSize: 0.05 * size.width)),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 0.2 * size.width),
-                                  child: MaterialButton(
-                                    onPressed: () {
-                                      _tabController.animateTo(2);
-                                    },
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      width: 0.065 * size.width,
-                                      height: 0.05 * size.height,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Icon(
-                                            Icons.arrow_forward_ios_rounded,
                                             color:
-                                                Colors.white.withOpacity(0.7),
+                                                Colors.black.withOpacity(0.5),
+                                            fontSize: 0.02 * size.width))),
+                              ),
+                              Transform.rotate(
+                                angle: -math.pi / 9,
+                                child: Container(
+                                  width: 0.015 * size.width,
+                                  height: 0.010 * size.height,
+                                  color: Color.fromRGBO(20, 62, 188, 1),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 0.2 * size.width,
+                                    vertical: 0.04 * size.height),
+                                child: Text(
+                                  "Check out all of my work!",
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.caveatBrush(
+                                      textStyle: TextStyle(
+                                          color:
+                                              Color.fromRGBO(14, 43, 133, 1.0),
+                                          fontSize: 0.05 * size.width)),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 0.2 * size.width),
+                                child: MaterialButton(
+                                  onPressed: () {
+                                    _tabController.animateTo(2);
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    width: 0.065 * size.width,
+                                    height: 0.05 * size.height,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.arrow_forward_ios_rounded,
+                                          color: Colors.white.withOpacity(0.7),
+                                        ),
+                                        Text(
+                                          "Work",
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.aBeeZee(
+                                            textStyle: TextStyle(
+                                                color: Colors.white
+                                                    .withOpacity(0.7),
+                                                fontSize: 20),
                                           ),
-                                          Text(
-                                            "Work",
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.aBeeZee(
-                                              textStyle: TextStyle(
-                                                  color: Colors.white
-                                                      .withOpacity(0.7),
-                                                  fontSize: 20),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                )
-                              ]),
-                        ),
+                                ),
+                              )
+                            ]),
                       ),
-                      NavBar(
-                        size: size,
-                        tabController: _tabController,
-                      )
-                    ],
-                  ),
+                    ),
+                    NavBar(
+                      size: size,
+                      tabController: _tabController,
+                    )
+                  ],
                 ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+        ],
       ),
-      onNotification: (notification) {
-        // print(_scrollController.position.pixels / size.height);
-        return false;
-      },
     );
   }
 }
@@ -331,6 +322,6 @@ class dividerPaint extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
+    return false;
   }
 }
