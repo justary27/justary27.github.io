@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:justary27_s_portfolio/src/components/navbar.dart';
-import 'package:justary27_s_portfolio/src/pages/intro.dart';
-import 'package:justary27_s_portfolio/src/pages/who.dart';
-import 'package:justary27_s_portfolio/src/pages/work.dart';
-
-import 'blog.dart';
+import 'package:justary27_s_portfolio/src/pages/intro/intro.dart';
+import 'package:justary27_s_portfolio/src/pages/who/who.dart';
+import 'package:justary27_s_portfolio/src/pages/work/work.dart';
+import 'blog/blog.dart';
+import 'package:justary27_s_portfolio/src/components/deviceDetector.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    String deviceType = deviceDetector(size);
     return Scaffold(
       body: Stack(
         children: [
@@ -43,24 +44,29 @@ class _HomePageState extends State<HomePage>
               IntroPage(
                 size: size,
                 tabController: _tabController,
+                deviceType: deviceType,
               ),
               WhoPage(
                 size: size,
                 TabController: _tabController,
+                deviceType: deviceType,
               ),
               WorkPage(
                 size: size,
                 tabController: _tabController,
+                deviceType: deviceType,
               ),
               BlogPage(
                 size: size,
                 tabcontroller: _tabController,
+                deviceType: deviceType,
               ),
             ],
           ),
           Navbar(
             size: size,
             tabController: _tabController,
+            deviceType: deviceType,
           ),
         ],
       ),

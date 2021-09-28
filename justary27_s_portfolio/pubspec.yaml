@@ -31,6 +31,7 @@ dependencies:
   google_fonts:
   font_awesome_flutter:
   url_launcher:
+  model_viewer:
 
 dev_dependencies:
   flutter_test:

@@ -1,41 +1,65 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/footer.dart';
 import 'dart:math' as math;
+import 'whoConstraints.dart';
 
-class IntroPage extends StatefulWidget {
+const Map _cf = ConstraintFactors;
+
+class WhoPage extends StatefulWidget {
   final Size size;
-  final TabController tabController;
-  const IntroPage({Key? key, required this.size, required this.tabController})
+  final TabController;
+  final deviceType;
+
+  const WhoPage(
+      {Key? key,
+      required this.size,
+      required this.TabController,
+      required this.deviceType})
       : super(key: key);
 
   @override
-  _IntroPageState createState() => _IntroPageState();
+  _WhoPageState createState() => _WhoPageState();
 }
 
-class _IntroPageState extends State<IntroPage> {
+class _WhoPageState extends State<WhoPage> {
   @override
   Widget build(BuildContext context) {
     Size size = widget.size;
-    TabController _tabController = widget.tabController;
-
+    TabController _tabController = widget.TabController;
     return SingleChildScrollView(
       child: Column(
         children: [
           Stack(
             children: [
               Container(
-                width: size.width,
-                height: 4.3 * size.height,
                 child: Column(
                   children: [
                     Container(
                       width: size.width,
-                      height: 3 * size.height,
-                      color: Color.fromRGBO(255, 175, 175, 1),
-                      child: CustomPaint(
-                        painter: dividerPaint(),
+                      height: 4 * size.height,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomLeft,
+                            colors: [
+                              Color.fromRGBO(198, 197, 255, 1.0),
+                              Color.fromRGBO(133, 130, 234, 1.0),
+                            ]),
+                      ),
+                    ),
+                    Container(
+                      height: size.height,
+                      width: size.width,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomLeft,
+                            colors: [
+                              Color.fromRGBO(232, 236, 236, 1.0),
+                              Color.fromRGBO(218, 224, 224, 1.0),
+                            ]),
                       ),
                     ),
                     Container(
@@ -63,83 +87,35 @@ class _IntroPageState extends State<IntroPage> {
                 ),
               ),
               Container(
-                width: size.width,
-                height: 4.3 * size.height,
-                color: Colors.transparent,
                 child: Column(
                   children: [
                     Container(
-                      alignment: Alignment.center,
                       width: size.width,
                       height: size.height,
+                      alignment: Alignment.center,
                       child: Text(
-                        "Intro.",
+                        "Who?",
                         style: GoogleFonts.coveredByYourGrace(
                             textStyle: TextStyle(
                                 color: Color.fromRGBO(14, 43, 133, 1.0),
                                 fontSize: 0.3 * size.height)),
                       ),
                     ),
-                    Container(
-                      alignment: Alignment.center,
-                      width: size.width,
-                      height: size.height,
-                      // color: Color.fromRGBO(255, 175, 175, 1),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 0.02 * size.height),
-                            child: Text("Bonjour!",
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.caveatBrush(
-                                    textStyle: TextStyle(
-                                        color: Colors.white.withOpacity(0.7),
-                                        fontSize: 0.02 * size.width))),
-                          ),
-                          Transform.rotate(
-                            angle: -math.pi / 9,
-                            child: Container(
-                              width: 0.015 * size.width,
-                              height: 0.010 * size.height,
-                              color: Color.fromRGBO(20, 62, 188, 1),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 0.2 * size.width,
-                                vertical: 0.04 * size.height),
-                            child: Text(
-                              "I'm Aryan Ranjan.",
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.caveatBrush(
-                                  textStyle: TextStyle(
-                                      color: Color.fromRGBO(14, 43, 133, 1.0),
-                                      fontSize: 0.05 * size.width)),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 0.2 * size.width),
-                            child: Text(
-                              "I'm a sophomore at Indian Institute of Technology Roorkee. Currently I'm pursuing a Btech degree in Chemical Enginnering. I'm very fascinated with computers, hence I'm interested in all its major fields like development, competitive programming, data science & UI/UX design.",
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.aBeeZee(
-                                textStyle: TextStyle(
-                                    color: Colors.black, fontSize: 20),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
+                    Column(
+                      children: [
+                        Container(
+                          width: size.width,
+                          height: size.height,
+                        ),
+                      ],
                     ),
                     Container(
-                      alignment: Alignment.center,
                       width: size.width,
                       height: size.height,
-                      // color: Color.fromRGBO(255, 175, 175, 1),
-                      child: Text("Intro"),
+                    ),
+                    Container(
+                      width: size.width,
+                      height: size.height,
                     ),
                     Material(
                       color: Colors.transparent,
@@ -220,15 +196,17 @@ class _IntroPageState extends State<IntroPage> {
                             ]),
                       ),
                     ),
-                    NavBar(
-                      size: size,
-                      tabController: _tabController,
-                    )
+                    Container(
+                      alignment: Alignment.center,
+                      width: size.width,
+                      height: size.height,
+                    ),
+                    NavBar(size: size, tabController: _tabController),
                   ],
                 ),
               ),
             ],
-          ),
+          )
         ],
       ),
     );
@@ -244,9 +222,10 @@ class RoorkeePainter extends CustomPainter {
           begin: Alignment.topLeft,
           end: Alignment.bottomLeft,
           colors: [
-            Color.fromRGBO(236, 131, 131, 1.0),
-            Color.fromRGBO(145, 155, 153, 1.0).withOpacity(0.4),
+            Color.fromRGBO(14, 43, 133, 1.0),
+            Color.fromRGBO(184, 194, 215, 1.0)
           ]).createShader(Offset.zero & size);
+    ;
     Path path = Path();
 
     // path.lineTo(size.width, size.height);
@@ -264,51 +243,6 @@ class RoorkeePainter extends CustomPainter {
     path.lineTo(0, size.height);
     path.lineTo(size.width, size.height);
     canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
-  }
-}
-
-class dividerPaint extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..style = PaintingStyle.fill
-      ..shader = LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color.fromRGBO(255, 175, 175, 1),
-            Color.fromRGBO(234, 98, 98, 1.0),
-          ]).createShader(Offset.zero & size);
-
-    Path path = Path();
-
-    path.moveTo(size.width, 0.6 * size.height);
-    path.lineTo(0, 0.7 * size.height);
-    path.lineTo(0, 0.7 * size.height);
-    path.lineTo(0, size.height);
-    path.lineTo(size.width, size.height);
-
-    canvas.drawPath(path, paint);
-    Path path1 = Path();
-    Paint paint1 = Paint()
-      ..style = PaintingStyle.fill
-      ..shader = LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color.fromRGBO(255, 175, 175, 1),
-            Color.fromRGBO(236, 131, 131, 1.0),
-          ]).createShader(Offset.zero & size);
-    path1.moveTo(size.width, 0.5 * size.height);
-    path1.quadraticBezierTo(0.85 * size.width, 0.61 * size.height,
-        0.7 * size.width, 0.63 * size.height);
-    path1.lineTo(size.width, 0.6 * size.height);
-    canvas.drawPath(path1, paint1);
   }
 
   @override

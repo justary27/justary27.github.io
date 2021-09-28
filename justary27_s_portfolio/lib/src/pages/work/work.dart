@@ -1,14 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/footer.dart';
 import 'package:url_launcher/link.dart';
+import 'workConstraints.dart';
+
+const Map _cf = ConstraintFactors;
 
 class WorkPage extends StatefulWidget {
   final Size size;
   final tabController;
-  const WorkPage({Key? key, required this.size, required this.tabController})
+  final deviceType;
+  const WorkPage(
+      {Key? key,
+      required this.size,
+      required this.tabController,
+      required this.deviceType})
       : super(key: key);
 
   @override
@@ -20,6 +27,7 @@ class _WorkPageState extends State<WorkPage> {
   Widget build(BuildContext context) {
     Size size = widget.size;
     TabController _tabController = widget.tabController;
+    String deviceType = widget.deviceType;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -135,7 +143,9 @@ class _WorkPageState extends State<WorkPage> {
                                         textStyle: TextStyle(
                                             color: Color.fromRGBO(
                                                 22, 133, 111, 1.0),
-                                            fontSize: 0.1 * size.width)),
+                                            fontSize: _cf['projTitle']
+                                                    [deviceType] *
+                                                size.width)),
                                   ),
                                   Text(
                                     "The only bot you'll need for Covid-19 resources.",
@@ -144,7 +154,9 @@ class _WorkPageState extends State<WorkPage> {
                                             color: Colors.black
                                                 .withGreen(200)
                                                 .withOpacity(0.5),
-                                            fontSize: 0.02 * size.width,
+                                            fontSize: _cf['projSubtitle']
+                                                    [deviceType] *
+                                                size.width,
                                             fontStyle: FontStyle.italic)),
                                   ),
                                   Container(
@@ -157,7 +169,9 @@ class _WorkPageState extends State<WorkPage> {
                                               textStyle: TextStyle(
                                                   color: Colors.black,
                                                   fontSize:
-                                                      0.0125 * size.width))),
+                                                      _cf['projDescription']
+                                                              [deviceType] *
+                                                          size.width))),
                                       TextSpan(
                                           text: "team InCognoS.\n",
                                           style: GoogleFonts.coveredByYourGrace(
@@ -174,6 +188,8 @@ class _WorkPageState extends State<WorkPage> {
                                             "https://github.com/just-ary27/CovBot"),
                                         builder: (context, openLink) {
                                           return IconButton(
+                                              iconSize: _cf['projLinks']
+                                                  [deviceType],
                                               color: Color.fromRGBO(
                                                   22, 133, 111, 1.0),
                                               onPressed: () {},
@@ -185,6 +201,8 @@ class _WorkPageState extends State<WorkPage> {
                                             "https://just-ary27.github.io/CovBot/"),
                                         builder: (context, openLink) {
                                           return IconButton(
+                                              iconSize: _cf['projLinks']
+                                                  [deviceType],
                                               color: Color.fromRGBO(
                                                   22, 133, 111, 1.0),
                                               onPressed: () {},
@@ -196,6 +214,8 @@ class _WorkPageState extends State<WorkPage> {
                                             "https://discord.com/oauth2/authorize?client_id=835222640821796924&scope=bot"),
                                         builder: (context, openLink) {
                                           return IconButton(
+                                              iconSize: _cf['projLinks']
+                                                  [deviceType],
                                               color: Color.fromRGBO(
                                                   22, 133, 111, 1.0),
                                               onPressed: () {},
@@ -207,6 +227,8 @@ class _WorkPageState extends State<WorkPage> {
                                             "https://in.mashable.com/social-good/22667/covid-discord-group-helps-indians-find-oxygen-answers-and-community"),
                                         builder: (context, openLink) {
                                           return IconButton(
+                                              iconSize: _cf['projLinks']
+                                                  [deviceType],
                                               color: Color.fromRGBO(
                                                   22, 133, 111, 1.0),
                                               onPressed: () {},
@@ -246,7 +268,9 @@ class _WorkPageState extends State<WorkPage> {
                                         textStyle: TextStyle(
                                             color: Color.fromRGBO(
                                                 241, 245, 245, 1.0),
-                                            fontSize: 0.1 * size.width)),
+                                            fontSize: _cf['projTitle']
+                                                    [deviceType] *
+                                                size.width)),
                                   ),
                                   Text(
                                     "A multi-purpose bot to make your stay at discord comfy.",
@@ -255,7 +279,9 @@ class _WorkPageState extends State<WorkPage> {
                                             color: Color.fromRGBO(
                                                     218, 224, 224, 1.0)
                                                 .withOpacity(0.7),
-                                            fontSize: 0.02 * size.width,
+                                            fontSize: _cf['projSubtitle']
+                                                    [deviceType] *
+                                                size.width,
                                             fontStyle: FontStyle.italic)),
                                   ),
                                   Container(
@@ -268,7 +294,9 @@ class _WorkPageState extends State<WorkPage> {
                                               textStyle: TextStyle(
                                                   color: Colors.white,
                                                   fontSize:
-                                                      0.0125 * size.width))),
+                                                      _cf['projDescription']
+                                                              [deviceType] *
+                                                          size.width))),
                                       TextSpan(
                                           text: " SDS Labs, ",
                                           style: GoogleFonts.aBeeZee(
@@ -286,7 +314,9 @@ class _WorkPageState extends State<WorkPage> {
                                               textStyle: TextStyle(
                                                   color: Colors.white,
                                                   fontSize:
-                                                      0.0125 * size.width))),
+                                                      _cf['projDescription']
+                                                              [deviceType] *
+                                                          size.width))),
                                     ])),
                                   ),
                                   Row(
@@ -297,6 +327,8 @@ class _WorkPageState extends State<WorkPage> {
                                                 "https://github.com/just-ary27/CovBot"),
                                             builder: (context, openLink) {
                                               return IconButton(
+                                                  iconSize: _cf['projLinks']
+                                                      [deviceType],
                                                   color: Color.fromRGBO(
                                                           241, 245, 245, 1.0)
                                                       .withOpacity(0.5),
@@ -309,6 +341,8 @@ class _WorkPageState extends State<WorkPage> {
                                                 "https://just-ary27.github.io/CovBot/"),
                                             builder: (context, openLink) {
                                               return IconButton(
+                                                  iconSize: _cf['projLinks']
+                                                      [deviceType],
                                                   color: Color.fromRGBO(
                                                           241, 245, 245, 1.0)
                                                       .withOpacity(0.5),
@@ -321,6 +355,8 @@ class _WorkPageState extends State<WorkPage> {
                                                 "https://discord.com/oauth2/authorize?client_id=835222640821796924&scope=bot"),
                                             builder: (context, openLink) {
                                               return IconButton(
+                                                  iconSize: _cf['projLinks']
+                                                      [deviceType],
                                                   color: Color.fromRGBO(
                                                           241, 245, 245, 1.0)
                                                       .withOpacity(0.5),
@@ -412,7 +448,7 @@ class RoorkeePainter extends CustomPainter {
             Color.fromRGBO(56, 149, 131, 1.0),
             Color.fromRGBO(184, 194, 215, 1.0)
           ]).createShader(Offset.zero & size);
-    ;
+
     Path path = Path();
 
     // path.lineTo(size.width, size.height);
@@ -434,6 +470,6 @@ class RoorkeePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
+    return false;
   }
 }

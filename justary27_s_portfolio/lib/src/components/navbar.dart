@@ -4,8 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 class Navbar extends StatefulWidget {
   final Size size;
   final TabController tabController;
+  final deviceType;
 
-  const Navbar({Key? key, required this.size, required this.tabController})
+  const Navbar(
+      {Key? key,
+      required this.size,
+      required this.tabController,
+      required this.deviceType})
       : super(key: key);
 
   @override
