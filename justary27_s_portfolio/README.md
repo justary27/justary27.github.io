@@ -1,6 +1,6 @@
 # justary27_s_portfolio
 
-A new Flutter project.
+Aryan Ranjan's portfolio website
 
 ## Getting Started
 
