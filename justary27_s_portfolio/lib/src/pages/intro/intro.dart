@@ -29,6 +29,8 @@ class _IntroPageState extends State<IntroPage> {
   Widget build(BuildContext context) {
     Size size = widget.size;
     TabController _tabController = widget.tabController;
+    String deviceType = widget.deviceType;
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -86,7 +88,8 @@ class _IntroPageState extends State<IntroPage> {
                         style: GoogleFonts.coveredByYourGrace(
                             textStyle: TextStyle(
                                 color: Color.fromRGBO(14, 43, 133, 1.0),
-                                fontSize: 0.3 * size.height)),
+                                fontSize:
+                                    _cf['heading'][deviceType] * size.width)),
                       ),
                     ),
                     Container(

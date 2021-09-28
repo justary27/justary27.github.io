@@ -28,6 +28,8 @@ class _WhoPageState extends State<WhoPage> {
   Widget build(BuildContext context) {
     Size size = widget.size;
     TabController _tabController = widget.TabController;
+    String deviceType = widget.deviceType;
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -98,7 +100,8 @@ class _WhoPageState extends State<WhoPage> {
                         style: GoogleFonts.coveredByYourGrace(
                             textStyle: TextStyle(
                                 color: Color.fromRGBO(14, 43, 133, 1.0),
-                                fontSize: 0.3 * size.height)),
+                                fontSize:
+                                    _cf['heading'][deviceType] * size.width)),
                       ),
                     ),
                     Column(

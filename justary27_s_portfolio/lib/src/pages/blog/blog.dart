@@ -26,6 +26,8 @@ class _BlogPageState extends State<BlogPage> {
   Widget build(BuildContext context) {
     final Size size = widget.size;
     final _tabController = widget.tabcontroller;
+    String deviceType = widget.deviceType;
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -83,7 +85,8 @@ class _BlogPageState extends State<BlogPage> {
                         style: GoogleFonts.coveredByYourGrace(
                             textStyle: TextStyle(
                                 color: Color.fromRGBO(247, 250, 249, 1.0),
-                                fontSize: 0.3 * size.height)),
+                                fontSize:
+                                    _cf['heading'][deviceType] * size.width)),
                       ),
                     ),
                     Container(
