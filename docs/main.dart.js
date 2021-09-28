@@ -53491,7 +53491,7 @@ O.Uy.prototype={}
 U.CR.prototype={}
 X.os.prototype={}
 S.B6.prototype={
-N(a,b){return new S.rG(new Y.r5(null),"Flutter Demo",X.ab2(null,C.nD),!1,null)}}
+N(a,b){return new S.rG(new Y.r5(null),"justary27 | Aryan Ranjan",X.ab2(null,C.nD),!1,null)}}
 N.jq.prototype={
 aD(){return new N.Hk(C.m)}}
 N.Hk.prototype={
