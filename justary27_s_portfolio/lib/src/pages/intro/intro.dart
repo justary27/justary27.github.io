@@ -177,7 +177,9 @@ class _IntroPageState extends State<IntroPage> {
                                         textStyle: TextStyle(
                                             color:
                                                 Colors.black.withOpacity(0.5),
-                                            fontSize: 0.02 * size.width))),
+                                            fontSize: _cf['taLine']
+                                                    [deviceType] *
+                                                size.width))),
                               ),
                               Transform.rotate(
                                 angle: -math.pi / 9,
@@ -200,8 +202,7 @@ class _IntroPageState extends State<IntroPage> {
                                       textStyle: TextStyle(
                                           color:
                                               Color.fromRGBO(14, 43, 133, 1.0),
-                                          fontSize: _cf['taLine'][deviceType] *
-                                              size.width)),
+                                          fontSize: 0.05 * size.width)),
                                 ),
                               ),
                               Padding(
