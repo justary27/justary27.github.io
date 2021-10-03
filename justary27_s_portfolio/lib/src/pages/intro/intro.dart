@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/footer.dart';
+import 'package:justary27_s_portfolio/src/customIcons/flutterIcon.dart';
+import 'package:justary27_s_portfolio/src/customIcons/djangoIcon.dart';
 import 'dart:math' as math;
 import 'introConstraints.dart';
 
@@ -157,7 +160,42 @@ class _IntroPageState extends State<IntroPage> {
                       width: size.width,
                       height: size.height,
                       // color: Color.fromRGBO(255, 175, 175, 1),
-                      child: Text("Intro"),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Tech-stack",
+                              style: GoogleFonts.ubuntu(textStyle: TextStyle()),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(FontAwesomeIcons.python),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(HomeButton.flutter),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(DjangoButton.django),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(FontAwesomeIcons.html5),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(FontAwesomeIcons.css3),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                     Material(
                       color: Colors.transparent,
@@ -202,7 +240,7 @@ class _IntroPageState extends State<IntroPage> {
                                       textStyle: TextStyle(
                                           color:
                                               Color.fromRGBO(14, 43, 133, 1.0),
-                                          fontSize: 0.05 * size.width)),
+                                          fontSize: 0.048 * size.width)),
                                 ),
                               ),
                               Padding(
@@ -214,7 +252,7 @@ class _IntroPageState extends State<IntroPage> {
                                   },
                                   child: Container(
                                     alignment: Alignment.center,
-                                    width: 0.065 * size.width,
+                                    width: 0.070 * size.width,
                                     height: 0.05 * size.height,
                                     child: Row(
                                       mainAxisAlignment:
