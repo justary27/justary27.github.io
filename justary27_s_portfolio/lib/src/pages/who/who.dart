@@ -143,8 +143,10 @@ class _WhoPageState extends State<WhoPage> {
                               Transform.rotate(
                                 angle: -math.pi / 9,
                                 child: Container(
-                                  width: 0.015 * size.width,
-                                  height: 0.010 * size.height,
+                                  width: _cf['heading'][deviceType]['width'] *
+                                      size.width,
+                                  height: _cf['heading'][deviceType]['height'] *
+                                      size.height,
                                   color: Color.fromRGBO(20, 62, 188, 1),
                                 ),
                               ),
