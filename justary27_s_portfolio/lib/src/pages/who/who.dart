@@ -138,8 +138,8 @@ class _WhoPageState extends State<WhoPage> {
                                         textStyle: TextStyle(
                                             color:
                                                 Colors.black.withOpacity(0.5),
-                                            fontSize: _cf['taLine'][deviceType]
-                                                    ['width'] *
+                                            fontSize: _cf['taLine']
+                                                    [deviceType] *
                                                 size.width))),
                               ),
                               Transform.rotate(

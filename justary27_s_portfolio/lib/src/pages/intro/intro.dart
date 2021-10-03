@@ -108,8 +108,7 @@ class _IntroPageState extends State<IntroPage> {
                                 style: GoogleFonts.caveatBrush(
                                     textStyle: TextStyle(
                                         color: Colors.white.withOpacity(0.7),
-                                        fontSize: _cf['taLine'][deviceType]
-                                                ['width'] *
+                                        fontSize: _cf['taLine'][deviceType] *
                                             size.width))),
                           ),
                           Transform.rotate(
@@ -231,7 +230,7 @@ class _IntroPageState extends State<IntroPage> {
                                                 color: Colors.white
                                                     .withOpacity(0.7),
                                                 fontSize: _cf['taLine']
-                                                        [deviceType]['width'] *
+                                                        [deviceType] *
                                                     size.width),
                                           ),
                                         ),
