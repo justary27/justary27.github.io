@@ -128,7 +128,8 @@ class _IntroPageState extends State<IntroPage> {
                               style: GoogleFonts.caveatBrush(
                                   textStyle: TextStyle(
                                       color: Color.fromRGBO(14, 43, 133, 1.0),
-                                      fontSize: 0.05 * size.width)),
+                                      fontSize: _cf['name'][deviceType] *
+                                          size.width)),
                             ),
                           ),
                           Padding(
@@ -139,7 +140,9 @@ class _IntroPageState extends State<IntroPage> {
                               textAlign: TextAlign.center,
                               style: GoogleFonts.aBeeZee(
                                 textStyle: TextStyle(
-                                    color: Colors.black, fontSize: 20),
+                                    color: Colors.black,
+                                    fontSize: _cf['aboutMe'][deviceType] *
+                                        size.width),
                               ),
                             ),
                           )
