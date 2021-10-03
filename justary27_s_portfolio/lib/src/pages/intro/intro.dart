@@ -200,7 +200,8 @@ class _IntroPageState extends State<IntroPage> {
                                       textStyle: TextStyle(
                                           color:
                                               Color.fromRGBO(14, 43, 133, 1.0),
-                                          fontSize: 0.05 * size.width)),
+                                          fontSize: _cf['taLine'][deviceType] *
+                                              size.width)),
                                 ),
                               ),
                               Padding(
@@ -226,13 +227,13 @@ class _IntroPageState extends State<IntroPage> {
                                           "Work",
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.aBeeZee(
-                                            textStyle: TextStyle(
-                                                color: Colors.white
-                                                    .withOpacity(0.7),
-                                                fontSize: _cf['taLine']
-                                                        [deviceType] *
-                                                    size.width),
-                                          ),
+                                              textStyle: TextStyle(
+                                            color:
+                                                Colors.white.withOpacity(0.7),
+                                            fontSize: _cf['taLine']
+                                                    [deviceType] *
+                                                size.width,
+                                          )),
                                         ),
                                       ],
                                     ),
