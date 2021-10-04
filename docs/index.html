@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -13,29 +13,29 @@
   -->
   <base href="/_justary27_s__portfolio/">
 
-
+  
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-
+  
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="justary27 : IITR'24 Codifyin' Reality.">
   <meta name="author" content="Aryan Ranjan">
   <meta name="keyword" content="portfolio, justary27, JustAry27, Aryan Ranjan">
   <meta name="theme-color" content="#000000">
-
+  
   <!-- Social media meta-tags -->
   <meta property="og:title" content="Aryan Ranjan"/>
   <meta property="og:type" content="website" />
   <meta property="og:description" content="IITR'24 | Codifyin' Reality." />
   <meta property="og:image" content="https://cdn.discordapp.com/attachments/831836713155559495/892487874719657994/unknown.png"/>
-
+  
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Aryan Ranjan" />
   <meta name="twitter:description" content="IITR'24 | Codifyin' Reality."/>
   <meta name="twitter:image" content="https://cdn.discordapp.com/attachments/831836713155559495/892487874719657994/unknown.png"/>
-
+  
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -43,15 +43,30 @@
   <title>justary27_s_portfolio</title>
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="ar.css">
-
-</head>
-
-<link rel="manifest" href="manifest.json">
+   
 </head>
 <body>
   <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
+    application. For more information, see:
+    https://developers.google.com/web/fundamentals/primers/service-workers -->
+    <div class="splash">
+      <svg width="100" height="157.29" viewBox="0 0 377 593" fill="none" xmlns="http://www.w3.org/2000/svg" id="lines">
+        <path d="M5 374.5C5 374.5 5 274.546 5 210.5M182 374.5V210.5M182 374.5C182 374.5 314 402 349 374.5C384 347 373.5 230.001 349 210.5C324.5 191 247.218 172.06 182 210.5M182 374.5C182 374.5 190.5 532 158 590.5M182 374.5C238.283 453.954 273.645 494.598 349 554.5M182 210.5V46.5002C108.536 -5.86366 69.4908 -9.38475 5 46.5002C5 46.5002 5 146.454 5 210.5M182 210.5C112.877 239.302 74.1227 234.843 5 210.5" stroke="#ffafaf" stroke-width="20"/>
+      </svg>
+    </div>
+    <script src="anime.min.js"></script>
+    <script>
+      anime({
+        targets: '#lines path',
+            strokeDashoffset: [anime.setDashoffset, 0],
+            easing: 'easeInOutSine',
+            duration: 1500,
+            delay: function(el, i) { return i * 250 },
+            direction: 'alternate',
+            loop: true
+          });
+    </script>
+
   <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
@@ -76,7 +91,7 @@
   const analytics = getAnalytics(app);
 </script>
   <script>
-    var serviceWorkerVersion = '4232760909';
+    var serviceWorkerVersion = '182382240';
     var scriptLoaded = false;
     function loadMainDartJs() {
       if (scriptLoaded) {
