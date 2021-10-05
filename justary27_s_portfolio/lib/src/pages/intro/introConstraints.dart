@@ -38,5 +38,13 @@ const Map ConstraintFactors = {
     'tablets1024-': {'width': 0.01750, 'height': 0.01083},
     'laptops1536-': {'width': 0.0150, 'height': 0.010},
     'laptops1920-': {'width': 0.0150, 'height': 0.010},
-  }
+  },
+  'techStack': {
+    'mobiles390-': 30,
+    'mobiles450-': 30,
+    'tablets768-': 35,
+    'tablets1024-': 35,
+    'laptops1536-': 40,
+    'laptops1920-': 40,
+  },
 };

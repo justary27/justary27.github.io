@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:justary27_s_portfolio/src/components/navbar.dart';
-import 'package:justary27_s_portfolio/src/pages/intro/intro.dart';
-import 'package:justary27_s_portfolio/src/pages/who/who.dart';
-import 'package:justary27_s_portfolio/src/pages/work/work.dart';
+import 'intro/intro.dart';
+import 'who/who.dart';
+import 'work/work.dart';
 import 'blog/blog.dart';
 import 'package:justary27_s_portfolio/src/components/deviceDetector.dart';
 
