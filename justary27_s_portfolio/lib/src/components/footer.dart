@@ -2,14 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:justary27_s_portfolio/src/routes/routing.dart';
+import 'package:justary27_s_portfolio/src/pages/home.dart';
+import 'dart:html' as html;
 import 'package:url_launcher/link.dart';
 
 class NavBar extends StatefulWidget {
-  final TabController tabController;
-
   final Size size;
-  const NavBar({Key? key, required this.size, required this.tabController})
+  final String deviceType;
+
+  const NavBar({Key? key, required this.size, required this.deviceType})
       : super(key: key);
 
   @override
@@ -20,14 +22,11 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     Size size = widget.size;
-    TabController _tabController = widget.tabController;
-
     return Stack(
       children: [
         Container(
           width: size.width,
           height: 0.3 * size.height,
-          color: Color.fromRGBO(134, 149, 179, 1.0),
           child: CustomPaint(
             painter: CircuitPainter(),
           ),
@@ -69,7 +68,9 @@ class _NavBarState extends State<NavBar> {
                   children: [
                     MaterialButton(
                         onPressed: () {
-                          _tabController.animateTo(0);
+                          if (RouteManager.currentRoute != "intro") {
+                            RouteManager.navigateToIntro(navigatorKey);
+                          }
                         },
                         child: Text(
                           "Intro",
@@ -81,7 +82,9 @@ class _NavBarState extends State<NavBar> {
                           EdgeInsets.symmetric(vertical: 0.01 * size.height),
                       child: MaterialButton(
                           onPressed: () {
-                            _tabController.animateTo(1);
+                            if (RouteManager.currentRoute != "who") {
+                              RouteManager.navigateToWho(navigatorKey);
+                            }
                           },
                           child: Text(
                             "Who",
@@ -94,7 +97,9 @@ class _NavBarState extends State<NavBar> {
                           EdgeInsets.symmetric(vertical: 0.01 * size.height),
                       child: MaterialButton(
                           onPressed: () {
-                            _tabController.animateTo(2);
+                            if (RouteManager.currentRoute != "work") {
+                              RouteManager.navigateToWork(navigatorKey);
+                            }
                           },
                           child: Text(
                             "Work",
@@ -107,7 +112,9 @@ class _NavBarState extends State<NavBar> {
                           EdgeInsets.symmetric(vertical: 0.01 * size.height),
                       child: MaterialButton(
                           onPressed: () {
-                            _tabController.animateTo(3);
+                            if (RouteManager.currentRoute != "blog") {
+                              RouteManager.navigateToBlog(navigatorKey);
+                            }
                           },
                           child: Text(
                             "Blog",
@@ -133,47 +140,44 @@ class _NavBarState extends State<NavBar> {
                         )),
                     Material(
                       color: Colors.transparent,
-                      child: Link(
-                          uri: Uri.parse("https://twitter.com/JustAry27"),
-                          target: LinkTarget.blank,
-                          builder: (context, openLink) {
-                            return IconButton(
-                              onPressed: () {
-                                openLink;
-                              },
-                              icon: Icon(FontAwesomeIcons.twitter),
-                              color: Colors.white.withOpacity(0.7),
-                            );
-                          }),
+                      child: IconButton(
+                        onPressed: () {
+                          html.window
+                              .open('https://twitter.com/JustAry27', 'New Tab');
+                        },
+                        icon: Icon(FontAwesomeIcons.twitter),
+                        color: Colors.white.withOpacity(0.7),
+                      ),
                     ),
                     Material(
                       color: Colors.transparent,
-                      child: Link(
-                          uri: Uri.parse("https://github.com/just-ary27"),
-                          target: LinkTarget.blank,
-                          builder: (context, openLink) {
-                            return IconButton(
-                              onPressed: () {
-                                openLink;
-                              },
-                              icon: Icon(FontAwesomeIcons.github),
-                              color: Colors.white.withOpacity(0.7),
-                            );
-                          }),
+                      child: IconButton(
+                        onPressed: () {
+                          html.window
+                              .open('https://github.com/just-ary27', 'New Tab');
+                        },
+                        icon: Icon(FontAwesomeIcons.github),
+                        color: Colors.white.withOpacity(0.7),
+                      ),
                     ),
                     Material(
                       color: Colors.transparent,
-                      child: Link(
-                          uri: Uri.parse(
-                              "https://www.linkedin.com/in/aryan-ranjan-672899205/"),
-                          target: LinkTarget.blank,
-                          builder: (context, openLink) {
-                            return IconButton(
-                              onPressed: () {},
-                              icon: Icon(FontAwesomeIcons.linkedin),
-                              color: Colors.white.withOpacity(0.7),
-                            );
-                          }),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(FontAwesomeIcons.linkedin),
+                        color: Colors.white.withOpacity(0.7),
+                      ),
+                      // child: Link(
+                      //     uri: Uri.parse(
+                      //         "https://www.linkedin.com/in/aryan-ranjan-672899205/"),
+                      //     target: LinkTarget.blank,
+                      //     builder: (context, openLink) {
+                      //       return IconButton(
+                      //         onPressed: () {},
+                      //         icon: Icon(FontAwesomeIcons.linkedin),
+                      //         color: Colors.white.withOpacity(0.7),
+                      //       );
+                      //     }),
                     ),
                   ],
                 ),

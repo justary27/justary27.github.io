@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:justary27_s_portfolio/src/components/navbar.dart';
-import 'intro/intro.dart';
-import 'who/who.dart';
-import 'work/work.dart';
-import 'blog/blog.dart';
 import 'package:justary27_s_portfolio/src/components/deviceDetector.dart';
+import 'package:justary27_s_portfolio/src/routes/routing.dart';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -15,58 +14,23 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    _tabController = TabController(length: 4, vsync: this);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _tabController.dispose();
-  }
-
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     String deviceType = deviceDetector(size);
+    RouteManager.size = size;
+    RouteManager.deviceType = deviceType;
     return Scaffold(
       body: Stack(
         children: [
-          TabBarView(
-            controller: _tabController,
-            children: [
-              IntroPage(
-                size: size,
-                tabController: _tabController,
-                deviceType: deviceType,
-              ),
-              WhoPage(
-                size: size,
-                TabController: _tabController,
-                deviceType: deviceType,
-              ),
-              WorkPage(
-                size: size,
-                tabController: _tabController,
-                deviceType: deviceType,
-              ),
-              BlogPage(
-                size: size,
-                tabcontroller: _tabController,
-                deviceType: deviceType,
-              ),
-            ],
+          Navigator(
+            key: navigatorKey,
+            initialRoute: RouteManager.homePage,
+            onGenerateRoute: RouteManager.generateRoute,
           ),
           Navbar(
-            size: size,
-            tabController: _tabController,
-            deviceType: deviceType,
+            navigatorKey: navigatorKey,
           ),
         ],
       ),

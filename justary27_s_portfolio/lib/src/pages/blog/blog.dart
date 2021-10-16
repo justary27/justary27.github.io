@@ -8,15 +8,13 @@ const Map _cf = ConstraintFactors;
 
 class BlogPage extends StatefulWidget {
   final Size size;
-  final tabcontroller;
-  final deviceType;
+  final String deviceType;
 
-  const BlogPage(
-      {Key? key,
-      required this.size,
-      required this.tabcontroller,
-      required this.deviceType})
-      : super(key: key);
+  const BlogPage({
+    Key? key,
+    required this.size,
+    required this.deviceType,
+  }) : super(key: key);
 
   @override
   _BlogPageState createState() => _BlogPageState();
@@ -26,86 +24,92 @@ class _BlogPageState extends State<BlogPage> {
   @override
   Widget build(BuildContext context) {
     final Size size = widget.size;
-    final _tabController = widget.tabcontroller;
-    String deviceType = widget.deviceType;
+    final String deviceType = widget.deviceType;
 
     return GlowingOverscrollIndicator(
       axisDirection: AxisDirection.up,
       color: Color.fromRGBO(252, 220, 102, 1.0).withOpacity(0.3),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: size.width,
-                        height: size.height,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomLeft,
-                              colors: [
-                                Color.fromRGBO(252, 220, 102, 1.0),
+      child: Material(
+        elevation: 0,
+        color: Colors.transparent,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    child: Column(
+                      children: [
+                        Container(
+                          width: size.width,
+                          height: size.height,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomLeft,
+                                colors: [
+                                  Color.fromRGBO(252, 220, 102, 1.0),
+                                  Color.fromRGBO(246, 223, 71, 1.0),
+                                ]),
+                          ),
+                        ),
+                        Container(
+                          width: size.width,
+                          height: size.height,
+                          child: CustomPaint(
+                            painter: RoorkeePainter(
                                 Color.fromRGBO(246, 223, 71, 1.0),
-                              ]),
+                                Color.fromRGBO(255, 255, 255, 1.0)),
+                          ),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomLeft,
+                                colors: [
+                                  Color.fromRGBO(247, 250, 250, 1.0),
+                                  Color.fromRGBO(255, 255, 255, 1.0)
+                                ]),
+                          ),
                         ),
-                      ),
-                      Container(
-                        width: size.width,
-                        height: size.height,
-                        child: CustomPaint(
-                          painter: RoorkeePainter(
-                              Color.fromRGBO(246, 223, 71, 1.0),
-                              Color.fromRGBO(255, 255, 255, 1.0)),
-                        ),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomLeft,
-                              colors: [
-                                Color.fromRGBO(247, 250, 250, 1.0),
-                                Color.fromRGBO(255, 255, 255, 1.0)
-                              ]),
-                        ),
-                      ),
-                      Container(
-                        width: size.width,
-                        height: 0.3 * size.height,
-                        color: Color.fromRGBO(134, 149, 179, 1.0),
-                      )
-                    ],
+                        Container(
+                          width: size.width,
+                          height: 0.3 * size.height,
+                          color: Color.fromRGBO(134, 149, 179, 1.0),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                  child: Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        width: size.width,
-                        height: size.height,
-                        child: Text(
-                          "Blog.",
-                          style: GoogleFonts.coveredByYourGrace(
-                              textStyle: TextStyle(
-                                  color: Color.fromRGBO(247, 250, 249, 1.0),
-                                  fontSize:
-                                      _cf['heading'][deviceType] * size.width)),
+                  Container(
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          width: size.width,
+                          height: size.height,
+                          child: Text(
+                            "Blog.",
+                            style: GoogleFonts.coveredByYourGrace(
+                                textStyle: TextStyle(
+                                    color: Color.fromRGBO(247, 250, 249, 1.0),
+                                    fontSize: _cf['heading'][deviceType] *
+                                        size.width)),
+                          ),
                         ),
-                      ),
-                      Container(
-                        width: size.width,
-                        height: size.height,
-                      ),
-                      NavBar(size: size, tabController: _tabController)
-                    ],
+                        Container(
+                          width: size.width,
+                          height: size.height,
+                        ),
+                        NavBar(
+                          size: size,
+                          deviceType: deviceType,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            )
-          ],
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

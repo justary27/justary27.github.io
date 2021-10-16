@@ -7,6 +7,22 @@ const Map ConstraintFactors = {
     'laptops1536-': 0.25,
     'laptops1920-': 0.225,
   },
+  'time': {
+    'mobiles390-': 0.110,
+    'mobiles450-': 0.0975,
+    'tablets768-': 0.075,
+    'tablets1024-': 0.0625,
+    'laptops1536-': 0.05,
+    'laptops1920-': 0.045,
+  },
+  'timeDesc': {
+    'mobiles390-': 0.0325,
+    'mobiles450-': 0.0285,
+    'tablets768-': 0.0250,
+    'tablets1024-': 0.0180,
+    'laptops1536-': 0.0135,
+    'laptops1920-': 0.0130,
+  },
   'taLine': {
     'mobiles390-': 0.0460,
     'mobiles450-': 0.0410,
