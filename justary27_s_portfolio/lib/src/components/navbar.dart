@@ -60,27 +60,25 @@ class _NavbarState extends State<Navbar> with SingleTickerProviderStateMixin {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 0.02 * size.width),
-              child: MaterialButton(
-                elevation: 0,
-                child: CustomPaint(
-                  size: Size(
-                      40,
-                      (40 * 1.572944297082228)
-                          .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-                  painter: ArPainter(Colors.white),
-                ),
-                onPressed: () {
-                  if (RouteManager.currentRoute != "home") {
-                    RouteManager.navigateToHome(navigator);
-                    print(navigator.currentState!.restorationId);
-                  }
-                },
-                color: Colors.transparent,
+            MaterialButton(
+              elevation: 0,
+              child: CustomPaint(
+                size: Size(
+                    40,
+                    (40 * 1.572944297082228)
+                        .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                painter: ArPainter(Colors.white),
               ),
+              onPressed: () {
+                if (RouteManager.currentRoute != "home") {
+                  RouteManager.navigateToHome(navigator);
+                  print(navigator.currentState!.restorationId);
+                }
+              },
+              color: Colors.transparent,
             ),
             IconButton(
+                color: Colors.white,
                 onPressed: () {
                   showDialog(
                       context: context,
