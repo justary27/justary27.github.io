@@ -201,7 +201,7 @@ class _NavbarState extends State<Navbar> with SingleTickerProviderStateMixin {
                                                   ),
                                                   ListTile(
                                                     title: Text(
-                                                      "Who",
+                                                      "Work",
                                                       style: GoogleFonts.aBeeZee(
                                                           textStyle: TextStyle(
                                                               color: Colors
@@ -365,6 +365,7 @@ class _NavbarState extends State<Navbar> with SingleTickerProviderStateMixin {
                                                                                         valueListenable: isHovered,
                                                                                         builder: (_, __, ___) => Text(
                                                                                           "aryan_r@ch.iitr.ac.in",
+                                                                                          textAlign: TextAlign.center,
                                                                                           style: GoogleFonts.ubuntu(
                                                                                             textStyle: TextStyle(color: (isHovered.value) ? _hoverColor : Colors.black, fontSize: size.width * _cf['email'][deviceType]),
                                                                                           ),
