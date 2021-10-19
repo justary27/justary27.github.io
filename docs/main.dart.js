@@ -52050,7 +52050,7 @@ as(){return new N.H5(C.o)}}
 N.H5.prototype={
 K(a,b){var s,r,q,p,o,n=null,m="techStack",l=this.a.c,k=K.a81(l),j=l.a,i=l.b,h=0.3*i,g=M.a0(n,T.dK(n,n,n,new N.yd(n),C.A),n,n,h,n,n,j),f=C.c.R(178.5),e=t.p,d=M.a0(C.Q,T.bo(H.a([L.aQ("Aryan Ranjan",A.av(n,n,P.O(f,255,255,255),n,n,n,n,n,"Allison",n,n,0.05*j,n,n,n,n,!0,n,n,n,n,n,n,n,n),n)],e),C.C,C.I),n,n,n,n,n,0.3*j)
 i=0.01*i
-i=M.a0(n,T.bo(H.a([B.dc(L.aQ("Intro",B.bZ(n,A.av(n,n,C.i,n,n,n,n,n,n,n,n,n,n,n,n,n,!0,n,n,n,n,n,n,n,n)),n),n,n,n,n,n,new N.a05(),n),new T.b5(new V.ax(0,i,0,0),B.dc(L.aQ("Who",B.bZ(n,A.av(n,n,C.i,n,n,n,n,n,n,n,n,n,n,n,n,n,!0,n,n,n,n,n,n,n,n)),n),n,n,n,n,n,new N.a06(),n),n),new T.b5(new V.ax(0,i,0,0),B.dc(L.aQ("Work",B.bZ(n,A.av(n,n,C.i,n,n,n,n,n,n,n,n,n,n,n,n,n,!0,n,n,n,n,n,n,n,n)),n),n,n,n,n,n,new N.a07(),n),n),new T.b5(new V.ax(0,i,0,0),B.dc(L.aQ("Blog",B.bZ(n,A.av(n,n,C.i,n,n,n,n,n,n,n,n,n,n,n,n,n,!0,n,n,n,n,n,n,n,n)),n),n,n,n,n,n,new N.a09(),n),n)],e),C.C,C.I),n,n,n,n,n,0.15*j)
+i=M.a0(n,T.bo(H.a([B.dc(L.aQ("Intro",B.bZ(n,A.av(n,n,C.i,n,n,n,n,n,n,n,n,n,n,n,n,n,!0,n,n,n,n,n,n,n,n)),n),n,n,n,n,n,new N.a05(),n),new T.b5(new V.ax(0,i,0,0),B.dc(L.aQ("Who",B.bZ(n,A.av(n,n,C.i,n,n,n,n,n,n,n,n,n,n,n,n,n,!0,n,n,n,n,n,n,n,n)),n),n,n,n,n,n,new N.a06(),n),n),new T.b5(new V.ax(0,i,0,0),B.dc(L.aQ("Work",B.bZ(n,A.av(n,n,C.i,n,n,n,n,n,n,n,n,n,n,n,n,n,!0,n,n,n,n,n,n,n,n)),n),n,n,n,n,n,new N.a07(),n),n),new T.b5(new V.ax(0,i,0,0),B.dc(L.aQ("Blog",B.bZ(n,A.av(n,n,C.i,n,n,n,n,n,n,n,n,n,n,n,n,n,!0,n,n,n,n,n,n,n,n)),n),n,n,n,n,n,new N.a09(),n),n)],e),C.C,C.I),n,n,n,n,n,0.2*j)
 s=k==="mobiles390-"||k==="mobiles450-"
 r=$.pE
 if(s){s=r.h(0,m).h(0,k)

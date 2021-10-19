@@ -75,7 +75,7 @@ class _NavBarState extends State<NavBar> {
                 ),
               ),
               Container(
-                width: 0.15 * size.width,
+                width: 0.2 * size.width,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
