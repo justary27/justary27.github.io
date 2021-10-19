@@ -2,10 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:justary27_s_portfolio/src/components/deviceDetector.dart';
 import 'package:justary27_s_portfolio/src/routes/routing.dart';
 import 'package:justary27_s_portfolio/src/pages/home.dart';
 import 'dart:html' as html;
 import 'package:url_launcher/link.dart';
+
+Map _cf = {
+  'techStack': {
+    'mobiles390-': 30,
+    'mobiles450-': 30,
+    'tablets768-': 35,
+    'tablets1024-': 35,
+    'laptops1536-': 35,
+    'laptops1920-': 40,
+  },
+};
 
 class NavBar extends StatefulWidget {
   final Size size;
@@ -22,6 +34,7 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     Size size = widget.size;
+    final String deviceType = deviceDetector(size);
     return Stack(
       children: [
         Container(
@@ -62,7 +75,7 @@ class _NavBarState extends State<NavBar> {
                 ),
               ),
               Container(
-                width: 0.1 * size.width,
+                width: 0.15 * size.width,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -78,8 +91,7 @@ class _NavBarState extends State<NavBar> {
                               textStyle: TextStyle(color: Colors.white)),
                         )),
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 0.01 * size.height),
+                      padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
                       child: MaterialButton(
                           onPressed: () {
                             if (RouteManager.currentRoute != "who") {
@@ -93,8 +105,7 @@ class _NavBarState extends State<NavBar> {
                           )),
                     ),
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 0.01 * size.height),
+                      padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
                       child: MaterialButton(
                           onPressed: () {
                             if (RouteManager.currentRoute != "work") {
@@ -108,8 +119,7 @@ class _NavBarState extends State<NavBar> {
                           )),
                     ),
                     Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 0.01 * size.height),
+                      padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
                       child: MaterialButton(
                           onPressed: () {
                             if (RouteManager.currentRoute != "blog") {
@@ -126,61 +136,165 @@ class _NavBarState extends State<NavBar> {
                 ),
               ),
               Container(
-                width: 0.3 * size.width,
-                alignment: Alignment.centerRight,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Material(
-                        color: Colors.transparent,
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.alternate_email_rounded),
-                          color: Colors.white.withOpacity(0.7),
-                        )),
-                    Material(
-                      color: Colors.transparent,
-                      child: IconButton(
-                        onPressed: () {
-                          html.window
-                              .open('https://twitter.com/JustAry27', 'New Tab');
-                        },
-                        icon: Icon(FontAwesomeIcons.twitter),
-                        color: Colors.white.withOpacity(0.7),
+                width: 0.50 * size.width,
+                alignment: Alignment.center,
+                child: (deviceType == 'mobiles390-' ||
+                        deviceType == 'mobiles450-')
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Material(
+                                      color: Colors.transparent,
+                                      child: IconButton(
+                                        iconSize: _cf['techStack'][deviceType],
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.alternate_email_rounded,
+                                        ),
+                                        color: Colors.white.withOpacity(0.7),
+                                      )),
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(
+                                        0.04 * size.width, 0, 0, 0),
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      child: IconButton(
+                                        iconSize: _cf['techStack'][deviceType],
+                                        onPressed: () {
+                                          html.window.open(
+                                              'https://twitter.com/JustAry27',
+                                              'New Tab');
+                                        },
+                                        icon: Icon(
+                                          FontAwesomeIcons.twitter,
+                                        ),
+                                        color: Colors.white.withOpacity(0.7),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Material(
+                                    color: Colors.transparent,
+                                    child: IconButton(
+                                      iconSize: _cf['techStack'][deviceType],
+                                      onPressed: () {
+                                        html.window.open(
+                                            'https://github.com/just-ary27',
+                                            'New Tab');
+                                      },
+                                      icon: Icon(
+                                        FontAwesomeIcons.github,
+                                      ),
+                                      color: Colors.white.withOpacity(0.7),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(
+                                        0.04 * size.width, 0, 0, 0),
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      child: IconButton(
+                                        iconSize: _cf['techStack'][deviceType],
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          FontAwesomeIcons.linkedin,
+                                        ),
+                                        color: Colors.white.withOpacity(0.7),
+                                      ),
+                                      // child: Link(
+                                      //     uri: Uri.parse(
+                                      //         "https://www.linkedin.com/in/aryan-ranjan-672899205/"),
+                                      //     target: LinkTarget.blank,
+                                      //     builder: (context, openLink) {
+                                      //       return IconButton(
+                                      //         onPressed: () {},
+                                      //         icon: Icon(FontAwesomeIcons.linkedin),
+                                      //         color: Colors.white.withOpacity(0.7),
+                                      //       );
+                                      //     }),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          )
+                        ],
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Material(
+                              color: Colors.transparent,
+                              child: IconButton(
+                                iconSize: _cf['techStack'][deviceType],
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.alternate_email_rounded,
+                                ),
+                                color: Colors.white.withOpacity(0.7),
+                              )),
+                          Material(
+                            color: Colors.transparent,
+                            child: IconButton(
+                              iconSize: _cf['techStack'][deviceType],
+                              onPressed: () {
+                                html.window.open(
+                                    'https://twitter.com/JustAry27', 'New Tab');
+                              },
+                              icon: Icon(
+                                FontAwesomeIcons.twitter,
+                              ),
+                              color: Colors.white.withOpacity(0.7),
+                            ),
+                          ),
+                          Material(
+                            color: Colors.transparent,
+                            child: IconButton(
+                              iconSize: _cf['techStack'][deviceType],
+                              onPressed: () {
+                                html.window.open(
+                                    'https://github.com/just-ary27', 'New Tab');
+                              },
+                              icon: Icon(
+                                FontAwesomeIcons.github,
+                              ),
+                              color: Colors.white.withOpacity(0.7),
+                            ),
+                          ),
+                          Material(
+                            color: Colors.transparent,
+                            child: IconButton(
+                              iconSize: _cf['techStack'][deviceType],
+                              onPressed: () {},
+                              icon: Icon(
+                                FontAwesomeIcons.linkedin,
+                              ),
+                              color: Colors.white.withOpacity(0.7),
+                            ),
+                            // child: Link(
+                            //     uri: Uri.parse(
+                            //         "https://www.linkedin.com/in/aryan-ranjan-672899205/"),
+                            //     target: LinkTarget.blank,
+                            //     builder: (context, openLink) {
+                            //       return IconButton(
+                            //         onPressed: () {},
+                            //         icon: Icon(FontAwesomeIcons.linkedin),
+                            //         color: Colors.white.withOpacity(0.7),
+                            //       );
+                            //     }),
+                          ),
+                        ],
                       ),
-                    ),
-                    Material(
-                      color: Colors.transparent,
-                      child: IconButton(
-                        onPressed: () {
-                          html.window
-                              .open('https://github.com/just-ary27', 'New Tab');
-                        },
-                        icon: Icon(FontAwesomeIcons.github),
-                        color: Colors.white.withOpacity(0.7),
-                      ),
-                    ),
-                    Material(
-                      color: Colors.transparent,
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(FontAwesomeIcons.linkedin),
-                        color: Colors.white.withOpacity(0.7),
-                      ),
-                      // child: Link(
-                      //     uri: Uri.parse(
-                      //         "https://www.linkedin.com/in/aryan-ranjan-672899205/"),
-                      //     target: LinkTarget.blank,
-                      //     builder: (context, openLink) {
-                      //       return IconButton(
-                      //         onPressed: () {},
-                      //         icon: Icon(FontAwesomeIcons.linkedin),
-                      //         color: Colors.white.withOpacity(0.7),
-                      //       );
-                      //     }),
-                    ),
-                  ],
-                ),
               )
             ],
           ),

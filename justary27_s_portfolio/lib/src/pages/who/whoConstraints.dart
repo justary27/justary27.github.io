@@ -17,7 +17,7 @@ const Map ConstraintFactors = {
   },
   'timeDesc': {
     'mobiles390-': 0.0325,
-    'mobiles450-': 0.0285,
+    'mobiles450-': 0.0295,
     'tablets768-': 0.0250,
     'tablets1024-': 0.0180,
     'laptops1536-': 0.0135,

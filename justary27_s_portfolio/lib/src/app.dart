@@ -20,6 +20,10 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSwatch(
+          accentColor: RouteManager.currentColor
+              .withOpacity(0.3), // but now it should be declared like this
+        ),
       ),
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
