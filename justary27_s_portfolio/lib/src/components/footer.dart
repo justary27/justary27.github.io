@@ -237,7 +237,11 @@ class _NavBarState extends State<NavBar> {
                               color: Colors.transparent,
                               child: IconButton(
                                 iconSize: _cf['techStack'][deviceType],
-                                onPressed: () {},
+                                onPressed: () {
+                                  html.window.open(
+                                      'mailto:aryan_r@ch.iitr.ac.in',
+                                      'New Tab');
+                                },
                                 icon: Icon(
                                   Icons.alternate_email_rounded,
                                 ),

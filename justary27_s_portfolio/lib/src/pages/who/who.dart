@@ -345,6 +345,12 @@ class _WhoPageState extends State<WhoPage> {
       ),
     );
   }
+
+  // @override
+  // void dispose() {
+  //   _scrollController.dispose();
+  //   super.dispose();
+  // }
 }
 
 // class RoorkeePainter extends CustomPainter {

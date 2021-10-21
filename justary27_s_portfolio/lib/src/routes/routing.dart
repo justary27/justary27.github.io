@@ -20,24 +20,25 @@ class RouteManager {
     switch (settings.name) {
       case homePage:
         return PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => OpenerPage(
-            size: size,
-            deviceType: deviceType,
-          ),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            const begin = 0.00;
-            const end = 1.00;
-            const curve = Curves.ease;
+            pageBuilder: (context, animation, secondaryAnimation) => OpenerPage(
+                  size: size,
+                  deviceType: deviceType,
+                ),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              const begin = 0.00;
+              const end = 1.00;
+              const curve = Curves.ease;
 
-            var tween =
-                Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+              var tween =
+                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
-            return FadeTransition(
-              opacity: animation.drive(tween),
-              child: child,
-            );
-          },
-        );
+              return FadeTransition(
+                opacity: animation.drive(tween),
+                child: child,
+              );
+            },
+            transitionDuration: Duration(milliseconds: 750));
       case introPage:
         return PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) => IntroPage(
@@ -57,6 +58,7 @@ class RouteManager {
               child: child,
             );
           },
+          transitionDuration: Duration(milliseconds: 500),
         );
       case whoPage:
         return PageRouteBuilder(
@@ -77,6 +79,7 @@ class RouteManager {
               child: child,
             );
           },
+          transitionDuration: Duration(milliseconds: 500),
         );
       case workPage:
         return PageRouteBuilder(
@@ -97,6 +100,7 @@ class RouteManager {
               child: child,
             );
           },
+          transitionDuration: Duration(milliseconds: 500),
         );
       case blogPage:
         return PageRouteBuilder(
@@ -116,6 +120,7 @@ class RouteManager {
               child: child,
             );
           },
+          transitionDuration: Duration(milliseconds: 500),
         );
       default:
         return PageRouteBuilder(

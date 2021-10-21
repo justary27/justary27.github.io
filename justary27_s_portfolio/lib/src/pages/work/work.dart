@@ -336,51 +336,45 @@ class _WorkPageState extends State<WorkPage> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.end,
                                           children: [
-                                            Link(
-                                                uri: Uri.parse(
-                                                    "https://github.com/just-ary27/CovBot"),
-                                                builder: (context, openLink) {
-                                                  return IconButton(
-                                                      iconSize: _cf['projLinks']
-                                                          [deviceType],
-                                                      color: Color.fromRGBO(241,
-                                                              245, 245, 1.0)
-                                                          .withOpacity(0.5),
-                                                      onPressed: () {},
-                                                      icon: Icon(
-                                                          FontAwesomeIcons
-                                                              .github));
-                                                }),
-                                            Link(
-                                                uri: Uri.parse(
-                                                    "https://just-ary27.github.io/CovBot/"),
-                                                builder: (context, openLink) {
-                                                  return IconButton(
-                                                      iconSize: _cf['projLinks']
-                                                          [deviceType],
-                                                      color: Color.fromRGBO(241,
-                                                              245, 245, 1.0)
-                                                          .withOpacity(0.5),
-                                                      onPressed: () {},
-                                                      icon: Icon(
-                                                          FontAwesomeIcons
-                                                              .firefoxBrowser));
-                                                }),
-                                            Link(
-                                                uri: Uri.parse(
-                                                    "https://discord.com/oauth2/authorize?client_id=835222640821796924&scope=bot"),
-                                                builder: (context, openLink) {
-                                                  return IconButton(
-                                                      iconSize: _cf['projLinks']
-                                                          [deviceType],
-                                                      color: Color.fromRGBO(241,
-                                                              245, 245, 1.0)
-                                                          .withOpacity(0.5),
-                                                      onPressed: () {},
-                                                      icon: Icon(
-                                                          FontAwesomeIcons
-                                                              .discord));
-                                                }),
+                                            IconButton(
+                                                iconSize: _cf['projLinks']
+                                                    [deviceType],
+                                                color: Color.fromRGBO(
+                                                        241, 245, 245, 1.0)
+                                                    .withOpacity(0.5),
+                                                onPressed: () {
+                                                  html.window.open(
+                                                      "https://github.com/just-ary27/CovBot",
+                                                      "New Tab");
+                                                },
+                                                icon: Icon(
+                                                    FontAwesomeIcons.github)),
+                                            IconButton(
+                                                iconSize: _cf['projLinks']
+                                                    [deviceType],
+                                                color: Color.fromRGBO(
+                                                        241, 245, 245, 1.0)
+                                                    .withOpacity(0.5),
+                                                onPressed: () {
+                                                  html.window.open(
+                                                      "https://just-ary27.github.io/CovBot/",
+                                                      "New Tab");
+                                                },
+                                                icon: Icon(FontAwesomeIcons
+                                                    .firefoxBrowser)),
+                                            IconButton(
+                                                iconSize: _cf['projLinks']
+                                                    [deviceType],
+                                                color: Color.fromRGBO(
+                                                        241, 245, 245, 1.0)
+                                                    .withOpacity(0.5),
+                                                onPressed: () {
+                                                  html.window.open(
+                                                      "https://discord.com/oauth2/authorize?client_id=835222640821796924&scope=bot",
+                                                      "New tab");
+                                                },
+                                                icon: Icon(
+                                                    FontAwesomeIcons.discord)),
                                           ]),
                                     ],
                                   ),
