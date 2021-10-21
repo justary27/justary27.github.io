@@ -4,7 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/footer.dart';
 import 'package:justary27_s_portfolio/src/customIcons/flutterIcon.dart';
 import 'package:justary27_s_portfolio/src/customIcons/djangoIcon.dart';
+import 'package:justary27_s_portfolio/src/routes/routing.dart';
 import 'dart:math' as math;
+import '../home.dart';
 import 'introConstraints.dart';
 import 'package:justary27_s_portfolio/src/components/rPainter.dart';
 import 'dart:html' as html;
@@ -310,7 +312,11 @@ class _IntroPageState extends State<IntroPage> {
                                         horizontal: 0.2 * size.width),
                                     child: MaterialButton(
                                       onPressed: () {
-                                        // _tabController.animateTo(2);
+                                        if (RouteManager.currentRoute !=
+                                            "work") {
+                                          RouteManager.navigateToWork(
+                                              navigatorKey);
+                                        }
                                       },
                                       child: Container(
                                         alignment: Alignment.center,

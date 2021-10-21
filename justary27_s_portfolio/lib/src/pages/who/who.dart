@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/footer.dart';
+import 'package:justary27_s_portfolio/src/routes/routing.dart';
 import 'dart:math' as math;
+import '../home.dart';
 import 'whoConstraints.dart';
 import 'package:justary27_s_portfolio/src/components/rPainter.dart';
 
@@ -292,7 +294,11 @@ class _WhoPageState extends State<WhoPage> {
                                         horizontal: 0.2 * size.width),
                                     child: MaterialButton(
                                       onPressed: () {
-                                        // _tabController.animateTo(2);
+                                        if (RouteManager.currentRoute !=
+                                            "work") {
+                                          RouteManager.navigateToWork(
+                                              navigatorKey);
+                                        }
                                       },
                                       child: Container(
                                         alignment: Alignment.center,
@@ -329,6 +335,86 @@ class _WhoPageState extends State<WhoPage> {
                           alignment: Alignment.center,
                           width: size.width,
                           height: size.height,
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 0.02 * size.height),
+                                  child: Text("Blog",
+                                      textAlign: TextAlign.center,
+                                      style: GoogleFonts.caveatBrush(
+                                          textStyle: TextStyle(
+                                              color:
+                                                  Colors.black.withOpacity(0.5),
+                                              fontSize: _cf['taLine']
+                                                      [deviceType] *
+                                                  size.width))),
+                                ),
+                                Transform.rotate(
+                                  angle: -math.pi / 9,
+                                  child: Container(
+                                    width: _cf['rotLine'][deviceType]['width'] *
+                                        size.width,
+                                    height: _cf['rotLine'][deviceType]
+                                            ['height'] *
+                                        size.height,
+                                    color: Color.fromRGBO(20, 62, 188, 1),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 0.2 * size.width,
+                                      vertical: 0.04 * size.height),
+                                  child: Text(
+                                    "Know more 'bout me!",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.caveatBrush(
+                                        textStyle: TextStyle(
+                                            color: Color.fromRGBO(
+                                                14, 43, 133, 1.0),
+                                            fontSize: 0.05 * size.width)),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 0.2 * size.width),
+                                  child: MaterialButton(
+                                    onPressed: () {
+                                      if (RouteManager.currentRoute != "blog") {
+                                        RouteManager.navigateToBlog(
+                                            navigatorKey);
+                                      }
+                                    },
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      width: 0.065 * size.width,
+                                      height: 0.05 * size.height,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.arrow_forward_ios_rounded,
+                                            color:
+                                                Colors.white.withOpacity(0.7),
+                                          ),
+                                          Text(
+                                            "Blog",
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.aBeeZee(
+                                              textStyle: TextStyle(
+                                                  color: Colors.white
+                                                      .withOpacity(0.7),
+                                                  fontSize: 20),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ]),
                         ),
                         NavBar(
                           size: size,

@@ -113,10 +113,18 @@ class _OpenerPageState extends State<OpenerPage> {
             alignment: Alignment.centerRight,
             child: Padding(
               padding: EdgeInsets.all(0.075 * size.width),
-              child: CustomPaint(
-                painter: ArPainter(Colors.white.withOpacity(0.3)),
-                size: Size(0.15 * size.width,
-                    (0.15 * size.width * 1.572944297082228).toDouble()),
+              child: Container(
+                // transform: Matrix4(
+                //     1,0,0,0.001,
+                //     1,0,0,0,
+                //     1,0,0,0,
+                //     1,0,0,1,
+                // ),
+                child: CustomPaint(
+                  painter: ArPainter(Colors.white.withOpacity(0.3)),
+                  size: Size(0.15 * size.width,
+                      (0.15 * size.width * 1.572944297082228).toDouble()),
+                ),
               ),
             ),
           ),
