@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "justary27",
     "public": "docs",
     "ignore": [
       "firebase.json",
