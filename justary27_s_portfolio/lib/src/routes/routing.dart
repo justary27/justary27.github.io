@@ -5,14 +5,17 @@ import 'package:justary27_s_portfolio/src/pages/opener/opener.dart';
 import 'package:justary27_s_portfolio/src/pages/who/who.dart';
 import 'package:justary27_s_portfolio/src/pages/work/work.dart';
 
+import '../components/deviceDetector.dart';
+import '../utils/helpers/screen_helper.dart';
+
 class RouteManager {
   static const String homePage = "/";
   static const String introPage = "/intro";
   static const String whoPage = "/who";
   static const String workPage = "/work";
   static const String blogPage = "/blog";
-  static late Size size;
-  static late String deviceType;
+  static Size size = logicalScreenSize;
+  static String deviceType = deviceDetector(logicalScreenSize);
   static String currentRoute = "home";
   static Color currentColor = Colors.black;
 

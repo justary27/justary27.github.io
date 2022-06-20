@@ -6,7 +6,7 @@ import 'package:justary27_s_portfolio/src/customIcons/flutterIcon.dart';
 import 'package:justary27_s_portfolio/src/customIcons/djangoIcon.dart';
 import 'package:justary27_s_portfolio/src/routes/routing.dart';
 import 'dart:math' as math;
-import '../home.dart';
+import '../../app.dart';
 import 'introConstraints.dart';
 import 'package:justary27_s_portfolio/src/components/rPainter.dart';
 import 'dart:html' as html;
@@ -315,7 +315,7 @@ class _IntroPageState extends State<IntroPage> {
                                         if (RouteManager.currentRoute !=
                                             "work") {
                                           RouteManager.navigateToWork(
-                                              navigatorKey);
+                                              navigator);
                                         }
                                       },
                                       child: Container(

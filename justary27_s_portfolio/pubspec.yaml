@@ -33,6 +33,7 @@ dependencies:
   url_launcher:
   firebase_core:
   cloud_firestore: ^3.1.10
+  flutter_riverpod: ^1.0.3
 
 dev_dependencies:
   flutter_test:
