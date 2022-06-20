@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/footer.dart';
+import 'package:justary27_s_portfolio/src/components/page_components/work_components.dart';
+import 'package:model_viewer_plus/model_viewer_plus.dart';
 import 'package:url_launcher/link.dart';
 import 'workConstraints.dart';
 import 'package:justary27_s_portfolio/src/components/rPainter.dart';
@@ -125,263 +127,210 @@ class _WorkPageState extends State<WorkPage> {
                         Container(
                           width: size.width,
                           height: size.height,
-                          child: Stack(),
-                        ),
-                        Container(
-                          width: size.width,
-                          height: size.height,
                           child: Stack(
-                            children: [
-                              Container(
-                                width: size.width,
-                                height: size.height,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 0.1 * size.width,
-                                    vertical: 0.1 * size.height),
-                                child: Container(
-                                  width: 0.8 * size.width,
-                                  height: 0.8 * size.height,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "CovBot",
-                                        style: GoogleFonts.itim(
-                                            textStyle: TextStyle(
-                                                color: Color.fromRGBO(
-                                                    22, 133, 111, 1.0),
-                                                fontSize: _cf['projTitle']
-                                                        [deviceType] *
-                                                    size.width)),
-                                      ),
-                                      Text(
-                                        "The only bot you'll need for Covid-19 resources.",
-                                        style: GoogleFonts.ubuntu(
-                                            textStyle: TextStyle(
-                                                color: Colors.black
-                                                    .withGreen(200)
-                                                    .withOpacity(0.5),
-                                                fontSize: _cf['projSubtitle']
-                                                        [deviceType] *
-                                                    size.width,
-                                                fontStyle: FontStyle.italic)),
-                                      ),
-                                      Container(
-                                        width: 0.4 * size.width,
-                                        child: Text.rich(TextSpan(children: [
-                                          TextSpan(
-                                              text:
-                                                  "\n\nCovBot was made during second wave of Covid-19 in India, when I contacted a covid resource server COVID Fighters (India). CovBot automated the process of serving the important resources they collected directly to the server. In addition to this, CovBot can provide Covid stats for many countries, you can also check out the recent trends through a graph. It also provides some recreational features. It is still functional and you can invite it. CovBot was made with ",
-                                              style: GoogleFonts.aBeeZee(
-                                                  textStyle: TextStyle(
-                                                      color: Colors.black,
-                                                      fontSize:
-                                                          _cf['projDescription']
-                                                                  [deviceType] *
-                                                              size.width))),
-                                          TextSpan(
-                                              text: "team InCognoS.\n",
-                                              style: GoogleFonts.coveredByYourGrace(
-                                                  textStyle: TextStyle(
-                                                      color: Color.fromRGBO(
-                                                          22, 133, 111, 1.0),
-                                                      fontSize:
-                                                          _cf['projEmphasis']
-                                                                  [deviceType] *
-                                                              size.width)))
-                                        ])),
-                                      ),
-                                      Row(children: [
-                                        IconButton(
-                                            iconSize: _cf['projLinks']
-                                                [deviceType],
-                                            color: Color.fromRGBO(
-                                                22, 133, 111, 1.0),
-                                            onPressed: () {
-                                              html.window.open(
-                                                  'https://github.com/just-ary27/CovBot',
-                                                  'New Tab');
-                                            },
-                                            icon:
-                                                Icon(FontAwesomeIcons.github)),
-                                        IconButton(
-                                          iconSize: _cf['projLinks']
-                                              [deviceType],
+                            children: [],
+                          ),
+                        ),
+                        WorkDescriptor(
+                          size: size,
+                          title: Text(
+                            "CovBot",
+                            style: GoogleFonts.itim(
+                              textStyle: TextStyle(
+                                  color: Color.fromRGBO(22, 133, 111, 1.0),
+                                  fontSize: _cf['projTitle'][deviceType] *
+                                      size.width),
+                            ),
+                          ),
+                          subtitle: Text(
+                            "The only bot you'll need for Covid-19 resources.",
+                            style: GoogleFonts.ubuntu(
+                              textStyle: TextStyle(
+                                  color: Colors.black
+                                      .withGreen(200)
+                                      .withOpacity(0.5),
+                                  fontSize: _cf['projSubtitle'][deviceType] *
+                                      size.width,
+                                  fontStyle: FontStyle.italic),
+                            ),
+                          ),
+                          description: Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text:
+                                      "\n\nCovBot was made during second wave of Covid-19 in India, when I contacted a covid resource server COVID Fighters (India). CovBot automated the process of serving the important resources they collected directly to the server. In addition to this, CovBot can provide Covid stats for many countries, you can also check out the recent trends through a graph. It also provides some recreational features. It is still functional and you can invite it. CovBot was made with ",
+                                  style: GoogleFonts.aBeeZee(
+                                    textStyle: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: _cf['projDescription']
+                                                [deviceType] *
+                                            size.width),
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "team InCognoS.\n",
+                                  style: GoogleFonts.coveredByYourGrace(
+                                    textStyle: TextStyle(
+                                        color:
+                                            Color.fromRGBO(22, 133, 111, 1.0),
+                                        fontSize: _cf['projEmphasis']
+                                                [deviceType] *
+                                            size.width),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          buttonLinks: [
+                            IconButton(
+                                iconSize: _cf['projLinks'][deviceType],
+                                color: Color.fromRGBO(22, 133, 111, 1.0),
+                                onPressed: () {
+                                  html.window.open(
+                                      'https://github.com/just-ary27/CovBot',
+                                      'New Tab');
+                                },
+                                icon: Icon(FontAwesomeIcons.github)),
+                            IconButton(
+                              iconSize: _cf['projLinks'][deviceType],
+                              color: Color.fromRGBO(22, 133, 111, 1.0),
+                              onPressed: () {
+                                html.window.open(
+                                    'https://just-ary27.github.io/CovBot/',
+                                    'New Tab');
+                              },
+                              icon: Icon(FontAwesomeIcons.firefoxBrowser),
+                            ),
+                            IconButton(
+                              iconSize: _cf['projLinks'][deviceType],
+                              color: Color.fromRGBO(22, 133, 111, 1.0),
+                              onPressed: () {
+                                html.window.open(
+                                    'https://discord.com/oauth2/authorize?client_id=835222640821796924&scope=bot',
+                                    'New Tab');
+                              },
+                              icon: Icon(FontAwesomeIcons.discord),
+                            ),
+                            IconButton(
+                              iconSize: _cf['projLinks'][deviceType],
+                              color: Color.fromRGBO(22, 133, 111, 1.0),
+                              onPressed: () {
+                                html.window.open(
+                                    'https://in.mashable.com/social-good/22667/covid-discord-group-helps-indians-find-oxygen-answers-and-community',
+                                    'New Tab');
+                              },
+                              icon: Icon(FontAwesomeIcons.newspaper),
+                            ),
+                          ],
+                          model: ModelViewer(
+                            src: 'assets/models/CovBot.gltf',
+                            alt: "A 3D model of an astronaut",
+                            ar: false,
+                            autoRotate: true,
+                            cameraControls: false,
+                          ),
+                        ),
+                        WorkDescriptor(
+                          size: size,
+                          isRightAligned: true,
+                          title: Text(
+                            "Jane",
+                            style: GoogleFonts.itim(
+                              textStyle: TextStyle(
+                                  color: Color.fromRGBO(241, 245, 245, 1.0),
+                                  fontSize: _cf['projTitle'][deviceType] *
+                                      size.width),
+                            ),
+                          ),
+                          subtitle: Text(
+                            "A multi-purpose bot to make your stay at discord comfy.",
+                            textAlign: TextAlign.right,
+                            style: GoogleFonts.ubuntu(
+                              textStyle: TextStyle(
+                                  color: Color.fromRGBO(218, 224, 224, 1.0)
+                                      .withOpacity(0.7),
+                                  fontSize: _cf['projSubtitle'][deviceType] *
+                                      size.width,
+                                  fontStyle: FontStyle.italic),
+                            ),
+                          ),
+                          description: Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text:
+                                      "\n\nBots have always fascinated me. So when I was given a chance to make one during Makers' 2021 by",
+                                  style: GoogleFonts.aBeeZee(
+                                    textStyle: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: _cf['projDescription']
+                                                [deviceType] *
+                                            size.width),
+                                  ),
+                                ),
+                                TextSpan(
+                                    text: " SDS Labs, ",
+                                    style: GoogleFonts.aBeeZee(
+                                      textStyle: TextStyle(
                                           color:
-                                              Color.fromRGBO(22, 133, 111, 1.0),
-                                          onPressed: () {
-                                            html.window.open(
-                                                'https://just-ary27.github.io/CovBot/',
-                                                'New Tab');
-                                          },
-                                          icon: Icon(
-                                              FontAwesomeIcons.firefoxBrowser),
-                                        ),
-                                        IconButton(
-                                            iconSize: _cf['projLinks']
-                                                [deviceType],
-                                            color: Color.fromRGBO(
-                                                22, 133, 111, 1.0),
-                                            onPressed: () {
-                                              html.window.open(
-                                                  'https://discord.com/oauth2/authorize?client_id=835222640821796924&scope=bot',
-                                                  'New Tab');
-                                            },
-                                            icon:
-                                                Icon(FontAwesomeIcons.discord)),
-                                        IconButton(
-                                            iconSize: _cf['projLinks']
-                                                [deviceType],
-                                            color: Color.fromRGBO(
-                                                22, 133, 111, 1.0),
-                                            onPressed: () {
-                                              html.window.open(
-                                                  'https://in.mashable.com/social-good/22667/covid-discord-group-helps-indians-find-oxygen-answers-and-community',
-                                                  'New Tab');
-                                            },
-                                            icon: Icon(
-                                                FontAwesomeIcons.newspaper)),
-                                      ]),
-                                    ],
+                                              Color.fromRGBO(14, 43, 133, 1.0)
+                                                  .withOpacity(0.7),
+                                          fontSize: _cf['projEmphasis']
+                                                  [deviceType] *
+                                              size.width),
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                                TextSpan(
+                                  text:
+                                      "I grabbed it promptly, thus was the result Jane-ify. It is an easy to use multi purpose bot. It features moderation, basic equation solving, statistics and music also! More defining features comin' soon! \n",
+                                  style: GoogleFonts.aBeeZee(
+                                    textStyle: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: _cf['projDescription']
+                                                [deviceType] *
+                                            size.width),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
+                            textAlign: TextAlign.right,
                           ),
-                        ),
-                        Container(
-                          width: size.width,
-                          height: size.height,
-                          child: Stack(
-                            children: [
-                              Container(
-                                width: 0.8 * size.width,
-                                height: 0.8 * size.height,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 0.1 * size.width,
-                                    vertical: 0.1 * size.height),
-                                child: Container(
-                                  width: 0.8 * size.width,
-                                  height: 0.8 * size.height,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        "Jane",
-                                        style: GoogleFonts.itim(
-                                            textStyle: TextStyle(
-                                                color: Color.fromRGBO(
-                                                    241, 245, 245, 1.0),
-                                                fontSize: _cf['projTitle']
-                                                        [deviceType] *
-                                                    size.width)),
-                                      ),
-                                      Text(
-                                        "A multi-purpose bot to make your stay at discord comfy.",
-                                        textAlign: TextAlign.right,
-                                        style: GoogleFonts.ubuntu(
-                                            textStyle: TextStyle(
-                                                color: Color.fromRGBO(
-                                                        218, 224, 224, 1.0)
-                                                    .withOpacity(0.7),
-                                                fontSize: _cf['projSubtitle']
-                                                        [deviceType] *
-                                                    size.width,
-                                                fontStyle: FontStyle.italic)),
-                                      ),
-                                      Container(
-                                        width: 0.4 * size.width,
-                                        child: Text.rich(TextSpan(children: [
-                                          TextSpan(
-                                              text:
-                                                  "\n\nBots have always fascinated me. So when I was given a chance to make one during Makers' 2021 by",
-                                              style: GoogleFonts.aBeeZee(
-                                                  textStyle: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize:
-                                                          _cf['projDescription']
-                                                                  [deviceType] *
-                                                              size.width))),
-                                          TextSpan(
-                                              text: " SDS Labs, ",
-                                              style: GoogleFonts.aBeeZee(
-                                                textStyle: TextStyle(
-                                                    color: Color.fromRGBO(
-                                                            14, 43, 133, 1.0)
-                                                        .withOpacity(0.7),
-                                                    fontSize:
-                                                        _cf['projEmphasis']
-                                                                [deviceType] *
-                                                            size.width),
-                                                fontWeight: FontWeight.bold,
-                                              )),
-                                          TextSpan(
-                                              text:
-                                                  "I grabbed it promptly, thus was the result Jane-ify. It is an easy to use multi purpose bot. It features moderation, basic equation solving, statistics and music also! More defining features comin' soon! \n",
-                                              style: GoogleFonts.aBeeZee(
-                                                  textStyle: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize:
-                                                          _cf['projDescription']
-                                                                  [deviceType] *
-                                                              size.width))),
-                                        ])),
-                                      ),
-                                      Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            IconButton(
-                                                iconSize: _cf['projLinks']
-                                                    [deviceType],
-                                                color: Color.fromRGBO(
-                                                        241, 245, 245, 1.0)
-                                                    .withOpacity(0.5),
-                                                onPressed: () {
-                                                  html.window.open(
-                                                      "https://github.com/just-ary27/CovBot",
-                                                      "New Tab");
-                                                },
-                                                icon: Icon(
-                                                    FontAwesomeIcons.github)),
-                                            IconButton(
-                                                iconSize: _cf['projLinks']
-                                                    [deviceType],
-                                                color: Color.fromRGBO(
-                                                        241, 245, 245, 1.0)
-                                                    .withOpacity(0.5),
-                                                onPressed: () {
-                                                  html.window.open(
-                                                      "https://just-ary27.github.io/CovBot/",
-                                                      "New Tab");
-                                                },
-                                                icon: Icon(FontAwesomeIcons
-                                                    .firefoxBrowser)),
-                                            IconButton(
-                                                iconSize: _cf['projLinks']
-                                                    [deviceType],
-                                                color: Color.fromRGBO(
-                                                        241, 245, 245, 1.0)
-                                                    .withOpacity(0.5),
-                                                onPressed: () {
-                                                  html.window.open(
-                                                      "https://discord.com/oauth2/authorize?client_id=835222640821796924&scope=bot",
-                                                      "New tab");
-                                                },
-                                                icon: Icon(
-                                                    FontAwesomeIcons.discord)),
-                                          ]),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                          buttonLinks: [
+                            IconButton(
+                              iconSize: _cf['projLinks'][deviceType],
+                              color: Color.fromRGBO(241, 245, 245, 1.0)
+                                  .withOpacity(0.5),
+                              onPressed: () {
+                                html.window.open(
+                                    "https://github.com/just-ary27/CovBot",
+                                    "New Tab");
+                              },
+                              icon: Icon(FontAwesomeIcons.github),
+                            ),
+                            IconButton(
+                              iconSize: _cf['projLinks'][deviceType],
+                              color: Color.fromRGBO(241, 245, 245, 1.0)
+                                  .withOpacity(0.5),
+                              onPressed: () {
+                                html.window.open(
+                                    "https://just-ary27.github.io/CovBot/",
+                                    "New Tab");
+                              },
+                              icon: Icon(FontAwesomeIcons.firefoxBrowser),
+                            ),
+                            IconButton(
+                              iconSize: _cf['projLinks'][deviceType],
+                              color: Color.fromRGBO(241, 245, 245, 1.0)
+                                  .withOpacity(0.5),
+                              onPressed: () {
+                                html.window.open(
+                                    "https://discord.com/oauth2/authorize?client_id=835222640821796924&scope=bot",
+                                    "New tab");
+                              },
+                              icon: Icon(FontAwesomeIcons.discord),
+                            ),
+                          ],
                         ),
                         Container(
                           width: size.width,
@@ -447,38 +396,3 @@ class _WorkPageState extends State<WorkPage> {
     );
   }
 }
-
-// class RoorkeePainter extends CustomPainter {
-//   @override
-//   void paint(Canvas canvas, Size size) {
-//     Paint paint = Paint()
-//       ..style = PaintingStyle.fill
-//       ..shader = LinearGradient(
-//           begin: Alignment.topLeft,
-//           end: Alignment.bottomLeft,
-//           colors: []).createShader(Offset.zero & size);
-//
-//     Path path = Path();
-//
-//     // path.lineTo(size.width, size.height);
-//
-//     path.moveTo(size.width, 0.48 * size.height);
-//     path.quadraticBezierTo(
-//       0.9 * size.width,
-//       0.5 * size.height,
-//       0.9 * size.width,
-//       0.7 * size.height,
-//     );
-//     path.lineTo(0.12 * size.width, 0.7 * size.height);
-//     path.lineTo(0.12 * size.width, 0.65 * size.height);
-//     path.lineTo(0, 0.65 * size.height);
-//     path.lineTo(0, size.height);
-//     path.lineTo(size.width, size.height);
-//     canvas.drawPath(path, paint);
-//   }
-//
-//   @override
-//   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-//     return false;
-//   }
-// }

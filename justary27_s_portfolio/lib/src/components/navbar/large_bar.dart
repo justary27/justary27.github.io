@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:justary27_s_portfolio/src/components/navbar/contact.dart';
 
 import '../../routes/routing.dart';
 import '../ar.dart';
@@ -8,11 +9,13 @@ import '../ar.dart';
 class LargeNavBar extends ConsumerStatefulWidget {
   final GlobalKey<NavigatorState> navigatorKey;
   final Size size;
+  final String deviceType;
 
   const LargeNavBar({
     Key? key,
     required this.navigatorKey,
     required this.size,
+    required this.deviceType,
   }) : super(key: key);
 
   @override
@@ -25,7 +28,7 @@ class _LargeNavBarState extends ConsumerState<LargeNavBar> {
     return AppBar(
       centerTitle: true,
       elevation: 0,
-      // toolbarHeight: 0.2 * widget.size.height,
+      toolbarHeight: 0.15 * widget.size.height,
       backgroundColor: Colors.transparent,
       leading: MaterialButton(
         elevation: 0,
@@ -107,7 +110,16 @@ class _LargeNavBarState extends ConsumerState<LargeNavBar> {
       ),
       actions: [
         MaterialButton(
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+              useRootNavigator: false,
+              context: widget.navigatorKey.currentContext!,
+              builder: (context) {
+                return ContactCard(
+                    size: widget.size, deviceType: widget.deviceType);
+              },
+            );
+          },
           child: Text(
             "Contact",
             style: GoogleFonts.aBeeZee(

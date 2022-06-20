@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:justary27_s_portfolio/src/components/navbar/drawer.dart';
 import 'package:justary27_s_portfolio/src/utils/helpers/screen_helper.dart';
 import 'package:justary27_s_portfolio/src/routes/routing.dart';
 
@@ -43,8 +44,19 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.transparent,
             extendBody: true,
             extendBodyBehindAppBar: true,
-            appBar: Navbar(navigatorKey: navigator),
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(0.1 * logicalHeight),
+              child: Navbar(
+                navigatorKey: navigator,
+                deviceType: deviceType,
+              ),
+            ),
             body: child!,
+            endDrawer: (deviceType == 'mobiles390-' ||
+                    deviceType == 'mobiles450-' ||
+                    deviceType == 'tablets768-')
+                ? buildEndDrawer(navigator, size, deviceType)
+                : null,
           );
           // return Material(
           //   color: Colors.transparent,
