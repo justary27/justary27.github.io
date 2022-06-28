@@ -534,13 +534,18 @@ class _WorkPageState extends State<WorkPage> {
                               icon: Icon(FontAwesomeIcons.newspaper),
                             ),
                           ],
-                          model: ModelViewer(
-                            src: 'assets/models/CovBot.gltf',
-                            alt: "A 3D model of an astronaut",
-                            ar: false,
-                            autoRotate: true,
-                            cameraControls: false,
+                          model: SvgPicture.asset(
+                            "images/covbot.svg",
+                            color: Color.fromRGBO(56, 149, 131, 1.0),
                           ),
+
+                          // model: ModelViewer(
+                          //   src: 'assets/models/CovBot.gltf',
+                          //   alt: "A 3D model of an astronaut",
+                          //   ar: false,
+                          //   autoRotate: true,
+                          //   cameraControls: false,
+                          // ),
                         ),
                         WorkDescriptor(
                           size: size,
