@@ -4,9 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/deviceDetector.dart';
 import 'package:justary27_s_portfolio/src/routes/routing.dart';
-import 'package:justary27_s_portfolio/src/pages/home.dart';
 import 'dart:html' as html;
 import 'package:url_launcher/link.dart';
+
+import '../app.dart';
 
 Map _cf = {
   'techStack': {
@@ -82,7 +83,7 @@ class _NavBarState extends State<NavBar> {
                     MaterialButton(
                         onPressed: () {
                           if (RouteManager.currentRoute != "intro") {
-                            RouteManager.navigateToIntro(navigatorKey);
+                            RouteManager.navigateToIntro(navigator);
                           }
                         },
                         child: Text(
@@ -95,7 +96,7 @@ class _NavBarState extends State<NavBar> {
                       child: MaterialButton(
                           onPressed: () {
                             if (RouteManager.currentRoute != "who") {
-                              RouteManager.navigateToWho(navigatorKey);
+                              RouteManager.navigateToWho(navigator);
                             }
                           },
                           child: Text(
@@ -109,7 +110,7 @@ class _NavBarState extends State<NavBar> {
                       child: MaterialButton(
                           onPressed: () {
                             if (RouteManager.currentRoute != "work") {
-                              RouteManager.navigateToWork(navigatorKey);
+                              RouteManager.navigateToWork(navigator);
                             }
                           },
                           child: Text(
@@ -123,7 +124,7 @@ class _NavBarState extends State<NavBar> {
                       child: MaterialButton(
                           onPressed: () {
                             if (RouteManager.currentRoute != "blog") {
-                              RouteManager.navigateToBlog(navigatorKey);
+                              RouteManager.navigateToBlog(navigator);
                             }
                           },
                           child: Text(
@@ -333,6 +334,6 @@ class CircuitPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
+    return false;
   }
 }

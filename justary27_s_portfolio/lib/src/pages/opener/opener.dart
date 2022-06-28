@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:justary27_s_portfolio/src/components/ar.dart';
-import 'openerConstraints.dart';
-
-const Map _cf = ConstraintFactors;
+import 'package:justary27_s_portfolio/src/pages/opener/large_opener.dart';
+import 'package:justary27_s_portfolio/src/pages/opener/small_opener.dart';
 
 class OpenerPage extends StatefulWidget {
   final Size size;
@@ -33,103 +30,18 @@ class _OpenerPageState extends State<OpenerPage> {
   Widget build(BuildContext context) {
     final Size size = widget.size;
     final String deviceType = widget.deviceType;
-
-    return Stack(
-      children: [
-        ValueListenableBuilder(
-          valueListenable: isMoving,
-          builder: (_, __, ___) => Container(
-            width: size.width,
-            height: size.height,
-            color: Colors.black,
-            child: Stack(
-              children: [
-                Container(
-                  width: size.width,
-                  height: size.height,
-                  child: Image.asset(
-                    "images/space1.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                AnimatedPositioned(
-                  width: 1.4 * size.width,
-                  height: 1.7 * size.height,
-                  duration: Duration(milliseconds: 300),
-                  curve: Curves.easeOutCubic,
-                  top: (isMoving.value) ? offset.value.dy / 2 : 0,
-                  left: (isMoving.value) ? offset.value.dx / 2 : 0,
-                  child: Image.asset(
-                    "images/space1.jpg",
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Container(
-          width: size.width,
-          height: size.height,
-          color: Colors.black.withOpacity(0.3),
-          alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: EdgeInsets.all(0.1 * size.width),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  "Aryan Ranjan",
-                  style: TextStyle(
-                      fontFamily: "Allison",
-                      color: Colors.white,
-                      fontSize: _cf['name'][deviceType] * size.width),
-                ),
-                Text(
-                  "IITR'24 | Codifyin' reality",
-                  style: GoogleFonts.caveat(
-                      textStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: _cf['taLine'][deviceType] * size.width)),
-                ),
-              ],
-            ),
-          ),
-        ),
-        MouseRegion(
-          onHover: (notif) {
-            if (notif.delta != Offset.zero) {
-              isMoving.value = true;
-              offset.value = notif.delta;
-              // Future.delayed(Duration(milliseconds: 300));
-            } else {
-              isMoving.value = false;
-            }
-          },
-          child: Container(
-            width: size.width,
-            height: size.height,
-            alignment: Alignment.centerRight,
-            child: Padding(
-              padding: EdgeInsets.all(0.075 * size.width),
-              child: Container(
-                // transform: Matrix4(
-                //     1,0,0,0.001,
-                //     1,0,0,0,
-                //     1,0,0,0,
-                //     1,0,0,1,
-                // ),
-                child: CustomPaint(
-                  painter: ArPainter(Colors.white.withOpacity(0.3)),
-                  size: Size(0.15 * size.width,
-                      (0.15 * size.width * 1.572944297082228).toDouble()),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
+    if (widget.deviceType == 'mobiles390-' ||
+        widget.deviceType == 'mobiles450-' ||
+        widget.deviceType == 'tablets768-') {
+      return SmallOpenerPage(
+        size: size,
+        deviceType: deviceType,
+      );
+    } else {
+      return LargeOpenerPage(
+        size: size,
+        deviceType: widget.deviceType,
+      );
+    }
   }
 }
