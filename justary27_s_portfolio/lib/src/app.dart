@@ -8,6 +8,7 @@ import 'components/deviceDetector.dart';
 import 'components/navbar.dart';
 
 final GlobalKey<NavigatorState> navigator = GlobalKey<NavigatorState>();
+final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
 class MyApp extends StatelessWidget {
   final Size size = logicalScreenSize;
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: RouteManager.generateRoute,
         builder: (context, child) {
           return Scaffold(
+            key: _scaffoldKey,
             backgroundColor: Colors.transparent,
             extendBody: true,
             extendBodyBehindAppBar: true,
@@ -55,20 +57,13 @@ class MyApp extends StatelessWidget {
             endDrawer: (deviceType == 'mobiles390-' ||
                     deviceType == 'mobiles450-' ||
                     deviceType == 'tablets768-')
-                ? buildEndDrawer(navigator, size, deviceType)
+                ? SmallDrawer(
+                    navigator: navigator,
+                    deviceType: deviceType,
+                    size: size,
+                  )
                 : null,
           );
-          // return Material(
-          //   color: Colors.transparent,
-          //   child: Stack(
-          //     children: [
-          //       child!,
-          //       Navbar(
-          //         navigatorKey: navigator,
-          //       ),
-          //     ],
-          //   ),
-          // );
         },
       ),
     );
