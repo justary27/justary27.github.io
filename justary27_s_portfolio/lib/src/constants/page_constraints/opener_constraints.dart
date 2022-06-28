@@ -1,4 +1,4 @@
-const Map ConstraintFactors = {
+const Map openerConstraints = {
   'name': {
     'mobiles390-': 0.110,
     'mobiles450-': 0.0995,

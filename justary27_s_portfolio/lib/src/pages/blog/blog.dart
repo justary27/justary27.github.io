@@ -4,6 +4,9 @@ import 'package:justary27_s_portfolio/src/components/blog_dialog/blog_dialog.dar
 import 'package:justary27_s_portfolio/src/components/footer.dart';
 import 'package:justary27_s_portfolio/src/models/blog_model.dart';
 import 'package:justary27_s_portfolio/src/services/database.dart';
+import '../../app.dart';
+import '../../components/page_components/promo_components.dart';
+import '../../routes/routing.dart';
 import 'blogConstraints.dart';
 import 'package:justary27_s_portfolio/src/components/rPainter.dart';
 
@@ -74,8 +77,9 @@ class _BlogPageState extends State<BlogPage> {
                           height: size.height,
                           child: CustomPaint(
                             painter: RoorkeePainter(
-                                Color.fromRGBO(246, 223, 71, 1.0),
-                                Color.fromRGBO(255, 255, 255, 1.0)),
+                              Color(0xFFFA8C5D),
+                              Color.fromRGBO(255, 255, 255, 1.0),
+                            ),
                           ),
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
@@ -136,8 +140,7 @@ class _BlogPageState extends State<BlogPage> {
                                         "Checkout the latest blogs!",
                                         style: GoogleFonts.itim(
                                           textStyle: TextStyle(
-                                            color: Color.fromRGBO(
-                                                252, 220, 102, 1.0),
+                                            color: Color(0xFFFA8C5D),
                                             fontSize: _cf['blogList']
                                                     [deviceType] *
                                                 size.width,
@@ -185,11 +188,8 @@ class _BlogPageState extends State<BlogPage> {
                                                                           .ubuntu(
                                                                     textStyle:
                                                                         TextStyle(
-                                                                      color: Color.fromRGBO(
-                                                                          252,
-                                                                          220,
-                                                                          102,
-                                                                          1.0),
+                                                                      color: Color(
+                                                                          0xFFFA8C5D),
                                                                       fontSize:
                                                                           20,
                                                                     ),
@@ -303,12 +303,8 @@ class _BlogPageState extends State<BlogPage> {
                                                                   ),
                                                                 ),
                                                               ),
-                                                              tileColor: Color
-                                                                  .fromRGBO(
-                                                                      252,
-                                                                      220,
-                                                                      102,
-                                                                      1.0),
+                                                              tileColor: Color(
+                                                                  0xFFFA8C5D),
                                                             );
                                                           } else {
                                                             return ListTile(
@@ -342,11 +338,8 @@ class _BlogPageState extends State<BlogPage> {
                                                                   ),
                                                                 ),
                                                                 backgroundColor:
-                                                                    Color.fromRGBO(
-                                                                        252,
-                                                                        220,
-                                                                        102,
-                                                                        1.0),
+                                                                    Color(
+                                                                        0xFFFA8C5D),
                                                               ),
                                                               title: Text(
                                                                 snapshot
@@ -358,12 +351,8 @@ class _BlogPageState extends State<BlogPage> {
                                                                         .ubuntu(
                                                                   textStyle:
                                                                       TextStyle(
-                                                                    color: Color
-                                                                        .fromRGBO(
-                                                                            252,
-                                                                            220,
-                                                                            102,
-                                                                            1.0),
+                                                                    color: Color(
+                                                                        0xFFFA8C5D),
                                                                     fontSize:
                                                                         20,
                                                                   ),
@@ -408,11 +397,8 @@ class _BlogPageState extends State<BlogPage> {
                                                                         .aBeeZee(
                                                                   textStyle:
                                                                       TextStyle(
-                                                                    color: Color.fromRGBO(
-                                                                            252,
-                                                                            220,
-                                                                            102,
-                                                                            1.0)
+                                                                    color: Color(
+                                                                            0xFFFA8C5D)
                                                                         .withOpacity(
                                                                             0.5),
                                                                   ),
@@ -428,12 +414,8 @@ class _BlogPageState extends State<BlogPage> {
                                                                         .ubuntu(
                                                                   textStyle:
                                                                       TextStyle(
-                                                                    color: Color
-                                                                        .fromRGBO(
-                                                                            252,
-                                                                            220,
-                                                                            102,
-                                                                            1.0),
+                                                                    color: Color(
+                                                                        0xFFFA8C5D),
                                                                     fontSize:
                                                                         20,
                                                                   ),
@@ -448,13 +430,17 @@ class _BlogPageState extends State<BlogPage> {
                                                         });
                                                   } else {
                                                     return Center(
-                                                        child: Center(
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                        color: Color.fromRGBO(
-                                                            252, 220, 102, 1.0),
+                                                      child: Center(
+                                                        child:
+                                                            CircularProgressIndicator(
+                                                          color: Color.fromRGBO(
+                                                              252,
+                                                              220,
+                                                              102,
+                                                              1.0),
+                                                        ),
                                                       ),
-                                                    ));
+                                                    );
                                                   }
                                                 }),
                                           ),
@@ -467,9 +453,31 @@ class _BlogPageState extends State<BlogPage> {
                             ],
                           ),
                         ),
-                        Container(
-                          width: size.width,
-                          height: size.height,
+                        PromoRedirector(
+                          size: size,
+                          deviceType: deviceType,
+                          pageName: "Work",
+                          pageDescriptor: "Check out all of my work!",
+                          button: TextButton.icon(
+                            icon: Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              color: Color.fromRGBO(20, 62, 188, 1),
+                            ),
+                            onPressed: () {
+                              if (RouteManager.currentRoute != "work") {
+                                RouteManager.navigateToWork(navigator);
+                              }
+                            },
+                            label: Text(
+                              "Work",
+                              style: GoogleFonts.aBeeZee(
+                                textStyle: TextStyle(
+                                  color: Color.fromRGBO(20, 62, 188, 1),
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                         NavBar(
                           size: size,

@@ -37,7 +37,7 @@ class WorkDescriptor extends StatelessWidget {
                 ? Alignment.centerRight
                 : Alignment.centerLeft,
             child: Container(
-              width: 0.5 * size.width,
+              width: 0.4 * size.width,
               height: size.height,
               child: model,
             ),

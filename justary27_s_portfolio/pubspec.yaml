@@ -35,6 +35,8 @@ dependencies:
   cloud_firestore: ^3.1.10
   flutter_riverpod: ^1.0.3
   model_viewer_plus: ^1.2.0
+  flutter_svg: ^1.0.3
+  carousel_slider: ^4.1.1
 
 dev_dependencies:
   flutter_test:

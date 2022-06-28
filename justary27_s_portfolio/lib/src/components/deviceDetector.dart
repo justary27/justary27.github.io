@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 String deviceDetector(Size size) {
-  if (360 < size.width && size.width < 390)
+  if (360 < size.width && size.width <= 390)
     return 'mobiles390-';
   else if (390 < size.width && size.width <= 450)
     return 'mobiles450-';

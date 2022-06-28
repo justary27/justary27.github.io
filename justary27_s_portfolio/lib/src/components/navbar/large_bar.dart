@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/navbar/contact.dart';
 
@@ -30,21 +31,34 @@ class _LargeNavBarState extends ConsumerState<LargeNavBar> {
       elevation: 0,
       toolbarHeight: 0.15 * widget.size.height,
       backgroundColor: Colors.transparent,
-      leading: MaterialButton(
-        elevation: 0,
-        child: CustomPaint(
-          size: Size(
-              40,
-              (40 * 1.572944297082228)
-                  .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
-          painter: ArPainter(Colors.white),
+      flexibleSpace: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.black.withOpacity(0.2),
+              Colors.transparent,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomLeft,
+          ),
         ),
-        onPressed: () {
-          if (RouteManager.currentRoute != "home") {
-            RouteManager.navigateToHome(widget.navigatorKey);
-          }
-        },
-        color: Colors.transparent,
+      ),
+      leading: Container(
+        margin: EdgeInsets.only(left: 0.01 * widget.size.width),
+        child: MaterialButton(
+          elevation: 0,
+          splashColor: Colors.white.withOpacity(0.5),
+          child: SvgPicture.asset(
+            "images/ar.svg",
+            color: Colors.white.withOpacity(0.75),
+          ),
+          onPressed: () {
+            if (RouteManager.currentRoute != "home") {
+              RouteManager.navigateToHome(widget.navigatorKey);
+            }
+          },
+          color: Colors.transparent,
+        ),
       ),
       title: ButtonBar(
         alignment: MainAxisAlignment.center,
