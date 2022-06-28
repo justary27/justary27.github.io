@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../routes/routing.dart';
-import '../ar.dart';
 import '../rPainter.dart';
 import 'contact.dart';
 
@@ -62,6 +61,7 @@ class SmallDrawer extends StatelessWidget {
                             child: SvgPicture.asset(
                               "images/ar.svg",
                               height: 40,
+                              color: Colors.white,
                             ),
                             onPressed: () {
                               if (RouteManager.currentRoute != "home") {
