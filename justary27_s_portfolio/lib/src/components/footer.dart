@@ -1,11 +1,11 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: avoid_web_libraries_in_flutter
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/deviceDetector.dart';
 import 'package:justary27_s_portfolio/src/routes/routing.dart';
 import 'dart:html' as html;
-import 'package:url_launcher/link.dart';
 
 import '../app.dart';
 
@@ -190,8 +190,9 @@ class _NavBarState extends State<NavBar> {
                                       iconSize: _cf['techStack'][deviceType],
                                       onPressed: () {
                                         html.window.open(
-                                            'https://github.com/just-ary27',
-                                            'New Tab');
+                                          'https://github.com/just-ary27',
+                                          'New Tab',
+                                        );
                                       },
                                       icon: Icon(
                                         FontAwesomeIcons.github,
@@ -206,7 +207,12 @@ class _NavBarState extends State<NavBar> {
                                       color: Colors.transparent,
                                       child: IconButton(
                                         iconSize: _cf['techStack'][deviceType],
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          html.window.open(
+                                            'https://www.linkedin.com/in/aryan-ranjan27/',
+                                            'New Tab',
+                                          );
+                                        },
                                         icon: Icon(
                                           FontAwesomeIcons.linkedin,
                                         ),
@@ -268,7 +274,9 @@ class _NavBarState extends State<NavBar> {
                               iconSize: _cf['techStack'][deviceType],
                               onPressed: () {
                                 html.window.open(
-                                    'https://github.com/just-ary27', 'New Tab');
+                                  'https://github.com/just-ary27',
+                                  'New Tab',
+                                );
                               },
                               icon: Icon(
                                 FontAwesomeIcons.github,
@@ -280,7 +288,12 @@ class _NavBarState extends State<NavBar> {
                             color: Colors.transparent,
                             child: IconButton(
                               iconSize: _cf['techStack'][deviceType],
-                              onPressed: () {},
+                              onPressed: () {
+                                html.window.open(
+                                  'https://www.linkedin.com/in/aryan-ranjan27/',
+                                  'New Tab',
+                                );
+                              },
                               icon: Icon(
                                 FontAwesomeIcons.linkedin,
                               ),

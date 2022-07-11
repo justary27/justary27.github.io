@@ -24,7 +24,7 @@ class ModelViewer extends StatefulWidget {
 class _ModelViewerState extends State<ModelViewer> {
   @override
   Widget build(BuildContext context) {
-    Size size = widget.size;
+    // Size size = widget.size;
     return Container();
   }
 }

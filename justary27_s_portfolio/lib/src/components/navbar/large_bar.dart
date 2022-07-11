@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/navbar/contact.dart';
 
 import '../../routes/routing.dart';
-import '../ar.dart';
 
 class LargeNavBar extends ConsumerStatefulWidget {
   final GlobalKey<NavigatorState> navigatorKey;

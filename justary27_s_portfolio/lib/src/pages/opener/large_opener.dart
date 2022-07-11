@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../app.dart';
-import '../../components/ar.dart';
 import '../../constants/page_constraints/opener_constraints.dart';
 import '../../routes/routing.dart';
 

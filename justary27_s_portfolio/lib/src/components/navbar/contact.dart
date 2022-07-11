@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_web_libraries_in_flutter
+
 import 'dart:html';
 
 import 'package:flutter/material.dart';
@@ -244,7 +246,12 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 child: ValueListenableBuilder(
                                   valueListenable: lHovered,
                                   builder: (_, __, ___) => IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      window.open(
+                                        'https://www.linkedin.com/in/aryan-ranjan27/',
+                                        'New Tab',
+                                      );
+                                    },
                                     icon: Icon(
                                       FontAwesomeIcons.linkedin,
                                       size: navConstraints['Links'][deviceType],
@@ -563,7 +570,12 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 child: ValueListenableBuilder(
                                   valueListenable: lHovered,
                                   builder: (_, __, ___) => IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      window.open(
+                                        'https://www.linkedin.com/in/aryan-ranjan27/',
+                                        'New Tab',
+                                      );
+                                    },
                                     icon: Icon(
                                       FontAwesomeIcons.linkedin,
                                       size: navConstraints['Links'][deviceType],

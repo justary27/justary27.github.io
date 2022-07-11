@@ -19,13 +19,6 @@ class _OpenerPageState extends State<OpenerPage> {
   ValueNotifier<bool> isMoving = ValueNotifier(false);
   ValueNotifier<Offset> offset = ValueNotifier(Offset.zero);
 
-  Stream<Matrix4> _transformer() async* {
-    while (isMoving.value) {
-      yield Matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, offset.value.dx / 10,
-          offset.value.dy / 10, 0, 1);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final Size size = widget.size;

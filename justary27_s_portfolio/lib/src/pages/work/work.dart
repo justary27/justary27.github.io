@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_web_libraries_in_flutter
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -5,8 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/footer.dart';
 import 'package:justary27_s_portfolio/src/components/page_components/promo_components.dart';
 import 'package:justary27_s_portfolio/src/components/page_components/work_components.dart';
-import 'package:model_viewer_plus/model_viewer_plus.dart';
-import 'package:url_launcher/link.dart';
 import 'workConstraints.dart';
 import 'package:justary27_s_portfolio/src/components/rPainter.dart';
 import 'dart:html' as html;

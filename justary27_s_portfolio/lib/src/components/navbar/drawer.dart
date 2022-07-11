@@ -66,7 +66,6 @@ class SmallDrawer extends StatelessWidget {
                             onPressed: () {
                               if (RouteManager.currentRoute != "home") {
                                 RouteManager.navigateToHome(navigator);
-                                print(navigator.currentState!.restorationId);
                               }
                             },
                             color: Colors.transparent,

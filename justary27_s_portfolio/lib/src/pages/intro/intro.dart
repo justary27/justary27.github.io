@@ -1,12 +1,12 @@
+// ignore_for_file: avoid_web_libraries_in_flutter
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/footer.dart';
 import 'package:justary27_s_portfolio/src/customIcons/flutterIcon.dart';
 import 'package:justary27_s_portfolio/src/customIcons/djangoIcon.dart';
-import 'package:justary27_s_portfolio/src/routes/routing.dart';
 import 'dart:math' as math;
-import '../../app.dart';
 import '../../components/page_components/promo_components.dart';
 import 'introConstraints.dart';
 import 'package:justary27_s_portfolio/src/components/rPainter.dart';
@@ -54,7 +54,7 @@ class _IntroPageState extends State<IntroPage> {
                           height: 3 * size.height,
                           color: Color.fromRGBO(255, 175, 175, 1),
                           child: CustomPaint(
-                            painter: dividerPaint(),
+                            painter: DividerPaint(),
                           ),
                         ),
                         Container(
@@ -270,7 +270,12 @@ class _IntroPageState extends State<IntroPage> {
                               Icons.arrow_forward_ios_rounded,
                               color: Colors.white.withOpacity(0.7),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              html.window.open(
+                                "https://drive.google.com/file/d/1iLO8MrPIvYoL8wnAvUOJanr2o4-9K27g/view?usp=sharing",
+                                "New Tab",
+                              );
+                            },
                             label: Text(
                               "Resume",
                               style: GoogleFonts.aBeeZee(
@@ -298,7 +303,7 @@ class _IntroPageState extends State<IntroPage> {
   }
 }
 
-class dividerPaint extends CustomPainter {
+class DividerPaint extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
