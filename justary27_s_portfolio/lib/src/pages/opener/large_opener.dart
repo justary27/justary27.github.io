@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../app.dart';
 import '../../constants/page_constraints/opener_constraints.dart';
@@ -56,13 +55,12 @@ class LargeOpenerPage extends StatelessWidget {
                 ),
                 Text(
                   "IITR'24 | Codifyin' reality",
-                  style: GoogleFonts.caveat(
-                    textStyle: TextStyle(
-                      color: Color(0xFF737373),
-                      fontWeight: FontWeight.bold,
-                      fontSize:
-                          openerConstraints['taLine'][deviceType] * size.width,
-                    ),
+                  style: TextStyle(
+                    fontFamily: "Caveat",
+                    color: Color(0xFF737373),
+                    fontWeight: FontWeight.bold,
+                    fontSize:
+                        openerConstraints['taLine'][deviceType] * size.width,
                   ),
                 ),
                 Container(
@@ -80,12 +78,11 @@ class LargeOpenerPage extends StatelessWidget {
                     label: FittedBox(
                       child: Text(
                         "Intro",
-                        style: GoogleFonts.ubuntu(
-                          textStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: openerConstraints['taLine'][deviceType] *
-                                size.width,
-                          ),
+                        style: TextStyle(
+                          fontFamily: "Ubuntu",
+                          color: Colors.white,
+                          fontSize: openerConstraints['taLine'][deviceType] *
+                              size.width,
                         ),
                       ),
                     ),

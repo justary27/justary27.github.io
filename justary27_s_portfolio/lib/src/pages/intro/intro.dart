@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/footer.dart';
+import 'package:justary27_s_portfolio/src/constants/page_constants/intro_constants.dart';
 import 'package:justary27_s_portfolio/src/customIcons/flutterIcon.dart';
 import 'package:justary27_s_portfolio/src/customIcons/djangoIcon.dart';
 import 'dart:math' as math;
@@ -97,11 +97,11 @@ class _IntroPageState extends State<IntroPage> {
                           height: size.height,
                           child: Text(
                             "Intro.",
-                            style: GoogleFonts.coveredByYourGrace(
-                                textStyle: TextStyle(
-                                    color: Color.fromRGBO(14, 43, 133, 1.0),
-                                    fontSize: _cf['heading'][deviceType] *
-                                        size.width)),
+                            style: TextStyle(
+                              fontFamily: "CoveredByYourGrace",
+                              color: Color.fromRGBO(14, 43, 133, 1.0),
+                              fontSize: _cf['heading'][deviceType] * size.width,
+                            ),
                           ),
                         ),
                         Container(
@@ -115,15 +115,17 @@ class _IntroPageState extends State<IntroPage> {
                               Padding(
                                 padding: EdgeInsets.symmetric(
                                     vertical: 0.02 * size.height),
-                                child: Text("Bonjour!",
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.caveatBrush(
-                                        textStyle: TextStyle(
-                                            color:
-                                                Colors.white.withOpacity(0.7),
-                                            fontSize: _cf['taLine']
-                                                    [deviceType] *
-                                                size.width))),
+                                child: Text(
+                                  "Bonjour!",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontFamily: "Caveat",
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white.withOpacity(0.7),
+                                    fontSize:
+                                        _cf['taLine'][deviceType] * size.width,
+                                  ),
+                                ),
                               ),
                               Transform.rotate(
                                 angle: -math.pi / 9,
@@ -142,25 +144,26 @@ class _IntroPageState extends State<IntroPage> {
                                 child: Text(
                                   "I'm Aryan Ranjan.",
                                   textAlign: TextAlign.center,
-                                  style: GoogleFonts.caveatBrush(
-                                      textStyle: TextStyle(
-                                          color:
-                                              Color.fromRGBO(14, 43, 133, 1.0),
-                                          fontSize: _cf['name'][deviceType] *
-                                              size.width)),
+                                  style: TextStyle(
+                                    fontFamily: "Caveat",
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromRGBO(14, 43, 133, 1.0),
+                                    fontSize:
+                                        _cf['name'][deviceType] * size.width,
+                                  ),
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 0.2 * size.width),
                                 child: Text(
-                                  "I'm a sophomore at Indian Institute of Technology Roorkee. Currently I'm pursuing a Btech degree in Chemical Enginnering. I'm very fascinated with computers, hence I'm interested in all its major fields like development, competitive programming, data science & UI/UX design.",
+                                  introDesc.replaceAll("\n", ""),
                                   textAlign: TextAlign.center,
-                                  style: GoogleFonts.aBeeZee(
-                                    textStyle: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: _cf['aboutMe'][deviceType] *
-                                            size.width),
+                                  style: TextStyle(
+                                    fontFamily: "ABeeZee",
+                                    color: Colors.black,
+                                    fontSize:
+                                        _cf['aboutMe'][deviceType] * size.width,
                                   ),
                                 ),
                               )
@@ -180,12 +183,11 @@ class _IntroPageState extends State<IntroPage> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     "Tech-stack",
-                                    style: GoogleFonts.ubuntu(
-                                        textStyle: TextStyle()),
+                                    style: TextStyle(fontFamily: "Ubuntu"),
                                   ),
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                ButtonBar(
+                                  alignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
@@ -232,7 +234,9 @@ class _IntroPageState extends State<IntroPage> {
                                       child: IconButton(
                                         onPressed: () {
                                           html.window.open(
-                                              'https://html5.org/', 'New Tab');
+                                            'https://html5.org/',
+                                            'New Tab',
+                                          );
                                         },
                                         icon: Icon(
                                           FontAwesomeIcons.html5,
@@ -245,11 +249,42 @@ class _IntroPageState extends State<IntroPage> {
                                       child: IconButton(
                                         onPressed: () {
                                           html.window.open(
-                                              'https://developer.mozilla.org/en-US/docs/Web/CSS',
-                                              'New Tab');
+                                            'https://developer.mozilla.org/en-US/docs/Web/CSS',
+                                            'New Tab',
+                                          );
                                         },
                                         icon: Icon(
                                           FontAwesomeIcons.css3,
+                                          size: _cf['techStack'][deviceType],
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: IconButton(
+                                        onPressed: () {
+                                          html.window.open(
+                                            'https://www.javascript.com/',
+                                            'New Tab',
+                                          );
+                                        },
+                                        icon: Icon(
+                                          FontAwesomeIcons.js,
+                                          size: _cf['techStack'][deviceType],
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: IconButton(
+                                        onPressed: () {
+                                          html.window.open(
+                                            'https://reactjs.org',
+                                            'New Tab',
+                                          );
+                                        },
+                                        icon: Icon(
+                                          FontAwesomeIcons.react,
                                           size: _cf['techStack'][deviceType],
                                         ),
                                       ),
@@ -278,10 +313,10 @@ class _IntroPageState extends State<IntroPage> {
                             },
                             label: Text(
                               "Resume",
-                              style: GoogleFonts.aBeeZee(
-                                textStyle: TextStyle(
-                                    color: Colors.white.withOpacity(0.7),
-                                    fontSize: 20),
+                              style: TextStyle(
+                                fontFamily: "ABeeZee",
+                                color: Colors.white.withOpacity(0.7),
+                                fontSize: 20,
                               ),
                             ),
                           ),

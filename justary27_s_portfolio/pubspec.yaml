@@ -15,10 +15,10 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.1.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -32,7 +32,7 @@ dependencies:
   font_awesome_flutter:
   url_launcher:
   firebase_core:
-  cloud_firestore: ^3.1.10
+  cloud_firestore: 
   flutter_riverpod: ^1.0.3
   model_viewer_plus: ^1.2.0
   flutter_svg: ^1.0.3
@@ -76,19 +76,60 @@ flutter:
      - family: Allison
        fonts:
          - asset: assets/fonts/Allison-Regular.ttf
+
      - family: HomeButton
        fonts:
          - asset: assets/fonts/HomeButton.ttf
+
      - family: DjangoButton
        fonts:
          - asset: assets/fonts/DjangoButton.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+
+     - family: Caveat
+       fonts:
+         - asset: assets/fonts/caveat/Caveat-Regular.ttf
+         - asset: assets/fonts/caveat/Caveat-Bold.ttf
+           weight: 700
+         - asset: assets/fonts/caveat/Caveat-Medium.ttf
+           weight: 500
+         - asset: assets/fonts/caveat/Caveat-SemiBold.ttf
+           weight: 600
+
+     - family: ABeeZee
+       fonts:
+         - asset: assets/fonts/aBeeZee/ABeeZee-Regular.ttf
+         - asset: assets/fonts/aBeeZee/ABeeZee-Italic.ttf
+           style: italic
+
+     - family: CoveredByYourGrace
+       fonts:
+         - asset: assets/fonts/coveredGrace/CoveredByYourGrace-Regular.ttf
+
+     - family: Itim
+       fonts:
+         - asset: assets/fonts/itim/Itim-Regular.ttf
+
+     - family: Ubuntu
+       fonts:
+         - asset: assets/fonts/ubuntu/Ubuntu-Regular.ttf
+         - asset: assets/fonts/ubuntu/Ubuntu-Bold.ttf
+           weight: 700
+         - asset: assets/fonts/ubuntu/Ubuntu-BoldItalic.ttf
+           weight: 700
+           style: italic
+         - asset: assets/fonts/ubuntu/Ubuntu-Medium.ttf
+           weight: 500
+         - asset: assets/fonts/ubuntu/Ubuntu-MediumItalic.ttf
+           weight: 500
+           style: italic
+         - asset: assets/fonts/ubuntu/Ubuntu-Light.ttf
+           weight: 300
+         - asset: assets/fonts/ubuntu/Ubuntu-LightItalic.ttf
+           weight: 300
+           style: italic
+         - asset: assets/fonts/ubuntu/Ubuntu-Italic.ttf
+           style: italic
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

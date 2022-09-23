@@ -2,7 +2,6 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/blog_dialog/blogDialog_constraints.dart';
 import 'package:justary27_s_portfolio/src/models/blog_model.dart';
 
@@ -49,20 +48,18 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                     children: [
                       Text(
                         blog.blogTitle,
-                        style: GoogleFonts.caveat(
-                          textStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: _cf['blogTitle'][deviceType] * size.width,
-                          ),
+                        style: TextStyle(
+                          fontFamily: "Caveat",
+                          color: Colors.white,
+                          fontSize: _cf['blogTitle'][deviceType] * size.width,
                         ),
                       ),
                       Text(
                         blog.blogTagLine,
-                        style: GoogleFonts.ubuntu(
-                          textStyle: TextStyle(
-                            fontStyle: FontStyle.italic,
-                            color: Colors.white.withOpacity(0.5),
-                          ),
+                        style: TextStyle(
+                          fontFamily: "Ubuntu",
+                          fontStyle: FontStyle.italic,
+                          color: Colors.white.withOpacity(0.5),
                         ),
                       ),
                       SizedBox(
@@ -81,10 +78,9 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                               ),
                               Text(
                                 blog.blogCreatedOn,
-                                style: GoogleFonts.ubuntu(
-                                  textStyle: TextStyle(
-                                    color: Colors.white,
-                                  ),
+                                style: TextStyle(
+                                  fontFamily: "Ubuntu",
+                                  color: Colors.white,
                                 ),
                               )
                             ],
@@ -103,10 +99,9 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                                     window.open(blog.link, 'New Tab'),
                                 child: Text(
                                   blog.link.substring(0, 10) + "...",
-                                  style: GoogleFonts.ubuntu(
-                                    textStyle: TextStyle(
-                                      color: Colors.white,
-                                    ),
+                                  style: TextStyle(
+                                    fontFamily: "Ubuntu",
+                                    color: Colors.white,
                                   ),
                                 ),
                               )
@@ -127,10 +122,9 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                 child: SingleChildScrollView(
                   child: Text(
                     blog.blogDescription.trim(),
-                    style: GoogleFonts.aBeeZee(
-                      textStyle: TextStyle(
-                        color: Colors.black,
-                      ),
+                    style: TextStyle(
+                      fontFamily: "ABeeZee",
+                      color: Colors.black,
                     ),
                   ),
                 ),
@@ -155,21 +149,18 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                       children: [
                         Text(
                           blog.blogTitle,
-                          style: GoogleFonts.caveat(
-                            textStyle: TextStyle(
-                              color: Color.fromRGBO(252, 220, 102, 1.0),
-                              fontSize:
-                                  _cf['blogTitle'][deviceType] * size.width,
-                            ),
+                          style: TextStyle(
+                            fontFamily: "Caveat",
+                            color: Color.fromRGBO(252, 220, 102, 1.0),
+                            fontSize: _cf['blogTitle'][deviceType] * size.width,
                           ),
                         ),
                         Text(
                           blog.blogTagLine,
-                          style: GoogleFonts.ubuntu(
-                            textStyle: TextStyle(
-                              fontStyle: FontStyle.italic,
-                              color: Colors.grey,
-                            ),
+                          style: TextStyle(
+                            fontFamily: "Ubuntu",
+                            fontStyle: FontStyle.italic,
+                            color: Colors.grey,
                           ),
                         ),
                         SizedBox(
@@ -177,10 +168,9 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                         ),
                         Text(
                           blog.blogDescription.trim(),
-                          style: GoogleFonts.aBeeZee(
-                            textStyle: TextStyle(
-                              color: Colors.black,
-                            ),
+                          style: TextStyle(
+                            fontFamily: "ABeeZee",
+                            color: Colors.black,
                           ),
                         ),
                       ],
@@ -206,10 +196,9 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                   children: [
                     Text(
                       "CREATED ON",
-                      style: GoogleFonts.ubuntu(
-                        textStyle: TextStyle(
-                          color: Colors.white.withOpacity(0.75),
-                        ),
+                      style: TextStyle(
+                        fontFamily: "Ubuntu",
+                        color: Colors.white.withOpacity(0.75),
                       ),
                     ),
                     Row(
@@ -223,10 +212,9 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                         ),
                         Text(
                           blog.blogCreatedOn,
-                          style: GoogleFonts.ubuntu(
-                            textStyle: TextStyle(
-                              color: Colors.white,
-                            ),
+                          style: TextStyle(
+                            fontFamily: "Ubuntu",
+                            color: Colors.white,
                           ),
                         )
                       ],
@@ -236,10 +224,9 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                     ),
                     Text(
                       "ATTACHMENTS",
-                      style: GoogleFonts.ubuntu(
-                        textStyle: TextStyle(
-                          color: Colors.white.withOpacity(0.75),
-                        ),
+                      style: TextStyle(
+                        fontFamily: "Ubuntu",
+                        color: Colors.white.withOpacity(0.75),
                       ),
                     ),
                     Row(
@@ -255,10 +242,9 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                           onPressed: () => window.open(blog.link, 'New Tab'),
                           child: Text(
                             blog.link.substring(0, 10) + "...",
-                            style: GoogleFonts.ubuntu(
-                              textStyle: TextStyle(
-                                color: Colors.white,
-                              ),
+                            style: TextStyle(
+                              fontFamily: "Ubuntu",
+                              color: Colors.white,
                             ),
                           ),
                         )

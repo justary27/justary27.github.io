@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/deviceDetector.dart';
 import 'package:justary27_s_portfolio/src/routes/routing.dart';
 import 'dart:html' as html;
@@ -58,13 +57,6 @@ class _NavBarState extends State<NavBar> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Text(
-                    //   "Made with ♥ by ",
-                    //   style: GoogleFonts.aBeeZee(
-                    //       textStyle: TextStyle(
-                    //     color: Colors.white.withOpacity(0.7),
-                    //   )),
-                    // ),
                     Text(
                       "Aryan Ranjan",
                       style: TextStyle(
@@ -81,57 +73,69 @@ class _NavBarState extends State<NavBar> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     MaterialButton(
+                      onPressed: () {
+                        if (RouteManager.currentRoute != "intro") {
+                          RouteManager.navigateToIntro(navigator);
+                        }
+                      },
+                      child: Text(
+                        "Intro",
+                        style: TextStyle(
+                          fontFamily: "ABeeZee",
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
+                      child: MaterialButton(
                         onPressed: () {
-                          if (RouteManager.currentRoute != "intro") {
-                            RouteManager.navigateToIntro(navigator);
+                          if (RouteManager.currentRoute != "who") {
+                            RouteManager.navigateToWho(navigator);
                           }
                         },
                         child: Text(
-                          "Intro",
-                          style: GoogleFonts.aBeeZee(
-                              textStyle: TextStyle(color: Colors.white)),
-                        )),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
-                      child: MaterialButton(
-                          onPressed: () {
-                            if (RouteManager.currentRoute != "who") {
-                              RouteManager.navigateToWho(navigator);
-                            }
-                          },
-                          child: Text(
-                            "Who",
-                            style: GoogleFonts.aBeeZee(
-                                textStyle: TextStyle(color: Colors.white)),
-                          )),
+                          "Who",
+                          style: TextStyle(
+                            fontFamily: "ABeeZee",
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
                       child: MaterialButton(
-                          onPressed: () {
-                            if (RouteManager.currentRoute != "work") {
-                              RouteManager.navigateToWork(navigator);
-                            }
-                          },
-                          child: Text(
-                            "Work",
-                            style: GoogleFonts.aBeeZee(
-                                textStyle: TextStyle(color: Colors.white)),
-                          )),
+                        onPressed: () {
+                          if (RouteManager.currentRoute != "work") {
+                            RouteManager.navigateToWork(navigator);
+                          }
+                        },
+                        child: Text(
+                          "Work",
+                          style: TextStyle(
+                            fontFamily: "ABeeZee",
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
                       child: MaterialButton(
-                          onPressed: () {
-                            if (RouteManager.currentRoute != "blog") {
-                              RouteManager.navigateToBlog(navigator);
-                            }
-                          },
-                          child: Text(
-                            "Blog",
-                            style: GoogleFonts.aBeeZee(
-                                textStyle: TextStyle(color: Colors.white)),
-                          )),
+                        onPressed: () {
+                          if (RouteManager.currentRoute != "blog") {
+                            RouteManager.navigateToBlog(navigator);
+                          }
+                        },
+                        child: Text(
+                          "Blog",
+                          style: TextStyle(
+                            fontFamily: "ABeeZee",
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),

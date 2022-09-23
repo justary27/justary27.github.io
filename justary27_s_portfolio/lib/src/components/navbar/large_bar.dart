@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/navbar/contact.dart';
 
 import '../../routes/routing.dart';
@@ -72,9 +71,7 @@ class _LargeNavBarState extends ConsumerState<LargeNavBar> {
               },
               child: Text(
                 "Intro",
-                style: GoogleFonts.aBeeZee(
-                  textStyle: TextStyle(color: Colors.white),
-                ),
+                style: TextStyle(fontFamily: "ABeeZee", color: Colors.white),
               ),
             ),
           ),
@@ -86,9 +83,7 @@ class _LargeNavBarState extends ConsumerState<LargeNavBar> {
             },
             child: Text(
               "Who",
-              style: GoogleFonts.aBeeZee(
-                textStyle: TextStyle(color: Colors.white),
-              ),
+              style: TextStyle(fontFamily: "ABeeZee", color: Colors.white),
             ),
           ),
           MaterialButton(
@@ -99,9 +94,7 @@ class _LargeNavBarState extends ConsumerState<LargeNavBar> {
             },
             child: Text(
               "Work",
-              style: GoogleFonts.aBeeZee(
-                textStyle: TextStyle(color: Colors.white),
-              ),
+              style: TextStyle(fontFamily: "ABeeZee", color: Colors.white),
             ),
           ),
           MaterialButton(
@@ -112,10 +105,9 @@ class _LargeNavBarState extends ConsumerState<LargeNavBar> {
             },
             child: Text(
               "Blog",
-              style: GoogleFonts.aBeeZee(
-                textStyle: TextStyle(
-                  color: Colors.white,
-                ),
+              style: TextStyle(
+                fontFamily: "ABeeZee",
+                color: Colors.white,
               ),
             ),
           ),
@@ -135,10 +127,9 @@ class _LargeNavBarState extends ConsumerState<LargeNavBar> {
           },
           child: Text(
             "Contact",
-            style: GoogleFonts.aBeeZee(
-              textStyle: TextStyle(
-                color: Colors.white,
-              ),
+            style: TextStyle(
+              fontFamily: "ABeeZee",
+              color: Colors.white,
             ),
           ),
         ),

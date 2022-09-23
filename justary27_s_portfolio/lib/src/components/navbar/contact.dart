@@ -5,7 +5,6 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../constants/component_constraints/navbar_constraints.dart';
 import '../../routes/routing.dart';
@@ -82,52 +81,51 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                       ),
                       Text(
                         "Contact Me",
-                        style: GoogleFonts.aBeeZee(
-                          textStyle: TextStyle(
-                            fontSize: size.width *
-                                navConstraints['taLine'][deviceType],
-                          ),
+                        style: TextStyle(
+                          fontFamily: "ABeeZee",
+                          fontSize:
+                              size.width * navConstraints['taLine'][deviceType],
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(0.025 * size.height),
                         child: MaterialButton(
-                            elevation: 0,
-                            color: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            onPressed: () {
-                              window.open(
-                                  "mailto:aryan_r@ch.iitr.ac.in", "New Tab");
+                          elevation: 0,
+                          color: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          onPressed: () {
+                            window.open(
+                                "mailto:aryan_r@ch.iitr.ac.in", "New Tab");
+                          },
+                          child: MouseRegion(
+                            onEnter: (hover) {
+                              if (_hoverColor != Colors.black) {
+                                isHovered.value = true;
+                              }
                             },
-                            child: MouseRegion(
-                              onEnter: (hover) {
-                                if (_hoverColor != Colors.black) {
-                                  isHovered.value = true;
-                                }
-                              },
-                              onExit: (hover) {
-                                isHovered.value = false;
-                              },
-                              child: ValueListenableBuilder(
-                                valueListenable: isHovered,
-                                builder: (_, __, ___) => Text(
-                                  "aryan_r@ch.iitr.ac.in",
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.ubuntu(
-                                    textStyle: TextStyle(
-                                        color: (isHovered.value)
-                                            ? _hoverColor
-                                            : Colors.black,
-                                        fontSize: size.width *
-                                            navConstraints['email']
-                                                [deviceType]),
-                                  ),
+                            onExit: (hover) {
+                              isHovered.value = false;
+                            },
+                            child: ValueListenableBuilder(
+                              valueListenable: isHovered,
+                              builder: (_, __, ___) => Text(
+                                "aryan_r@ch.iitr.ac.in",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: "Ubuntu",
+                                  color: (isHovered.value)
+                                      ? _hoverColor
+                                      : Colors.black,
+                                  fontSize: size.width *
+                                      navConstraints['email'][deviceType],
                                 ),
                               ),
-                            )),
+                            ),
+                          ),
+                        ),
                       )
                     ],
                   ),
@@ -148,20 +146,21 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                           textHovered.value = false;
                         },
                         child: ValueListenableBuilder(
-                            valueListenable: textHovered,
-                            builder: (_, __, ___) => Text(
-                                  (textHovered.value)
-                                      ? "Time is made, not found!"
-                                      : "Time is made.",
-                                  style: GoogleFonts.caveat(
-                                      textStyle: TextStyle(
-                                          fontSize: size.width *
-                                              navConstraints['taLine']
-                                                  [deviceType],
-                                          color: (textHovered.value)
-                                              ? _hoverColor
-                                              : Colors.white.withOpacity(0.7))),
-                                )),
+                          valueListenable: textHovered,
+                          builder: (_, __, ___) => Text(
+                            (textHovered.value)
+                                ? "Time is made, not found!"
+                                : "Time is made.",
+                            style: TextStyle(
+                              fontFamily: "Caveat",
+                              fontSize: size.width *
+                                  navConstraints['taLine'][deviceType],
+                              color: (textHovered.value)
+                                  ? _hoverColor
+                                  : Colors.white.withOpacity(0.7),
+                            ),
+                          ),
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.fromLTRB(
@@ -409,20 +408,19 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                       ),
                       Text(
                         "Contact Me",
-                        style: GoogleFonts.aBeeZee(
-                            textStyle: TextStyle(
-                                fontSize: size.width *
-                                    navConstraints['taLine'][deviceType])),
+                        style: TextStyle(
+                          fontFamily: "ABeeZee",
+                          fontSize:
+                              size.width * navConstraints['taLine'][deviceType],
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.all(0.025 * size.height),
-                        child: MaterialButton(
-                          elevation: 0,
-                          color: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
+                        child: TextButton(
+                          style: ButtonStyle(
+                            overlayColor:
+                                MaterialStateProperty.all(Colors.transparent),
+                          ),
                           onPressed: () {
                             window.open(
                                 "mailto:aryan_r@ch.iitr.ac.in", "New Tab");
@@ -440,13 +438,13 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                               valueListenable: isHovered,
                               builder: (_, __, ___) => Text(
                                 "aryan_r@ch.iitr.ac.in",
-                                style: GoogleFonts.ubuntu(
-                                  textStyle: TextStyle(
-                                      color: (isHovered.value)
-                                          ? _hoverColor
-                                          : Colors.black,
-                                      fontSize: size.width *
-                                          navConstraints['email'][deviceType]),
+                                style: TextStyle(
+                                  fontFamily: "Ubuntu",
+                                  color: (isHovered.value)
+                                      ? _hoverColor
+                                      : Colors.black,
+                                  fontSize: size.width *
+                                      navConstraints['email'][deviceType],
                                 ),
                               ),
                             ),
@@ -472,20 +470,21 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                           textHovered.value = false;
                         },
                         child: ValueListenableBuilder(
-                            valueListenable: textHovered,
-                            builder: (_, __, ___) => Text(
-                                  (textHovered.value)
-                                      ? "Time is made, not found!"
-                                      : "Time is made.",
-                                  style: GoogleFonts.caveat(
-                                      textStyle: TextStyle(
-                                          fontSize: size.width *
-                                              navConstraints['taLine']
-                                                  [deviceType],
-                                          color: (textHovered.value)
-                                              ? _hoverColor
-                                              : Colors.white.withOpacity(0.7))),
-                                )),
+                          valueListenable: textHovered,
+                          builder: (_, __, ___) => Text(
+                            (textHovered.value)
+                                ? "Time is made, not found!"
+                                : "Time is made.",
+                            style: TextStyle(
+                              fontFamily: "Caveat",
+                              fontSize: size.width *
+                                  navConstraints['taLine'][deviceType],
+                              color: (textHovered.value)
+                                  ? _hoverColor
+                                  : Colors.white.withOpacity(0.7),
+                            ),
+                          ),
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.fromLTRB(

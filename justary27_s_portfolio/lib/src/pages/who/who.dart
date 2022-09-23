@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/footer.dart';
 import 'package:justary27_s_portfolio/src/components/page_components/promo_components.dart';
+import 'package:justary27_s_portfolio/src/constants/page_constants/who_constants.dart';
 import 'package:justary27_s_portfolio/src/routes/routing.dart';
 import '../../app.dart';
 import 'whoConstraints.dart';
@@ -44,7 +44,7 @@ class _WhoPageState extends State<WhoPage> {
                       children: [
                         Container(
                           width: size.width,
-                          height: 4 * size.height,
+                          height: 5.5 * size.height,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                                 begin: Alignment.topLeft,
@@ -53,6 +53,9 @@ class _WhoPageState extends State<WhoPage> {
                                   Color.fromRGBO(198, 197, 255, 1.0),
                                   Color.fromRGBO(133, 130, 234, 1.0),
                                 ]),
+                          ),
+                          child: CustomPaint(
+                            painter: WhoPainter(),
                           ),
                         ),
                         Container(
@@ -90,50 +93,51 @@ class _WhoPageState extends State<WhoPage> {
                           alignment: Alignment.center,
                           child: Text(
                             "Who?",
-                            style: GoogleFonts.coveredByYourGrace(
-                                textStyle: TextStyle(
-                                    color: Color.fromRGBO(14, 43, 133, 1.0),
-                                    fontSize: _cf['heading'][deviceType] *
-                                        size.width)),
+                            style: TextStyle(
+                              fontFamily: "CoveredByYourGrace",
+                              color: Color.fromRGBO(14, 43, 133, 1.0),
+                              fontSize: _cf['heading'][deviceType] * size.width,
+                            ),
                           ),
                         ),
                         Container(
                           width: size.width,
-                          height: size.height,
+                          height: 1.5 * size.height,
                           child: Row(
                             children: [
                               Container(
-                                width: 0.3 * size.width,
-                                height: size.height,
+                                width: 0.25 * size.width,
+                                height: 1.5 * size.height,
                               ),
                               Container(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 0.1 * size.width),
-                                width: 0.6 * size.width,
-                                height: size.height,
+                                width: 0.7 * size.width,
+                                height: 1.5 * size.height,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       "Present",
-                                      style: GoogleFonts.caveatBrush(
-                                          textStyle: TextStyle(
-                                              color: Color.fromRGBO(
-                                                  14, 43, 133, 1.0),
-                                              fontSize: _cf['time']
-                                                      [deviceType] *
-                                                  size.width)),
+                                      style: TextStyle(
+                                          fontFamily: "Caveat",
+                                          color:
+                                              Color.fromRGBO(14, 43, 133, 1.0),
+                                          fontSize: _cf['time'][deviceType] *
+                                              size.width,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                        "Having spent almost 3 semesters in IIT-R, quite a lot has happened since the time I joined. I have participated in several hackathons, also got good rankings in few of them like Syntax Error and Makers by SDS Labs IIT-R. Talking about the very present, I'm doing a project with PaAC IITR, working on developing an multi-facet app and also learning Game Dev and Machine Learning. I'm also a member of NSS IIT-R's Editorial Cell.",
-                                        textAlign: TextAlign.left,
-                                        style: GoogleFonts.aBeeZee(
-                                            textStyle: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: _cf['timeDesc']
-                                                        [deviceType] *
-                                                    size.width))),
+                                      presentDesc.replaceAll("\n", ""),
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        fontFamily: "ABeeZee",
+                                        color: Colors.black,
+                                        fontSize: _cf['timeDesc'][deviceType] *
+                                            size.width,
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -142,84 +146,84 @@ class _WhoPageState extends State<WhoPage> {
                         ),
                         Container(
                           width: size.width,
-                          height: size.height,
+                          height: 1.5 * size.height,
                           child: Row(
                             children: [
                               Container(
-                                width: 0.3 * size.width,
-                                height: size.height,
-                              ),
-                              Container(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 0.1 * size.width),
-                                width: 0.6 * size.width,
-                                height: size.height,
+                                width: 0.7 * size.width,
+                                height: 1.5 * size.height,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
                                       "Future",
-                                      style: GoogleFonts.caveatBrush(
-                                          textStyle: TextStyle(
-                                              color: Color.fromRGBO(
-                                                  14, 43, 133, 1.0),
-                                              fontSize: _cf['time']
-                                                      [deviceType] *
-                                                  size.width)),
+                                      style: TextStyle(
+                                        fontFamily: "Caveat",
+                                        fontWeight: FontWeight.bold,
+                                        color: Color.fromRGBO(14, 43, 133, 1.0),
+                                        fontSize: _cf['time'][deviceType] *
+                                            size.width,
+                                      ),
                                     ),
                                     Text(
-                                        "Even though I don't plan miles ahead, yet I have a few goals; which I wanna clear in da comin' time. The ultimate goal is to master everything that the vast field of computer science can provide. I have set milestones like clearing GsoC, getting 6 stars in CP; in order to stay focused and thus not stray from my goal. I know the path isn't gonna be easy, but nothin' worthwhile is. Isn't it? ",
-                                        textAlign: TextAlign.left,
-                                        style: GoogleFonts.aBeeZee(
-                                            textStyle: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: _cf['timeDesc']
-                                                        [deviceType] *
-                                                    size.width))),
+                                      futureDesc.replaceAll("\n", ""),
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        fontFamily: "ABeeZee",
+                                        color: Colors.black,
+                                        fontSize: _cf['timeDesc'][deviceType] *
+                                            size.width,
+                                      ),
+                                    ),
                                   ],
                                 ),
+                              ),
+                              Container(
+                                width: 0.25 * size.width,
+                                height: 1.5 * size.height,
                               ),
                             ],
                           ),
                         ),
                         Container(
                           width: size.width,
-                          height: size.height,
+                          height: 1.5 * size.height,
                           child: Row(
                             children: [
                               Container(
-                                width: 0.3 * size.width,
-                                height: size.height,
+                                width: 0.25 * size.width,
+                                height: 1.5 * size.height,
                               ),
                               Container(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 0.1 * size.width),
-                                width: 0.6 * size.width,
-                                height: size.height,
+                                width: 0.7 * size.width,
+                                height: 1.5 * size.height,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
                                       "Past",
-                                      style: GoogleFonts.caveatBrush(
-                                          textStyle: TextStyle(
-                                              color: Color.fromRGBO(
-                                                  14, 43, 133, 1.0),
-                                              fontSize: _cf['time']
-                                                      [deviceType] *
-                                                  size.width)),
+                                      style: TextStyle(
+                                          fontFamily: "Caveat",
+                                          fontWeight: FontWeight.bold,
+                                          color:
+                                              Color.fromRGBO(14, 43, 133, 1.0),
+                                          fontSize: _cf['time'][deviceType] *
+                                              size.width),
                                     ),
                                     Text(
-                                      "Before getting into IIT-R, I got AIR 3792 in Jee Advanced 2020, and AIR 1859 in Jee Mains 2020. The path was not always like a fine day at the ocean there were several ups but also several stormy days aka downs, despite all this I managed to stay on the path during the 4 years of my preparation. In these years I also cleared several important exams like NTSE stage-II, NSEJS, NSEP, NSEC, NSEA and PRMO. An achievement which I cherish from my 5th standard is getting AIR 1 in NAO, an astronomy olympiad.",
+                                      pastDesc.replaceAll("\n", ""),
                                       textAlign: TextAlign.left,
-                                      style: GoogleFonts.aBeeZee(
-                                        textStyle: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: _cf['timeDesc']
-                                                    [deviceType] *
-                                                size.width),
+                                      style: TextStyle(
+                                        fontFamily: "ABeeZee",
+                                        color: Colors.black,
+                                        fontSize: _cf['timeDesc'][deviceType] *
+                                            size.width,
                                       ),
                                     )
                                   ],
@@ -245,10 +249,10 @@ class _WhoPageState extends State<WhoPage> {
                             },
                             label: Text(
                               "Blog",
-                              style: GoogleFonts.aBeeZee(
-                                textStyle: TextStyle(
-                                    color: Colors.white.withOpacity(0.7),
-                                    fontSize: 20),
+                              style: TextStyle(
+                                fontFamily: "ABeeZee",
+                                color: Colors.white.withOpacity(0.7),
+                                fontSize: 20,
                               ),
                             ),
                           ),
@@ -267,5 +271,74 @@ class _WhoPageState extends State<WhoPage> {
         ),
       ),
     );
+  }
+}
+
+class WhoPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..color = Color.fromRGBO(14, 43, 133, 1.0)
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 10;
+
+    Path path = Path();
+
+    path.moveTo(0, 0.1818 * size.height);
+    path.quadraticBezierTo(
+      0.125 * size.width,
+      0.1818 * size.height,
+      0.125 * size.width,
+      0.2727 * size.height,
+    );
+
+    path.moveTo(0.125 * size.width, 0.2727 * size.height);
+    path.quadraticBezierTo(
+      0.125 * size.width,
+      0.4545 * size.height,
+      0.5 * size.width,
+      0.4545 * size.height,
+    );
+    path.quadraticBezierTo(
+      0.875 * size.width,
+      0.4545 * size.height,
+      0.875 * size.width,
+      0.5908 * size.height,
+    );
+    path.quadraticBezierTo(
+      0.875 * size.width,
+      0.7272 * size.height,
+      0.5 * size.width,
+      0.7272 * size.height,
+    );
+    path.quadraticBezierTo(
+      0.125 * size.width,
+      0.7272 * size.height,
+      0.125 * size.width,
+      0.8636 * size.height,
+    );
+    path.lineTo(0.125 * size.width, size.height);
+
+    canvas.drawPath(path, paint);
+    canvas.drawCircle(
+        Offset(0.125 * size.width, 0.2727 * size.height), 35, paint);
+    canvas.drawCircle(
+        Offset(0.875 * size.width, 0.5909 * size.height), 35, paint);
+    canvas.drawCircle(
+        Offset(0.125 * size.width, 0.8636 * size.height), 35, paint);
+
+    paint.style = PaintingStyle.fill;
+    canvas.drawCircle(
+        Offset(0.125 * size.width, 0.2727 * size.height), 20, paint);
+    canvas.drawCircle(
+        Offset(0.875 * size.width, 0.5909 * size.height), 20, paint);
+    canvas.drawCircle(
+        Offset(0.125 * size.width, 0.8636 * size.height), 20, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }

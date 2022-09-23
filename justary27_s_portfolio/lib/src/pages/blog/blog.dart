@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:justary27_s_portfolio/src/components/blog_dialog/blog_dialog.dart';
 import 'package:justary27_s_portfolio/src/components/footer.dart';
 import 'package:justary27_s_portfolio/src/models/blog_model.dart';
@@ -108,11 +107,11 @@ class _BlogPageState extends State<BlogPage> {
                           height: size.height,
                           child: Text(
                             "Blog.",
-                            style: GoogleFonts.coveredByYourGrace(
-                                textStyle: TextStyle(
-                                    color: Color.fromRGBO(247, 250, 249, 1.0),
-                                    fontSize: _cf['heading'][deviceType] *
-                                        size.width)),
+                            style: TextStyle(
+                              fontFamily: "CoveredByYourGrace",
+                              color: Color.fromRGBO(247, 250, 249, 1.0),
+                              fontSize: _cf['heading'][deviceType] * size.width,
+                            ),
                           ),
                         ),
                         Container(
@@ -138,13 +137,12 @@ class _BlogPageState extends State<BlogPage> {
                                     children: [
                                       Text(
                                         "Checkout the latest blogs!",
-                                        style: GoogleFonts.itim(
-                                          textStyle: TextStyle(
-                                            color: Color(0xFFFA8C5D),
-                                            fontSize: _cf['blogList']
-                                                    [deviceType] *
-                                                size.width,
-                                          ),
+                                        style: TextStyle(
+                                          fontFamily: "Itim",
+                                          color: Color(0xFFFA8C5D),
+                                          fontSize: _cf['blogList']
+                                                  [deviceType] *
+                                              size.width,
                                         ),
                                       ),
                                       Padding(
@@ -184,15 +182,13 @@ class _BlogPageState extends State<BlogPage> {
                                                                           0]
                                                                       .toUpperCase(),
                                                                   style:
-                                                                      GoogleFonts
-                                                                          .ubuntu(
-                                                                    textStyle:
-                                                                        TextStyle(
-                                                                      color: Color(
-                                                                          0xFFFA8C5D),
-                                                                      fontSize:
-                                                                          20,
-                                                                    ),
+                                                                      TextStyle(
+                                                                    fontFamily:
+                                                                        "Ubuntu",
+                                                                    color: Color(
+                                                                        0xFFFA8C5D),
+                                                                    fontSize:
+                                                                        20,
                                                                   ),
                                                                 ),
                                                                 backgroundColor:
@@ -213,15 +209,12 @@ class _BlogPageState extends State<BlogPage> {
                                                                         index]
                                                                     .blogTitle,
                                                                 style:
-                                                                    GoogleFonts
-                                                                        .ubuntu(
-                                                                  textStyle:
-                                                                      TextStyle(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontSize:
-                                                                        20,
-                                                                  ),
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      "Ubuntu",
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize: 20,
                                                                 ),
                                                               ),
                                                               subtitle: Text(
@@ -230,15 +223,13 @@ class _BlogPageState extends State<BlogPage> {
                                                                         index]
                                                                     .tagLine,
                                                                 style:
-                                                                    GoogleFonts
-                                                                        .aBeeZee(
-                                                                  textStyle:
-                                                                      TextStyle(
-                                                                    color: Colors
-                                                                        .white
-                                                                        .withOpacity(
-                                                                            0.75),
-                                                                  ),
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      "Ubuntu",
+                                                                  color: Colors
+                                                                      .white
+                                                                      .withOpacity(
+                                                                          0.75),
                                                                 ),
                                                               ),
                                                               // isThreeLine: true,
@@ -292,15 +283,12 @@ class _BlogPageState extends State<BlogPage> {
                                                                         index]
                                                                     .blogCreatedOn,
                                                                 style:
-                                                                    GoogleFonts
-                                                                        .ubuntu(
-                                                                  textStyle:
-                                                                      TextStyle(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontSize:
-                                                                        20,
-                                                                  ),
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      "Ubuntu",
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize: 20,
                                                                 ),
                                                               ),
                                                               tileColor: Color(
@@ -326,15 +314,13 @@ class _BlogPageState extends State<BlogPage> {
                                                                           0]
                                                                       .toUpperCase(),
                                                                   style:
-                                                                      GoogleFonts
-                                                                          .ubuntu(
-                                                                    textStyle:
-                                                                        TextStyle(
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontSize:
-                                                                          20,
-                                                                    ),
+                                                                      TextStyle(
+                                                                    fontFamily:
+                                                                        "Ubuntu",
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        20,
                                                                   ),
                                                                 ),
                                                                 backgroundColor:
@@ -347,15 +333,12 @@ class _BlogPageState extends State<BlogPage> {
                                                                         index]
                                                                     .blogTitle,
                                                                 style:
-                                                                    GoogleFonts
-                                                                        .ubuntu(
-                                                                  textStyle:
-                                                                      TextStyle(
-                                                                    color: Color(
-                                                                        0xFFFA8C5D),
-                                                                    fontSize:
-                                                                        20,
-                                                                  ),
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      "Ubuntu",
+                                                                  color: Color(
+                                                                      0xFFFA8C5D),
+                                                                  fontSize: 20,
                                                                 ),
                                                               ),
                                                               shape: (index ==
@@ -393,15 +376,13 @@ class _BlogPageState extends State<BlogPage> {
                                                                         index]
                                                                     .tagLine,
                                                                 style:
-                                                                    GoogleFonts
-                                                                        .aBeeZee(
-                                                                  textStyle:
-                                                                      TextStyle(
-                                                                    color: Color(
-                                                                            0xFFFA8C5D)
-                                                                        .withOpacity(
-                                                                            0.5),
-                                                                  ),
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      "ABeeZee",
+                                                                  color: Color(
+                                                                          0xFFFA8C5D)
+                                                                      .withOpacity(
+                                                                          0.5),
                                                                 ),
                                                               ),
                                                               trailing: Text(
@@ -410,15 +391,12 @@ class _BlogPageState extends State<BlogPage> {
                                                                         index]
                                                                     .blogCreatedOn,
                                                                 style:
-                                                                    GoogleFonts
-                                                                        .ubuntu(
-                                                                  textStyle:
-                                                                      TextStyle(
-                                                                    color: Color(
-                                                                        0xFFFA8C5D),
-                                                                    fontSize:
-                                                                        20,
-                                                                  ),
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      "Ubuntu",
+                                                                  color: Color(
+                                                                      0xFFFA8C5D),
+                                                                  fontSize: 20,
                                                                 ),
                                                               ),
                                                               tileColor: Colors
@@ -470,11 +448,10 @@ class _BlogPageState extends State<BlogPage> {
                             },
                             label: Text(
                               "Work",
-                              style: GoogleFonts.aBeeZee(
-                                textStyle: TextStyle(
-                                  color: Color.fromRGBO(20, 62, 188, 1),
-                                  fontSize: 20,
-                                ),
+                              style: TextStyle(
+                                fontFamily: "ABeeZee",
+                                color: Color.fromRGBO(20, 62, 188, 1),
+                                fontSize: 20,
                               ),
                             ),
                           ),

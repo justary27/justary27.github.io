@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../routes/routing.dart';
 import '../rPainter.dart';
@@ -83,8 +82,10 @@ class SmallDrawer extends StatelessWidget {
                           ListTile(
                             title: Text(
                               "Intro",
-                              style: GoogleFonts.aBeeZee(
-                                  textStyle: TextStyle(color: Colors.white)),
+                              style: TextStyle(
+                                fontFamily: "ABeeZee",
+                                color: Colors.white,
+                              ),
                             ),
                             onTap: () {
                               if (RouteManager.currentRoute != "intro") {
@@ -95,9 +96,8 @@ class SmallDrawer extends StatelessWidget {
                           ListTile(
                             title: Text(
                               "Who",
-                              style: GoogleFonts.aBeeZee(
-                                textStyle: TextStyle(color: Colors.white),
-                              ),
+                              style: TextStyle(
+                                  fontFamily: "ABeeZee", color: Colors.white),
                             ),
                             onTap: () {
                               if (RouteManager.currentRoute != "who") {
@@ -108,10 +108,9 @@ class SmallDrawer extends StatelessWidget {
                           ListTile(
                             title: Text(
                               "Work",
-                              style: GoogleFonts.aBeeZee(
-                                textStyle: TextStyle(
-                                  color: Colors.white,
-                                ),
+                              style: TextStyle(
+                                fontFamily: "ABeeZee",
+                                color: Colors.white,
                               ),
                             ),
                             onTap: () {
@@ -123,8 +122,9 @@ class SmallDrawer extends StatelessWidget {
                           ListTile(
                             title: Text(
                               "Blog",
-                              style: GoogleFonts.aBeeZee(
-                                textStyle: TextStyle(color: Colors.white),
+                              style: TextStyle(
+                                fontFamily: "ABeeZee",
+                                color: Colors.white,
                               ),
                             ),
                             onTap: () {
@@ -136,8 +136,9 @@ class SmallDrawer extends StatelessWidget {
                           ListTile(
                             title: Text(
                               "Contact",
-                              style: GoogleFonts.aBeeZee(
-                                textStyle: TextStyle(color: Colors.white),
+                              style: TextStyle(
+                                fontFamily: "ABeeZee",
+                                color: Colors.white,
                               ),
                             ),
                             onTap: () {

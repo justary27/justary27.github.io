@@ -21,42 +21,45 @@ class WorkDescriptor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: size.width,
-      height: size.height,
-      child: Stack(
-        children: [
-          Container(
-            width: size.width,
-            height: size.height,
-            padding: EdgeInsets.symmetric(
-              horizontal: 0.015 * size.width,
-              vertical: 0.1 * size.height,
-            ),
-            alignment: (isRightAligned == null)
-                ? Alignment.centerRight
-                : Alignment.centerLeft,
-            child: Container(
-              width: 0.4 * size.width,
+    return Material(
+      color: Colors.transparent,
+      child: SizedBox(
+        width: size.width,
+        height: size.height,
+        child: Stack(
+          children: [
+            Container(
+              width: size.width,
               height: size.height,
-              child: model,
+              padding: EdgeInsets.symmetric(
+                horizontal: 0.015 * size.width,
+                vertical: 0.1 * size.height,
+              ),
+              alignment: (isRightAligned == null)
+                  ? Alignment.centerRight
+                  : Alignment.centerLeft,
+              child: Container(
+                width: 0.4 * size.width,
+                height: size.height,
+                child: model,
+              ),
             ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: 0.1 * size.width,
-              vertical: 0.1 * size.height,
-            ),
-            width: size.width,
-            height: size.height,
-            child: Column(
-              crossAxisAlignment: (isRightAligned == null)
-                  ? CrossAxisAlignment.start
-                  : CrossAxisAlignment.end,
-              children: buildWorkWidget(),
-            ),
-          )
-        ],
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 0.1 * size.width,
+                vertical: 0.1 * size.height,
+              ),
+              width: size.width,
+              height: size.height,
+              child: Column(
+                crossAxisAlignment: (isRightAligned == null)
+                    ? CrossAxisAlignment.start
+                    : CrossAxisAlignment.end,
+                children: buildWorkWidget(),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
