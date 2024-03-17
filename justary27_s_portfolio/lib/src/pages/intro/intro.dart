@@ -1,26 +1,27 @@
 // ignore_for_file: avoid_web_libraries_in_flutter
 
-import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:justary27_s_portfolio/src/components/footer.dart';
-import 'package:justary27_s_portfolio/src/constants/page_constants/intro_constants.dart';
-import 'package:justary27_s_portfolio/src/customIcons/flutterIcon.dart';
-import 'package:justary27_s_portfolio/src/customIcons/djangoIcon.dart';
-import 'dart:math' as math;
-import '../../components/page_components/promo_components.dart';
-import 'introConstraints.dart';
-import 'package:justary27_s_portfolio/src/components/rPainter.dart';
 import 'dart:html' as html;
+import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'introConstraints.dart';
+import '../../components/footer.dart';
+import '../../components/rPainter.dart';
+import '../../components/deviceDetector.dart';
+import '../../constants/page_constants/intro_constants.dart';
+import '../../components/page_components/promo_components.dart';
 
 const Map _cf = ConstraintFactors;
 
 class IntroPage extends StatefulWidget {
   final Size size;
-  final String deviceType;
   const IntroPage({
     Key? key,
     required this.size,
-    required this.deviceType,
   }) : super(key: key);
 
   @override
@@ -31,14 +32,12 @@ class _IntroPageState extends State<IntroPage> {
   @override
   Widget build(BuildContext context) {
     final Size size = widget.size;
-    final String deviceType = widget.deviceType;
 
-    return GlowingOverscrollIndicator(
-      axisDirection: AxisDirection.up,
-      color: Color.fromRGBO(255, 175, 175, 1).withOpacity(0.3),
-      child: Material(
-        elevation: 0,
-        color: Colors.transparent,
+    return LayoutBuilder(builder: (context, constraints) {
+      String _deviceType = deviceDetector(constraints.maxWidth);
+      return GlowingOverscrollIndicator(
+        axisDirection: AxisDirection.up,
+        color: Color.fromRGBO(255, 175, 175, 1).withOpacity(0.3),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -46,7 +45,6 @@ class _IntroPageState extends State<IntroPage> {
                 children: [
                   Container(
                     width: size.width,
-                    height: 4.3 * size.height,
                     child: Column(
                       children: [
                         Container(
@@ -77,17 +75,11 @@ class _IntroPageState extends State<IntroPage> {
                             ),
                           ),
                         ),
-                        Container(
-                          width: size.width,
-                          height: 0.3 * size.height,
-                          color: Color.fromRGBO(134, 149, 179, 1.0),
-                        )
                       ],
                     ),
                   ),
                   Container(
                     width: size.width,
-                    height: 4.3 * size.height,
                     color: Colors.transparent,
                     child: Column(
                       children: [
@@ -100,7 +92,8 @@ class _IntroPageState extends State<IntroPage> {
                             style: TextStyle(
                               fontFamily: "CoveredByYourGrace",
                               color: Color.fromRGBO(14, 43, 133, 1.0),
-                              fontSize: _cf['heading'][deviceType] * size.width,
+                              fontSize:
+                                  _cf['heading'][_deviceType] * size.width,
                             ),
                           ),
                         ),
@@ -118,21 +111,24 @@ class _IntroPageState extends State<IntroPage> {
                                 child: Text(
                                   "Bonjour!",
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontFamily: "Caveat",
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white.withOpacity(0.7),
-                                    fontSize:
-                                        _cf['taLine'][deviceType] * size.width,
+                                  style: GoogleFonts.abel(
+                                    textStyle: TextStyle(
+                                      // fontFamily: "Caveat",
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white.withOpacity(0.7),
+                                      fontSize: _cf['taLine'][_deviceType] *
+                                          size.width,
+                                    ),
                                   ),
                                 ),
                               ),
                               Transform.rotate(
                                 angle: -math.pi / 9,
                                 child: Container(
-                                  width: _cf['rotLine'][deviceType]['width'] *
+                                  width: _cf['rotLine'][_deviceType]['width'] *
                                       size.width,
-                                  height: _cf['rotLine'][deviceType]['height'] *
+                                  height: _cf['rotLine'][_deviceType]
+                                          ['height'] *
                                       size.height,
                                   color: Color.fromRGBO(20, 62, 188, 1),
                                 ),
@@ -144,12 +140,14 @@ class _IntroPageState extends State<IntroPage> {
                                 child: Text(
                                   "I'm Aryan Ranjan.",
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontFamily: "Caveat",
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromRGBO(14, 43, 133, 1.0),
-                                    fontSize:
-                                        _cf['name'][deviceType] * size.width,
+                                  style: GoogleFonts.openSansCondensed(
+                                    textStyle: TextStyle(
+                                      // fontFamily: "Caveat",
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromRGBO(14, 43, 133, 1.0),
+                                      fontSize:
+                                          _cf['name'][_deviceType] * size.width,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -159,11 +157,13 @@ class _IntroPageState extends State<IntroPage> {
                                 child: Text(
                                   introDesc.replaceAll("\n", ""),
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontFamily: "ABeeZee",
-                                    color: Colors.black,
-                                    fontSize:
-                                        _cf['aboutMe'][deviceType] * size.width,
+                                  style: GoogleFonts.redHatDisplay(
+                                    textStyle: TextStyle(
+                                      // fontFamily: "ABeeZee",
+                                      color: Colors.black,
+                                      fontSize: _cf['aboutMe'][_deviceType] *
+                                          size.width,
+                                    ),
                                   ),
                                 ),
                               )
@@ -182,122 +182,264 @@ class _IntroPageState extends State<IntroPage> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    "Tech-stack",
-                                    style: TextStyle(fontFamily: "Ubuntu"),
+                                    "Tech Stack",
+                                    style: GoogleFonts.abel(
+                                      textStyle: TextStyle(
+                                        // fontFamily: "Caveat",
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white.withOpacity(0.7),
+                                        fontSize: _cf['taLine'][_deviceType] *
+                                            size.width,
+                                      ),
+                                    ),
+                                    // style: TextStyle(fontFamily: "Ubuntu"),
+                                  ),
+                                ),
+                                Transform.rotate(
+                                  angle: -math.pi / 9,
+                                  child: Container(
+                                    width: _cf['rotLine'][_deviceType]
+                                            ['width'] *
+                                        size.width,
+                                    height: _cf['rotLine'][_deviceType]
+                                            ['height'] *
+                                        size.height,
+                                    color: Color.fromRGBO(20, 62, 188, 1),
                                   ),
                                 ),
                                 ButtonBar(
                                   alignment: MainAxisAlignment.center,
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: IconButton(
-                                        onPressed: () {
-                                          html.window.open(
-                                              'https://python.org', 'New Tab');
-                                        },
-                                        icon: Icon(
-                                          FontAwesomeIcons.python,
-                                          size: _cf['techStack'][deviceType],
-                                        ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://python.org',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "images/intro/python.svg",
+                                        height: 40,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: IconButton(
-                                        onPressed: () {
-                                          html.window.open(
-                                              'https://flutter.dev', 'New Tab');
-                                        },
-                                        icon: Icon(
-                                          HomeButton.flutter,
-                                          size: _cf['techStack'][deviceType],
-                                        ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://dart.dev/',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "images/intro/dart.svg",
+                                        height: 40,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: IconButton(
-                                        onPressed: () {
-                                          html.window.open(
-                                              'https://www.djangoproject.com/',
-                                              'New Tab');
-                                        },
-                                        icon: Icon(
-                                          DjangoButton.django,
-                                          size: _cf['techStack'][deviceType],
-                                        ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://www.javascript.com/',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "images/intro/js.svg",
+                                        height: 40,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: IconButton(
-                                        onPressed: () {
-                                          html.window.open(
-                                            'https://html5.org/',
-                                            'New Tab',
-                                          );
-                                        },
-                                        icon: Icon(
-                                          FontAwesomeIcons.html5,
-                                          size: _cf['techStack'][deviceType],
-                                        ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://www.typescriptlang.org/',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "images/intro/ts.svg",
+                                        height: 40,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: IconButton(
-                                        onPressed: () {
-                                          html.window.open(
-                                            'https://developer.mozilla.org/en-US/docs/Web/CSS',
-                                            'New Tab',
-                                          );
-                                        },
-                                        icon: Icon(
-                                          FontAwesomeIcons.css3,
-                                          size: _cf['techStack'][deviceType],
-                                        ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://isocpp.org/',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "images/intro/cpp.svg",
+                                        height: 40,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: IconButton(
-                                        onPressed: () {
-                                          html.window.open(
-                                            'https://www.javascript.com/',
-                                            'New Tab',
-                                          );
-                                        },
-                                        icon: Icon(
-                                          FontAwesomeIcons.js,
-                                          size: _cf['techStack'][deviceType],
-                                        ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://go.dev/',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "images/intro/go.svg",
+                                        height: 40,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: IconButton(
-                                        onPressed: () {
-                                          html.window.open(
-                                            'https://reactjs.org',
-                                            'New Tab',
-                                          );
-                                        },
-                                        icon: Icon(
-                                          FontAwesomeIcons.react,
-                                          size: _cf['techStack'][deviceType],
-                                        ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://www.java.com/en/',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "images/intro/java.svg",
+                                        height: 40,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://julialang.org/',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "images/intro/julia.svg",
+                                        height: 40,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://learn.microsoft.com/en-us/dotnet/csharp/',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "images/intro/csharp.svg",
+                                        height: 40,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://www.terraform.io/',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "images/intro/terraform.svg",
+                                        height: 40,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://html5.org/',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: Icon(
+                                        FontAwesomeIcons.html5,
+                                        size: _cf['techStack'][_deviceType],
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://developer.mozilla.org/en-US/docs/Web/CSS',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: Icon(
+                                        FontAwesomeIcons.css3,
+                                        size: _cf['techStack'][_deviceType],
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://sass-lang.com/',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "images/intro/sass.svg",
+                                        height: 40,
                                       ),
                                     ),
                                   ],
-                                )
+                                ),
+                                ButtonBar(
+                                  alignment: MainAxisAlignment.center,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://www.djangoproject.com/',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "images/intro/django.svg",
+                                        height: 40,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://flutter.dev/',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "images/intro/flutter.svg",
+                                        height: 40,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://reactjs.org',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: Icon(
+                                        FontAwesomeIcons.react,
+                                        size: _cf['techStack'][_deviceType],
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://reactjs.org',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: SvgPicture.asset(
+                                        "images/intro/firebase.svg",
+                                        height: 40,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        html.window.open(
+                                          'https://reactjs.org',
+                                          'New Tab',
+                                        );
+                                      },
+                                      icon: Icon(
+                                        FontAwesomeIcons.aws,
+                                        size: _cf['techStack'][_deviceType],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
                           ),
                         ),
                         PromoRedirector(
                           size: size,
-                          deviceType: deviceType,
+                          deviceType: _deviceType,
                           pageName: "Business?",
                           pageDescriptor: "Check out my resume!",
                           button: TextButton.icon(
@@ -321,9 +463,8 @@ class _IntroPageState extends State<IntroPage> {
                             ),
                           ),
                         ),
-                        NavBar(
+                        Footer(
                           size: size,
-                          deviceType: deviceType,
                         ),
                       ],
                     ),
@@ -333,8 +474,8 @@ class _IntroPageState extends State<IntroPage> {
             ],
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
 

@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:justary27_s_portfolio/src/components/footer.dart';
-import 'package:justary27_s_portfolio/src/components/page_components/promo_components.dart';
-import 'package:justary27_s_portfolio/src/constants/page_constants/who_constants.dart';
-import 'package:justary27_s_portfolio/src/routes/routing.dart';
-import '../../app.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import 'whoConstraints.dart';
-import 'package:justary27_s_portfolio/src/components/rPainter.dart';
+import '../../routes/routing.dart';
+import '../../components/footer.dart';
+import '../../components/rPainter.dart';
+import '../../components/deviceDetector.dart';
+import '../../utils/handlers/route_handler.dart';
+import '../../constants/page_constants/who_constants.dart';
+import '../../components/page_components/promo_components.dart';
 
 const Map _cf = ConstraintFactors;
 
 class WhoPage extends StatefulWidget {
   final Size size;
-  final String deviceType;
   const WhoPage({
     Key? key,
     required this.size,
-    required this.deviceType,
   }) : super(key: key);
 
   @override
@@ -26,15 +27,14 @@ class _WhoPageState extends State<WhoPage> {
   @override
   Widget build(BuildContext context) {
     final Size size = widget.size;
-    final String deviceType = widget.deviceType;
 
-    return GlowingOverscrollIndicator(
-      axisDirection: AxisDirection.up,
-      color: Color.fromRGBO(198, 197, 255, 1.0).withOpacity(0.3),
-      child: Material(
-        elevation: 0,
-        color: Colors.transparent,
+    return LayoutBuilder(builder: (context, constraints) {
+      String _deviceType = deviceDetector(constraints.maxWidth);
+      return GlowingOverscrollIndicator(
+        axisDirection: AxisDirection.up,
+        color: Color.fromRGBO(198, 197, 255, 1.0).withOpacity(0.3),
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Column(
             children: [
               Stack(
@@ -76,11 +76,6 @@ class _WhoPageState extends State<WhoPage> {
                                 Color.fromRGBO(184, 194, 215, 1.0)),
                           ),
                         ),
-                        Container(
-                          width: size.width,
-                          height: 0.3 * size.height,
-                          color: Color.fromRGBO(134, 149, 179, 1.0),
-                        )
                       ],
                     ),
                   ),
@@ -96,7 +91,8 @@ class _WhoPageState extends State<WhoPage> {
                             style: TextStyle(
                               fontFamily: "CoveredByYourGrace",
                               color: Color.fromRGBO(14, 43, 133, 1.0),
-                              fontSize: _cf['heading'][deviceType] * size.width,
+                              fontSize:
+                                  _cf['heading'][_deviceType] * size.width,
                             ),
                           ),
                         ),
@@ -111,7 +107,8 @@ class _WhoPageState extends State<WhoPage> {
                               ),
                               Container(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 0.1 * size.width),
+                                  horizontal: 0.1 * size.width,
+                                ),
                                 width: 0.7 * size.width,
                                 height: 1.5 * size.height,
                                 child: Column(
@@ -120,22 +117,28 @@ class _WhoPageState extends State<WhoPage> {
                                   children: [
                                     Text(
                                       "Present",
-                                      style: TextStyle(
-                                          fontFamily: "Caveat",
+                                      style: GoogleFonts.openSans(
+                                        textStyle: TextStyle(
+                                          // fontFamily: "Caveat",
                                           color:
                                               Color.fromRGBO(14, 43, 133, 1.0),
-                                          fontSize: _cf['time'][deviceType] *
+                                          fontSize: _cf['time'][_deviceType] *
                                               size.width,
-                                          fontWeight: FontWeight.bold),
+                                          // fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                     ),
                                     Text(
                                       presentDesc.replaceAll("\n", ""),
                                       textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        fontFamily: "ABeeZee",
-                                        color: Colors.black,
-                                        fontSize: _cf['timeDesc'][deviceType] *
-                                            size.width,
+                                      style: GoogleFonts.redHatDisplay(
+                                        textStyle: TextStyle(
+                                          // fontFamily: "ABeeZee",
+                                          color: Colors.black,
+                                          fontSize: _cf['timeDesc']
+                                                  [_deviceType] *
+                                              size.width,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -151,7 +154,8 @@ class _WhoPageState extends State<WhoPage> {
                             children: [
                               Container(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 0.1 * size.width),
+                                  horizontal: 0.1 * size.width,
+                                ),
                                 width: 0.7 * size.width,
                                 height: 1.5 * size.height,
                                 child: Column(
@@ -160,22 +164,27 @@ class _WhoPageState extends State<WhoPage> {
                                   children: [
                                     Text(
                                       "Future",
-                                      style: TextStyle(
-                                        fontFamily: "Caveat",
-                                        fontWeight: FontWeight.bold,
-                                        color: Color.fromRGBO(14, 43, 133, 1.0),
-                                        fontSize: _cf['time'][deviceType] *
-                                            size.width,
+                                      style: GoogleFonts.openSans(
+                                        textStyle: TextStyle(
+                                          // fontFamily: "Caveat",
+                                          color:
+                                              Color.fromRGBO(14, 43, 133, 1.0),
+                                          fontSize: _cf['time'][_deviceType] *
+                                              size.width,
+                                        ),
                                       ),
                                     ),
                                     Text(
                                       futureDesc.replaceAll("\n", ""),
                                       textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        fontFamily: "ABeeZee",
-                                        color: Colors.black,
-                                        fontSize: _cf['timeDesc'][deviceType] *
-                                            size.width,
+                                      style: GoogleFonts.redHatDisplay(
+                                        textStyle: TextStyle(
+                                          // fontFamily: "ABeeZee",
+                                          color: Colors.black,
+                                          fontSize: _cf['timeDesc']
+                                                  [_deviceType] *
+                                              size.width,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -199,7 +208,8 @@ class _WhoPageState extends State<WhoPage> {
                               ),
                               Container(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 0.1 * size.width),
+                                  horizontal: 0.1 * size.width,
+                                ),
                                 width: 0.7 * size.width,
                                 height: 1.5 * size.height,
                                 child: Column(
@@ -208,22 +218,27 @@ class _WhoPageState extends State<WhoPage> {
                                   children: [
                                     Text(
                                       "Past",
-                                      style: TextStyle(
-                                          fontFamily: "Caveat",
-                                          fontWeight: FontWeight.bold,
+                                      style: GoogleFonts.openSans(
+                                        textStyle: TextStyle(
+                                          // fontFamily: "Caveat",
                                           color:
                                               Color.fromRGBO(14, 43, 133, 1.0),
-                                          fontSize: _cf['time'][deviceType] *
-                                              size.width),
+                                          fontSize: _cf['time'][_deviceType] *
+                                              size.width,
+                                        ),
+                                      ),
                                     ),
                                     Text(
                                       pastDesc.replaceAll("\n", ""),
                                       textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        fontFamily: "ABeeZee",
-                                        color: Colors.black,
-                                        fontSize: _cf['timeDesc'][deviceType] *
-                                            size.width,
+                                      style: GoogleFonts.redHatDisplay(
+                                        textStyle: TextStyle(
+                                          // fontFamily: "ABeeZee",
+                                          color: Colors.black,
+                                          fontSize: _cf['timeDesc']
+                                                  [_deviceType] *
+                                              size.width,
+                                        ),
                                       ),
                                     )
                                   ],
@@ -234,7 +249,7 @@ class _WhoPageState extends State<WhoPage> {
                         ),
                         PromoRedirector(
                           size: size,
-                          deviceType: deviceType,
+                          deviceType: _deviceType,
                           pageName: "Blog",
                           pageDescriptor: "Know more 'bout me!",
                           button: TextButton.icon(
@@ -243,9 +258,7 @@ class _WhoPageState extends State<WhoPage> {
                               color: Colors.white.withOpacity(0.7),
                             ),
                             onPressed: () {
-                              if (RouteManager.currentRoute != "blog") {
-                                RouteManager.navigateToBlog(navigator);
-                              }
+                              router.push(RouteHandler.blogPage);
                             },
                             label: Text(
                               "Blog",
@@ -257,9 +270,8 @@ class _WhoPageState extends State<WhoPage> {
                             ),
                           ),
                         ),
-                        NavBar(
+                        Footer(
                           size: size,
-                          deviceType: deviceType,
                         ),
                       ],
                     ),
@@ -269,8 +281,8 @@ class _WhoPageState extends State<WhoPage> {
             ],
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
 

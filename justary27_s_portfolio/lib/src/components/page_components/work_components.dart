@@ -5,7 +5,7 @@ class WorkDescriptor extends StatelessWidget {
   final Text title;
   final Text subtitle;
   final Text description;
-  final List<IconButton> buttonLinks;
+  final List<Widget> buttonLinks;
   final dynamic model;
   final bool? isRightAligned;
   const WorkDescriptor({

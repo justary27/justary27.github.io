@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:justary27_s_portfolio/src/components/blog_dialog/blog_dialog.dart';
-import 'package:justary27_s_portfolio/src/components/footer.dart';
-import 'package:justary27_s_portfolio/src/models/blog_model.dart';
-import 'package:justary27_s_portfolio/src/services/database.dart';
-import '../../app.dart';
-import '../../components/page_components/promo_components.dart';
-import '../../routes/routing.dart';
+
 import 'blogConstraints.dart';
-import 'package:justary27_s_portfolio/src/components/rPainter.dart';
+import '../../routes/routing.dart';
+import '../../components/footer.dart';
+import '../../models/blog_model.dart';
+import '../../services/database.dart';
+import '../../components/rPainter.dart';
+import '../../components/deviceDetector.dart';
+import '../../utils/handlers/route_handler.dart';
+import '../../components/blog_dialog/blog_dialog.dart';
+import '../../components/page_components/promo_components.dart';
 
 const Map _cf = ConstraintFactors;
 
 class BlogPage extends StatefulWidget {
   final Size size;
-  final String deviceType;
 
   const BlogPage({
     Key? key,
     required this.size,
-    required this.deviceType,
   }) : super(key: key);
 
   @override
@@ -29,14 +29,12 @@ class _BlogPageState extends State<BlogPage> {
   @override
   Widget build(BuildContext context) {
     final Size size = widget.size;
-    final String deviceType = widget.deviceType;
 
-    return GlowingOverscrollIndicator(
-      axisDirection: AxisDirection.up,
-      color: Color.fromRGBO(252, 220, 102, 1.0).withOpacity(0.3),
-      child: Material(
-        elevation: 0,
-        color: Colors.transparent,
+    return LayoutBuilder(builder: (context, constraints) {
+      String _deviceType = deviceDetector(constraints.maxWidth);
+      return GlowingOverscrollIndicator(
+        axisDirection: AxisDirection.up,
+        color: Color.fromRGBO(252, 220, 102, 1.0).withOpacity(0.3),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -90,11 +88,6 @@ class _BlogPageState extends State<BlogPage> {
                                 ]),
                           ),
                         ),
-                        Container(
-                          width: size.width,
-                          height: 0.3 * size.height,
-                          color: Color.fromRGBO(134, 149, 179, 1.0),
-                        )
                       ],
                     ),
                   ),
@@ -110,7 +103,8 @@ class _BlogPageState extends State<BlogPage> {
                             style: TextStyle(
                               fontFamily: "CoveredByYourGrace",
                               color: Color.fromRGBO(247, 250, 249, 1.0),
-                              fontSize: _cf['heading'][deviceType] * size.width,
+                              fontSize:
+                                  _cf['heading'][_deviceType] * size.width,
                             ),
                           ),
                         ),
@@ -141,7 +135,7 @@ class _BlogPageState extends State<BlogPage> {
                                           fontFamily: "Itim",
                                           color: Color(0xFFFA8C5D),
                                           fontSize: _cf['blogList']
-                                                  [deviceType] *
+                                                  [_deviceType] *
                                               size.width,
                                         ),
                                       ),
@@ -273,7 +267,7 @@ class _BlogPageState extends State<BlogPage> {
                                                                         child: blogProvider(
                                                                             size,
                                                                             snapshot.data![index],
-                                                                            deviceType),
+                                                                            _deviceType),
                                                                       );
                                                                     });
                                                               },
@@ -366,7 +360,7 @@ class _BlogPageState extends State<BlogPage> {
                                                                         child: blogProvider(
                                                                             size,
                                                                             snapshot.data![index],
-                                                                            deviceType),
+                                                                            _deviceType),
                                                                       );
                                                                     });
                                                               },
@@ -433,7 +427,7 @@ class _BlogPageState extends State<BlogPage> {
                         ),
                         PromoRedirector(
                           size: size,
-                          deviceType: deviceType,
+                          deviceType: _deviceType,
                           pageName: "Work",
                           pageDescriptor: "Check out all of my work!",
                           button: TextButton.icon(
@@ -442,9 +436,7 @@ class _BlogPageState extends State<BlogPage> {
                               color: Color.fromRGBO(20, 62, 188, 1),
                             ),
                             onPressed: () {
-                              if (RouteManager.currentRoute != "work") {
-                                RouteManager.navigateToWork(navigator);
-                              }
+                              router.push(RouteHandler.workPage);
                             },
                             label: Text(
                               "Work",
@@ -456,9 +448,8 @@ class _BlogPageState extends State<BlogPage> {
                             ),
                           ),
                         ),
-                        NavBar(
+                        Footer(
                           size: size,
-                          deviceType: deviceType,
                         ),
                       ],
                     ),
@@ -468,8 +459,8 @@ class _BlogPageState extends State<BlogPage> {
             ],
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../routes/routing.dart';
+import '../../utils/handlers/route_handler.dart';
 import '../rPainter.dart';
 import 'contact.dart';
 
@@ -60,13 +61,12 @@ class SmallDrawer extends StatelessWidget {
                             child: SvgPicture.asset(
                               "images/ar.svg",
                               height: 40,
-                              color: Colors.white,
+                              colorFilter: ColorFilter.mode(
+                                Colors.white,
+                                BlendMode.srcIn,
+                              ),
                             ),
-                            onPressed: () {
-                              if (RouteManager.currentRoute != "home") {
-                                RouteManager.navigateToHome(navigator);
-                              }
-                            },
+                            onPressed: () => router.push(RouteManager.homePage),
                             color: Colors.transparent,
                           ),
                         ),
@@ -87,11 +87,7 @@ class SmallDrawer extends StatelessWidget {
                                 color: Colors.white,
                               ),
                             ),
-                            onTap: () {
-                              if (RouteManager.currentRoute != "intro") {
-                                RouteManager.navigateToIntro(navigator);
-                              }
-                            },
+                            onTap: () => router.push(RouteHandler.introPage),
                           ),
                           ListTile(
                             title: Text(
@@ -99,11 +95,7 @@ class SmallDrawer extends StatelessWidget {
                               style: TextStyle(
                                   fontFamily: "ABeeZee", color: Colors.white),
                             ),
-                            onTap: () {
-                              if (RouteManager.currentRoute != "who") {
-                                RouteManager.navigateToWho(navigator);
-                              }
-                            },
+                            onTap: () => router.push(RouteHandler.whoPage),
                           ),
                           ListTile(
                             title: Text(
@@ -113,11 +105,7 @@ class SmallDrawer extends StatelessWidget {
                                 color: Colors.white,
                               ),
                             ),
-                            onTap: () {
-                              if (RouteManager.currentRoute != "work") {
-                                RouteManager.navigateToWork(navigator);
-                              }
-                            },
+                            onTap: () => router.push(RouteHandler.workPage),
                           ),
                           ListTile(
                             title: Text(
@@ -127,11 +115,7 @@ class SmallDrawer extends StatelessWidget {
                                 color: Colors.white,
                               ),
                             ),
-                            onTap: () {
-                              if (RouteManager.currentRoute != "blog") {
-                                RouteManager.navigateToBlog(navigator);
-                              }
-                            },
+                            onTap: () => router.push(RouteHandler.blogPage),
                           ),
                           ListTile(
                             title: Text(

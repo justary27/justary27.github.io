@@ -1,12 +1,13 @@
 // ignore_for_file: avoid_web_libraries_in_flutter
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:justary27_s_portfolio/src/components/deviceDetector.dart';
-import 'package:justary27_s_portfolio/src/routes/routing.dart';
 import 'dart:html' as html;
 
-import '../app.dart';
+import '../components/anchor.dart';
+import '../components/deviceDetector.dart';
+import '../utils/handlers/route_handler.dart';
 
 Map _cf = {
   'techStack': {
@@ -19,178 +20,186 @@ Map _cf = {
   },
 };
 
-class NavBar extends StatefulWidget {
+class Footer extends StatefulWidget {
   final Size size;
-  final String deviceType;
 
-  const NavBar({Key? key, required this.size, required this.deviceType})
-      : super(key: key);
+  const Footer({Key? key, required this.size}) : super(key: key);
 
   @override
-  _NavBarState createState() => _NavBarState();
+  _FooterState createState() => _FooterState();
 }
 
-class _NavBarState extends State<NavBar> {
+class _FooterState extends State<Footer> {
+  void _handleRouteNavigation(String destination) {
+    if (GoRouterState.of(context).uri.path != destination) {
+      context.push(destination);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = widget.size;
-    final String deviceType = deviceDetector(size);
-    return Stack(
-      children: [
-        Container(
-          width: size.width,
-          height: 0.3 * size.height,
-          child: CustomPaint(
-            painter: CircuitPainter(),
+    final String deviceType = deviceDetector(size.width);
+
+    if (GoRouterState.of(context).uri.path == RouteHandler.homePage)
+      return Container(
+        width: size.width,
+        height: 0,
+      );
+
+    return Material(
+      color: Colors.transparent,
+      child: Stack(
+        children: [
+          Container(
+            width: size.width,
+            height: 0.3 * size.height,
+            color: Color.fromRGBO(134, 149, 179, 1.0),
+            child: CustomPaint(
+              painter: CircuitPainter(),
+            ),
           ),
-        ),
-        Container(
-          alignment: Alignment.topLeft,
-          width: size.width,
-          height: 0.3 * size.height,
-          color: Colors.transparent,
-          child: Row(
-            children: [
-              Container(
-                width: 0.3 * size.width,
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Aryan Ranjan",
-                      style: TextStyle(
+          Container(
+            alignment: Alignment.topLeft,
+            width: size.width,
+            height: 0.3 * size.height,
+            color: Colors.transparent,
+            child: Row(
+              children: [
+                Container(
+                  width: 0.3 * size.width,
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Aryan Ranjan",
+                        style: TextStyle(
                           fontFamily: "Allison",
                           color: Colors.white.withOpacity(0.7),
-                          fontSize: 0.05 * size.width),
-                    ),
-                  ],
+                          fontSize: 0.05 * size.width,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                width: 0.2 * size.width,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    MaterialButton(
-                      onPressed: () {
-                        if (RouteManager.currentRoute != "intro") {
-                          RouteManager.navigateToIntro(navigator);
-                        }
-                      },
-                      child: Text(
-                        "Intro",
-                        style: TextStyle(
-                          fontFamily: "ABeeZee",
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
-                      child: MaterialButton(
+                Container(
+                  width: 0.2 * size.width,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      MaterialButton(
                         onPressed: () {
-                          if (RouteManager.currentRoute != "who") {
-                            RouteManager.navigateToWho(navigator);
-                          }
+                          _handleRouteNavigation(RouteHandler.introPage);
                         },
                         child: Text(
-                          "Who",
+                          "Intro",
                           style: TextStyle(
                             fontFamily: "ABeeZee",
                             color: Colors.white,
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
-                      child: MaterialButton(
-                        onPressed: () {
-                          if (RouteManager.currentRoute != "work") {
-                            RouteManager.navigateToWork(navigator);
-                          }
-                        },
-                        child: Text(
-                          "Work",
-                          style: TextStyle(
-                            fontFamily: "ABeeZee",
-                            color: Colors.white,
+                      Padding(
+                        padding:
+                            EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
+                        child: MaterialButton(
+                          onPressed: () {
+                            _handleRouteNavigation(RouteHandler.whoPage);
+                          },
+                          child: Text(
+                            "Who",
+                            style: TextStyle(
+                              fontFamily: "ABeeZee",
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
-                      child: MaterialButton(
-                        onPressed: () {
-                          if (RouteManager.currentRoute != "blog") {
-                            RouteManager.navigateToBlog(navigator);
-                          }
-                        },
-                        child: Text(
-                          "Blog",
-                          style: TextStyle(
-                            fontFamily: "ABeeZee",
-                            color: Colors.white,
+                      Padding(
+                        padding:
+                            EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
+                        child: MaterialButton(
+                          onPressed: () {
+                            _handleRouteNavigation(RouteHandler.workPage);
+                          },
+                          child: Text(
+                            "Work",
+                            style: TextStyle(
+                              fontFamily: "ABeeZee",
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding:
+                            EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
+                        child: MaterialButton(
+                          onPressed: () {
+                            _handleRouteNavigation(RouteHandler.blogPage);
+                          },
+                          child: Text(
+                            "Blog",
+                            style: TextStyle(
+                              fontFamily: "ABeeZee",
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                width: 0.50 * size.width,
-                alignment: Alignment.center,
-                child: (deviceType == 'mobiles390-' ||
-                        deviceType == 'mobiles450-')
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Material(
-                                      color: Colors.transparent,
-                                      child: IconButton(
-                                        iconSize: _cf['techStack'][deviceType],
-                                        onPressed: () {},
-                                        icon: Icon(
-                                          Icons.alternate_email_rounded,
-                                        ),
-                                        color: Colors.white.withOpacity(0.7),
-                                      )),
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        0.04 * size.width, 0, 0, 0),
-                                    child: Material(
-                                      color: Colors.transparent,
-                                      child: IconButton(
-                                        iconSize: _cf['techStack'][deviceType],
-                                        onPressed: () {
-                                          html.window.open(
+                Container(
+                  width: 0.50 * size.width,
+                  alignment: Alignment.center,
+                  child: (deviceType == 'mobiles390-' ||
+                          deviceType == 'mobiles450-')
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    IconButton(
+                                      iconSize: _cf['techStack'][deviceType],
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.alternate_email_rounded,
+                                      ),
+                                      color: Colors.white.withOpacity(0.7),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                          0.04 * size.width, 0, 0, 0),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        child: IconButton(
+                                          iconSize: _cf['techStack']
+                                              [deviceType],
+                                          onPressed: () {
+                                            html.window.open(
                                               'https://twitter.com/JustAry27',
-                                              'New Tab');
-                                        },
-                                        icon: Icon(
-                                          FontAwesomeIcons.twitter,
+                                              'New Tab',
+                                            );
+                                          },
+                                          icon: Icon(
+                                            FontAwesomeIcons.twitter,
+                                          ),
+                                          color: Colors.white.withOpacity(0.7),
                                         ),
-                                        color: Colors.white.withOpacity(0.7),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Material(
-                                    color: Colors.transparent,
-                                    child: IconButton(
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    IconButton(
                                       iconSize: _cf['techStack'][deviceType],
                                       onPressed: () {
                                         html.window.open(
@@ -203,125 +212,81 @@ class _NavBarState extends State<NavBar> {
                                       ),
                                       color: Colors.white.withOpacity(0.7),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        0.04 * size.width, 0, 0, 0),
-                                    child: Material(
-                                      color: Colors.transparent,
-                                      child: IconButton(
-                                        iconSize: _cf['techStack'][deviceType],
-                                        onPressed: () {
-                                          html.window.open(
-                                            'https://www.linkedin.com/in/aryan-ranjan27/',
-                                            'New Tab',
-                                          );
-                                        },
-                                        icon: Icon(
-                                          FontAwesomeIcons.linkedin,
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                          0.04 * size.width, 0, 0, 0),
+                                      child: Material(
+                                        color: Colors.transparent,
+                                        child: IconButton(
+                                          iconSize: _cf['techStack']
+                                              [deviceType],
+                                          onPressed: () {
+                                            html.window.open(
+                                              'https://www.linkedin.com/in/aryan-ranjan27/',
+                                              'New Tab',
+                                            );
+                                          },
+                                          icon: Icon(
+                                            FontAwesomeIcons.linkedin,
+                                          ),
+                                          color: Colors.white.withOpacity(0.7),
                                         ),
-                                        color: Colors.white.withOpacity(0.7),
                                       ),
-                                      // child: Link(
-                                      //     uri: Uri.parse(
-                                      //         "https://www.linkedin.com/in/aryan-ranjan-672899205/"),
-                                      //     target: LinkTarget.blank,
-                                      //     builder: (context, openLink) {
-                                      //       return IconButton(
-                                      //         onPressed: () {},
-                                      //         icon: Icon(FontAwesomeIcons.linkedin),
-                                      //         color: Colors.white.withOpacity(0.7),
-                                      //       );
-                                      //     }),
                                     ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          )
-                        ],
-                      )
-                    : Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Material(
-                              color: Colors.transparent,
-                              child: IconButton(
-                                iconSize: _cf['techStack'][deviceType],
-                                onPressed: () {
-                                  html.window.open(
-                                      'mailto:aryan_r@ch.iitr.ac.in',
-                                      'New Tab');
-                                },
-                                icon: Icon(
-                                  Icons.alternate_email_rounded,
-                                ),
-                                color: Colors.white.withOpacity(0.7),
-                              )),
-                          Material(
-                            color: Colors.transparent,
-                            child: IconButton(
+                                  ],
+                                )
+                              ],
+                            )
+                          ],
+                        )
+                      : ButtonBar(
+                          alignment: MainAxisAlignment.center,
+                          children: [
+                            AnchorButton(
                               iconSize: _cf['techStack'][deviceType],
-                              onPressed: () {
-                                html.window.open(
-                                    'https://twitter.com/JustAry27', 'New Tab');
-                              },
+                              destUrl: 'mailto:aryan_r@ch.iitr.ac.in',
+                              icon: Icon(
+                                Icons.alternate_email_rounded,
+                              ),
+                              color: Colors.white.withOpacity(0.7),
+                              parentContext: context,
+                            ),
+                            AnchorButton(
+                              iconSize: _cf['techStack'][deviceType],
+                              destUrl: 'https://twitter.com/JustAry27',
                               icon: Icon(
                                 FontAwesomeIcons.twitter,
                               ),
                               color: Colors.white.withOpacity(0.7),
+                              parentContext: context,
                             ),
-                          ),
-                          Material(
-                            color: Colors.transparent,
-                            child: IconButton(
+                            AnchorButton(
                               iconSize: _cf['techStack'][deviceType],
-                              onPressed: () {
-                                html.window.open(
-                                  'https://github.com/just-ary27',
-                                  'New Tab',
-                                );
-                              },
+                              destUrl: 'https://github.com/just-ary27',
                               icon: Icon(
                                 FontAwesomeIcons.github,
                               ),
                               color: Colors.white.withOpacity(0.7),
+                              parentContext: context,
                             ),
-                          ),
-                          Material(
-                            color: Colors.transparent,
-                            child: IconButton(
+                            AnchorButton(
                               iconSize: _cf['techStack'][deviceType],
-                              onPressed: () {
-                                html.window.open(
+                              destUrl:
                                   'https://www.linkedin.com/in/aryan-ranjan27/',
-                                  'New Tab',
-                                );
-                              },
                               icon: Icon(
                                 FontAwesomeIcons.linkedin,
                               ),
                               color: Colors.white.withOpacity(0.7),
+                              parentContext: context,
                             ),
-                            // child: Link(
-                            //     uri: Uri.parse(
-                            //         "https://www.linkedin.com/in/aryan-ranjan-672899205/"),
-                            //     target: LinkTarget.blank,
-                            //     builder: (context, openLink) {
-                            //       return IconButton(
-                            //         onPressed: () {},
-                            //         icon: Icon(FontAwesomeIcons.linkedin),
-                            //         color: Colors.white.withOpacity(0.7),
-                            //       );
-                            //     }),
-                          ),
-                        ],
-                      ),
-              )
-            ],
+                          ],
+                        ),
+                )
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

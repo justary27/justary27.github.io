@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:justary27_s_portfolio/src/components/navbar/contact.dart';
+import 'package:justary27_s_portfolio/src/utils/handlers/route_handler.dart';
 
-import '../../routes/routing.dart';
-
-class LargeNavBar extends ConsumerStatefulWidget {
+class LargeNavBar extends StatefulWidget {
   final GlobalKey<NavigatorState> navigatorKey;
   final Size size;
   final String deviceType;
@@ -18,10 +17,16 @@ class LargeNavBar extends ConsumerStatefulWidget {
   }) : super(key: key);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _LargeNavBarState();
+  State<LargeNavBar> createState() => _LargeNavBarState();
 }
 
-class _LargeNavBarState extends ConsumerState<LargeNavBar> {
+class _LargeNavBarState extends State<LargeNavBar> {
+  void _handleRouteNavigation(String destination) {
+    if (GoRouterState.of(context).uri.path != destination) {
+      context.push(destination);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -43,18 +48,18 @@ class _LargeNavBarState extends ConsumerState<LargeNavBar> {
       ),
       leading: Container(
         margin: EdgeInsets.only(left: 0.01 * widget.size.width),
-        child: MaterialButton(
-          elevation: 0,
+        child: IconButton(
           splashColor: Colors.white.withOpacity(0.5),
-          child: SvgPicture.asset(
+          icon: SvgPicture.asset(
             "images/ar.svg",
-            color: Colors.white.withOpacity(0.75),
+            colorFilter: ColorFilter.mode(
+              Colors.white.withOpacity(0.75),
+              BlendMode.srcIn,
+            ),
           ),
-          onPressed: () {
-            if (RouteManager.currentRoute != "home") {
-              RouteManager.navigateToHome(widget.navigatorKey);
-            }
-          },
+          onPressed: () => _handleRouteNavigation(
+            RouteHandler.homePage,
+          ),
           color: Colors.transparent,
         ),
       ),
@@ -64,11 +69,9 @@ class _LargeNavBarState extends ConsumerState<LargeNavBar> {
           MouseRegion(
             onHover: (pointer) {},
             child: MaterialButton(
-              onPressed: () {
-                if (RouteManager.currentRoute != "intro") {
-                  RouteManager.navigateToIntro(widget.navigatorKey);
-                }
-              },
+              onPressed: () => _handleRouteNavigation(
+                RouteHandler.introPage,
+              ),
               child: Text(
                 "Intro",
                 style: TextStyle(fontFamily: "ABeeZee", color: Colors.white),
@@ -76,33 +79,27 @@ class _LargeNavBarState extends ConsumerState<LargeNavBar> {
             ),
           ),
           MaterialButton(
-            onPressed: () {
-              if (RouteManager.currentRoute != "who") {
-                RouteManager.navigateToWho(widget.navigatorKey);
-              }
-            },
+            onPressed: () => _handleRouteNavigation(
+              RouteHandler.whoPage,
+            ),
             child: Text(
               "Who",
               style: TextStyle(fontFamily: "ABeeZee", color: Colors.white),
             ),
           ),
           MaterialButton(
-            onPressed: () {
-              if (RouteManager.currentRoute != "work") {
-                RouteManager.navigateToWork(widget.navigatorKey);
-              }
-            },
+            onPressed: () => _handleRouteNavigation(
+              RouteHandler.workPage,
+            ),
             child: Text(
               "Work",
               style: TextStyle(fontFamily: "ABeeZee", color: Colors.white),
             ),
           ),
           MaterialButton(
-            onPressed: () {
-              if (RouteManager.currentRoute != "blog") {
-                RouteManager.navigateToBlog(widget.navigatorKey);
-              }
-            },
+            onPressed: () => _handleRouteNavigation(
+              RouteHandler.blogPage,
+            ),
             child: Text(
               "Blog",
               style: TextStyle(
@@ -118,7 +115,7 @@ class _LargeNavBarState extends ConsumerState<LargeNavBar> {
           onPressed: () {
             showDialog(
               useRootNavigator: false,
-              context: widget.navigatorKey.currentContext!,
+              context: context,
               builder: (context) {
                 return ContactCard(
                     size: widget.size, deviceType: widget.deviceType);

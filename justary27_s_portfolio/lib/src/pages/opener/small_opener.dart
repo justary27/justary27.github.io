@@ -1,10 +1,10 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
-import '../../app.dart';
-import '../../constants/page_constraints/opener_constraints.dart';
 import '../../routes/routing.dart';
+import '../../utils/handlers/route_handler.dart';
+import '../../constants/page_constraints/opener_constraints.dart';
 
 class SmallOpenerPage extends StatelessWidget {
   final Size size;
@@ -74,9 +74,7 @@ class SmallOpenerPage extends StatelessWidget {
                       Icons.arrow_forward_ios_rounded,
                       color: Colors.white,
                     ),
-                    onPressed: () {
-                      RouteManager.navigateToIntro(navigator);
-                    },
+                    onPressed: () => router.push(RouteHandler.introPage),
                     label: FittedBox(
                       child: Text(
                         "Intro",
@@ -116,16 +114,25 @@ class SmallOpenerPage extends StatelessWidget {
                 items: [
                   SvgPicture.asset(
                     "images/ar.svg",
-                    color: Colors.white.withOpacity(0.85),
+                    colorFilter: ColorFilter.mode(
+                      Colors.white.withOpacity(0.85),
+                      BlendMode.srcIn,
+                    ),
                   ),
                   SvgPicture.asset(
                     "images/jane.svg",
                     height: 0.5 * size.height,
-                    color: Colors.white.withOpacity(0.85),
+                    colorFilter: ColorFilter.mode(
+                      Colors.white.withOpacity(0.85),
+                      BlendMode.srcIn,
+                    ),
                   ),
                   SvgPicture.asset(
                     "images/covbot.svg",
-                    color: Colors.white.withOpacity(0.85),
+                    colorFilter: ColorFilter.mode(
+                      Colors.white.withOpacity(0.85),
+                      BlendMode.srcIn,
+                    ),
                   ),
                   SvgPicture.asset(
                     "images/gsoc.svg",
@@ -134,11 +141,17 @@ class SmallOpenerPage extends StatelessWidget {
                   SvgPicture.asset(
                     "images/bugheist.svg",
                     height: 0.1 * size.height,
-                    color: Colors.white.withOpacity(0.85),
+                    colorFilter: ColorFilter.mode(
+                      Colors.white.withOpacity(0.85),
+                      BlendMode.srcIn,
+                    ),
                   ),
                   SvgPicture.asset(
                     "images/lyf.svg",
-                    color: Colors.white.withOpacity(0.85),
+                    colorFilter: ColorFilter.mode(
+                      Colors.white.withOpacity(0.85),
+                      BlendMode.srcIn,
+                    ),
                   ),
                 ],
               ),

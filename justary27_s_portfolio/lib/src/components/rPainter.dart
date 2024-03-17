@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class RoorkeePainter extends CustomPainter {
@@ -17,21 +19,34 @@ class RoorkeePainter extends CustomPainter {
           ]).createShader(Offset.zero & size);
     Path path = Path();
 
-    // path.lineTo(size.width, size.height);
+    path.moveTo(0, 0.65 * size.height);
+    path.lineTo(0.1 * size.width, 0.65 * size.height);
+    path.lineTo(0.1 * size.width, 0.7 * size.height);
 
-    path.moveTo(size.width, 0.48 * size.height);
-    path.quadraticBezierTo(
-      0.9 * size.width,
-      0.5 * size.height,
-      0.9 * size.width,
-      0.7 * size.height,
-    );
-    path.lineTo(0.12 * size.width, 0.7 * size.height);
-    path.lineTo(0.12 * size.width, 0.65 * size.height);
-    path.lineTo(0, 0.65 * size.height);
-    path.lineTo(0, size.height);
+    path.lineTo(0.35 * size.width, 0.7 * size.height);
+    path.lineTo(0.35 * size.width, 0.65 * size.height);
+    path.lineTo(0.65 * size.width, 0.65 * size.height);
+    path.lineTo(0.65 * size.width, 0.7 * size.height);
+
+    path.lineTo(0.9 * size.width, 0.7 * size.height);
+    path.lineTo(0.9 * size.width, 0.65 * size.height);
+    path.lineTo(size.width, 0.65 * size.height);
+
     path.lineTo(size.width, size.height);
+    path.lineTo(0, size.height);
+
     canvas.drawPath(path, paint);
+    canvas.drawArc(
+      Rect.fromCenter(
+        center: Offset(size.width / 2, 0.65 * size.height),
+        height: 0.20 * size.width,
+        width: 0.25 * size.width,
+      ),
+      pi,
+      pi,
+      false,
+      paint,
+    );
   }
 
   @override

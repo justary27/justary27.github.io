@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:justary27_s_portfolio/src/app.dart';
+import 'package:go_router/go_router.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'src/app.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -8,5 +10,6 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  GoRouter.optionURLReflectsImperativeAPIs = true;
+  runApp(MyPortfolio());
 }

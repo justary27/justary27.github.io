@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../routes/routing.dart';
 
-class SmallNavBar extends ConsumerStatefulWidget {
+class SmallNavBar extends StatefulWidget {
   final GlobalKey<NavigatorState> navigatorKey;
   final Size size;
   final String deviceType;
@@ -17,10 +17,16 @@ class SmallNavBar extends ConsumerStatefulWidget {
   }) : super(key: key);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _SmallNavBarState();
+  State<SmallNavBar> createState() => _SmallNavBarState();
 }
 
-class _SmallNavBarState extends ConsumerState<SmallNavBar> {
+class _SmallNavBarState extends State<SmallNavBar> {
+  void _handleRouteNavigation(String destination) {
+    if (GoRouterState.of(context).uri.path != destination) {
+      context.push(destination);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -41,18 +47,18 @@ class _SmallNavBarState extends ConsumerState<SmallNavBar> {
       ),
       leading: Container(
         margin: EdgeInsets.only(left: 0.01 * widget.size.width),
-        child: MaterialButton(
-          elevation: 0,
+        child: IconButton(
           splashColor: Colors.white.withOpacity(0.5),
-          child: SvgPicture.asset(
+          icon: SvgPicture.asset(
             "images/ar.svg",
-            color: Colors.white.withOpacity(0.75),
+            colorFilter: ColorFilter.mode(
+              Colors.white.withOpacity(0.85),
+              BlendMode.srcIn,
+            ),
           ),
-          onPressed: () {
-            if (RouteManager.currentRoute != "home") {
-              RouteManager.navigateToHome(widget.navigatorKey);
-            }
-          },
+          onPressed: () => _handleRouteNavigation(
+            RouteManager.homePage,
+          ),
           color: Colors.transparent,
         ),
       ),

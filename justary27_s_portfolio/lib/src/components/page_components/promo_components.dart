@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:math' as math;
 
 import '../../constants/component_constraints/promo_constraints.dart';
@@ -32,11 +33,14 @@ class PromoRedirector extends StatelessWidget {
             child: Text(
               pageName,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: "Caveat",
-                fontWeight: FontWeight.bold,
-                color: Colors.black.withOpacity(0.5),
-                fontSize: promoConstraints['taLine']![deviceType] * size.width,
+              style: GoogleFonts.abel(
+                textStyle: TextStyle(
+                  // fontFamily: "Caveat",
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black.withOpacity(0.5),
+                  fontSize:
+                      promoConstraints['taLine']![deviceType] * size.width,
+                ),
               ),
             ),
           ),
@@ -56,11 +60,13 @@ class PromoRedirector extends StatelessWidget {
             child: Text(
               pageDescriptor,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: "Caveat",
-                fontWeight: FontWeight.bold,
-                color: Color.fromRGBO(14, 43, 133, 1.0),
-                fontSize: 0.05 * size.width,
+              style: GoogleFonts.openSansCondensed(
+                textStyle: TextStyle(
+                  // fontFamily: "Caveat",
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(14, 43, 133, 1.0),
+                  fontSize: 0.05 * size.width,
+                ),
               ),
             ),
           ),
