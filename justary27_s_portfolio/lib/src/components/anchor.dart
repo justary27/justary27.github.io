@@ -51,7 +51,6 @@ class _AnchorButtonState extends State<AnchorButton> {
   }
 
   void _showDestinationLink(PointerEnterEvent event) {
-    print("object");
     Overlay.of(widget.parentContext).insert(_linkText);
   }
 

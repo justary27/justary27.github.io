@@ -80,14 +80,6 @@ flutter:
     fonts:
     - asset: assets/fonts/Allison-Regular.ttf
 
-  - family: HomeButton
-    fonts:
-    - asset: assets/fonts/HomeButton.ttf
-
-  - family: DjangoButton
-    fonts:
-    - asset: assets/fonts/DjangoButton.ttf
-
   - family: Caveat
     fonts:
     - asset: assets/fonts/caveat/Caveat-Regular.ttf

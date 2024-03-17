@@ -202,7 +202,7 @@ class _WorkPageState extends State<WorkPage> {
                               color: Color.fromRGBO(56, 149, 131, 1.0)
                                   .withOpacity(0.75),
                               iconSize: _cf['projLinks'][_deviceType],
-                              destUrl: "https://github.com/just-ary27/Lyf",
+                              destUrl: "https://github.com/justary27/Lyf",
                               parentContext: context,
                             ),
                             AnchorButton(
@@ -448,14 +448,14 @@ class _WorkPageState extends State<WorkPage> {
                             AnchorButton(
                               iconSize: _cf['projLinks'][_deviceType],
                               color: Color.fromRGBO(22, 133, 111, 1.0),
-                              destUrl: 'https://github.com/just-ary27/CovBot',
+                              destUrl: 'https://github.com/justary27/CovBot',
                               icon: Icon(FontAwesomeIcons.github),
                               parentContext: context,
                             ),
                             AnchorButton(
                               iconSize: _cf['projLinks'][_deviceType],
                               color: Color.fromRGBO(22, 133, 111, 1.0),
-                              destUrl: 'https://just-ary27.github.io/CovBot/',
+                              destUrl: 'https://justary27.github.io/CovBot/',
                               icon: Icon(FontAwesomeIcons.firefoxBrowser),
                               parentContext: context,
                             ),
@@ -571,7 +571,7 @@ class _WorkPageState extends State<WorkPage> {
                               iconSize: _cf['projLinks'][_deviceType],
                               color: Color.fromRGBO(241, 245, 245, 1.0)
                                   .withOpacity(0.5),
-                              destUrl: "https://github.com/just-ary27/CovBot",
+                              destUrl: "https://github.com/justary27/CovBot",
                               icon: Icon(FontAwesomeIcons.github),
                               parentContext: context,
                             ),
@@ -579,7 +579,7 @@ class _WorkPageState extends State<WorkPage> {
                               iconSize: _cf['projLinks'][_deviceType],
                               color: Color.fromRGBO(241, 245, 245, 1.0)
                                   .withOpacity(0.5),
-                              destUrl: "https://just-ary27.github.io/CovBot/",
+                              destUrl: "https://justary27.github.io/CovBot/",
                               icon: Icon(FontAwesomeIcons.firefoxBrowser),
                               parentContext: context,
                             ),
@@ -608,7 +608,7 @@ class _WorkPageState extends State<WorkPage> {
                             ),
                             onPressed: () {
                               html.window.open(
-                                'https://github.com/just-ary27',
+                                'https://github.com/justary27',
                                 'New Tab',
                               );
                             },

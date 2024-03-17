@@ -217,7 +217,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                   builder: (_, __, ___) => IconButton(
                                     onPressed: () {
                                       window.open(
-                                          'https://github.com/just-ary27',
+                                          'https://github.com/justary27',
                                           'New Tab');
                                     },
                                     icon: Icon(
@@ -466,7 +466,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 child: ValueListenableBuilder(
                                   valueListenable: gHovered,
                                   builder: (_, __, ___) => AnchorButton(
-                                    destUrl: 'https://github.com/just-ary27',
+                                    destUrl: 'https://github.com/justary27',
                                     icon: Icon(
                                       FontAwesomeIcons.github,
                                       size: navConstraints['Links'][deviceType],

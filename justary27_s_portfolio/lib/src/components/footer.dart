@@ -203,7 +203,7 @@ class _FooterState extends State<Footer> {
                                       iconSize: _cf['techStack'][deviceType],
                                       onPressed: () {
                                         html.window.open(
-                                          'https://github.com/just-ary27',
+                                          'https://github.com/justary27',
                                           'New Tab',
                                         );
                                       },
@@ -262,7 +262,7 @@ class _FooterState extends State<Footer> {
                             ),
                             AnchorButton(
                               iconSize: _cf['techStack'][deviceType],
-                              destUrl: 'https://github.com/just-ary27',
+                              destUrl: 'https://github.com/justary27',
                               icon: Icon(
                                 FontAwesomeIcons.github,
                               ),
