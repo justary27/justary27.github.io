@@ -1,124 +1,148 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
+import 'contact.dart';
+import '../rPainter.dart';
 import '../../routes/routing.dart';
 import '../../utils/handlers/route_handler.dart';
-import '../rPainter.dart';
-import 'contact.dart';
 
-class SmallDrawer extends StatelessWidget {
-  final GlobalKey<NavigatorState> navigator;
+class SmallDrawer extends StatefulWidget {
+  final GlobalKey<ScaffoldState> navigator;
   final Size size;
   final String deviceType;
   const SmallDrawer({
-    Key? key,
+    super.key,
     required this.navigator,
     required this.deviceType,
     required this.size,
-  }) : super(key: key);
+  });
+
+  @override
+  State<SmallDrawer> createState() => _SmallDrawerState();
+}
+
+class _SmallDrawerState extends State<SmallDrawer> {
+  void _handleRouteNavigation(String destination) {
+    if (GoRouterState.of(context).uri.path != destination) {
+      context.push(destination);
+      widget.navigator.currentState!.closeEndDrawer();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: FittedBox(
         fit: BoxFit.fill,
-        child: Container(
-          height: size.height,
-          width: 0.75 * size.width,
+        child: SizedBox(
+          height: widget.size.height,
+          width: 0.75 * widget.size.width,
           child: Stack(
             children: [
               Container(
-                height: size.height,
-                width: 0.75 * size.width,
-                decoration: BoxDecoration(
+                height: widget.size.height,
+                width: 0.75 * widget.size.width,
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Color.fromRGBO(218, 224, 224, 1.0),
-                        Color.fromRGBO(183, 193, 192, 1.0),
-                      ]),
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomLeft,
+                    colors: [
+                      Color.fromRGBO(218, 224, 224, 1.0),
+                      Color.fromRGBO(183, 193, 192, 1.0),
+                    ],
+                  ),
                 ),
                 child: CustomPaint(
                   painter: RoorkeePainter(
                     RouteManager.currentColor,
-                    Color.fromRGBO(145, 155, 153, 1.0).withOpacity(0.4),
+                    const Color.fromRGBO(145, 155, 153, 1.0).withOpacity(0.4),
                   ),
                 ),
               ),
-              Container(
-                height: size.height,
-                width: 0.75 * size.width,
+              SizedBox(
+                height: widget.size.height,
+                width: 0.75 * widget.size.width,
                 child: Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(0.025 * size.width),
-                          child: MaterialButton(
-                            elevation: 0,
-                            child: SvgPicture.asset(
+                          padding: EdgeInsets.all(0.025 * widget.size.width),
+                          child: IconButton(
+                            onPressed: () =>
+                                context.push(RouteHandler.homePage),
+                            color: Colors.transparent,
+                            icon: SvgPicture.asset(
                               "images/ar.svg",
                               height: 40,
-                              colorFilter: ColorFilter.mode(
+                              colorFilter: const ColorFilter.mode(
                                 Colors.white,
                                 BlendMode.srcIn,
                               ),
                             ),
-                            onPressed: () => router.push(RouteManager.homePage),
-                            color: Colors.transparent,
                           ),
                         ),
                       ],
                     ),
                     Container(
-                      height: 0.8 * size.height,
-                      width: 0.75 * size.width,
+                      height: 0.8 * widget.size.height,
+                      width: 0.75 * widget.size.width,
                       alignment: Alignment.centerLeft,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           ListTile(
-                            title: Text(
+                            title: const Text(
                               "Intro",
                               style: TextStyle(
                                 fontFamily: "ABeeZee",
                                 color: Colors.white,
                               ),
                             ),
-                            onTap: () => router.push(RouteHandler.introPage),
+                            onTap: () => _handleRouteNavigation(
+                              RouteHandler.introPage,
+                            ),
                           ),
                           ListTile(
-                            title: Text(
+                            title: const Text(
                               "Who",
                               style: TextStyle(
-                                  fontFamily: "ABeeZee", color: Colors.white),
+                                fontFamily: "ABeeZee",
+                                color: Colors.white,
+                              ),
                             ),
-                            onTap: () => router.push(RouteHandler.whoPage),
+                            onTap: () => _handleRouteNavigation(
+                              RouteHandler.whoPage,
+                            ),
                           ),
                           ListTile(
-                            title: Text(
+                            title: const Text(
                               "Work",
                               style: TextStyle(
                                 fontFamily: "ABeeZee",
                                 color: Colors.white,
                               ),
                             ),
-                            onTap: () => router.push(RouteHandler.workPage),
+                            onTap: () => _handleRouteNavigation(
+                              RouteHandler.workPage,
+                            ),
                           ),
                           ListTile(
-                            title: Text(
+                            title: const Text(
                               "Blog",
                               style: TextStyle(
                                 fontFamily: "ABeeZee",
                                 color: Colors.white,
                               ),
                             ),
-                            onTap: () => router.push(RouteHandler.blogPage),
+                            onTap: () => _handleRouteNavigation(
+                              RouteHandler.blogPage,
+                            ),
                           ),
                           ListTile(
-                            title: Text(
+                            title: const Text(
                               "Contact",
                               style: TextStyle(
                                 fontFamily: "ABeeZee",
@@ -127,11 +151,11 @@ class SmallDrawer extends StatelessWidget {
                             ),
                             onTap: () {
                               showDialog(
-                                context: navigator.currentContext!,
+                                context: context,
                                 builder: (context) {
                                   return ContactCard(
-                                    size: size,
-                                    deviceType: deviceType,
+                                    size: widget.size,
+                                    deviceType: widget.deviceType,
                                   );
                                 },
                               );

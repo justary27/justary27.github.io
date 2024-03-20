@@ -5,16 +5,14 @@ import 'package:justary27_s_portfolio/src/components/navbar/contact.dart';
 import 'package:justary27_s_portfolio/src/utils/handlers/route_handler.dart';
 
 class LargeNavBar extends StatefulWidget {
-  final GlobalKey<NavigatorState> navigatorKey;
   final Size size;
   final String deviceType;
 
   const LargeNavBar({
-    Key? key,
-    required this.navigatorKey,
+    super.key,
     required this.size,
     required this.deviceType,
-  }) : super(key: key);
+  });
 
   @override
   State<LargeNavBar> createState() => _LargeNavBarState();
@@ -72,7 +70,7 @@ class _LargeNavBarState extends State<LargeNavBar> {
               onPressed: () => _handleRouteNavigation(
                 RouteHandler.introPage,
               ),
-              child: Text(
+              child: const Text(
                 "Intro",
                 style: TextStyle(fontFamily: "ABeeZee", color: Colors.white),
               ),
@@ -82,7 +80,7 @@ class _LargeNavBarState extends State<LargeNavBar> {
             onPressed: () => _handleRouteNavigation(
               RouteHandler.whoPage,
             ),
-            child: Text(
+            child: const Text(
               "Who",
               style: TextStyle(fontFamily: "ABeeZee", color: Colors.white),
             ),
@@ -91,7 +89,7 @@ class _LargeNavBarState extends State<LargeNavBar> {
             onPressed: () => _handleRouteNavigation(
               RouteHandler.workPage,
             ),
-            child: Text(
+            child: const Text(
               "Work",
               style: TextStyle(fontFamily: "ABeeZee", color: Colors.white),
             ),
@@ -100,7 +98,7 @@ class _LargeNavBarState extends State<LargeNavBar> {
             onPressed: () => _handleRouteNavigation(
               RouteHandler.blogPage,
             ),
-            child: Text(
+            child: const Text(
               "Blog",
               style: TextStyle(
                 fontFamily: "ABeeZee",
@@ -122,7 +120,7 @@ class _LargeNavBarState extends State<LargeNavBar> {
               },
             );
           },
-          child: Text(
+          child: const Text(
             "Contact",
             style: TextStyle(
               fontFamily: "ABeeZee",

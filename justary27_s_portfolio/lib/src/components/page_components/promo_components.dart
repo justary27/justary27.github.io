@@ -11,13 +11,13 @@ class PromoRedirector extends StatelessWidget {
   final String pageDescriptor;
   final TextButton button;
   const PromoRedirector({
-    Key? key,
+    super.key,
     required this.size,
     required this.deviceType,
     required this.pageName,
     required this.pageDescriptor,
     required this.button,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class PromoRedirector extends StatelessWidget {
                   size.width,
               height: promoConstraints['rotLine']![deviceType]['height'] *
                   size.height,
-              color: Color.fromRGBO(20, 62, 188, 1),
+              color: const Color.fromRGBO(20, 62, 188, 1),
             ),
           ),
           Padding(
@@ -64,7 +64,7 @@ class PromoRedirector extends StatelessWidget {
                 textStyle: TextStyle(
                   // fontFamily: "Caveat",
                   fontWeight: FontWeight.bold,
-                  color: Color.fromRGBO(14, 43, 133, 1.0),
+                  color: const Color.fromRGBO(14, 43, 133, 1.0),
                   fontSize: 0.05 * size.width,
                 ),
               ),

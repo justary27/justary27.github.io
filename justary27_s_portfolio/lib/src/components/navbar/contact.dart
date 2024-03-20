@@ -16,10 +16,10 @@ class ContactCard extends ConsumerStatefulWidget {
   final String deviceType;
 
   const ContactCard({
-    Key? key,
+    super.key,
     required this.size,
     required this.deviceType,
-  }) : super(key: key);
+  });
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _ContactCardState();
@@ -53,26 +53,27 @@ class _ContactCardState extends ConsumerState<ContactCard> {
             Container(
               width: 0.75 * size.width,
               height: 0.8 * size.height,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomLeft,
-                    colors: [
-                      Color.fromRGBO(218, 224, 224, 1.0),
-                      Color.fromRGBO(183, 193, 192, 1.0),
-                    ]),
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    Color.fromRGBO(218, 224, 224, 1.0),
+                    Color.fromRGBO(183, 193, 192, 1.0),
+                  ],
+                ),
               ),
               child: CustomPaint(
                 painter: RoorkeePainter(RouteManager.currentColor,
-                    Color.fromRGBO(145, 155, 153, 1.0).withOpacity(0.4)),
+                    const Color.fromRGBO(145, 155, 153, 1.0).withOpacity(0.4)),
               ),
             ),
-            Container(
+            SizedBox(
               width: 0.75 * size.width,
               height: 0.8 * size.height,
               child: Column(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 0.75 * size.width,
                     height: 0.56 * size.height,
                     child: Column(
@@ -132,7 +133,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                       ],
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: 0.75 * size.width,
                     height: 0.24 * size.height,
                     child: Column(
@@ -314,7 +315,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
             Container(
               width: 0.75 * size.width,
               height: 0.8 * size.height,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomLeft,
@@ -325,15 +326,15 @@ class _ContactCardState extends ConsumerState<ContactCard> {
               ),
               child: CustomPaint(
                 painter: RoorkeePainter(RouteManager.currentColor,
-                    Color.fromRGBO(145, 155, 153, 1.0).withOpacity(0.4)),
+                    const Color.fromRGBO(145, 155, 153, 1.0).withOpacity(0.4)),
               ),
             ),
-            Container(
+            SizedBox(
               width: 0.75 * size.width,
               height: 0.8 * size.height,
               child: Column(
                 children: [
-                  Container(
+                  SizedBox(
                     width: 0.75 * size.width,
                     height: 0.56 * size.height,
                     child: Column(
@@ -390,7 +391,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                       ],
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: 0.75 * size.width,
                     height: 0.24 * size.height,
                     child: Column(

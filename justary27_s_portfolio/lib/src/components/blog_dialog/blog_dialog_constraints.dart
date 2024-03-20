@@ -1,4 +1,4 @@
-const Map ConstraintFactors = {
+const Map cf = {
   'blogTitle': {
     'mobiles390-': 0.10,
     'mobiles450-': 0.10,

@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../routes/routing.dart';
+import '../../utils/handlers/route_handler.dart';
 
 class SmallNavBar extends StatefulWidget {
-  final GlobalKey<NavigatorState> navigatorKey;
+  final GlobalKey<ScaffoldState> navigatorKey;
   final Size size;
   final String deviceType;
 
   const SmallNavBar({
-    Key? key,
+    super.key,
     required this.navigatorKey,
     required this.size,
     required this.deviceType,
-  }) : super(key: key);
+  });
 
   @override
   State<SmallNavBar> createState() => _SmallNavBarState();
@@ -57,7 +57,7 @@ class _SmallNavBarState extends State<SmallNavBar> {
             ),
           ),
           onPressed: () => _handleRouteNavigation(
-            RouteManager.homePage,
+            RouteHandler.homePage,
           ),
           color: Colors.transparent,
         ),
@@ -65,9 +65,10 @@ class _SmallNavBarState extends State<SmallNavBar> {
       actions: [
         IconButton(
           color: Colors.white,
-          icon: Icon(Icons.menu),
+          icon: const Icon(Icons.menu),
           onPressed: () {
-            Scaffold.of(widget.navigatorKey.currentContext!).openEndDrawer();
+            Scaffold.of(context).openEndDrawer();
+            // Scaffold.of(widget.navigatorKey.currentContext!).openEndDrawer();
           },
         ),
       ],

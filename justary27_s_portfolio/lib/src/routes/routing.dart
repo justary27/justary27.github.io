@@ -21,12 +21,6 @@ GlobalKey<NavigatorState> _siteNavigatorKey = GlobalKey<NavigatorState>(
 );
 
 class RouteManager {
-  static const String homePage = "/";
-  static const String introPage = "/intro";
-  static const String whoPage = "/who";
-  static const String workPage = "/work";
-  static const String blogPage = "/blog";
-
   static Size size = logicalScreenSize;
   static String deviceType = deviceDetector(logicalScreenSize.width);
   static Color currentColor = Colors.black;
@@ -38,8 +32,11 @@ GoRouter router = GoRouter(
   routes: [
     ShellRoute(
       navigatorKey: _siteNavigatorKey,
-      builder: (BuildContext context, GoRouterState state, child) {
-        print(state);
+      builder: (
+        BuildContext context,
+        GoRouterState state,
+        Widget child,
+      ) {
         return ApplicationShell(child: child);
       },
       routes: [
@@ -75,7 +72,8 @@ GoRouter router = GoRouter(
             path: RouteHandler.introPage,
             // parentNavigatorKey: _siteNavigatorKey,
             pageBuilder: (context, state) {
-              RouteManager.currentColor = Color.fromRGBO(236, 131, 131, 1.0);
+              RouteManager.currentColor =
+                  const Color.fromRGBO(236, 131, 131, 1.0);
               return CustomTransitionPage(
                 transitionsBuilder:
                     (context, animation, secondaryAnimation, child) {
@@ -100,7 +98,7 @@ GoRouter router = GoRouter(
           path: RouteHandler.whoPage,
           // parentNavigatorKey: _siteNavigatorKey,
           pageBuilder: (context, state) {
-            RouteManager.currentColor = Color.fromRGBO(14, 43, 133, 1.0);
+            RouteManager.currentColor = const Color.fromRGBO(14, 43, 133, 1.0);
             return CustomTransitionPage(
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
@@ -128,7 +126,8 @@ GoRouter router = GoRouter(
             path: RouteHandler.workPage,
             // parentNavigatorKey: _siteNavigatorKey,
             pageBuilder: (context, state) {
-              RouteManager.currentColor = Color.fromRGBO(56, 149, 131, 1.0);
+              RouteManager.currentColor =
+                  const Color.fromRGBO(56, 149, 131, 1.0);
               return CustomTransitionPage(
                 transitionsBuilder:
                     (context, animation, secondaryAnimation, child) {
@@ -156,7 +155,7 @@ GoRouter router = GoRouter(
           // parentNavigatorKey: _siteNavigatorKey,
 
           pageBuilder: (context, state) {
-            RouteManager.currentColor = Color.fromRGBO(246, 223, 71, 1.0);
+            RouteManager.currentColor = const Color.fromRGBO(246, 223, 71, 1.0);
             return CustomTransitionPage(
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {

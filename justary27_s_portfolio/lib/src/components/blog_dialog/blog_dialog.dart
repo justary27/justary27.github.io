@@ -1,25 +1,25 @@
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:justary27_s_portfolio/src/components/blog_dialog/blogDialog_constraints.dart';
-import 'package:justary27_s_portfolio/src/models/blog_model.dart';
 
-const Map _cf = ConstraintFactors;
+import '../../models/blog_model.dart';
+
+import 'blog_dialog_constraints.dart' show cf;
 
 Widget blogProvider(Size size, Blog blog, String deviceType) {
   return Container(
     width: 0.75 * size.width,
     height: 0.8 * size.height,
     decoration: BoxDecoration(
-      gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Colors.white,
-            Color.fromRGBO(241, 245, 245, 1.0),
-            // Color.fromRGBO(218, 224, 224, 1.0),
-          ]),
+      gradient: const LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          Colors.white,
+          Color.fromRGBO(241, 245, 245, 1.0),
+          // Color.fromRGBO(218, 224, 224, 1.0),
+        ],
+      ),
       borderRadius: BorderRadius.circular(15),
     ),
     child: (deviceType == 'mobiles390-' ||
@@ -30,7 +30,7 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
               Container(
                 height: 0.18 * size.height,
                 width: 0.75 * size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color.fromRGBO(252, 220, 102, 1.0),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15),
@@ -51,7 +51,7 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                         style: TextStyle(
                           fontFamily: "Caveat",
                           color: Colors.white,
-                          fontSize: _cf['blogTitle'][deviceType] * size.width,
+                          fontSize: cf['blogTitle'][deviceType] * size.width,
                         ),
                       ),
                       Text(
@@ -69,8 +69,8 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                         children: [
                           Row(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
+                              const Padding(
+                                padding: EdgeInsets.all(8.0),
                                 child: Icon(
                                   Icons.date_range_outlined,
                                   color: Colors.white,
@@ -78,7 +78,7 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                               ),
                               Text(
                                 blog.blogCreatedOn,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: "Ubuntu",
                                   color: Colors.white,
                                 ),
@@ -87,8 +87,8 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                           ),
                           Row(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
+                              const Padding(
+                                padding: EdgeInsets.all(8.0),
                                 child: Icon(
                                   Icons.link_rounded,
                                   color: Colors.white,
@@ -98,8 +98,8 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                                 onPressed: () =>
                                     window.open(blog.link, 'New Tab'),
                                 child: Text(
-                                  blog.link.substring(0, 10) + "...",
-                                  style: TextStyle(
+                                  "${blog.link.substring(0, 10)}...",
+                                  style: const TextStyle(
                                     fontFamily: "Ubuntu",
                                     color: Colors.white,
                                   ),
@@ -122,7 +122,7 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                 child: SingleChildScrollView(
                   child: Text(
                     blog.blogDescription.trim(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "ABeeZee",
                       color: Colors.black,
                     ),
@@ -135,7 +135,7 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Container(
+              SizedBox(
                 width: 0.55 * size.width,
                 child: SingleChildScrollView(
                   child: Padding(
@@ -151,13 +151,13 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                           blog.blogTitle,
                           style: TextStyle(
                             fontFamily: "Caveat",
-                            color: Color.fromRGBO(252, 220, 102, 1.0),
-                            fontSize: _cf['blogTitle'][deviceType] * size.width,
+                            color: const Color.fromRGBO(252, 220, 102, 1.0),
+                            fontSize: cf['blogTitle'][deviceType] * size.width,
                           ),
                         ),
                         Text(
                           blog.blogTagLine,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "Ubuntu",
                             fontStyle: FontStyle.italic,
                             color: Colors.grey,
@@ -168,7 +168,7 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                         ),
                         Text(
                           blog.blogDescription.trim(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "ABeeZee",
                             color: Colors.black,
                           ),
@@ -184,7 +184,7 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                   vertical: 0.075 * size.height,
                   horizontal: 0.025 * size.width,
                 ),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(15),
                     topRight: Radius.circular(15),
@@ -203,8 +203,8 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                     ),
                     Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Icon(
                             Icons.date_range_outlined,
                             color: Colors.white,
@@ -212,7 +212,7 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                         ),
                         Text(
                           blog.blogCreatedOn,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: "Ubuntu",
                             color: Colors.white,
                           ),
@@ -231,8 +231,8 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                     ),
                     Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Icon(
                             Icons.link_rounded,
                             color: Colors.white,
@@ -241,8 +241,8 @@ Widget blogProvider(Size size, Blog blog, String deviceType) {
                         TextButton(
                           onPressed: () => window.open(blog.link, 'New Tab'),
                           child: Text(
-                            blog.link.substring(0, 10) + "...",
-                            style: TextStyle(
+                            "${blog.link.substring(0, 10)}...",
+                            style: const TextStyle(
                               fontFamily: "Ubuntu",
                               color: Colors.white,
                             ),

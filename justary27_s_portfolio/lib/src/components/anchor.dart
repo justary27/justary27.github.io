@@ -22,7 +22,9 @@ class AnchorButton extends StatefulWidget {
 }
 
 class _AnchorButtonState extends State<AnchorButton> {
-  OverlayEntry _linkText = OverlayEntry(builder: (context) => Placeholder());
+  OverlayEntry _linkText = OverlayEntry(
+    builder: (context) => const Placeholder(),
+  );
 
   @override
   void initState() {
@@ -35,7 +37,7 @@ class _AnchorButtonState extends State<AnchorButton> {
             color: Colors.transparent,
             child: Container(
               color: Colors.black,
-              padding: EdgeInsets.all(4),
+              padding: const EdgeInsets.all(4),
               child: Text(
                 widget.destUrl,
                 style: TextStyle(

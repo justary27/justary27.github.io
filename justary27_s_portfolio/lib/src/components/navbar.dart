@@ -4,14 +4,14 @@ import 'package:justary27_s_portfolio/src/components/navbar/large_bar.dart';
 import 'package:justary27_s_portfolio/src/components/navbar/small_bar.dart';
 
 class Navbar extends StatefulWidget {
-  final GlobalKey<NavigatorState> navigatorKey;
+  final GlobalKey<ScaffoldState> navigatorKey;
   const Navbar({
-    Key? key,
+    super.key,
     required this.navigatorKey,
-  }) : super(key: key);
+  });
 
   @override
-  _NavbarState createState() => _NavbarState();
+  State<Navbar> createState() => _NavbarState();
 }
 
 class _NavbarState extends State<Navbar> {
@@ -33,7 +33,6 @@ class _NavbarState extends State<Navbar> {
           return LargeNavBar(
             size: size,
             deviceType: _deviceType,
-            navigatorKey: widget.navigatorKey,
           );
         }
       },

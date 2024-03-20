@@ -7,12 +7,12 @@ class Blog {
   String description;
   DateTime createdOn;
 
-  String get blogTitle => this.title;
-  String get blogTagLine => this.tagLine;
-  String get blogLink => this.blogLink;
-  String get blogDescription => this.description;
+  String get blogTitle => title;
+  String get blogTagLine => tagLine;
+  String get blogLink => blogLink;
+  String get blogDescription => description;
   String get blogCreatedOn {
-    return "${this.createdOn.day}/${this.createdOn.month}/${this.createdOn.year}";
+    return "${createdOn.day}/${createdOn.month}/${createdOn.year}";
   }
 
   Blog(this.title, this.tagLine, this.link, this.description, this.createdOn);

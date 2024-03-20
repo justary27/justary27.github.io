@@ -7,9 +7,9 @@ class Database {
   static Future<List<Blog>> getBlogs() async {
     List<Blog> blogs = [];
     QuerySnapshot blogQuery = await firestore.collection("blogs").get();
-    blogQuery.docs.forEach((element) {
+    for (var element in blogQuery.docs) {
       blogs.add(Blog.fromJson(element));
-    });
+    }
     return blogs;
   }
 

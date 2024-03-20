@@ -23,10 +23,10 @@ Map _cf = {
 class Footer extends StatefulWidget {
   final Size size;
 
-  const Footer({Key? key, required this.size}) : super(key: key);
+  const Footer({super.key, required this.size});
 
   @override
-  _FooterState createState() => _FooterState();
+  State<Footer> createState() => _FooterState();
 }
 
 class _FooterState extends State<Footer> {
@@ -41,11 +41,12 @@ class _FooterState extends State<Footer> {
     Size size = widget.size;
     final String deviceType = deviceDetector(size.width);
 
-    if (GoRouterState.of(context).uri.path == RouteHandler.homePage)
-      return Container(
+    if (GoRouterState.of(context).uri.path == RouteHandler.homePage) {
+      return SizedBox(
         width: size.width,
         height: 0,
       );
+    }
 
     return Material(
       color: Colors.transparent,
@@ -54,7 +55,7 @@ class _FooterState extends State<Footer> {
           Container(
             width: size.width,
             height: 0.3 * size.height,
-            color: Color.fromRGBO(134, 149, 179, 1.0),
+            color: const Color.fromRGBO(134, 149, 179, 1.0),
             child: CustomPaint(
               painter: CircuitPainter(),
             ),
@@ -83,7 +84,7 @@ class _FooterState extends State<Footer> {
                     ],
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 0.2 * size.width,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -92,7 +93,7 @@ class _FooterState extends State<Footer> {
                         onPressed: () {
                           _handleRouteNavigation(RouteHandler.introPage);
                         },
-                        child: Text(
+                        child: const Text(
                           "Intro",
                           style: TextStyle(
                             fontFamily: "ABeeZee",
@@ -107,7 +108,7 @@ class _FooterState extends State<Footer> {
                           onPressed: () {
                             _handleRouteNavigation(RouteHandler.whoPage);
                           },
-                          child: Text(
+                          child: const Text(
                             "Who",
                             style: TextStyle(
                               fontFamily: "ABeeZee",
@@ -123,7 +124,7 @@ class _FooterState extends State<Footer> {
                           onPressed: () {
                             _handleRouteNavigation(RouteHandler.workPage);
                           },
-                          child: Text(
+                          child: const Text(
                             "Work",
                             style: TextStyle(
                               fontFamily: "ABeeZee",
@@ -139,7 +140,7 @@ class _FooterState extends State<Footer> {
                           onPressed: () {
                             _handleRouteNavigation(RouteHandler.blogPage);
                           },
-                          child: Text(
+                          child: const Text(
                             "Blog",
                             style: TextStyle(
                               fontFamily: "ABeeZee",
@@ -168,7 +169,7 @@ class _FooterState extends State<Footer> {
                                     IconButton(
                                       iconSize: _cf['techStack'][deviceType],
                                       onPressed: () {},
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.alternate_email_rounded,
                                       ),
                                       color: Colors.white.withOpacity(0.7),
@@ -187,7 +188,7 @@ class _FooterState extends State<Footer> {
                                               'New Tab',
                                             );
                                           },
-                                          icon: Icon(
+                                          icon: const Icon(
                                             FontAwesomeIcons.twitter,
                                           ),
                                           color: Colors.white.withOpacity(0.7),
@@ -207,7 +208,7 @@ class _FooterState extends State<Footer> {
                                           'New Tab',
                                         );
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         FontAwesomeIcons.github,
                                       ),
                                       color: Colors.white.withOpacity(0.7),
@@ -226,7 +227,7 @@ class _FooterState extends State<Footer> {
                                               'New Tab',
                                             );
                                           },
-                                          icon: Icon(
+                                          icon: const Icon(
                                             FontAwesomeIcons.linkedin,
                                           ),
                                           color: Colors.white.withOpacity(0.7),
@@ -245,7 +246,7 @@ class _FooterState extends State<Footer> {
                             AnchorButton(
                               iconSize: _cf['techStack'][deviceType],
                               destUrl: 'mailto:aryan_r@ch.iitr.ac.in',
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.alternate_email_rounded,
                               ),
                               color: Colors.white.withOpacity(0.7),
@@ -254,7 +255,7 @@ class _FooterState extends State<Footer> {
                             AnchorButton(
                               iconSize: _cf['techStack'][deviceType],
                               destUrl: 'https://twitter.com/JustAry27',
-                              icon: Icon(
+                              icon: const Icon(
                                 FontAwesomeIcons.twitter,
                               ),
                               color: Colors.white.withOpacity(0.7),
@@ -263,7 +264,7 @@ class _FooterState extends State<Footer> {
                             AnchorButton(
                               iconSize: _cf['techStack'][deviceType],
                               destUrl: 'https://github.com/justary27',
-                              icon: Icon(
+                              icon: const Icon(
                                 FontAwesomeIcons.github,
                               ),
                               color: Colors.white.withOpacity(0.7),
@@ -273,7 +274,7 @@ class _FooterState extends State<Footer> {
                               iconSize: _cf['techStack'][deviceType],
                               destUrl:
                                   'https://www.linkedin.com/in/aryan-ranjan27/',
-                              icon: Icon(
+                              icon: const Icon(
                                 FontAwesomeIcons.linkedin,
                               ),
                               color: Colors.white.withOpacity(0.7),

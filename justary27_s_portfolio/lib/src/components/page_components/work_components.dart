@@ -9,7 +9,7 @@ class WorkDescriptor extends StatelessWidget {
   final dynamic model;
   final bool? isRightAligned;
   const WorkDescriptor({
-    Key? key,
+    super.key,
     required this.size,
     required this.title,
     required this.subtitle,
@@ -17,7 +17,7 @@ class WorkDescriptor extends StatelessWidget {
     required this.buttonLinks,
     this.model,
     this.isRightAligned,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class WorkDescriptor extends StatelessWidget {
               alignment: (isRightAligned == null)
                   ? Alignment.centerRight
                   : Alignment.centerLeft,
-              child: Container(
+              child: SizedBox(
                 width: 0.4 * size.width,
                 height: size.height,
                 child: model,
@@ -68,7 +68,7 @@ class WorkDescriptor extends StatelessWidget {
     return [
       title,
       subtitle,
-      Container(
+      SizedBox(
         width: 0.4 * size.width,
         child: description,
       ),

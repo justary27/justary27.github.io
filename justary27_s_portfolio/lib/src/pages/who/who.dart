@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'whoConstraints.dart';
 import '../../routes/routing.dart';
 import '../../components/footer.dart';
 import '../../components/rPainter.dart';
@@ -10,17 +9,17 @@ import '../../utils/handlers/route_handler.dart';
 import '../../constants/page_constants/who_constants.dart';
 import '../../components/page_components/promo_components.dart';
 
-const Map _cf = ConstraintFactors;
+import 'who_constraints.dart' show cf;
 
 class WhoPage extends StatefulWidget {
   final Size size;
   const WhoPage({
-    Key? key,
+    super.key,
     required this.size,
-  }) : super(key: key);
+  });
 
   @override
-  _WhoPageState createState() => _WhoPageState();
+  State<WhoPage> createState() => _WhoPageState();
 }
 
 class _WhoPageState extends State<WhoPage> {
@@ -32,249 +31,241 @@ class _WhoPageState extends State<WhoPage> {
       String _deviceType = deviceDetector(constraints.maxWidth);
       return GlowingOverscrollIndicator(
         axisDirection: AxisDirection.up,
-        color: Color.fromRGBO(198, 197, 255, 1.0).withOpacity(0.3),
+        color: const Color.fromRGBO(198, 197, 255, 1.0).withOpacity(0.3),
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               Stack(
                 children: [
-                  Container(
-                    child: Column(
-                      children: [
-                        Container(
-                          width: size.width,
-                          height: 5.5 * size.height,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomLeft,
-                                colors: [
-                                  Color.fromRGBO(198, 197, 255, 1.0),
-                                  Color.fromRGBO(133, 130, 234, 1.0),
-                                ]),
-                          ),
-                          child: CustomPaint(
-                            painter: WhoPainter(),
-                          ),
+                  Column(
+                    children: [
+                      Container(
+                        width: size.width,
+                        height: 5.5 * size.height,
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                Color.fromRGBO(198, 197, 255, 1.0),
+                                Color.fromRGBO(133, 130, 234, 1.0),
+                              ]),
                         ),
-                        Container(
-                          width: size.width,
-                          height: size.height,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomLeft,
-                                colors: [
-                                  Color.fromRGBO(218, 224, 224, 1.0),
-                                  Color.fromRGBO(183, 193, 192, 1.0)
-                                ]),
-                          ),
-                          child: CustomPaint(
-                            painter: RoorkeePainter(
-                                Color.fromRGBO(14, 43, 133, 1.0),
-                                Color.fromRGBO(184, 194, 215, 1.0)),
-                          ),
+                        child: CustomPaint(
+                          painter: WhoPainter(),
                         ),
-                      ],
-                    ),
+                      ),
+                      Container(
+                        width: size.width,
+                        height: size.height,
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                Color.fromRGBO(218, 224, 224, 1.0),
+                                Color.fromRGBO(183, 193, 192, 1.0)
+                              ]),
+                        ),
+                        child: CustomPaint(
+                          painter: RoorkeePainter(
+                              const Color.fromRGBO(14, 43, 133, 1.0),
+                              const Color.fromRGBO(184, 194, 215, 1.0)),
+                        ),
+                      ),
+                    ],
                   ),
-                  Container(
-                    child: Column(
-                      children: [
-                        Container(
-                          width: size.width,
-                          height: size.height,
-                          alignment: Alignment.center,
-                          child: Text(
-                            "Who?",
+                  Column(
+                    children: [
+                      Container(
+                        width: size.width,
+                        height: size.height,
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Who?",
+                          style: TextStyle(
+                            fontFamily: "CoveredByYourGrace",
+                            color: const Color.fromRGBO(14, 43, 133, 1.0),
+                            fontSize: cf['heading'][_deviceType] * size.width,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: size.width,
+                        height: 1.5 * size.height,
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 0.25 * size.width,
+                              height: 1.5 * size.height,
+                            ),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 0.1 * size.width,
+                              ),
+                              width: 0.7 * size.width,
+                              height: 1.5 * size.height,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Present",
+                                    style: GoogleFonts.openSans(
+                                      textStyle: TextStyle(
+                                        // fontFamily: "Caveat",
+                                        color: const Color.fromRGBO(
+                                            14, 43, 133, 1.0),
+                                        fontSize: cf['time'][_deviceType] *
+                                            size.width,
+                                        // fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    presentDesc.replaceAll("\n", ""),
+                                    textAlign: TextAlign.left,
+                                    style: GoogleFonts.redHatDisplay(
+                                      textStyle: TextStyle(
+                                        // fontFamily: "ABeeZee",
+                                        color: Colors.black,
+                                        fontSize: cf['timeDesc'][_deviceType] *
+                                            size.width,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: size.width,
+                        height: 1.5 * size.height,
+                        child: Row(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 0.1 * size.width,
+                              ),
+                              width: 0.7 * size.width,
+                              height: 1.5 * size.height,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Future",
+                                    style: GoogleFonts.openSans(
+                                      textStyle: TextStyle(
+                                        // fontFamily: "Caveat",
+                                        color: const Color.fromRGBO(
+                                            14, 43, 133, 1.0),
+                                        fontSize: cf['time'][_deviceType] *
+                                            size.width,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    futureDesc.replaceAll("\n", ""),
+                                    textAlign: TextAlign.left,
+                                    style: GoogleFonts.redHatDisplay(
+                                      textStyle: TextStyle(
+                                        // fontFamily: "ABeeZee",
+                                        color: Colors.black,
+                                        fontSize: cf['timeDesc'][_deviceType] *
+                                            size.width,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              width: 0.25 * size.width,
+                              height: 1.5 * size.height,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: size.width,
+                        height: 1.5 * size.height,
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 0.25 * size.width,
+                              height: 1.5 * size.height,
+                            ),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 0.1 * size.width,
+                              ),
+                              width: 0.7 * size.width,
+                              height: 1.5 * size.height,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Past",
+                                    style: GoogleFonts.openSans(
+                                      textStyle: TextStyle(
+                                        // fontFamily: "Caveat",
+                                        color: const Color.fromRGBO(
+                                            14, 43, 133, 1.0),
+                                        fontSize: cf['time'][_deviceType] *
+                                            size.width,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    pastDesc.replaceAll("\n", ""),
+                                    textAlign: TextAlign.left,
+                                    style: GoogleFonts.redHatDisplay(
+                                      textStyle: TextStyle(
+                                        // fontFamily: "ABeeZee",
+                                        color: Colors.black,
+                                        fontSize: cf['timeDesc'][_deviceType] *
+                                            size.width,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      PromoRedirector(
+                        size: size,
+                        deviceType: _deviceType,
+                        pageName: "Blog",
+                        pageDescriptor: "Know more 'bout me!",
+                        button: TextButton.icon(
+                          icon: Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            color: Colors.white.withOpacity(0.7),
+                          ),
+                          onPressed: () {
+                            router.push(RouteHandler.blogPage);
+                          },
+                          label: Text(
+                            "Blog",
                             style: TextStyle(
-                              fontFamily: "CoveredByYourGrace",
-                              color: Color.fromRGBO(14, 43, 133, 1.0),
-                              fontSize:
-                                  _cf['heading'][_deviceType] * size.width,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: size.width,
-                          height: 1.5 * size.height,
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 0.25 * size.width,
-                                height: 1.5 * size.height,
-                              ),
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 0.1 * size.width,
-                                ),
-                                width: 0.7 * size.width,
-                                height: 1.5 * size.height,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Present",
-                                      style: GoogleFonts.openSans(
-                                        textStyle: TextStyle(
-                                          // fontFamily: "Caveat",
-                                          color:
-                                              Color.fromRGBO(14, 43, 133, 1.0),
-                                          fontSize: _cf['time'][_deviceType] *
-                                              size.width,
-                                          // fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                    Text(
-                                      presentDesc.replaceAll("\n", ""),
-                                      textAlign: TextAlign.left,
-                                      style: GoogleFonts.redHatDisplay(
-                                        textStyle: TextStyle(
-                                          // fontFamily: "ABeeZee",
-                                          color: Colors.black,
-                                          fontSize: _cf['timeDesc']
-                                                  [_deviceType] *
-                                              size.width,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: size.width,
-                          height: 1.5 * size.height,
-                          child: Row(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 0.1 * size.width,
-                                ),
-                                width: 0.7 * size.width,
-                                height: 1.5 * size.height,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Future",
-                                      style: GoogleFonts.openSans(
-                                        textStyle: TextStyle(
-                                          // fontFamily: "Caveat",
-                                          color:
-                                              Color.fromRGBO(14, 43, 133, 1.0),
-                                          fontSize: _cf['time'][_deviceType] *
-                                              size.width,
-                                        ),
-                                      ),
-                                    ),
-                                    Text(
-                                      futureDesc.replaceAll("\n", ""),
-                                      textAlign: TextAlign.left,
-                                      style: GoogleFonts.redHatDisplay(
-                                        textStyle: TextStyle(
-                                          // fontFamily: "ABeeZee",
-                                          color: Colors.black,
-                                          fontSize: _cf['timeDesc']
-                                                  [_deviceType] *
-                                              size.width,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                width: 0.25 * size.width,
-                                height: 1.5 * size.height,
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: size.width,
-                          height: 1.5 * size.height,
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 0.25 * size.width,
-                                height: 1.5 * size.height,
-                              ),
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 0.1 * size.width,
-                                ),
-                                width: 0.7 * size.width,
-                                height: 1.5 * size.height,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Past",
-                                      style: GoogleFonts.openSans(
-                                        textStyle: TextStyle(
-                                          // fontFamily: "Caveat",
-                                          color:
-                                              Color.fromRGBO(14, 43, 133, 1.0),
-                                          fontSize: _cf['time'][_deviceType] *
-                                              size.width,
-                                        ),
-                                      ),
-                                    ),
-                                    Text(
-                                      pastDesc.replaceAll("\n", ""),
-                                      textAlign: TextAlign.left,
-                                      style: GoogleFonts.redHatDisplay(
-                                        textStyle: TextStyle(
-                                          // fontFamily: "ABeeZee",
-                                          color: Colors.black,
-                                          fontSize: _cf['timeDesc']
-                                                  [_deviceType] *
-                                              size.width,
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        PromoRedirector(
-                          size: size,
-                          deviceType: _deviceType,
-                          pageName: "Blog",
-                          pageDescriptor: "Know more 'bout me!",
-                          button: TextButton.icon(
-                            icon: Icon(
-                              Icons.arrow_forward_ios_rounded,
+                              fontFamily: "ABeeZee",
                               color: Colors.white.withOpacity(0.7),
-                            ),
-                            onPressed: () {
-                              router.push(RouteHandler.blogPage);
-                            },
-                            label: Text(
-                              "Blog",
-                              style: TextStyle(
-                                fontFamily: "ABeeZee",
-                                color: Colors.white.withOpacity(0.7),
-                                fontSize: 20,
-                              ),
+                              fontSize: 20,
                             ),
                           ),
                         ),
-                        Footer(
-                          size: size,
-                        ),
-                      ],
-                    ),
+                      ),
+                      Footer(
+                        size: size,
+                      ),
+                    ],
                   ),
                 ],
               )
@@ -291,7 +282,7 @@ class WhoPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
       ..style = PaintingStyle.stroke
-      ..color = Color.fromRGBO(14, 43, 133, 1.0)
+      ..color = const Color.fromRGBO(14, 43, 133, 1.0)
       ..strokeCap = StrokeCap.round
       ..strokeWidth = 10;
 

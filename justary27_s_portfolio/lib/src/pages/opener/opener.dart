@@ -7,12 +7,12 @@ import '../../components/deviceDetector.dart';
 class OpenerPage extends StatefulWidget {
   final Size size;
   const OpenerPage({
-    Key? key,
+    super.key,
     required this.size,
-  }) : super(key: key);
+  });
 
   @override
-  _OpenerPageState createState() => _OpenerPageState();
+  State<OpenerPage> createState() => _OpenerPageState();
 }
 
 class _OpenerPageState extends State<OpenerPage> {

@@ -14,11 +14,10 @@ class ModelViewer extends StatefulWidget {
   final Size size;
   final String src;
 
-  const ModelViewer({Key? key, required this.size, required this.src})
-      : super(key: key);
+  const ModelViewer({super.key, required this.size, required this.src});
 
   @override
-  _ModelViewerState createState() => _ModelViewerState();
+  State<ModelViewer> createState() => _ModelViewerState();
 }
 
 class _ModelViewerState extends State<ModelViewer> {

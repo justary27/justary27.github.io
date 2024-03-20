@@ -1,6 +1,7 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../routes/routing.dart';
 import '../../utils/handlers/route_handler.dart';
@@ -10,10 +11,10 @@ class SmallOpenerPage extends StatelessWidget {
   final Size size;
   final String deviceType;
   const SmallOpenerPage({
-    Key? key,
+    super.key,
     required this.size,
     required this.deviceType,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class SmallOpenerPage extends StatelessWidget {
         Container(
           width: size.width,
           height: size.height,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -31,7 +32,7 @@ class SmallOpenerPage extends StatelessWidget {
                   Color.fromARGB(255, 243, 248, 247)
                 ]),
           ),
-          child: Container(
+          child: SizedBox(
             width: size.width,
             height: size.height,
           ),
@@ -51,7 +52,7 @@ class SmallOpenerPage extends StatelessWidget {
                   "Aryan Ranjan",
                   style: TextStyle(
                     fontFamily: "Allison",
-                    color: Color(0xFFDC4654),
+                    color: const Color(0xFFDC4654),
                     fontSize:
                         openerConstraints['name'][deviceType] * size.width,
                   ),
@@ -60,7 +61,7 @@ class SmallOpenerPage extends StatelessWidget {
                   "IITR'24 | Codifyin' reality",
                   style: TextStyle(
                     fontFamily: "Caveat",
-                    color: Color(0xFF737373),
+                    color: const Color(0xFF737373),
                     fontSize:
                         openerConstraints['taLine'][deviceType] * size.width,
                   ),
@@ -70,7 +71,7 @@ class SmallOpenerPage extends StatelessWidget {
                   height: 50,
                   // width: size.width * 0.1,
                   child: TextButton.icon(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_forward_ios_rounded,
                       color: Colors.white,
                     ),
@@ -88,7 +89,7 @@ class SmallOpenerPage extends StatelessWidget {
                     ),
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
-                        Color(0xFFDC4654).withOpacity(0.75),
+                        const Color(0xFFDC4654).withOpacity(0.75),
                       ),
                     ),
                   ),
@@ -101,7 +102,7 @@ class SmallOpenerPage extends StatelessWidget {
           right: 0,
           child: Container(
             width: 0.4 * size.width,
-            color: Color(0xFFDC4654),
+            color: const Color(0xFFDC4654),
             height: size.height,
             alignment: Alignment.centerRight,
             child: Padding(
@@ -118,6 +119,11 @@ class SmallOpenerPage extends StatelessWidget {
                       Colors.white.withOpacity(0.85),
                       BlendMode.srcIn,
                     ),
+                  ),
+                  Icon(
+                    FontAwesomeIcons.amazon,
+                    color: Colors.white.withOpacity(0.85),
+                    size: 50,
                   ),
                   SvgPicture.asset(
                     "images/jane.svg",
