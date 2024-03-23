@@ -142,7 +142,7 @@ class _IntroPageState extends State<IntroPage> {
                                     "I'm Aryan Ranjan.",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      fontFamily: "Caveat",
+                                      fontFamily: "Allison",
                                       fontWeight: FontWeight.bold,
                                       color: const Color.fromRGBO(
                                           14, 43, 133, 1.0),
@@ -272,6 +272,10 @@ class _IntroPageState extends State<IntroPage> {
                                         destUrl: 'https://julialang.org/',
                                         icon: SvgPicture.asset(
                                           "images/intro/julia.svg",
+                                          colorFilter: const ColorFilter.mode(
+                                            Color(0xFF49454F),
+                                            BlendMode.srcIn,
+                                          ),
                                           height: 40,
                                         ),
                                         parentContext: context,

@@ -189,7 +189,7 @@ class _FooterState extends State<Footer> {
                                             );
                                           },
                                           icon: const Icon(
-                                            FontAwesomeIcons.twitter,
+                                            FontAwesomeIcons.xTwitter,
                                           ),
                                           color: Colors.white.withOpacity(0.7),
                                         ),
@@ -256,7 +256,7 @@ class _FooterState extends State<Footer> {
                               iconSize: _cf['techStack'][deviceType],
                               destUrl: 'https://twitter.com/JustAry27',
                               icon: const Icon(
-                                FontAwesomeIcons.twitter,
+                                FontAwesomeIcons.xTwitter,
                               ),
                               color: Colors.white.withOpacity(0.7),
                               parentContext: context,

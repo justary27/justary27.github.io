@@ -192,7 +192,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                             'New Tab');
                                       },
                                       icon: Icon(
-                                        FontAwesomeIcons.twitter,
+                                        FontAwesomeIcons.xTwitter,
                                         size: navConstraints['Links']
                                             [deviceType],
                                       ),
@@ -444,7 +444,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                   builder: (_, __, ___) => AnchorButton(
                                     destUrl: 'https://twitter.com/JustAry27',
                                     icon: Icon(
-                                      FontAwesomeIcons.twitter,
+                                      FontAwesomeIcons.xTwitter,
                                       size: navConstraints['Links'][deviceType],
                                     ),
                                     color: (tHovered.value)

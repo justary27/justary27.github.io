@@ -2,8 +2,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../routes/routing.dart';
 import '../../utils/handlers/route_handler.dart';
 import '../../constants/page_constraints/opener_constraints.dart';
 
@@ -75,7 +75,7 @@ class SmallOpenerPage extends StatelessWidget {
                       Icons.arrow_forward_ios_rounded,
                       color: Colors.white,
                     ),
-                    onPressed: () => router.push(RouteHandler.introPage),
+                    onPressed: () => context.push(RouteHandler.introPage),
                     label: FittedBox(
                       child: Text(
                         "Intro",

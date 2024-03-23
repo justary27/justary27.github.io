@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../routes/routing.dart';
 import '../../components/footer.dart';
 import '../../components/rPainter.dart';
 import '../../components/deviceDetector.dart';
@@ -250,7 +250,7 @@ class _WhoPageState extends State<WhoPage> {
                             color: Colors.white.withOpacity(0.7),
                           ),
                           onPressed: () {
-                            router.push(RouteHandler.blogPage);
+                            context.push(RouteHandler.blogPage);
                           },
                           label: Text(
                             "Blog",

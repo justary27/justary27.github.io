@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../routes/routing.dart';
 import '../../components/footer.dart';
 import '../../models/blog_model.dart';
 import '../../services/database.dart';
@@ -421,7 +421,7 @@ class _BlogPageState extends State<BlogPage> {
                             color: Color.fromRGBO(20, 62, 188, 1),
                           ),
                           onPressed: () {
-                            router.push(RouteHandler.workPage);
+                            context.push(RouteHandler.workPage);
                           },
                           label: const Text(
                             "Work",
