@@ -47,7 +47,7 @@ class WorkDescriptor extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(
                 horizontal: 0.1 * size.width,
-                vertical: 0.1 * size.height,
+                vertical: 0.05 * size.height,
               ),
               width: size.width,
               height: size.height,

@@ -46,6 +46,7 @@ class _SmallNavBarState extends State<SmallNavBar> {
         ),
       ),
       leading: Container(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
         margin: EdgeInsets.only(left: 0.01 * widget.size.width),
         child: IconButton(
           splashColor: Colors.white.withOpacity(0.5),

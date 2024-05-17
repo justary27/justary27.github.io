@@ -17,11 +17,8 @@ import '../../components/page_components/work_components.dart';
 import 'work_constraints.dart' show cf;
 
 class WorkPage extends StatefulWidget {
-  final Size size;
-
   const WorkPage({
     super.key,
-    required this.size,
   });
 
   @override
@@ -31,9 +28,12 @@ class WorkPage extends StatefulWidget {
 class _WorkPageState extends State<WorkPage> {
   @override
   Widget build(BuildContext context) {
-    final Size size = widget.size;
     return LayoutBuilder(builder: (context, constraints) {
-      String _deviceType = deviceDetector(constraints.maxWidth);
+      final Size size = Size(
+        constraints.maxWidth,
+        constraints.maxHeight,
+      );
+      String _deviceType = deviceDetector(size.width);
       return GlowingOverscrollIndicator(
         axisDirection: AxisDirection.up,
         color: const Color.fromRGBO(130, 246, 176, 1.0).withOpacity(0.3),

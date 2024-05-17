@@ -13,11 +13,8 @@ import '../../components/page_components/promo_components.dart';
 import 'blog_constraints.dart' show cf;
 
 class BlogPage extends StatefulWidget {
-  final Size size;
-
   const BlogPage({
     super.key,
-    required this.size,
   });
 
   @override
@@ -27,10 +24,12 @@ class BlogPage extends StatefulWidget {
 class _BlogPageState extends State<BlogPage> {
   @override
   Widget build(BuildContext context) {
-    final Size size = widget.size;
-
     return LayoutBuilder(builder: (context, constraints) {
-      String _deviceType = deviceDetector(constraints.maxWidth);
+      final Size size = Size(
+        constraints.maxWidth,
+        constraints.maxHeight,
+      );
+      String _deviceType = deviceDetector(size.width);
       return GlowingOverscrollIndicator(
         axisDirection: AxisDirection.up,
         color: const Color.fromRGBO(252, 220, 102, 1.0).withOpacity(0.3),

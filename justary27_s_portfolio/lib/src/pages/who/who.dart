@@ -12,10 +12,8 @@ import '../../components/page_components/promo_components.dart';
 import 'who_constraints.dart' show cf;
 
 class WhoPage extends StatefulWidget {
-  final Size size;
   const WhoPage({
     super.key,
-    required this.size,
   });
 
   @override
@@ -25,10 +23,12 @@ class WhoPage extends StatefulWidget {
 class _WhoPageState extends State<WhoPage> {
   @override
   Widget build(BuildContext context) {
-    final Size size = widget.size;
-
     return LayoutBuilder(builder: (context, constraints) {
-      String _deviceType = deviceDetector(constraints.maxWidth);
+      final Size size = Size(
+        constraints.maxWidth,
+        constraints.maxHeight,
+      );
+      String _deviceType = deviceDetector(size.width);
       return GlowingOverscrollIndicator(
         axisDirection: AxisDirection.up,
         color: const Color.fromRGBO(198, 197, 255, 1.0).withOpacity(0.3),

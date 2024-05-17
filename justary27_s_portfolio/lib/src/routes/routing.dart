@@ -8,8 +8,6 @@ import '../pages/intro/intro.dart';
 import '../pages/opener/opener.dart';
 import '../pages/application_shell.dart';
 
-import '../components/deviceDetector.dart';
-import '../utils/helpers/screen_helper.dart';
 import '../utils/handlers/route_handler.dart';
 
 GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(
@@ -21,8 +19,6 @@ GlobalKey<NavigatorState> _siteNavigatorKey = GlobalKey<NavigatorState>(
 );
 
 class RouteManager {
-  static Size size = logicalScreenSize;
-  static String deviceType = deviceDetector(logicalScreenSize.width);
   static Color currentColor = Colors.black;
 }
 
@@ -62,9 +58,7 @@ GoRouter router = GoRouter(
                 );
               },
               transitionDuration: const Duration(milliseconds: 750),
-              child: OpenerPage(
-                size: logicalScreenSize,
-              ),
+              child: const OpenerPage(),
             );
           },
         ),
@@ -91,7 +85,7 @@ GoRouter router = GoRouter(
                   );
                 },
                 transitionDuration: const Duration(milliseconds: 750),
-                child: IntroPage(size: logicalScreenSize),
+                child: const IntroPage(),
               );
             }),
         GoRoute(
@@ -116,9 +110,7 @@ GoRouter router = GoRouter(
                 );
               },
               transitionDuration: const Duration(milliseconds: 750),
-              child: WhoPage(
-                size: logicalScreenSize,
-              ),
+              child: const WhoPage(),
             );
           },
         ),
@@ -145,9 +137,7 @@ GoRouter router = GoRouter(
                   );
                 },
                 transitionDuration: const Duration(milliseconds: 750),
-                child: WorkPage(
-                  size: logicalScreenSize,
-                ),
+                child: const WorkPage(),
               );
             }),
         GoRoute(
@@ -173,9 +163,7 @@ GoRouter router = GoRouter(
                 );
               },
               transitionDuration: const Duration(milliseconds: 750),
-              child: BlogPage(
-                size: logicalScreenSize,
-              ),
+              child: const BlogPage(),
             );
           },
         )

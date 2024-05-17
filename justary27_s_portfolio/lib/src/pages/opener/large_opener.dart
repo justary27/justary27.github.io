@@ -75,11 +75,7 @@ class LargeOpenerPage extends StatelessWidget {
                         Icons.arrow_forward_ios_rounded,
                         color: Colors.white,
                       ),
-                      onPressed: () async {
-                        bool? res =
-                            await context.push<bool>(RouteHandler.introPage);
-                        print(res);
-                      },
+                      onPressed: () => context.push(RouteHandler.introPage),
                       label: FittedBox(
                         child: Text(
                           "Intro",
@@ -92,7 +88,7 @@ class LargeOpenerPage extends StatelessWidget {
                         ),
                       ),
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(
+                        backgroundColor: WidgetStateProperty.all(
                           const Color(0xFFDC4654).withOpacity(0.75),
                         ),
                       ),

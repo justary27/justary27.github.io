@@ -42,7 +42,6 @@ class _ContactCardState extends ConsumerState<ContactCard> {
     ValueNotifier<bool> tHovered = ValueNotifier(false);
     ValueNotifier<bool> gHovered = ValueNotifier(false);
     ValueNotifier<bool> lHovered = ValueNotifier(false);
-    ValueNotifier<bool> fHovered = ValueNotifier(false);
     ValueNotifier<bool> textHovered = ValueNotifier(false);
     Color _hoverColor = RouteManager.currentColor;
     return Dialog(
@@ -92,13 +91,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                         ),
                         Padding(
                           padding: EdgeInsets.all(0.025 * size.height),
-                          child: MaterialButton(
-                            elevation: 0,
-                            color: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
+                          child: TextButton(
                             onPressed: () {
                               window.open(
                                   "mailto:aryan_r@ch.iitr.ac.in", "New Tab");
@@ -260,30 +253,6 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                   ),
                                 ),
                               ),
-                              MouseRegion(
-                                onEnter: (hover) {
-                                  if (_hoverColor !=
-                                      Colors.white.withOpacity(0.7)) {
-                                    fHovered.value = true;
-                                  }
-                                },
-                                onExit: (hover) {
-                                  fHovered.value = false;
-                                },
-                                child: ValueListenableBuilder(
-                                  valueListenable: fHovered,
-                                  builder: (_, __, ___) => IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      FontAwesomeIcons.facebook,
-                                      size: navConstraints['Links'][deviceType],
-                                    ),
-                                    color: (fHovered.value)
-                                        ? _hoverColor
-                                        : Colors.white.withOpacity(0.7),
-                                  ),
-                                ),
-                              ),
                             ],
                           ),
                         )
@@ -304,7 +273,6 @@ class _ContactCardState extends ConsumerState<ContactCard> {
     ValueNotifier<bool> tHovered = ValueNotifier(false);
     ValueNotifier<bool> gHovered = ValueNotifier(false);
     ValueNotifier<bool> lHovered = ValueNotifier(false);
-    ValueNotifier<bool> fHovered = ValueNotifier(false);
     ValueNotifier<bool> textHovered = ValueNotifier(false);
     Color _hoverColor = RouteManager.currentColor;
     return Dialog(
@@ -355,12 +323,15 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                           padding: EdgeInsets.all(0.025 * size.height),
                           child: TextButton(
                             style: ButtonStyle(
-                              overlayColor:
-                                  MaterialStateProperty.all(Colors.transparent),
+                              overlayColor: WidgetStateProperty.all(
+                                Colors.transparent,
+                              ),
                             ),
                             onPressed: () {
                               window.open(
-                                  "mailto:aryan_r@ch.iitr.ac.in", "New Tab");
+                                "mailto:aryan_r@ch.iitr.ac.in",
+                                "New Tab",
+                              );
                             },
                             child: MouseRegion(
                               onEnter: (hover) {
@@ -499,31 +470,6 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                       size: navConstraints['Links'][deviceType],
                                     ),
                                     color: (lHovered.value)
-                                        ? _hoverColor
-                                        : Colors.white.withOpacity(0.7),
-                                    parentContext: context,
-                                  ),
-                                ),
-                              ),
-                              MouseRegion(
-                                onEnter: (hover) {
-                                  if (_hoverColor !=
-                                      Colors.white.withOpacity(0.7)) {
-                                    fHovered.value = true;
-                                  }
-                                },
-                                onExit: (hover) {
-                                  fHovered.value = false;
-                                },
-                                child: ValueListenableBuilder(
-                                  valueListenable: fHovered,
-                                  builder: (_, __, ___) => AnchorButton(
-                                    destUrl: "",
-                                    icon: Icon(
-                                      FontAwesomeIcons.facebook,
-                                      size: navConstraints['Links'][deviceType],
-                                    ),
-                                    color: (fHovered.value)
                                         ? _hoverColor
                                         : Colors.white.withOpacity(0.7),
                                     parentContext: context,

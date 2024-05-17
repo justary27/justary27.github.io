@@ -66,9 +66,10 @@ class _FooterState extends State<Footer> {
             height: 0.3 * size.height,
             color: Colors.transparent,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 0.3 * size.width,
+                  width: 0.32 * size.width,
                   alignment: Alignment.center,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -78,14 +79,14 @@ class _FooterState extends State<Footer> {
                         style: TextStyle(
                           fontFamily: "Allison",
                           color: Colors.white.withOpacity(0.7),
-                          fontSize: 0.05 * size.width,
+                          fontSize: 0.065 * size.width,
                         ),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  width: 0.2 * size.width,
+                  width: 0.18 * size.width,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -303,14 +304,32 @@ class CircuitPainter extends CustomPainter {
     Path path = Path();
 
     path.moveTo(0.97 * size.width, 0.9 * size.height);
-    path.quadraticBezierTo(0.98 * size.width, 0.89 * size.height,
-        0.99 * size.width, 0.6 * size.height);
-    path.quadraticBezierTo(0.94 * size.width, 0.57 * size.height,
-        0.85 * size.width, 0.4 * size.height);
+
+    path.quadraticBezierTo(
+      0.98 * size.width,
+      0.89 * size.height,
+      1.00 * size.width,
+      0.00 * size.height,
+    );
+    // path.quadraticBezierTo(
+    //   0.94 * size.width,
+    //   0.57 * size.height,
+    //   0.85 * size.width,
+    //   0.4 * size.height,
+    // );
+    // path.quadraticBezierTo(
+    //   0.97 * size.width,
+    //   0.50 * size.height,
+    //   0.98 * size.width,
+    //   0.50 * size.height,
+    // );
+
     path.moveTo(0.97 * size.width, 0.9 * size.height);
     path.quadraticBezierTo(0.72 * size.width, 0.98 * size.height,
         0.7 * size.width, 0.99 * size.height);
     path.lineTo(0.2 * size.width, 0.99 * size.height);
+    path.lineTo(size.width, size.height);
+    path.lineTo(size.width, 0);
 
     canvas.drawPath(path, paint);
   }

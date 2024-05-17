@@ -16,9 +16,9 @@ const Map cf = {
     'laptops1920-': 0.045,
   },
   'aboutMe': {
-    'mobiles390-': 0.0325,
-    'mobiles450-': 0.0285,
-    'tablets768-': 0.0250,
+    'mobiles390-': 0.035,
+    'mobiles450-': 0.0325,
+    'tablets768-': 0.0275,
     'tablets1024-': 0.0180,
     'laptops1536-': 0.0135,
     'laptops1920-': 0.0130,
@@ -27,8 +27,8 @@ const Map cf = {
     'mobiles390-': 0.0460,
     'mobiles450-': 0.0410,
     'tablets768-': 0.0360,
-    'tablets1024-': 0.0300,
-    'laptops1536-': 0.02,
+    'tablets1024-': 0.0325,
+    'laptops1536-': 0.0250,
     'laptops1920-': 0.02,
   },
   'rotLine': {

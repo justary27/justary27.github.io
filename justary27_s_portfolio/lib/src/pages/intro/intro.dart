@@ -18,10 +18,8 @@ import '../../components/page_components/promo_components.dart';
 import 'intro_constraints.dart' show cf;
 
 class IntroPage extends StatefulWidget {
-  final Size size;
   const IntroPage({
     super.key,
-    required this.size,
   });
 
   @override
@@ -31,11 +29,13 @@ class IntroPage extends StatefulWidget {
 class _IntroPageState extends State<IntroPage> {
   @override
   Widget build(BuildContext context) {
-    final Size size = widget.size;
-
     return LayoutBuilder(
       builder: (context, constraints) {
-        String _deviceType = deviceDetector(constraints.maxWidth);
+        final Size size = Size(
+          constraints.maxWidth,
+          constraints.maxHeight,
+        );
+        String _deviceType = deviceDetector(size.width);
         return GlowingOverscrollIndicator(
           axisDirection: AxisDirection.up,
           color: const Color.fromRGBO(255, 175, 175, 1).withOpacity(0.3),
@@ -208,167 +208,180 @@ class _IntroPageState extends State<IntroPage> {
                                           const Color.fromRGBO(20, 62, 188, 1),
                                     ),
                                   ),
-                                  ButtonBar(
-                                    alignment: MainAxisAlignment.center,
-                                    children: [
-                                      AnchorButton(
-                                        destUrl: 'https://python.org',
-                                        icon: Icon(
-                                          FontAwesomeIcons.python,
-                                          size: cf['techStack'][_deviceType],
-                                        ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl: 'https://dart.dev/',
-                                        icon: SvgPicture.asset(
-                                          "images/intro/dart.svg",
-                                          height: 40,
-                                        ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl: 'https://www.javascript.com/',
-                                        icon: Icon(
-                                          FontAwesomeIcons.js,
-                                          size: cf['techStack'][_deviceType],
-                                        ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl:
-                                            'https://www.typescriptlang.org/',
-                                        icon: SvgPicture.asset(
-                                          "images/intro/ts.svg",
-                                          height: 40,
-                                        ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl: 'https://isocpp.org/',
-                                        icon: SvgPicture.asset(
-                                          "images/intro/cpp.svg",
-                                          height: 40,
-                                        ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl: 'https://go.dev/',
-                                        icon: Icon(
-                                          FontAwesomeIcons.golang,
-                                          size: cf['techStack'][_deviceType],
-                                        ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl: 'https://www.java.com/en/',
-                                        icon: Icon(
-                                          FontAwesomeIcons.java,
-                                          size: cf['techStack'][_deviceType],
-                                        ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl: 'https://julialang.org/',
-                                        icon: SvgPicture.asset(
-                                          "images/intro/julia.svg",
-                                          colorFilter: const ColorFilter.mode(
-                                            Color(0xFF49454F),
-                                            BlendMode.srcIn,
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 20,
+                                      horizontal: 0.05 * size.width,
+                                    ),
+                                    child: Wrap(
+                                      alignment: WrapAlignment.center,
+                                      spacing: 8.0,
+                                      // alignment: MainAxisAlignment.center,
+                                      children: [
+                                        AnchorButton(
+                                          destUrl: 'https://python.org',
+                                          icon: Icon(
+                                            FontAwesomeIcons.python,
+                                            size: cf['techStack'][_deviceType],
                                           ),
-                                          height: 40,
+                                          parentContext: context,
                                         ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl:
-                                            'https://learn.microsoft.com/en-us/dotnet/csharp/',
-                                        icon: SvgPicture.asset(
-                                          "images/intro/csharp.svg",
-                                          height: 40,
+                                        AnchorButton(
+                                          destUrl: 'https://dart.dev/',
+                                          icon: SvgPicture.asset(
+                                            "images/intro/dart.svg",
+                                            height: 40,
+                                          ),
+                                          parentContext: context,
                                         ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl: 'https://www.terraform.io/',
-                                        icon: SvgPicture.asset(
-                                          "images/intro/terraform.svg",
-                                          height: 40,
+                                        AnchorButton(
+                                          destUrl:
+                                              'https://www.javascript.com/',
+                                          icon: Icon(
+                                            FontAwesomeIcons.js,
+                                            size: cf['techStack'][_deviceType],
+                                          ),
+                                          parentContext: context,
                                         ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl: 'https://html5.org/',
-                                        icon: Icon(
-                                          FontAwesomeIcons.html5,
-                                          size: cf['techStack'][_deviceType],
+                                        AnchorButton(
+                                          destUrl:
+                                              'https://www.typescriptlang.org/',
+                                          icon: SvgPicture.asset(
+                                            "images/intro/ts.svg",
+                                            height: cf['techStack']
+                                                [_deviceType],
+                                          ),
+                                          parentContext: context,
                                         ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl:
-                                            'https://developer.mozilla.org/en-US/docs/Web/CSS',
-                                        icon: Icon(
-                                          FontAwesomeIcons.css3,
-                                          size: cf['techStack'][_deviceType],
+                                        AnchorButton(
+                                          destUrl: 'https://isocpp.org/',
+                                          icon: SvgPicture.asset(
+                                            "images/intro/cpp.svg",
+                                            height: cf['techStack']
+                                                [_deviceType],
+                                          ),
+                                          parentContext: context,
                                         ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl: 'https://sass-lang.com/',
-                                        icon: Icon(
-                                          FontAwesomeIcons.sass,
-                                          size: cf['techStack'][_deviceType],
+                                        AnchorButton(
+                                          destUrl: 'https://go.dev/',
+                                          icon: Icon(
+                                            FontAwesomeIcons.golang,
+                                            size: cf['techStack'][_deviceType],
+                                          ),
+                                          parentContext: context,
                                         ),
-                                        parentContext: context,
-                                      ),
-                                    ],
-                                  ),
-                                  ButtonBar(
-                                    alignment: MainAxisAlignment.center,
-                                    children: [
-                                      AnchorButton(
-                                        destUrl:
-                                            'https://www.djangoproject.com/',
-                                        icon: SvgPicture.asset(
-                                          "images/intro/django.svg",
-                                          height: 40,
+                                        AnchorButton(
+                                          destUrl: 'https://www.java.com/en/',
+                                          icon: Icon(
+                                            FontAwesomeIcons.java,
+                                            size: cf['techStack'][_deviceType],
+                                          ),
+                                          parentContext: context,
                                         ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl: 'https://flutter.dev/',
-                                        icon: SvgPicture.asset(
-                                          "images/intro/flutter.svg",
-                                          height: 40,
+                                        AnchorButton(
+                                          destUrl: 'https://julialang.org/',
+                                          icon: SvgPicture.asset(
+                                            "images/intro/julia.svg",
+                                            colorFilter: const ColorFilter.mode(
+                                              Color(0xFF49454F),
+                                              BlendMode.srcIn,
+                                            ),
+                                            height: cf['techStack']
+                                                [_deviceType],
+                                          ),
+                                          parentContext: context,
                                         ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl: 'https://reactjs.org',
-                                        icon: Icon(
-                                          FontAwesomeIcons.react,
-                                          size: cf['techStack'][_deviceType],
+                                        AnchorButton(
+                                          destUrl:
+                                              'https://learn.microsoft.com/en-us/dotnet/csharp/',
+                                          icon: SvgPicture.asset(
+                                            "images/intro/csharp.svg",
+                                            height: cf['techStack']
+                                                [_deviceType],
+                                          ),
+                                          parentContext: context,
                                         ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl: 'https://firebase.google.com/',
-                                        icon: SvgPicture.asset(
-                                          "images/intro/firebase.svg",
-                                          height: 40,
+                                        AnchorButton(
+                                          destUrl: 'https://www.terraform.io/',
+                                          icon: SvgPicture.asset(
+                                            "images/intro/terraform.svg",
+                                            height: cf['techStack']
+                                                [_deviceType],
+                                          ),
+                                          parentContext: context,
                                         ),
-                                        parentContext: context,
-                                      ),
-                                      AnchorButton(
-                                        destUrl: 'https://aws.amazon.com/',
-                                        icon: Icon(
-                                          FontAwesomeIcons.aws,
-                                          size: cf['techStack'][_deviceType],
+                                        AnchorButton(
+                                          destUrl: 'https://html5.org/',
+                                          icon: Icon(
+                                            FontAwesomeIcons.html5,
+                                            size: cf['techStack'][_deviceType],
+                                          ),
+                                          parentContext: context,
                                         ),
-                                        parentContext: context,
-                                      ),
-                                    ],
+                                        AnchorButton(
+                                          destUrl:
+                                              'https://developer.mozilla.org/en-US/docs/Web/CSS',
+                                          icon: Icon(
+                                            FontAwesomeIcons.css3,
+                                            size: cf['techStack'][_deviceType],
+                                          ),
+                                          parentContext: context,
+                                        ),
+                                        AnchorButton(
+                                          destUrl: 'https://sass-lang.com/',
+                                          icon: Icon(
+                                            FontAwesomeIcons.sass,
+                                            size: cf['techStack'][_deviceType],
+                                          ),
+                                          parentContext: context,
+                                        ),
+                                        AnchorButton(
+                                          destUrl:
+                                              'https://www.djangoproject.com/',
+                                          icon: SvgPicture.asset(
+                                            "images/intro/django.svg",
+                                            height: cf['techStack']
+                                                [_deviceType],
+                                          ),
+                                          parentContext: context,
+                                        ),
+                                        AnchorButton(
+                                          destUrl: 'https://flutter.dev/',
+                                          icon: SvgPicture.asset(
+                                            "images/intro/flutter.svg",
+                                            height: cf['techStack']
+                                                [_deviceType],
+                                          ),
+                                          parentContext: context,
+                                        ),
+                                        AnchorButton(
+                                          destUrl: 'https://reactjs.org',
+                                          icon: Icon(
+                                            FontAwesomeIcons.react,
+                                            size: cf['techStack'][_deviceType],
+                                          ),
+                                          parentContext: context,
+                                        ),
+                                        AnchorButton(
+                                          destUrl:
+                                              'https://firebase.google.com/',
+                                          icon: SvgPicture.asset(
+                                            "images/intro/firebase.svg",
+                                            height: cf['techStack']
+                                                [_deviceType],
+                                          ),
+                                          parentContext: context,
+                                        ),
+                                        AnchorButton(
+                                          destUrl: 'https://aws.amazon.com/',
+                                          icon: Icon(
+                                            FontAwesomeIcons.aws,
+                                            size: cf['techStack'][_deviceType],
+                                          ),
+                                          parentContext: context,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
@@ -386,7 +399,7 @@ class _IntroPageState extends State<IntroPage> {
                               ),
                               onPressed: () {
                                 html.window.open(
-                                  "https://drive.google.com/file/d/1iLO8MrPIvYoL8wnAvUOJanr2o4-9K27g/view?usp=sharing",
+                                  "https://drive.google.com/file/d/1LThNeZ9p9emO5BfLwBZ1pbpiAfYtIefs/view?usp=sharing",
                                   "New Tab",
                                 );
                               },

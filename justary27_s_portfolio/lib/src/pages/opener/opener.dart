@@ -5,10 +5,8 @@ import '../../pages/opener/small_opener.dart';
 import '../../components/deviceDetector.dart';
 
 class OpenerPage extends StatefulWidget {
-  final Size size;
   const OpenerPage({
     super.key,
-    required this.size,
   });
 
   @override
@@ -18,11 +16,13 @@ class OpenerPage extends StatefulWidget {
 class _OpenerPageState extends State<OpenerPage> {
   @override
   Widget build(BuildContext context) {
-    final Size size = widget.size;
     return LayoutBuilder(
       builder: (context, constraints) {
-        String _deviceType = deviceDetector(constraints.maxWidth);
-        debugPrint(constraints.maxWidth.toString());
+        final Size size = Size(
+          constraints.maxWidth,
+          constraints.maxHeight,
+        );
+        String _deviceType = deviceDetector(size.width);
         if (_deviceType == 'mobiles390-' ||
             _deviceType == 'mobiles450-' ||
             _deviceType == 'tablets768-') {
