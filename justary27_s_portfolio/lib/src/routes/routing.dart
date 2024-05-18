@@ -35,7 +35,7 @@ GoRouter router = GoRouter(
       ) {
         return ApplicationShell(child: child);
       },
-      routes: [
+      routes: <RouteBase>[
         GoRoute(
           path: RouteHandler.homePage,
           // navigatorKey: _rootNavigatorKey,
