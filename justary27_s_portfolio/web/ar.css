@@ -1,11 +1,24 @@
 body{
     margin: 0;
 }
+
 .splash{
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100vh;
     width: 100vw;
     background-color: black;
 }
+
+.content{
+    position: relative;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+}
+
 #lines{
     z-index: 0;
     position: absolute;
