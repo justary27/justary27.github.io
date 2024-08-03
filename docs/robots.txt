@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://justary27.web.app/sitemap.xml
