@@ -1,50 +1,60 @@
-const Map cf = {
-  'heading': {
-    'mobiles390-': 0.25,
-    'mobiles450-': 0.25,
-    'tablets768-': 0.25,
-    'tablets1024-': 0.25,
-    'laptops1536-': 0.25,
-    'laptops1920-': 0.225,
-  },
-  'projTitle': {
-    'mobiles390-': 0.20,
-    'mobiles450-': 0.175,
-    'tablets768-': 0.15,
-    'tablets1024-': 0.125,
-    'laptops1536-': 0.1,
-    'laptops1920-': 0.08,
-  },
-  'projSubtitle': {
-    'mobiles390-': 0.06,
-    'mobiles450-': 0.05,
-    'tablets768-': 0.04,
-    'tablets1024-': 0.03,
-    'laptops1536-': 0.021,
-    'laptops1920-': 0.02,
-  },
-  'projDescription': {
-    'mobiles390-': 0.0320,
-    'mobiles450-': 0.0280,
-    'tablets768-': 0.0245,
-    'tablets1024-': 0.0175,
-    'laptops1536-': 0.0130,
-    'laptops1920-': 0.0125,
-  },
-  'projLinks': {
-    'mobiles390-': 16,
-    'mobiles450-': 17.5,
-    'tablets768-': 19.5,
-    'tablets1024-': 21,
-    'laptops1536-': 24,
-    'laptops1920-': 27,
-  },
-  'projEmphasis': {
-    'mobiles390-': 0.0320,
-    'mobiles450-': 0.0280,
-    'tablets768-': 0.0250,
-    'tablets1024-': 0.0180,
-    'laptops1536-': 0.0135,
-    'laptops1920-': 0.0130,
-  }
-};
+import '../../enums/device_type.dart';
+
+/// Storage class for Work page constraints.
+class WC {
+  WC._();
+
+  static const Map<DeviceType, double> heading = {
+    DeviceType.smallMobile: 0.25,
+    DeviceType.largeMobile: 0.25,
+    DeviceType.smalltablet: 0.25,
+    DeviceType.largeTablet: 0.25,
+    DeviceType.smallLaptop: 0.25,
+    DeviceType.largeLaptop: 0.225,
+  };
+
+  static const Map<DeviceType, double> projTitle = {
+    DeviceType.smallMobile: 0.20,
+    DeviceType.largeMobile: 0.175,
+    DeviceType.smalltablet: 0.15,
+    DeviceType.largeTablet: 0.125,
+    DeviceType.smallLaptop: 0.1,
+    DeviceType.largeLaptop: 0.08,
+  };
+
+  static const Map<DeviceType, double> projSubtitle = {
+    DeviceType.smallMobile: 0.06,
+    DeviceType.largeMobile: 0.05,
+    DeviceType.smalltablet: 0.04,
+    DeviceType.largeTablet: 0.03,
+    DeviceType.smallLaptop: 0.021,
+    DeviceType.largeLaptop: 0.02,
+  };
+
+  static const Map<DeviceType, double> projDescription = {
+    DeviceType.smallMobile: 0.0320,
+    DeviceType.largeMobile: 0.0280,
+    DeviceType.smalltablet: 0.0245,
+    DeviceType.largeTablet: 0.0175,
+    DeviceType.smallLaptop: 0.0130,
+    DeviceType.largeLaptop: 0.0125,
+  };
+
+  static const Map<DeviceType, double> projLinks = {
+    DeviceType.smallMobile: 16,
+    DeviceType.largeMobile: 17.5,
+    DeviceType.smalltablet: 19.5,
+    DeviceType.largeTablet: 21,
+    DeviceType.smallLaptop: 24,
+    DeviceType.largeLaptop: 27,
+  };
+
+  static const Map<DeviceType, double> projEmphasis = {
+    DeviceType.smallMobile: 0.0320,
+    DeviceType.largeMobile: 0.0280,
+    DeviceType.smalltablet: 0.0250,
+    DeviceType.largeTablet: 0.0180,
+    DeviceType.smallLaptop: 0.0135,
+    DeviceType.largeLaptop: 0.0130,
+  };
+}

@@ -1,19 +1,18 @@
-// ignore_for_file: avoid_web_libraries_in_flutter
-
-import 'dart:html';
-
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:justary27_s_portfolio/src/components/anchor.dart';
 
-import '../rPainter.dart';
+import '../roorkee_painter.dart';
 import '../../routes/routing.dart';
-import '../../constants/component_constraints/navbar_constraints.dart';
+import '../../enums/device_type.dart';
+import '../../components/anchor.dart';
+
+import 'navbar_constraints.dart';
 
 class ContactCard extends ConsumerStatefulWidget {
   final Size size;
-  final String deviceType;
+  final DeviceType deviceType;
 
   const ContactCard({
     super.key,
@@ -26,24 +25,29 @@ class ContactCard extends ConsumerStatefulWidget {
 }
 
 class _ContactCardState extends ConsumerState<ContactCard> {
+  Future<void> _launchLink(String url) async {
+    await launchUrl(
+      Uri.parse(url),
+      webOnlyWindowName: '_blank',
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    if (widget.deviceType == 'mobiles390-' ||
-        widget.deviceType == 'mobiles450-' ||
-        widget.deviceType == 'tablets768-') {
+    if (widget.deviceType < DeviceType.largeTablet) {
       return buildSmallCard(widget.size, widget.deviceType);
     } else {
       return buildLargeCard(widget.size, widget.deviceType);
     }
   }
 
-  buildSmallCard(Size size, String deviceType) {
+  buildSmallCard(Size size, DeviceType deviceType) {
     ValueNotifier<bool> isHovered = ValueNotifier(false);
     ValueNotifier<bool> tHovered = ValueNotifier(false);
     ValueNotifier<bool> gHovered = ValueNotifier(false);
     ValueNotifier<bool> lHovered = ValueNotifier(false);
     ValueNotifier<bool> textHovered = ValueNotifier(false);
-    Color _hoverColor = RouteManager.currentColor;
+    Color hoverColor = RouteManager.currentColor;
     return Dialog(
       child: Material(
         color: Colors.transparent,
@@ -85,20 +89,18 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                           "Contact Me",
                           style: TextStyle(
                             fontFamily: "ABeeZee",
-                            fontSize: size.width *
-                                navConstraints['taLine'][deviceType],
+                            fontSize: size.width * NC.taLine[deviceType]!,
                           ),
                         ),
                         Padding(
                           padding: EdgeInsets.all(0.025 * size.height),
                           child: TextButton(
-                            onPressed: () {
-                              window.open(
-                                  "mailto:aryan_r@ch.iitr.ac.in", "New Tab");
-                            },
+                            onPressed: () => _launchLink(
+                              "mailto:aryan_r@ch.iitr.ac.in",
+                            ),
                             child: MouseRegion(
                               onEnter: (hover) {
-                                if (_hoverColor != Colors.black) {
+                                if (hoverColor != Colors.black) {
                                   isHovered.value = true;
                                 }
                               },
@@ -113,10 +115,10 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                   style: TextStyle(
                                     fontFamily: "Ubuntu",
                                     color: (isHovered.value)
-                                        ? _hoverColor
+                                        ? hoverColor
                                         : Colors.black,
-                                    fontSize: size.width *
-                                        navConstraints['email'][deviceType],
+                                    fontSize:
+                                        size.width * NC.email[deviceType]!,
                                   ),
                                 ),
                               ),
@@ -134,7 +136,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                       children: [
                         MouseRegion(
                           onEnter: (hover) {
-                            if (_hoverColor != Colors.white.withOpacity(0.7)) {
+                            if (hoverColor != Colors.white.withOpacity(0.7)) {
                               textHovered.value = true;
                             }
                           },
@@ -149,10 +151,9 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                   : "Time is made.",
                               style: TextStyle(
                                 fontFamily: "Caveat",
-                                fontSize: size.width *
-                                    navConstraints['taLine'][deviceType],
+                                fontSize: size.width * NC.taLine[deviceType]!,
                                 color: (textHovered.value)
-                                    ? _hoverColor
+                                    ? hoverColor
                                     : Colors.white.withOpacity(0.7),
                               ),
                             ),
@@ -168,7 +169,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 color: Colors.transparent,
                                 child: MouseRegion(
                                   onEnter: (hover) {
-                                    if (_hoverColor !=
+                                    if (hoverColor !=
                                         Colors.white.withOpacity(0.7)) {
                                       tHovered.value = true;
                                     }
@@ -179,18 +180,15 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                   child: ValueListenableBuilder(
                                     valueListenable: tHovered,
                                     builder: (_, __, ___) => IconButton(
-                                      onPressed: () {
-                                        window.open(
-                                            'https://twitter.com/JustAry27',
-                                            'New Tab');
-                                      },
+                                      onPressed: () => _launchLink(
+                                        'https://twitter.com/JustAry27',
+                                      ),
                                       icon: Icon(
                                         FontAwesomeIcons.xTwitter,
-                                        size: navConstraints['Links']
-                                            [deviceType],
+                                        size: NC.links[deviceType]!,
                                       ),
                                       color: (tHovered.value)
-                                          ? _hoverColor
+                                          ? hoverColor
                                           : Colors.white.withOpacity(0.7),
                                     ),
                                   ),
@@ -198,7 +196,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                               ),
                               MouseRegion(
                                 onEnter: (hover) {
-                                  if (_hoverColor !=
+                                  if (hoverColor !=
                                       Colors.white.withOpacity(0.7)) {
                                     gHovered.value = true;
                                   }
@@ -209,24 +207,22 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 child: ValueListenableBuilder(
                                   valueListenable: gHovered,
                                   builder: (_, __, ___) => IconButton(
-                                    onPressed: () {
-                                      window.open(
-                                          'https://github.com/justary27',
-                                          'New Tab');
-                                    },
+                                    onPressed: () => _launchLink(
+                                      'https://github.com/justary27',
+                                    ),
                                     icon: Icon(
                                       FontAwesomeIcons.github,
-                                      size: navConstraints['Links'][deviceType],
+                                      size: NC.links[deviceType]!,
                                     ),
                                     color: (gHovered.value)
-                                        ? _hoverColor
+                                        ? hoverColor
                                         : Colors.white.withOpacity(0.7),
                                   ),
                                 ),
                               ),
                               MouseRegion(
                                 onEnter: (hover) {
-                                  if (_hoverColor !=
+                                  if (hoverColor !=
                                       Colors.white.withOpacity(0.7)) {
                                     lHovered.value = true;
                                   }
@@ -237,18 +233,15 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 child: ValueListenableBuilder(
                                   valueListenable: lHovered,
                                   builder: (_, __, ___) => IconButton(
-                                    onPressed: () {
-                                      window.open(
-                                        'https://www.linkedin.com/in/aryan-ranjan27/',
-                                        'New Tab',
-                                      );
-                                    },
+                                    onPressed: () => _launchLink(
+                                      'https://www.linkedin.com/in/aryan-ranjan27/',
+                                    ),
                                     icon: Icon(
                                       FontAwesomeIcons.linkedin,
-                                      size: navConstraints['Links'][deviceType],
+                                      size: NC.links[deviceType]!,
                                     ),
                                     color: (lHovered.value)
-                                        ? _hoverColor
+                                        ? hoverColor
                                         : Colors.white.withOpacity(0.7),
                                   ),
                                 ),
@@ -268,13 +261,13 @@ class _ContactCardState extends ConsumerState<ContactCard> {
     );
   }
 
-  Dialog buildLargeCard(Size size, String deviceType) {
+  Dialog buildLargeCard(Size size, DeviceType deviceType) {
     ValueNotifier<bool> isHovered = ValueNotifier(false);
     ValueNotifier<bool> tHovered = ValueNotifier(false);
     ValueNotifier<bool> gHovered = ValueNotifier(false);
     ValueNotifier<bool> lHovered = ValueNotifier(false);
     ValueNotifier<bool> textHovered = ValueNotifier(false);
-    Color _hoverColor = RouteManager.currentColor;
+    Color hoverColor = RouteManager.currentColor;
     return Dialog(
       child: Material(
         color: Colors.transparent,
@@ -315,8 +308,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                           "Contact Me",
                           style: TextStyle(
                             fontFamily: "ABeeZee",
-                            fontSize: size.width *
-                                navConstraints['taLine'][deviceType],
+                            fontSize: size.width * NC.taLine[deviceType]!,
                           ),
                         ),
                         Padding(
@@ -327,15 +319,12 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 Colors.transparent,
                               ),
                             ),
-                            onPressed: () {
-                              window.open(
-                                "mailto:aryan_r@ch.iitr.ac.in",
-                                "New Tab",
-                              );
-                            },
+                            onPressed: () => _launchLink(
+                              "mailto:aryan_r@ch.iitr.ac.in",
+                            ),
                             child: MouseRegion(
                               onEnter: (hover) {
-                                if (_hoverColor != Colors.black) {
+                                if (hoverColor != Colors.black) {
                                   isHovered.value = true;
                                 }
                               },
@@ -349,10 +338,10 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                   style: TextStyle(
                                     fontFamily: "Ubuntu",
                                     color: (isHovered.value)
-                                        ? _hoverColor
+                                        ? hoverColor
                                         : Colors.black,
-                                    fontSize: size.width *
-                                        navConstraints['email'][deviceType],
+                                    fontSize:
+                                        size.width * NC.email[deviceType]!,
                                   ),
                                 ),
                               ),
@@ -370,7 +359,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                       children: [
                         MouseRegion(
                           onEnter: (hover) {
-                            if (_hoverColor != Colors.white.withOpacity(0.7)) {
+                            if (hoverColor != Colors.white.withOpacity(0.7)) {
                               textHovered.value = true;
                             }
                           },
@@ -385,10 +374,9 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                   : "Time is made.",
                               style: TextStyle(
                                 fontFamily: "Caveat",
-                                fontSize: size.width *
-                                    navConstraints['taLine'][deviceType],
+                                fontSize: size.width * NC.taLine[deviceType]!,
                                 color: (textHovered.value)
-                                    ? _hoverColor
+                                    ? hoverColor
                                     : Colors.white.withOpacity(0.7),
                               ),
                             ),
@@ -402,7 +390,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                             children: [
                               MouseRegion(
                                 onEnter: (hover) {
-                                  if (_hoverColor !=
+                                  if (hoverColor !=
                                       Colors.white.withOpacity(0.7)) {
                                     tHovered.value = true;
                                   }
@@ -416,10 +404,10 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                     destUrl: 'https://twitter.com/JustAry27',
                                     icon: Icon(
                                       FontAwesomeIcons.xTwitter,
-                                      size: navConstraints['Links'][deviceType],
+                                      size: NC.links[deviceType]!,
                                     ),
                                     color: (tHovered.value)
-                                        ? _hoverColor
+                                        ? hoverColor
                                         : Colors.white.withOpacity(0.7),
                                     parentContext: context,
                                   ),
@@ -427,7 +415,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                               ),
                               MouseRegion(
                                 onEnter: (hover) {
-                                  if (_hoverColor !=
+                                  if (hoverColor !=
                                       Colors.white.withOpacity(0.7)) {
                                     gHovered.value = true;
                                   }
@@ -441,10 +429,10 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                     destUrl: 'https://github.com/justary27',
                                     icon: Icon(
                                       FontAwesomeIcons.github,
-                                      size: navConstraints['Links'][deviceType],
+                                      size: NC.links[deviceType]!,
                                     ),
                                     color: (gHovered.value)
-                                        ? _hoverColor
+                                        ? hoverColor
                                         : Colors.white.withOpacity(0.7),
                                     parentContext: context,
                                   ),
@@ -452,7 +440,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                               ),
                               MouseRegion(
                                 onEnter: (hover) {
-                                  if (_hoverColor !=
+                                  if (hoverColor !=
                                       Colors.white.withOpacity(0.7)) {
                                     lHovered.value = true;
                                   }
@@ -467,10 +455,10 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                         'https://www.linkedin.com/in/aryan-ranjan27/',
                                     icon: Icon(
                                       FontAwesomeIcons.linkedin,
-                                      size: navConstraints['Links'][deviceType],
+                                      size: NC.links[deviceType]!,
                                     ),
                                     color: (lHovered.value)
-                                        ? _hoverColor
+                                        ? hoverColor
                                         : Colors.white.withOpacity(0.7),
                                     parentContext: context,
                                   ),

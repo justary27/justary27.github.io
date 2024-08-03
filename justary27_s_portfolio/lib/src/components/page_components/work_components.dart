@@ -2,81 +2,127 @@ import 'package:flutter/material.dart';
 
 class WorkDescriptor extends StatelessWidget {
   final Size size;
-  final Text title;
+  final dynamic title;
   final Text subtitle;
+  final List<Widget> tags;
   final Text description;
   final List<Widget> buttonLinks;
   final dynamic model;
   final bool? isRightAligned;
+  final BoxDecoration decoration;
   const WorkDescriptor({
     super.key,
     required this.size,
     required this.title,
     required this.subtitle,
+    required this.tags,
     required this.description,
     required this.buttonLinks,
+    required this.decoration,
     this.model,
     this.isRightAligned,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: SizedBox(
-        width: size.width,
-        height: size.height,
-        child: Stack(
-          children: [
-            Container(
-              width: size.width,
-              height: size.height,
+    return Container(
+      width: size.width,
+      decoration: decoration,
+      alignment: Alignment.center,
+      constraints: BoxConstraints(
+        minHeight: size.height,
+      ),
+      child: Stack(
+        children: [
+          Positioned(
+            right: isRightAligned == null ? 0 : null,
+            left: isRightAligned == true ? 0 : null,
+            width: 0.45 * size.width,
+            top: 0,
+            bottom: 0,
+            child: Container(
               padding: EdgeInsets.symmetric(
                 horizontal: 0.015 * size.width,
-                vertical: 0.1 * size.height,
               ),
-              alignment: (isRightAligned == null)
-                  ? Alignment.centerRight
-                  : Alignment.centerLeft,
-              child: SizedBox(
-                width: 0.4 * size.width,
-                height: size.height,
-                child: model,
+              constraints: BoxConstraints(
+                minHeight: size.height,
               ),
+              child: model,
             ),
-            Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: 0.1 * size.width,
-                vertical: 0.05 * size.height,
-              ),
-              width: size.width,
-              height: size.height,
-              child: Column(
-                crossAxisAlignment: (isRightAligned == null)
-                    ? CrossAxisAlignment.start
-                    : CrossAxisAlignment.end,
-                children: buildWorkWidget(),
-              ),
-            )
-          ],
-        ),
+          ),
+          Container(
+            width: size.width,
+            padding: EdgeInsets.symmetric(
+              horizontal: 0.1 * size.width,
+              vertical: 0.05 * size.height,
+              // right: 0.1 * size.width,
+            ),
+            constraints: BoxConstraints(
+              minHeight: size.height,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: (isRightAligned == null)
+                  ? CrossAxisAlignment.start
+                  : CrossAxisAlignment.end,
+              children: buildWorkWidget(),
+            ),
+          )
+        ],
       ),
     );
   }
 
   List<Widget> buildWorkWidget() {
     return [
-      title,
+      FittedBox(
+        fit: BoxFit.scaleDown,
+        child: title,
+      ),
       subtitle,
+      Container(
+        margin: const EdgeInsets.symmetric(
+          vertical: 10.0,
+        ),
+        child: Row(
+          mainAxisAlignment: (isRightAligned == null)
+              ? MainAxisAlignment.start
+              : MainAxisAlignment.end,
+          children: List.generate(
+            tags.length,
+            (int index) => Padding(
+              padding: EdgeInsets.only(
+                left: isRightAligned == null ? 0 : 12.0,
+                right: isRightAligned == true ? 0 : 12.0,
+                top: 10.0,
+              ),
+              child: tags[index],
+            ),
+          ),
+        ),
+      ),
       SizedBox(
         width: 0.4 * size.width,
-        child: description,
+        child: MouseRegion(
+          cursor: SystemMouseCursors.text,
+          child: description,
+        ),
       ),
-      ButtonBar(
-        alignment: (isRightAligned == null)
+      Row(
+        mainAxisAlignment: (isRightAligned == null)
             ? MainAxisAlignment.start
             : MainAxisAlignment.end,
-        children: buttonLinks,
+        children: List.generate(
+          buttonLinks.length,
+          (int index) => Padding(
+            padding: EdgeInsets.only(
+              left: isRightAligned == null ? 0 : 12.0,
+              right: isRightAligned == true ? 0 : 12.0,
+              top: 10.0,
+            ),
+            child: buttonLinks[index],
+          ),
+        ),
       )
     ];
   }

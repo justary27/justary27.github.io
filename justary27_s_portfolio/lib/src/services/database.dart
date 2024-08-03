@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:justary27_s_portfolio/src/models/blog_model.dart';
+import 'package:flutter/material.dart';
+
+import '../models/blog_model.dart';
 
 class Database {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -16,9 +18,9 @@ class Database {
   static writeBlog(Map<String, dynamic> blogMap) async {
     try {
       firestore.collection("blogs").add(blogMap);
-      print("Success");
+      debugPrint("Success");
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
   }
 }

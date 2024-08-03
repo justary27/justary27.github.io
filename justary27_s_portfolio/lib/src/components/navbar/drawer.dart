@@ -1,16 +1,18 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'contact.dart';
-import '../rPainter.dart';
+import '../roorkee_painter.dart';
 import '../../routes/routing.dart';
-import '../../utils/handlers/route_handler.dart';
+import '../../enums/device_type.dart';
+import '../../handlers/route_handler.dart';
+
+import 'contact.dart';
 
 class SmallDrawer extends StatefulWidget {
   final GlobalKey<ScaffoldState> navigator;
   final Size size;
-  final String deviceType;
+  final DeviceType deviceType;
   const SmallDrawer({
     super.key,
     required this.navigator,

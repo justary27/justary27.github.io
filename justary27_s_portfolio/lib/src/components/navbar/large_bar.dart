@@ -1,12 +1,14 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:justary27_s_portfolio/src/components/navbar/contact.dart';
-import 'package:justary27_s_portfolio/src/utils/handlers/route_handler.dart';
+
+import '../../enums/device_type.dart';
+import '../../handlers/route_handler.dart';
+import '../../components/navbar/contact.dart';
 
 class LargeNavBar extends StatefulWidget {
   final Size size;
-  final String deviceType;
+  final DeviceType deviceType;
 
   const LargeNavBar({
     super.key,

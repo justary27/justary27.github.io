@@ -61,24 +61,6 @@
       "mesh": 2
     },
     {
-      "matrix": [
-        1,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0.9999999999999999,
-        0,
-        0,
-        0,
-        0,
-        1
-      ],
       "children": [
         6
       ]
@@ -127,20 +109,20 @@
       ],
       "extras": {
         "svgImageTarget": {
-          "width": 719,
+          "width": 720,
           "height": 1024,
           "depth": 1,
           "scissor": {
             "x": 0,
             "y": 0,
-            "z": 719,
+            "z": 720,
             "w": 1024
           },
           "scissorTest": false,
           "viewport": {
             "x": 0,
             "y": 0,
-            "z": 719,
+            "z": 720,
             "w": 1024
           },
           "texture": {
@@ -149,7 +131,7 @@
               "type": "Texture",
               "generator": "Texture.toJSON"
             },
-            "uuid": "62722157-FAF6-4786-8E78-B4D6E3460D21",
+            "uuid": "B2AB5D3F-326A-43E9-89BE-CEF568F642B9",
             "name": "",
             "mapping": 300,
             "repeat": [
@@ -178,7 +160,7 @@
             "flipY": true,
             "premultiplyAlpha": false,
             "unpackAlignment": 4,
-            "image": "D275C1BE-4D26-4CA2-B9D7-43E1CE321F24"
+            "image": "8AF015C4-A8B8-4A31-9E19-0F1ACAAC544E"
           },
           "depthBuffer": false,
           "stencilBuffer": false,
@@ -412,9 +394,9 @@
     {
       "pbrMetallicRoughness": {
         "baseColorFactor": [
-          0.08627450980392157,
-          0.5215686274509804,
-          0.43529411764705883,
+          0,
+          0.5411764705882353,
+          0.43137254901960786,
           1
         ],
         "metallicFactor": 0,
@@ -424,9 +406,9 @@
     {
       "pbrMetallicRoughness": {
         "baseColorFactor": [
-          0.08627450980392157,
-          0.5215686274509804,
-          0.43529411764705883,
+          0,
+          0.5411764705882353,
+          0.43137254901960786,
           1
         ],
         "metallicFactor": 0,
@@ -436,9 +418,9 @@
     {
       "pbrMetallicRoughness": {
         "baseColorFactor": [
-          0.08627450980392157,
-          0.5215686274509804,
-          0.43529411764705883,
+          0,
+          0.5411764705882353,
+          0.43137254901960786,
           1
         ],
         "metallicFactor": 0,

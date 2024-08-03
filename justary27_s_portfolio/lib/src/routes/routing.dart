@@ -5,10 +5,9 @@ import '../pages/who/who.dart';
 import '../pages/work/work.dart';
 import '../pages/blog/blog.dart';
 import '../pages/intro/intro.dart';
-import '../pages/opener/opener.dart';
+import '../pages/home/opener.dart';
+import '../handlers/route_handler.dart';
 import '../pages/application_shell.dart';
-
-import '../utils/handlers/route_handler.dart';
 
 GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(
   debugLabel: "Opener Router Used",
@@ -40,7 +39,7 @@ GoRouter router = GoRouter(
           path: RouteHandler.homePage,
           // navigatorKey: _rootNavigatorKey,
           pageBuilder: (context, state) {
-            RouteManager.currentColor = Colors.black;
+            RouteManager.currentColor = RouteHandler.homeColor;
             return CustomTransitionPage(
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
@@ -58,7 +57,7 @@ GoRouter router = GoRouter(
                 );
               },
               transitionDuration: const Duration(milliseconds: 750),
-              child: const OpenerPage(),
+              child: const HomePage(),
             );
           },
         ),
@@ -66,8 +65,7 @@ GoRouter router = GoRouter(
             path: RouteHandler.introPage,
             // parentNavigatorKey: _siteNavigatorKey,
             pageBuilder: (context, state) {
-              RouteManager.currentColor =
-                  const Color.fromRGBO(236, 131, 131, 1.0);
+              RouteManager.currentColor = const Color(0xFFA81D13);
               return CustomTransitionPage(
                 transitionsBuilder:
                     (context, animation, secondaryAnimation, child) {
@@ -92,7 +90,7 @@ GoRouter router = GoRouter(
           path: RouteHandler.whoPage,
           // parentNavigatorKey: _siteNavigatorKey,
           pageBuilder: (context, state) {
-            RouteManager.currentColor = const Color.fromRGBO(14, 43, 133, 1.0);
+            RouteManager.currentColor = RouteHandler.whoColor;
             return CustomTransitionPage(
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
@@ -118,8 +116,7 @@ GoRouter router = GoRouter(
             path: RouteHandler.workPage,
             // parentNavigatorKey: _siteNavigatorKey,
             pageBuilder: (context, state) {
-              RouteManager.currentColor =
-                  const Color.fromRGBO(56, 149, 131, 1.0);
+              RouteManager.currentColor = RouteHandler.workColor;
               return CustomTransitionPage(
                 transitionsBuilder:
                     (context, animation, secondaryAnimation, child) {
@@ -145,7 +142,7 @@ GoRouter router = GoRouter(
           // parentNavigatorKey: _siteNavigatorKey,
 
           pageBuilder: (context, state) {
-            RouteManager.currentColor = const Color.fromRGBO(246, 223, 71, 1.0);
+            RouteManager.currentColor = RouteHandler.blogColor;
             return CustomTransitionPage(
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
@@ -170,4 +167,22 @@ GoRouter router = GoRouter(
       ],
     ),
   ],
+  redirect: (BuildContext context, GoRouterState state) {
+    final path = state.uri.path;
+
+    switch (path) {
+      case RouteHandler.homePage:
+        return RouteHandler.homePage;
+      case RouteHandler.introPage:
+        return RouteHandler.introPage;
+      case RouteHandler.whoPage:
+        return RouteHandler.whoPage;
+      case RouteHandler.workPage:
+        return RouteHandler.workPage;
+      case RouteHandler.blogPage:
+        return RouteHandler.blogPage;
+      default:
+        return RouteHandler.homePage;
+    }
+  },
 );

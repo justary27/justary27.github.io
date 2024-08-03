@@ -1,44 +1,51 @@
-// ignore_for_file: avoid_web_libraries_in_flutter
-
-import 'dart:html' as html;
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:justary27_s_portfolio/src/components/anchor.dart';
 
 import '../../components/footer.dart';
-import '../../components/rPainter.dart';
-import '../../components/deviceDetector.dart';
-import '../../constants/page_constants/intro_constants.dart';
-import '../../components/page_components/promo_components.dart';
+import '../../components/anchor.dart';
+import '../../enums/device_type.dart';
+import '../../models/screen_model.dart';
+import '../../providers/screen_provider.dart';
+import '../../components/roorkee_painter.dart';
+import '../../components/promo/promo_components.dart';
 
-import 'intro_constraints.dart' show cf;
+import 'intro_constants.dart';
+import 'intro_constraints.dart';
 
-class IntroPage extends StatefulWidget {
-  const IntroPage({
-    super.key,
-  });
+class IntroPage extends ConsumerStatefulWidget {
+  const IntroPage({super.key});
 
   @override
-  State<IntroPage> createState() => _IntroPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _IntroPageState();
 }
 
-class _IntroPageState extends State<IntroPage> {
+class _IntroPageState extends ConsumerState<IntroPage> {
+  Future<void> _launchLink(String url) async {
+    await launchUrl(
+      Uri.parse(url),
+      webOnlyWindowName: '_blank',
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    Screen screen = ref.watch(screenProvider);
+    DeviceType deviceType = screen.deviceType;
     return LayoutBuilder(
       builder: (context, constraints) {
         final Size size = Size(
           constraints.maxWidth,
           constraints.maxHeight,
         );
-        String _deviceType = deviceDetector(size.width);
         return GlowingOverscrollIndicator(
           axisDirection: AxisDirection.up,
-          color: const Color.fromRGBO(255, 175, 175, 1).withOpacity(0.3),
+          color: const Color(0xFFA81D13).withOpacity(0.3),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -51,7 +58,7 @@ class _IntroPageState extends State<IntroPage> {
                           Container(
                             width: size.width,
                             height: 3 * size.height,
-                            color: const Color.fromRGBO(255, 175, 175, 1),
+                            color: const Color(0xFFf4ecdc),
                             child: CustomPaint(
                               painter: DividerPaint(),
                             ),
@@ -61,16 +68,17 @@ class _IntroPageState extends State<IntroPage> {
                             height: size.height,
                             decoration: const BoxDecoration(
                               gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomLeft,
-                                  colors: [
-                                    Color.fromRGBO(218, 224, 224, 1.0),
-                                    Color.fromRGBO(183, 193, 192, 1.0)
-                                  ]),
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomLeft,
+                                colors: [
+                                  Color.fromRGBO(218, 224, 224, 1.0),
+                                  Color.fromRGBO(183, 193, 192, 1.0)
+                                ],
+                              ),
                             ),
                             child: CustomPaint(
                               painter: RoorkeePainter(
-                                const Color.fromRGBO(236, 131, 131, 1.0),
+                                const Color(0xFFA81D13),
                                 const Color.fromRGBO(145, 155, 153, 1.0)
                                     .withOpacity(0.4),
                               ),
@@ -92,9 +100,8 @@ class _IntroPageState extends State<IntroPage> {
                               "Intro.",
                               style: TextStyle(
                                 fontFamily: "CoveredByYourGrace",
-                                color: const Color.fromRGBO(14, 43, 133, 1.0),
-                                fontSize:
-                                    cf['heading'][_deviceType] * size.width,
+                                color: const Color(0xFFA81D13),
+                                fontSize: IC.heading[deviceType]! * size.width,
                               ),
                             ),
                           ),
@@ -116,9 +123,9 @@ class _IntroPageState extends State<IntroPage> {
                                       textStyle: TextStyle(
                                         // fontFamily: "Caveat",
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.white.withOpacity(0.7),
-                                        fontSize: cf['taLine'][_deviceType] *
-                                            size.width,
+                                        color: Colors.black,
+                                        fontSize:
+                                            IC.taLine[deviceType]! * size.width,
                                       ),
                                     ),
                                   ),
@@ -126,12 +133,11 @@ class _IntroPageState extends State<IntroPage> {
                                 Transform.rotate(
                                   angle: -math.pi / 9,
                                   child: Container(
-                                    width: cf['rotLine'][_deviceType]['width'] *
+                                    width: IC.rotLine[deviceType]!['width']! *
                                         size.width,
-                                    height: cf['rotLine'][_deviceType]
-                                            ['height'] *
+                                    height: IC.rotLine[deviceType]!['height']! *
                                         size.height,
-                                    color: const Color.fromRGBO(20, 62, 188, 1),
+                                    color: const Color(0xFFA81D13),
                                   ),
                                 ),
                                 Padding(
@@ -144,10 +150,9 @@ class _IntroPageState extends State<IntroPage> {
                                     style: TextStyle(
                                       fontFamily: "Allison",
                                       fontWeight: FontWeight.bold,
-                                      color: const Color.fromRGBO(
-                                          14, 43, 133, 1.0),
+                                      color: const Color(0xFFA81D13),
                                       fontSize:
-                                          cf['name'][_deviceType] * size.width,
+                                          IC.name[deviceType]! * size.width,
                                     ),
                                   ),
                                 ),
@@ -161,7 +166,7 @@ class _IntroPageState extends State<IntroPage> {
                                       textStyle: TextStyle(
                                         // fontFamily: "ABeeZee",
                                         color: Colors.black,
-                                        fontSize: cf['aboutMe'][_deviceType] *
+                                        fontSize: IC.aboutMe[deviceType]! *
                                             size.width,
                                       ),
                                     ),
@@ -187,8 +192,8 @@ class _IntroPageState extends State<IntroPage> {
                                         textStyle: TextStyle(
                                           // fontFamily: "Caveat",
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.white.withOpacity(0.7),
-                                          fontSize: cf['taLine'][_deviceType] *
+                                          color: const Color(0xFFF4ECE5),
+                                          fontSize: IC.taLine[deviceType]! *
                                               size.width,
                                         ),
                                       ),
@@ -198,14 +203,12 @@ class _IntroPageState extends State<IntroPage> {
                                   Transform.rotate(
                                     angle: -math.pi / 9,
                                     child: Container(
-                                      width: cf['rotLine'][_deviceType]
-                                              ['width'] *
+                                      width: IC.rotLine[deviceType]!['width']! *
                                           size.width,
-                                      height: cf['rotLine'][_deviceType]
-                                              ['height'] *
-                                          size.height,
-                                      color:
-                                          const Color.fromRGBO(20, 62, 188, 1),
+                                      height:
+                                          IC.rotLine[deviceType]!['height']! *
+                                              size.height,
+                                      color: const Color(0xFFF4ECE5),
                                     ),
                                   ),
                                   Padding(
@@ -222,7 +225,8 @@ class _IntroPageState extends State<IntroPage> {
                                           destUrl: 'https://python.org',
                                           icon: Icon(
                                             FontAwesomeIcons.python,
-                                            size: cf['techStack'][_deviceType],
+                                            size: IC.techStack[deviceType],
+                                            color: const Color(0xFFF4ECE5),
                                           ),
                                           parentContext: context,
                                         ),
@@ -239,7 +243,8 @@ class _IntroPageState extends State<IntroPage> {
                                               'https://www.javascript.com/',
                                           icon: Icon(
                                             FontAwesomeIcons.js,
-                                            size: cf['techStack'][_deviceType],
+                                            size: IC.techStack[deviceType],
+                                            color: const Color(0xFFF4ECE5),
                                           ),
                                           parentContext: context,
                                         ),
@@ -248,8 +253,7 @@ class _IntroPageState extends State<IntroPage> {
                                               'https://www.typescriptlang.org/',
                                           icon: SvgPicture.asset(
                                             "images/intro/ts.svg",
-                                            height: cf['techStack']
-                                                [_deviceType],
+                                            height: IC.techStack[deviceType],
                                           ),
                                           parentContext: context,
                                         ),
@@ -257,8 +261,7 @@ class _IntroPageState extends State<IntroPage> {
                                           destUrl: 'https://isocpp.org/',
                                           icon: SvgPicture.asset(
                                             "images/intro/cpp.svg",
-                                            height: cf['techStack']
-                                                [_deviceType],
+                                            height: IC.techStack[deviceType],
                                           ),
                                           parentContext: context,
                                         ),
@@ -266,7 +269,8 @@ class _IntroPageState extends State<IntroPage> {
                                           destUrl: 'https://go.dev/',
                                           icon: Icon(
                                             FontAwesomeIcons.golang,
-                                            size: cf['techStack'][_deviceType],
+                                            size: IC.techStack[deviceType],
+                                            color: const Color(0xFFF4ECE5),
                                           ),
                                           parentContext: context,
                                         ),
@@ -274,7 +278,8 @@ class _IntroPageState extends State<IntroPage> {
                                           destUrl: 'https://www.java.com/en/',
                                           icon: Icon(
                                             FontAwesomeIcons.java,
-                                            size: cf['techStack'][_deviceType],
+                                            size: IC.techStack[deviceType],
+                                            color: const Color(0xFFF4ECE5),
                                           ),
                                           parentContext: context,
                                         ),
@@ -283,11 +288,10 @@ class _IntroPageState extends State<IntroPage> {
                                           icon: SvgPicture.asset(
                                             "images/intro/julia.svg",
                                             colorFilter: const ColorFilter.mode(
-                                              Color(0xFF49454F),
+                                              Color(0xFFF4ECE5),
                                               BlendMode.srcIn,
                                             ),
-                                            height: cf['techStack']
-                                                [_deviceType],
+                                            height: IC.techStack[deviceType],
                                           ),
                                           parentContext: context,
                                         ),
@@ -296,8 +300,7 @@ class _IntroPageState extends State<IntroPage> {
                                               'https://learn.microsoft.com/en-us/dotnet/csharp/',
                                           icon: SvgPicture.asset(
                                             "images/intro/csharp.svg",
-                                            height: cf['techStack']
-                                                [_deviceType],
+                                            height: IC.techStack[deviceType],
                                           ),
                                           parentContext: context,
                                         ),
@@ -305,8 +308,7 @@ class _IntroPageState extends State<IntroPage> {
                                           destUrl: 'https://www.terraform.io/',
                                           icon: SvgPicture.asset(
                                             "images/intro/terraform.svg",
-                                            height: cf['techStack']
-                                                [_deviceType],
+                                            height: IC.techStack[deviceType],
                                           ),
                                           parentContext: context,
                                         ),
@@ -314,7 +316,8 @@ class _IntroPageState extends State<IntroPage> {
                                           destUrl: 'https://html5.org/',
                                           icon: Icon(
                                             FontAwesomeIcons.html5,
-                                            size: cf['techStack'][_deviceType],
+                                            size: IC.techStack[deviceType],
+                                            color: const Color(0xFFF4ECE5),
                                           ),
                                           parentContext: context,
                                         ),
@@ -323,7 +326,8 @@ class _IntroPageState extends State<IntroPage> {
                                               'https://developer.mozilla.org/en-US/docs/Web/CSS',
                                           icon: Icon(
                                             FontAwesomeIcons.css3,
-                                            size: cf['techStack'][_deviceType],
+                                            size: IC.techStack[deviceType],
+                                            color: const Color(0xFFF4ECE5),
                                           ),
                                           parentContext: context,
                                         ),
@@ -331,7 +335,8 @@ class _IntroPageState extends State<IntroPage> {
                                           destUrl: 'https://sass-lang.com/',
                                           icon: Icon(
                                             FontAwesomeIcons.sass,
-                                            size: cf['techStack'][_deviceType],
+                                            size: IC.techStack[deviceType],
+                                            color: const Color(0xFFF4ECE5),
                                           ),
                                           parentContext: context,
                                         ),
@@ -340,8 +345,7 @@ class _IntroPageState extends State<IntroPage> {
                                               'https://www.djangoproject.com/',
                                           icon: SvgPicture.asset(
                                             "images/intro/django.svg",
-                                            height: cf['techStack']
-                                                [_deviceType],
+                                            height: IC.techStack[deviceType],
                                           ),
                                           parentContext: context,
                                         ),
@@ -349,8 +353,7 @@ class _IntroPageState extends State<IntroPage> {
                                           destUrl: 'https://flutter.dev/',
                                           icon: SvgPicture.asset(
                                             "images/intro/flutter.svg",
-                                            height: cf['techStack']
-                                                [_deviceType],
+                                            height: IC.techStack[deviceType],
                                           ),
                                           parentContext: context,
                                         ),
@@ -358,7 +361,8 @@ class _IntroPageState extends State<IntroPage> {
                                           destUrl: 'https://reactjs.org',
                                           icon: Icon(
                                             FontAwesomeIcons.react,
-                                            size: cf['techStack'][_deviceType],
+                                            size: IC.techStack[deviceType],
+                                            color: const Color(0xFFF4ECE5),
                                           ),
                                           parentContext: context,
                                         ),
@@ -367,8 +371,7 @@ class _IntroPageState extends State<IntroPage> {
                                               'https://firebase.google.com/',
                                           icon: SvgPicture.asset(
                                             "images/intro/firebase.svg",
-                                            height: cf['techStack']
-                                                [_deviceType],
+                                            height: IC.techStack[deviceType],
                                           ),
                                           parentContext: context,
                                         ),
@@ -376,7 +379,8 @@ class _IntroPageState extends State<IntroPage> {
                                           destUrl: 'https://aws.amazon.com/',
                                           icon: Icon(
                                             FontAwesomeIcons.aws,
-                                            size: cf['techStack'][_deviceType],
+                                            size: IC.techStack[deviceType],
+                                            color: const Color(0xFFF4ECE5),
                                           ),
                                           parentContext: context,
                                         ),
@@ -389,7 +393,7 @@ class _IntroPageState extends State<IntroPage> {
                           ),
                           PromoRedirector(
                             size: size,
-                            deviceType: _deviceType,
+                            deviceType: deviceType,
                             pageName: "Business?",
                             pageDescriptor: "Check out my resume!",
                             button: TextButton.icon(
@@ -397,12 +401,9 @@ class _IntroPageState extends State<IntroPage> {
                                 Icons.arrow_forward_ios_rounded,
                                 color: Colors.white.withOpacity(0.7),
                               ),
-                              onPressed: () {
-                                html.window.open(
-                                  "https://drive.google.com/file/d/1LThNeZ9p9emO5BfLwBZ1pbpiAfYtIefs/view?usp=sharing",
-                                  "New Tab",
-                                );
-                              },
+                              onPressed: () => _launchLink(
+                                "https://drive.google.com/file/d/1LThNeZ9p9emO5BfLwBZ1pbpiAfYtIefs/view?usp=sharing",
+                              ),
                               label: Text(
                                 "Resume",
                                 style: TextStyle(
@@ -439,8 +440,8 @@ class DividerPaint extends CustomPainter {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Color.fromRGBO(255, 175, 175, 1),
-            Color.fromRGBO(234, 98, 98, 1.0),
+            Color.fromARGB(255, 201, 49, 38),
+            Color.fromARGB(255, 197, 51, 40),
           ]).createShader(Offset.zero & size);
 
     Path path = Path();
@@ -459,8 +460,8 @@ class DividerPaint extends CustomPainter {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Color.fromRGBO(255, 175, 175, 1),
-            Color.fromRGBO(236, 131, 131, 1.0),
+            Color.fromARGB(255, 233, 88, 78),
+            Color.fromARGB(255, 201, 81, 72),
           ]).createShader(Offset.zero & size);
     path1.moveTo(size.width, 0.5 * size.height);
     path1.quadraticBezierTo(0.85 * size.width, 0.61 * size.height,

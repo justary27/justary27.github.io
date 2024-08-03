@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:justary27_s_portfolio/src/components/deviceDetector.dart';
 
-// import '../components/footer.dart';
 import '../components/navbar.dart';
+import '../enums/device_type.dart';
+import '../models/screen_model.dart';
 import '../components/navbar/drawer.dart';
-import '../utils/helpers/screen_helper.dart';
+import '../providers/screen_provider.dart';
 
 GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -16,29 +16,42 @@ class ApplicationShell extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final Size size = MediaQuery.of(context).size;
-    String _deviceType = deviceDetector(size.width);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        DeviceType deviceType = DeviceType.getDeviceType(constraints.maxWidth);
 
-    return Scaffold(
-      key: scaffoldKey,
-      extendBodyBehindAppBar: true,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(0.1 * logicalHeight),
-        child: Navbar(
-          navigatorKey: scaffoldKey,
-        ),
-      ),
-      body: child,
-      endDrawer: (_deviceType == 'mobiles390-' ||
-              _deviceType == 'mobiles450-' ||
-              _deviceType == 'tablets768-')
-          ? SmallDrawer(
-              navigator: scaffoldKey,
-              size: logicalScreenSize,
-              deviceType: _deviceType,
-            )
-          : null,
-      // bottomNavigationBar: Footer(size: logicalScreenSize),
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          ref.read(screenProvider.notifier).state = Screen(
+            constraints.maxWidth,
+            constraints.maxHeight,
+            deviceType,
+          );
+        });
+
+        return Scaffold(
+          key: scaffoldKey,
+          extendBodyBehindAppBar: true,
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(
+              0.1 * constraints.maxHeight,
+            ),
+            child: Navbar(
+              navigatorKey: scaffoldKey,
+            ),
+          ),
+          body: child,
+          endDrawer: (deviceType < DeviceType.largeTablet)
+              ? SmallDrawer(
+                  navigator: scaffoldKey,
+                  size: Size(
+                    constraints.maxWidth,
+                    constraints.maxHeight,
+                  ),
+                  deviceType: deviceType,
+                )
+              : null,
+        );
+      },
     );
   }
 }

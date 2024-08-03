@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'routes/routing.dart';
-import 'components/deviceDetector.dart';
-import 'utils/helpers/screen_helper.dart';
 
 class MyPortfolio extends StatelessWidget {
-  final Size size = logicalScreenSize;
-  final String deviceType = deviceDetector(logicalScreenSize.width);
-
-  MyPortfolio({super.key});
+  const MyPortfolio({super.key});
 
   // This widget is the root of your application.
   @override
@@ -17,7 +12,7 @@ class MyPortfolio extends StatelessWidget {
     return ProviderScope(
       child: MaterialApp.router(
         routerConfig: router,
-        title: 'justary27 | Aryan Ranjan',
+        title: 'Aryan Ranjan | justary27',
         debugShowCheckedModeBanner: false,
       ),
     );

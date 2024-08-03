@@ -9,7 +9,7 @@ class Blog {
 
   String get blogTitle => title;
   String get blogTagLine => tagLine;
-  String get blogLink => blogLink;
+  String get blogLink => link;
   String get blogDescription => description;
   String get blogCreatedOn {
     return "${createdOn.day}/${createdOn.month}/${createdOn.year}";

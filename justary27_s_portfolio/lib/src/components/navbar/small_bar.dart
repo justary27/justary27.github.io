@@ -1,13 +1,14 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../utils/handlers/route_handler.dart';
+import '../../enums/device_type.dart';
+import '../../handlers/route_handler.dart';
 
 class SmallNavBar extends StatefulWidget {
   final GlobalKey<ScaffoldState> navigatorKey;
   final Size size;
-  final String deviceType;
+  final DeviceType deviceType;
 
   const SmallNavBar({
     super.key,
