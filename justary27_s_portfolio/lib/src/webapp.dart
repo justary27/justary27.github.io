@@ -6,7 +6,6 @@ import 'routes/routing.dart';
 class MyPortfolio extends StatelessWidget {
   const MyPortfolio({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ProviderScope(

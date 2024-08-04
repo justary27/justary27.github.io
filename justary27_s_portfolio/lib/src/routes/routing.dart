@@ -5,7 +5,7 @@ import '../pages/who/who.dart';
 import '../pages/work/work.dart';
 import '../pages/blog/blog.dart';
 import '../pages/intro/intro.dart';
-import '../pages/home/opener.dart';
+import '../pages/home/home.dart';
 import '../handlers/route_handler.dart';
 import '../pages/application_shell.dart';
 
