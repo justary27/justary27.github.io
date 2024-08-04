@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import '../pages/who/who.dart';
 import '../pages/work/work.dart';
 import '../pages/blog/blog.dart';
-import '../pages/intro/intro.dart';
 import '../pages/home/home.dart';
 import '../handlers/route_handler.dart';
 import '../pages/application_shell.dart';
@@ -61,31 +60,6 @@ GoRouter router = GoRouter(
             );
           },
         ),
-        GoRoute(
-            path: RouteHandler.introPage,
-            // parentNavigatorKey: _siteNavigatorKey,
-            pageBuilder: (context, state) {
-              RouteManager.currentColor = const Color(0xFFA81D13);
-              return CustomTransitionPage(
-                transitionsBuilder:
-                    (context, animation, secondaryAnimation, child) {
-                  const begin = Offset(0.0, -1.0);
-                  const end = Offset.zero;
-                  const curve = Curves.ease;
-
-                  var tween = Tween(begin: begin, end: end).chain(
-                    CurveTween(curve: curve),
-                  );
-
-                  return SlideTransition(
-                    position: animation.drive(tween),
-                    child: child,
-                  );
-                },
-                transitionDuration: const Duration(milliseconds: 750),
-                child: const IntroPage(),
-              );
-            }),
         GoRoute(
           path: RouteHandler.whoPage,
           // parentNavigatorKey: _siteNavigatorKey,
@@ -173,8 +147,6 @@ GoRouter router = GoRouter(
     switch (path) {
       case RouteHandler.homePage:
         return RouteHandler.homePage;
-      case RouteHandler.introPage:
-        return RouteHandler.introPage;
       case RouteHandler.whoPage:
         return RouteHandler.whoPage;
       case RouteHandler.workPage:

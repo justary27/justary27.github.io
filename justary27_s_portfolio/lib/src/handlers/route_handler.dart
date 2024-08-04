@@ -8,7 +8,7 @@ class RouteHandler {
 
   // Web Pages
 
-  static const String introPage = "/intro";
+  // static const String introPage = "/intro";
   static const String whoPage = "/who";
   static const String workPage = "/work";
   static const String blogPage = "/blog";

@@ -83,18 +83,6 @@ class _FooterState extends State<Footer> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    MaterialButton(
-                      onPressed: () {
-                        _handleRouteNavigation(RouteHandler.introPage);
-                      },
-                      child: const Text(
-                        "Intro",
-                        style: TextStyle(
-                          fontFamily: "ABeeZee",
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
                     Padding(
                       padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
                       child: MaterialButton(

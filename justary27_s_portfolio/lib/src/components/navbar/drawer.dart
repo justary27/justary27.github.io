@@ -92,18 +92,6 @@ class _SmallDrawerState extends State<SmallDrawer> {
                   ),
                   ListTile(
                     title: const Text(
-                      "Intro",
-                      style: TextStyle(
-                        fontFamily: "ABeeZee",
-                        color: Colors.white,
-                      ),
-                    ),
-                    onTap: () => _handleRouteNavigation(
-                      RouteHandler.introPage,
-                    ),
-                  ),
-                  ListTile(
-                    title: const Text(
                       "Who",
                       style: TextStyle(
                         fontFamily: "ABeeZee",

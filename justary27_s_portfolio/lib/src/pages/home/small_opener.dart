@@ -75,10 +75,10 @@ class SmallOpenerPage extends StatelessWidget {
                         Icons.arrow_forward_ios_rounded,
                         color: Colors.white,
                       ),
-                      onPressed: () => context.push(RouteHandler.introPage),
+                      onPressed: () => context.push(RouteHandler.workPage),
                       label: FittedBox(
                         child: Text(
-                          "Intro",
+                          "Work",
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: "Ubuntu",

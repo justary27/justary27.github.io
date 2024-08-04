@@ -66,25 +66,17 @@ class _LargeNavBarState extends State<LargeNavBar> {
       title: ButtonBar(
         alignment: MainAxisAlignment.center,
         children: [
-          MouseRegion(
-            onHover: (pointer) {},
-            child: MaterialButton(
-              onPressed: () => _handleRouteNavigation(
-                RouteHandler.introPage,
-              ),
-              child: const Text(
-                "Intro",
-                style: TextStyle(fontFamily: "ABeeZee", color: Colors.white),
-              ),
-            ),
-          ),
           MaterialButton(
             onPressed: () => _handleRouteNavigation(
               RouteHandler.whoPage,
             ),
             child: const Text(
               "Who",
-              style: TextStyle(fontFamily: "ABeeZee", color: Colors.white),
+              style: TextStyle(
+                fontFamily: "ABeeZee",
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           MaterialButton(
@@ -93,7 +85,11 @@ class _LargeNavBarState extends State<LargeNavBar> {
             ),
             child: const Text(
               "Work",
-              style: TextStyle(fontFamily: "ABeeZee", color: Colors.white),
+              style: TextStyle(
+                fontFamily: "ABeeZee",
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           MaterialButton(
@@ -105,6 +101,7 @@ class _LargeNavBarState extends State<LargeNavBar> {
               style: TextStyle(
                 fontFamily: "ABeeZee",
                 color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -118,7 +115,9 @@ class _LargeNavBarState extends State<LargeNavBar> {
               context: context,
               builder: (context) {
                 return ContactCard(
-                    size: widget.size, deviceType: widget.deviceType);
+                  size: widget.size,
+                  deviceType: widget.deviceType,
+                );
               },
             );
           },
@@ -127,6 +126,7 @@ class _LargeNavBarState extends State<LargeNavBar> {
             style: TextStyle(
               fontFamily: "ABeeZee",
               color: Colors.white,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
