@@ -1,7 +1,7 @@
 enum DeviceType implements Comparable<DeviceType> {
   smallMobile(min: 360, max: 390),
   largeMobile(min: 390, max: 450),
-  smalltablet(min: 451, max: 768),
+  smallTablet(min: 451, max: 768),
   largeTablet(min: 769, max: 1024),
   smallLaptop(min: 1025, max: 1536),
   largeLaptop(min: 1537, max: 1920);
@@ -31,8 +31,8 @@ enum DeviceType implements Comparable<DeviceType> {
       return DeviceType.smallMobile;
     } else if (width <= DeviceType.largeMobile.max) {
       return DeviceType.largeMobile;
-    } else if (width <= DeviceType.smalltablet.max) {
-      return DeviceType.smalltablet;
+    } else if (width <= DeviceType.smallTablet.max) {
+      return DeviceType.smallTablet;
     } else if (width <= DeviceType.largeTablet.max) {
       return DeviceType.largeTablet;
     } else if (width <= DeviceType.smallLaptop.max) {

@@ -63,7 +63,7 @@ class _LargeNavBarState extends State<LargeNavBar> {
           color: Colors.transparent,
         ),
       ),
-      title: ButtonBar(
+      title: OverflowBar(
         alignment: MainAxisAlignment.center,
         children: [
           MaterialButton(

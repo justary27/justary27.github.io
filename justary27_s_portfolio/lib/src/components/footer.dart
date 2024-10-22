@@ -15,7 +15,7 @@ class FC {
   static const Map<DeviceType, double> techStack = {
     DeviceType.smallMobile: 30,
     DeviceType.largeMobile: 30,
-    DeviceType.smalltablet: 35,
+    DeviceType.smallTablet: 35,
     DeviceType.largeTablet: 35,
     DeviceType.smallLaptop: 35,
     DeviceType.largeLaptop: 40,
@@ -134,7 +134,7 @@ class _FooterState extends State<Footer> {
               Container(
                 width: 0.50 * size.width,
                 alignment: Alignment.center,
-                child: (deviceType < DeviceType.smalltablet)
+                child: (deviceType < DeviceType.smallTablet)
                     ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -200,7 +200,7 @@ class _FooterState extends State<Footer> {
                           )
                         ],
                       )
-                    : ButtonBar(
+                    : OverflowBar(
                         alignment: MainAxisAlignment.center,
                         children: [
                           AnchorButton(

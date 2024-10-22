@@ -6,7 +6,11 @@ import '../../../enums/device_type.dart';
 
 import 'blog_dialog_constraints.dart';
 
-Widget blogProvider(Size size, Blog blog, DeviceType deviceType) {
+Widget blogProvider(
+  Size size,
+  Blog blog,
+  DeviceType deviceType,
+) {
   Future<void> launchLink(String url) async {
     await launchUrl(
       Uri.parse(url),
