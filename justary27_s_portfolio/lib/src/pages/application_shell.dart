@@ -19,7 +19,6 @@ class ApplicationShell extends ConsumerWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         DeviceType deviceType = DeviceType.getDeviceType(constraints.maxWidth);
-
         WidgetsBinding.instance.addPostFrameCallback((_) {
           ref.read(screenProvider.notifier).state = Screen(
             constraints.maxWidth,
@@ -33,7 +32,9 @@ class ApplicationShell extends ConsumerWidget {
           extendBodyBehindAppBar: true,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(
-              0.1 * constraints.maxHeight,
+              (deviceType < DeviceType.smallDesktop)
+                  ? 0.1 * constraints.maxHeight
+                  : 0.075 * constraints.maxHeight,
             ),
             child: Navbar(
               navigatorKey: scaffoldKey,

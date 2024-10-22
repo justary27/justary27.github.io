@@ -19,6 +19,7 @@ class FC {
     DeviceType.largeTablet: 35,
     DeviceType.smallLaptop: 35,
     DeviceType.largeLaptop: 40,
+    DeviceType.smallDesktop: 45,
   };
 }
 
@@ -242,7 +243,7 @@ class _FooterState extends State<Footer> {
                           ),
                         ],
                       ),
-              )
+              ),
             ],
           ),
         ),
@@ -269,18 +270,6 @@ class CircuitPainter extends CustomPainter {
       1.00 * size.width,
       0.00 * size.height,
     );
-    // path.quadraticBezierTo(
-    //   0.94 * size.width,
-    //   0.57 * size.height,
-    //   0.85 * size.width,
-    //   0.4 * size.height,
-    // );
-    // path.quadraticBezierTo(
-    //   0.97 * size.width,
-    //   0.50 * size.height,
-    //   0.98 * size.width,
-    //   0.50 * size.height,
-    // );
 
     path.moveTo(0.97 * size.width, 0.9 * size.height);
     path.quadraticBezierTo(0.72 * size.width, 0.98 * size.height,

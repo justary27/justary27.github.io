@@ -11,6 +11,7 @@ class WC {
     DeviceType.largeTablet: 0.25,
     DeviceType.smallLaptop: 0.25,
     DeviceType.largeLaptop: 0.225,
+    DeviceType.smallDesktop: 0.225,
   };
 
   static const Map<DeviceType, double> projTitle = {
@@ -20,6 +21,7 @@ class WC {
     DeviceType.largeTablet: 0.125,
     DeviceType.smallLaptop: 0.1,
     DeviceType.largeLaptop: 0.08,
+    DeviceType.smallDesktop: 0.08,
   };
 
   static const Map<DeviceType, double> projSubtitle = {
@@ -29,6 +31,7 @@ class WC {
     DeviceType.largeTablet: 0.03,
     DeviceType.smallLaptop: 0.021,
     DeviceType.largeLaptop: 0.02,
+    DeviceType.smallDesktop: 0.02,
   };
 
   static const Map<DeviceType, double> projDescription = {
@@ -38,6 +41,7 @@ class WC {
     DeviceType.largeTablet: 0.0175,
     DeviceType.smallLaptop: 0.0130,
     DeviceType.largeLaptop: 0.0125,
+    DeviceType.smallDesktop: 0.0125,
   };
 
   static const Map<DeviceType, double> projLinks = {
@@ -47,6 +51,7 @@ class WC {
     DeviceType.largeTablet: 21,
     DeviceType.smallLaptop: 24,
     DeviceType.largeLaptop: 27,
+    DeviceType.smallDesktop: 27,
   };
 
   static const Map<DeviceType, double> projEmphasis = {
@@ -56,5 +61,6 @@ class WC {
     DeviceType.largeTablet: 0.0180,
     DeviceType.smallLaptop: 0.0135,
     DeviceType.largeLaptop: 0.0130,
+    DeviceType.smallDesktop: 0.0130,
   };
 }

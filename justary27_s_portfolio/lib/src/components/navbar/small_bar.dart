@@ -65,13 +65,15 @@ class _SmallNavBarState extends State<SmallNavBar> {
         ),
       ),
       actions: [
-        IconButton(
-          color: Colors.white,
-          icon: const Icon(Icons.menu),
-          onPressed: () {
-            Scaffold.of(context).openEndDrawer();
-            // Scaffold.of(widget.navigatorKey.currentContext!).openEndDrawer();
-          },
+        Padding(
+          padding: const EdgeInsets.only(right: 8.0),
+          child: IconButton(
+            color: Colors.white,
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              Scaffold.of(context).openEndDrawer();
+            },
+          ),
         ),
       ],
     );

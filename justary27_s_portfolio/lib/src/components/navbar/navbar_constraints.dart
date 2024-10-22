@@ -11,6 +11,7 @@ class NC {
     DeviceType.largeTablet: 0.0625,
     DeviceType.smallLaptop: 0.05,
     DeviceType.largeLaptop: 0.045,
+    DeviceType.smallDesktop: 0.045,
   };
 
   static const Map<DeviceType, double> links = {
@@ -20,6 +21,7 @@ class NC {
     DeviceType.largeTablet: 21,
     DeviceType.smallLaptop: 24,
     DeviceType.largeLaptop: 27,
+    DeviceType.smallDesktop: 27,
   };
 
   static const Map<DeviceType, double> taLine = {
@@ -29,5 +31,6 @@ class NC {
     DeviceType.largeTablet: 0.0300,
     DeviceType.smallLaptop: 0.02,
     DeviceType.largeLaptop: 0.02,
+    DeviceType.smallDesktop: 0.02,
   };
 }

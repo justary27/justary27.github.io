@@ -650,7 +650,7 @@ class _LargeIntroWorkState extends State<LargeIntroWork>
                                 fontFamily: "Ubuntu",
                                 color: Colors.white,
                                 fontSize:
-                                    OC.taLine[widget.deviceType]! * size.width,
+                                    OC.buttons[widget.deviceType]! * size.width,
                               ),
                             ),
                             style: ButtonStyle(
@@ -814,7 +814,6 @@ class _LargeWhoBlogBriefState extends State<LargeWhoBlogBrief>
       width: size.width,
       child: MouseRegion(
         onEnter: (event) => _controller.forward(),
-        onExit: (event) => _controller.reverse(),
         child: AnimatedBuilder(
           animation: _controller,
           builder: (context, child) {
@@ -862,38 +861,53 @@ class _LargeWhoBlogBriefState extends State<LargeWhoBlogBrief>
                       child: Wrap(
                         spacing: 16.0,
                         children: [
-                          TextButton(
-                            onPressed: () => context.push(RouteHandler.whoPage),
-                            style: ButtonStyle(
-                              backgroundColor: WidgetStateProperty.all(
-                                const Color(0xFF0d0d0d).withOpacity(0.75),
-                              ),
-                            ),
-                            child: Text(
-                              "Who?",
-                              style: TextStyle(
-                                fontFamily: "Ubuntu",
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 16.0),
+                            child: TextButton.icon(
+                              icon: const Icon(
+                                Icons.arrow_forward_ios_rounded,
                                 color: Colors.white,
-                                fontSize:
-                                    OC.taLine[widget.deviceType]! * size.width,
+                              ),
+                              onPressed: () =>
+                                  context.push(RouteHandler.whoPage),
+                              label: Text(
+                                "Who",
+                                style: TextStyle(
+                                  fontFamily: "Ubuntu",
+                                  color: Colors.white,
+                                  fontSize: OC.buttons[widget.deviceType]! *
+                                      size.width,
+                                ),
+                              ),
+                              style: ButtonStyle(
+                                backgroundColor: WidgetStateProperty.all(
+                                  const Color(0xFF0d0d0d).withOpacity(0.75),
+                                ),
                               ),
                             ),
                           ),
-                          TextButton(
-                            onPressed: () =>
-                                context.push(RouteHandler.blogPage),
-                            style: ButtonStyle(
-                              backgroundColor: WidgetStateProperty.all(
-                                const Color(0xFF0d0d0d).withOpacity(0.75),
-                              ),
-                            ),
-                            child: Text(
-                              "Blog.",
-                              style: TextStyle(
-                                fontFamily: "Ubuntu",
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 16.0),
+                            child: TextButton.icon(
+                              icon: const Icon(
+                                Icons.arrow_forward_ios_rounded,
                                 color: Colors.white,
-                                fontSize:
-                                    OC.taLine[widget.deviceType]! * size.width,
+                              ),
+                              onPressed: () =>
+                                  context.push(RouteHandler.blogPage),
+                              label: Text(
+                                "Blog",
+                                style: TextStyle(
+                                  fontFamily: "Ubuntu",
+                                  color: Colors.white,
+                                  fontSize: OC.buttons[widget.deviceType]! *
+                                      size.width,
+                                ),
+                              ),
+                              style: ButtonStyle(
+                                backgroundColor: WidgetStateProperty.all(
+                                  const Color(0xFF0d0d0d).withOpacity(0.75),
+                                ),
                               ),
                             ),
                           ),

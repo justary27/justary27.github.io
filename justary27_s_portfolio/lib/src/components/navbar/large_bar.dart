@@ -27,6 +27,14 @@ class _LargeNavBarState extends State<LargeNavBar> {
     }
   }
 
+  Color _getBgColor() {
+    if (GoRouterState.of(context).uri.path == RouteHandler.homePage) {
+      return Colors.black.withOpacity(0.4);
+    } else {
+      return Colors.black.withOpacity(0.2);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -38,7 +46,7 @@ class _LargeNavBarState extends State<LargeNavBar> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Colors.black.withOpacity(0.2),
+              _getBgColor(),
               Colors.transparent,
             ],
             begin: Alignment.topLeft,
@@ -48,19 +56,20 @@ class _LargeNavBarState extends State<LargeNavBar> {
       ),
       leading: Container(
         margin: EdgeInsets.only(left: 0.01 * widget.size.width),
-        child: IconButton(
-          splashColor: Colors.white.withOpacity(0.5),
-          icon: SvgPicture.asset(
-            "images/ar.svg",
-            colorFilter: ColorFilter.mode(
-              Colors.white.withOpacity(0.75),
-              BlendMode.srcIn,
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            onTap: () => _handleRouteNavigation(
+              RouteHandler.homePage,
+            ),
+            child: SvgPicture.asset(
+              "images/ar.svg",
+              colorFilter: ColorFilter.mode(
+                Colors.white,
+                BlendMode.srcIn,
+              ),
             ),
           ),
-          onPressed: () => _handleRouteNavigation(
-            RouteHandler.homePage,
-          ),
-          color: Colors.transparent,
         ),
       ),
       title: OverflowBar(
@@ -108,25 +117,28 @@ class _LargeNavBarState extends State<LargeNavBar> {
         ],
       ),
       actions: [
-        MaterialButton(
-          onPressed: () {
-            showDialog(
-              useRootNavigator: false,
-              context: context,
-              builder: (context) {
-                return ContactCard(
-                  size: widget.size,
-                  deviceType: widget.deviceType,
-                );
-              },
-            );
-          },
-          child: const Text(
-            "Contact",
-            style: TextStyle(
-              fontFamily: "ABeeZee",
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+        Padding(
+          padding: const EdgeInsets.only(right: 16.0),
+          child: MaterialButton(
+            onPressed: () {
+              showDialog(
+                useRootNavigator: false,
+                context: context,
+                builder: (context) {
+                  return ContactCard(
+                    size: widget.size,
+                    deviceType: widget.deviceType,
+                  );
+                },
+              );
+            },
+            child: const Text(
+              "Contact",
+              style: TextStyle(
+                fontFamily: "ABeeZee",
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),

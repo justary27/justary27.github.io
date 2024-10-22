@@ -11,5 +11,6 @@ class BDC {
     DeviceType.largeTablet: 0.065,
     DeviceType.smallLaptop: 0.05,
     DeviceType.largeLaptop: 0.05,
+    DeviceType.smallDesktop: 0.05,
   };
 }

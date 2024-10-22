@@ -11,6 +11,7 @@ class WC {
     DeviceType.largeTablet: 0.25,
     DeviceType.smallLaptop: 0.25,
     DeviceType.largeLaptop: 0.225,
+    DeviceType.smallDesktop: 0.225,
   };
 
   static const Map<DeviceType, double> time = {
@@ -20,6 +21,7 @@ class WC {
     DeviceType.largeTablet: 0.0625,
     DeviceType.smallLaptop: 0.05,
     DeviceType.largeLaptop: 0.045,
+    DeviceType.smallDesktop: 0.045,
   };
 
   static const Map<DeviceType, double> timeDesc = {
@@ -29,6 +31,7 @@ class WC {
     DeviceType.largeTablet: 0.0180,
     DeviceType.smallLaptop: 0.0135,
     DeviceType.largeLaptop: 0.0130,
+    DeviceType.smallDesktop: 0.0130,
   };
 
   static const Map<DeviceType, double> taLine = {
@@ -38,6 +41,7 @@ class WC {
     DeviceType.largeTablet: 0.0300,
     DeviceType.smallLaptop: 0.02,
     DeviceType.largeLaptop: 0.02,
+    DeviceType.smallDesktop: 0.02,
   };
 
   static const Map<DeviceType, Map<String, double>> rotLine = {
@@ -47,5 +51,6 @@ class WC {
     DeviceType.largeTablet: {'width': 0.01750, 'height': 0.01083},
     DeviceType.smallLaptop: {'width': 0.0150, 'height': 0.010},
     DeviceType.largeLaptop: {'width': 0.0150, 'height': 0.010},
+    DeviceType.smallDesktop: {'width': 0.0150, 'height': 0.010},
   };
 }

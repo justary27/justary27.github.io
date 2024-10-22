@@ -11,6 +11,7 @@ class BC {
     DeviceType.largeTablet: 0.25,
     DeviceType.smallLaptop: 0.25,
     DeviceType.largeLaptop: 0.225,
+    DeviceType.smallDesktop: 0.225,
   };
 
   static const Map<DeviceType, double> blogList = {
@@ -20,5 +21,6 @@ class BC {
     DeviceType.largeTablet: 0.065,
     DeviceType.smallLaptop: 0.05,
     DeviceType.largeLaptop: 0.05,
+    DeviceType.smallDesktop: 0.05,
   };
 }

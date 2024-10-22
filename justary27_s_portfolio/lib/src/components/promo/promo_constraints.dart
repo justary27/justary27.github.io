@@ -11,6 +11,7 @@ class PC {
     DeviceType.largeTablet: 0.0300,
     DeviceType.smallLaptop: 0.02,
     DeviceType.largeLaptop: 0.02,
+    DeviceType.smallDesktop: 0.02,
   };
 
   static const Map<DeviceType, Map<String, double>> rotLine = {
@@ -20,5 +21,6 @@ class PC {
     DeviceType.largeTablet: {'width': 0.01750, 'height': 0.01083},
     DeviceType.smallLaptop: {'width': 0.0150, 'height': 0.010},
     DeviceType.largeLaptop: {'width': 0.0150, 'height': 0.010},
+    DeviceType.smallDesktop: {'width': 0.0150, 'height': 0.010},
   };
 }
