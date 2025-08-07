@@ -56,7 +56,8 @@ class _SmallDrawerState extends State<SmallDrawer> {
               child: CustomPaint(
                 painter: RoorkeePainter(
                   RouteManager.currentColor,
-                  const Color.fromRGBO(145, 155, 153, 1.0).withOpacity(0.4),
+                  const Color.fromRGBO(145, 155, 153, 1.0)
+                      .withValues(alpha: 0.4),
                 ),
               ),
             ),

@@ -38,7 +38,7 @@ class _SmallNavBarState extends State<SmallNavBar> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Colors.black.withOpacity(0.2),
+              Colors.black.withValues(alpha: 0.2),
               Colors.transparent,
             ],
             begin: Alignment.topLeft,
@@ -50,11 +50,11 @@ class _SmallNavBarState extends State<SmallNavBar> {
         padding: const EdgeInsets.symmetric(vertical: 8.0),
         margin: EdgeInsets.only(left: 0.01 * widget.size.width),
         child: IconButton(
-          splashColor: Colors.white.withOpacity(0.5),
+          splashColor: Colors.white.withValues(alpha: 0.5),
           icon: SvgPicture.asset(
             "images/ar.svg",
             colorFilter: ColorFilter.mode(
-              Colors.white.withOpacity(0.85),
+              Colors.white.withValues(alpha: 0.85),
               BlendMode.srcIn,
             ),
           ),

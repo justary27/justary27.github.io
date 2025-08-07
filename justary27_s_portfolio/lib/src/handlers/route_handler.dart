@@ -12,6 +12,7 @@ class RouteHandler {
   static const String whoPage = "/who";
   static const String workPage = "/work";
   static const String blogPage = "/blog";
+  static String blogDetailsPage(String blogId) => "/blog/$blogId";
 
   // Page Colors
 

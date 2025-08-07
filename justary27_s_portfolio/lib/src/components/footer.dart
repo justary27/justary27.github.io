@@ -72,7 +72,7 @@ class _FooterState extends State<Footer> {
                       "Aryan Ranjan",
                       style: TextStyle(
                         fontFamily: "Allison",
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha: 0.7),
                         fontSize: 0.065 * size.width,
                       ),
                     ),
@@ -151,7 +151,7 @@ class _FooterState extends State<Footer> {
                                     icon: const Icon(
                                       Icons.alternate_email_rounded,
                                     ),
-                                    color: Colors.white.withOpacity(0.7),
+                                    color: Colors.white.withValues(alpha: 0.7),
                                     parentContext: context,
                                   ),
                                   Padding(
@@ -163,7 +163,8 @@ class _FooterState extends State<Footer> {
                                       icon: const Icon(
                                         FontAwesomeIcons.xTwitter,
                                       ),
-                                      color: Colors.white.withOpacity(0.7),
+                                      color:
+                                          Colors.white.withValues(alpha: 0.7),
                                       parentContext: context,
                                     ),
                                   ),
@@ -178,7 +179,7 @@ class _FooterState extends State<Footer> {
                                     icon: const Icon(
                                       FontAwesomeIcons.github,
                                     ),
-                                    color: Colors.white.withOpacity(0.7),
+                                    color: Colors.white.withValues(alpha: 0.7),
                                     parentContext: context,
                                   ),
                                   Padding(
@@ -191,7 +192,8 @@ class _FooterState extends State<Footer> {
                                       icon: const Icon(
                                         FontAwesomeIcons.linkedin,
                                       ),
-                                      color: Colors.white.withOpacity(0.7),
+                                      color:
+                                          Colors.white.withValues(alpha: 0.7),
                                       parentContext: context,
                                     ),
                                   ),
@@ -210,7 +212,7 @@ class _FooterState extends State<Footer> {
                             icon: const Icon(
                               Icons.alternate_email_rounded,
                             ),
-                            color: Colors.white.withOpacity(0.7),
+                            color: Colors.white.withValues(alpha: 0.7),
                             parentContext: context,
                           ),
                           AnchorButton(
@@ -219,7 +221,7 @@ class _FooterState extends State<Footer> {
                             icon: const Icon(
                               FontAwesomeIcons.xTwitter,
                             ),
-                            color: Colors.white.withOpacity(0.7),
+                            color: Colors.white.withValues(alpha: 0.7),
                             parentContext: context,
                           ),
                           AnchorButton(
@@ -228,7 +230,7 @@ class _FooterState extends State<Footer> {
                             icon: const Icon(
                               FontAwesomeIcons.github,
                             ),
-                            color: Colors.white.withOpacity(0.7),
+                            color: Colors.white.withValues(alpha: 0.7),
                             parentContext: context,
                           ),
                           AnchorButton(
@@ -238,7 +240,7 @@ class _FooterState extends State<Footer> {
                             icon: const Icon(
                               FontAwesomeIcons.linkedin,
                             ),
-                            color: Colors.white.withOpacity(0.7),
+                            color: Colors.white.withValues(alpha: 0.7),
                             parentContext: context,
                           ),
                         ],
@@ -257,7 +259,7 @@ class CircuitPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
       ..style = PaintingStyle.stroke
-      ..color = Colors.white.withOpacity(0.7)
+      ..color = Colors.white.withValues(alpha: 0.7)
       ..strokeJoin = StrokeJoin.round
       ..strokeWidth = 4;
     Path path = Path();

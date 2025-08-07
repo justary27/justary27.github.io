@@ -12,7 +12,7 @@ class PathPainter extends CustomPainter {
     Paint paint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 4.0
-      ..color = const Color(0xFF0d0d0d).withOpacity(0.5);
+      ..color = const Color(0xFF0d0d0d).withValues(alpha: 0.5);
 
     Path path = Path();
 

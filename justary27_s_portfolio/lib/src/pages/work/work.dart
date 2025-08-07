@@ -39,7 +39,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
 
     return GlowingOverscrollIndicator(
       axisDirection: AxisDirection.up,
-      color: const Color.fromRGBO(130, 246, 176, 1.0).withOpacity(0.3),
+      color: const Color.fromRGBO(130, 246, 176, 0.3),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -96,7 +96,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     style: GoogleFonts.abel(
                       textStyle: TextStyle(
                         // fontFamily: "Ubuntu",
-                        color: Colors.white.withOpacity(0.85),
+                        color: Colors.white.withValues(alpha: 0.85),
                         fontSize: WC.projSubtitle[deviceType]! * screen.width,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
@@ -112,13 +112,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -129,13 +129,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                   ],
@@ -147,7 +147,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                           style: GoogleFonts.redHatDisplay(
                             textStyle: TextStyle(
                               // fontFamily: "ABeeZee",
-                              color: Colors.black.withOpacity(0.75),
+                              color: Colors.black.withValues(alpha: 0.75),
                               fontSize: WC.projDescription[deviceType]! *
                                   screen.width,
                             ),
@@ -195,7 +195,8 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     style: GoogleFonts.abel(
                       textStyle: TextStyle(
                         // fontFamily: "Ubuntu",
-                        color: Colors.black.withGreen(200).withOpacity(0.5),
+                        color:
+                            Colors.black.withGreen(200).withValues(alpha: 0.5),
                         fontSize: WC.projSubtitle[deviceType]! * screen.width,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
@@ -211,13 +212,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -228,13 +229,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -245,13 +246,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     )
                   ],
@@ -263,7 +264,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                           style: GoogleFonts.redHatDisplay(
                             textStyle: TextStyle(
                               // fontFamily: "ABeeZee",
-                              color: Colors.black.withOpacity(0.75),
+                              color: Colors.black.withValues(alpha: 0.75),
                               fontSize: WC.projDescription[deviceType]! *
                                   screen.width,
                             ),
@@ -312,7 +313,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                       textStyle: TextStyle(
                         // fontFamily: "Ubuntu",
                         color: const Color.fromRGBO(218, 224, 224, 1.0)
-                            .withOpacity(0.85),
+                            .withValues(alpha: 0.85),
                         fontSize: WC.projSubtitle[deviceType]! * screen.width,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
@@ -328,13 +329,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -345,13 +346,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -362,13 +363,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -379,13 +380,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                   ],
@@ -397,7 +398,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                           style: GoogleFonts.redHatDisplay(
                             textStyle: TextStyle(
                               // fontFamily: "ABeeZee",
-                              color: Colors.black.withOpacity(0.75),
+                              color: Colors.black.withValues(alpha: 0.75),
                               fontSize: WC.projDescription[deviceType]! *
                                   screen.width,
                             ),
@@ -411,7 +412,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       icon: const Icon(Icons.public),
                       color: const Color.fromRGBO(241, 245, 245, 1.0)
-                          .withOpacity(0.5),
+                          .withValues(alpha: 0.5),
                       iconSize: WC.projLinks[deviceType],
                       destUrl: "https://channeli.in/maintainer_site/",
                       parentContext: context,
@@ -454,7 +455,8 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     style: GoogleFonts.abel(
                       textStyle: TextStyle(
                         // fontFamily: "Ubuntu",
-                        color: Colors.black.withGreen(200).withOpacity(0.5),
+                        color:
+                            Colors.black.withGreen(200).withValues(alpha: 0.5),
                         fontSize: WC.projSubtitle[deviceType]! * screen.width,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
@@ -470,13 +472,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -487,13 +489,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -504,13 +506,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -521,13 +523,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                   ],
@@ -539,7 +541,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                           style: GoogleFonts.redHatDisplay(
                             textStyle: TextStyle(
                               // fontFamily: "ABeeZee",
-                              color: Colors.black.withOpacity(0.75),
+                              color: Colors.black.withValues(alpha: 0.75),
                               fontSize: WC.projDescription[deviceType]! *
                                   screen.width,
                             ),
@@ -567,7 +569,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     // AnchorButton(
                     //   iconSize: cf['projLinks'][_deviceType],
                     //   color: const Color.fromRGBO(241, 245, 245, 1.0)
-                    //       .withOpacity(0.5),
+                    //       .withValues(alpha: 0.5),
                     //   destUrl:
                     //       " https://medium.com/@justary27/my-gsoc22-voyage-conclusion-e0bf34fec239",
                     //   icon: const Icon(FontAwesomeIcons.medium),
@@ -613,7 +615,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                       textStyle: TextStyle(
                         // fontFamily: "Ubuntu",
                         color: const Color.fromRGBO(218, 224, 224, 1.0)
-                            .withOpacity(0.85),
+                            .withValues(alpha: 0.85),
                         fontSize: WC.projSubtitle[deviceType]! * screen.width,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
@@ -628,7 +630,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                           style: GoogleFonts.redHatDisplay(
                             textStyle: TextStyle(
                               // fontFamily: "ABeeZee",
-                              color: Colors.black.withOpacity(0.75),
+                              color: Colors.black.withValues(alpha: 0.75),
                               fontSize: WC.projDescription[deviceType]! *
                                   screen.width,
                             ),
@@ -642,7 +644,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       icon: const Icon(FontAwesomeIcons.github),
                       color: const Color.fromRGBO(241, 245, 245, 1.0)
-                          .withOpacity(0.5),
+                          .withValues(alpha: 0.5),
                       iconSize: WC.projLinks[deviceType],
                       destUrl:
                           "https://github.com/IMGIITRoorkee/placement-flutter",
@@ -651,7 +653,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       iconSize: WC.projLinks[deviceType],
                       color: const Color.fromRGBO(241, 245, 245, 1.0)
-                          .withOpacity(0.5),
+                          .withValues(alpha: 0.5),
                       destUrl:
                           "https://play.google.com/store/apps/details?id=com.channeli.img.placementonline",
                       icon: const Icon(FontAwesomeIcons.googlePlay),
@@ -660,7 +662,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       iconSize: WC.projLinks[deviceType],
                       color: const Color.fromRGBO(241, 245, 245, 1.0)
-                          .withOpacity(0.5),
+                          .withValues(alpha: 0.5),
                       destUrl:
                           "https://apps.apple.com/in/app/channel-i-placement-online/id1667945708",
                       icon: const Icon(FontAwesomeIcons.appStoreIos),
@@ -685,13 +687,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -702,13 +704,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -719,13 +721,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     )
                   ],
@@ -757,7 +759,8 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     style: GoogleFonts.abel(
                       textStyle: TextStyle(
                         // fontFamily: "Ubuntu",
-                        color: Colors.black.withGreen(200).withOpacity(0.5),
+                        color:
+                            Colors.black.withGreen(200).withValues(alpha: 0.5),
                         fontSize: WC.projSubtitle[deviceType]! * screen.width,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
@@ -772,7 +775,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                           style: GoogleFonts.redHatDisplay(
                             textStyle: TextStyle(
                               // fontFamily: "ABeeZee",
-                              color: Colors.black.withOpacity(0.75),
+                              color: Colors.black.withValues(alpha: 0.75),
                               fontSize: WC.projDescription[deviceType]! *
                                   screen.width,
                             ),
@@ -785,7 +788,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       icon: const Icon(FontAwesomeIcons.github),
                       color: const Color.fromRGBO(56, 149, 131, 1.0)
-                          .withOpacity(0.75),
+                          .withValues(alpha: 0.75),
                       iconSize: WC.projLinks[deviceType],
                       destUrl:
                           "https://github.com/IMGIITRoorkee/noticeboard-mobile-app",
@@ -794,7 +797,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       iconSize: WC.projLinks[deviceType],
                       color: const Color.fromRGBO(56, 149, 131, 1.0)
-                          .withOpacity(0.75),
+                          .withValues(alpha: 0.75),
                       destUrl:
                           "https://play.google.com/store/apps/details?id=com.img.noticeboard",
                       icon: const Icon(FontAwesomeIcons.googlePlay),
@@ -803,7 +806,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       iconSize: WC.projLinks[deviceType],
                       color: const Color.fromRGBO(56, 149, 131, 1.0)
-                          .withOpacity(0.75),
+                          .withValues(alpha: 0.75),
                       destUrl:
                           "https://apps.apple.com/in/app/channel-i-noticeboard/id6443708603",
                       icon: const Icon(FontAwesomeIcons.appStoreIos),
@@ -828,13 +831,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -845,13 +848,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -862,13 +865,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     )
                   ],
@@ -902,7 +905,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     style: GoogleFonts.abel(
                       textStyle: TextStyle(
                         // fontFamily: "Ubuntu",
-                        color: Colors.white.withOpacity(0.85),
+                        color: Colors.white.withValues(alpha: 0.85),
                         fontSize: WC.projSubtitle[deviceType]! * screen.width,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
@@ -918,13 +921,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -935,13 +938,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -952,13 +955,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                   ],
@@ -970,7 +973,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                           style: GoogleFonts.redHatDisplay(
                             textStyle: TextStyle(
                               // fontFamily: "ABeeZee",
-                              color: Colors.black.withOpacity(0.75),
+                              color: Colors.black.withValues(alpha: 0.75),
                               fontSize: WC.projDescription[deviceType]! *
                                   screen.width,
                             ),
@@ -984,7 +987,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       icon: const Icon(FontAwesomeIcons.github),
                       color: const Color.fromRGBO(56, 149, 131, 1.0)
-                          .withOpacity(0.75),
+                          .withValues(alpha: 0.75),
                       iconSize: WC.projLinks[deviceType],
                       destUrl: "https://github.com/justary27/Lyf",
                       parentContext: context,
@@ -992,7 +995,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       iconSize: WC.projLinks[deviceType],
                       color: const Color.fromRGBO(56, 149, 131, 1.0)
-                          .withOpacity(0.75),
+                          .withValues(alpha: 0.75),
                       destUrl:
                           "https://www.figma.com/file/3lWdqxgt6QpTEOvfW5Vwu1/Lyf?node-id=123%3A2",
                       icon: const Icon(FontAwesomeIcons.figma),
@@ -1043,7 +1046,8 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     style: GoogleFonts.abel(
                       textStyle: TextStyle(
                         // fontFamily: "Ubuntu",
-                        color: Colors.black.withGreen(200).withOpacity(0.5),
+                        color:
+                            Colors.black.withGreen(200).withValues(alpha: 0.5),
                         fontSize: WC.projSubtitle[deviceType]! * screen.width,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
@@ -1059,13 +1063,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -1076,13 +1080,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -1093,13 +1097,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                   ],
@@ -1173,7 +1177,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                       textStyle: TextStyle(
                         // fontFamily: "Ubuntu",
                         color: const Color.fromRGBO(218, 224, 224, 1.0)
-                            .withOpacity(0.85),
+                            .withValues(alpha: 0.85),
                         fontSize: WC.projSubtitle[deviceType]! * screen.width,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
@@ -1189,13 +1193,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -1206,13 +1210,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -1223,13 +1227,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -1240,13 +1244,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                   ],
@@ -1269,7 +1273,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                           style: TextStyle(
                             fontFamily: "ABeeZee",
                             color: const Color.fromRGBO(14, 43, 133, 1.0)
-                                .withOpacity(0.7),
+                                .withValues(alpha: 0.7),
                             fontSize:
                                 WC.projEmphasis[deviceType]! * screen.width,
                             fontWeight: FontWeight.bold,
@@ -1292,7 +1296,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       iconSize: WC.projLinks[deviceType],
                       color: const Color.fromRGBO(241, 245, 245, 1.0)
-                          .withOpacity(0.5),
+                          .withValues(alpha: 0.5),
                       destUrl:
                           "https://summerofcode.withgoogle.com/archive/2022/projects/ShGlbTKv",
                       icon: const Icon(FontAwesomeIcons.google),
@@ -1301,7 +1305,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       iconSize: WC.projLinks[deviceType],
                       color: const Color.fromRGBO(241, 245, 245, 1.0)
-                          .withOpacity(0.5),
+                          .withValues(alpha: 0.5),
                       destUrl: "https://github.com/Bugheist/Flutter",
                       icon: const Icon(FontAwesomeIcons.github),
                       parentContext: context,
@@ -1309,7 +1313,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       iconSize: WC.projLinks[deviceType],
                       color: const Color.fromRGBO(241, 245, 245, 1.0)
-                          .withOpacity(0.5),
+                          .withValues(alpha: 0.5),
                       destUrl:
                           "https://apps.apple.com/us/app/owasp-blt/id6448071954",
                       icon: const Icon(FontAwesomeIcons.appStoreIos),
@@ -1318,7 +1322,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       iconSize: WC.projLinks[deviceType],
                       color: const Color.fromRGBO(241, 245, 245, 1.0)
-                          .withOpacity(0.5),
+                          .withValues(alpha: 0.5),
                       destUrl:
                           "https://medium.com/@justary27/my-gsoc22-voyage-beginning-4296df5af625",
                       icon: const Icon(FontAwesomeIcons.medium),
@@ -1327,7 +1331,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       iconSize: WC.projLinks[deviceType],
                       color: const Color.fromRGBO(241, 245, 245, 1.0)
-                          .withOpacity(0.5),
+                          .withValues(alpha: 0.5),
                       destUrl:
                           "https://medium.com/@justary27/my-gsoc22-voyage-conclusion-e0bf34fec239",
                       icon: const Icon(FontAwesomeIcons.medium),
@@ -1372,8 +1376,9 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     style: GoogleFonts.abel(
                       textStyle: TextStyle(
                         // fontFamily: "Ubuntu",
-                        // color: Colors.white.withOpacity(0.85),
-                        color: Colors.black.withGreen(200).withOpacity(0.5),
+                        // color: Colors.white.withValues(alpha: 0.85),
+                        color:
+                            Colors.black.withGreen(200).withValues(alpha: 0.5),
                         fontSize: WC.projSubtitle[deviceType]! * screen.width,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
@@ -1389,13 +1394,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -1406,13 +1411,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                   ],
@@ -1516,7 +1521,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                       textStyle: TextStyle(
                         // fontFamily: "Ubuntu",
                         color: const Color.fromRGBO(218, 224, 224, 1.0)
-                            .withOpacity(0.7),
+                            .withValues(alpha: 0.7),
                         fontSize: WC.projSubtitle[deviceType]! * screen.width,
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
@@ -1532,13 +1537,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                     Chip(
@@ -1549,13 +1554,13 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                         borderRadius: BorderRadius.circular(15),
                         side: BorderSide(
                           color: const Color.fromRGBO(56, 149, 131, 1.0)
-                              .withOpacity(0.75),
+                              .withValues(alpha: 0.75),
                         ),
                       ),
                       color: WidgetStateColor.transparent,
                       labelStyle: TextStyle(
                         color: const Color.fromRGBO(56, 149, 131, 1.0)
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                     ),
                   ],
@@ -1578,7 +1583,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                           style: TextStyle(
                             fontFamily: "ABeeZee",
                             color: const Color.fromRGBO(14, 43, 133, 1.0)
-                                .withOpacity(0.7),
+                                .withValues(alpha: 0.7),
                             fontSize:
                                 WC.projEmphasis[deviceType]! * screen.width,
                             fontWeight: FontWeight.bold,
@@ -1603,7 +1608,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       iconSize: WC.projLinks[deviceType],
                       color: const Color.fromRGBO(241, 245, 245, 1.0)
-                          .withOpacity(0.5),
+                          .withValues(alpha: 0.5),
                       destUrl: "https://github.com/justary27/CovBot",
                       icon: const Icon(FontAwesomeIcons.github),
                       parentContext: context,
@@ -1611,7 +1616,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       iconSize: WC.projLinks[deviceType],
                       color: const Color.fromRGBO(241, 245, 245, 1.0)
-                          .withOpacity(0.5),
+                          .withValues(alpha: 0.5),
                       destUrl: "https://justary27.github.io/CovBot/",
                       icon: const Icon(FontAwesomeIcons.firefoxBrowser),
                       parentContext: context,
@@ -1619,7 +1624,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                     AnchorButton(
                       iconSize: WC.projLinks[deviceType],
                       color: const Color.fromRGBO(241, 245, 245, 1.0)
-                          .withOpacity(0.5),
+                          .withValues(alpha: 0.5),
                       destUrl:
                           "https://discord.com/oauth2/authorize?client_id=835222640821796924&scope=bot",
                       icon: const Icon(FontAwesomeIcons.discord),
@@ -1660,7 +1665,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                   button: TextButton.icon(
                     icon: Icon(
                       Icons.arrow_forward_ios_rounded,
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.white.withValues(alpha: 0.7),
                     ),
                     onPressed: () => _launchLink(
                       'https://github.com/justary27',
@@ -1669,7 +1674,7 @@ class _WorkPageState extends ConsumerState<WorkPage> {
                       "Head to github",
                       style: TextStyle(
                         fontFamily: "ABeeZee",
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha: 0.7),
                         fontSize: 20,
                       ),
                     ),

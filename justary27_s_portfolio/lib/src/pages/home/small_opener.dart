@@ -42,7 +42,7 @@ class SmallOpenerPage extends StatelessWidget {
           Container(
             width: size.width,
             height: size.height,
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             alignment: Alignment.centerLeft,
             child: Padding(
               padding: EdgeInsets.all(0.1 * size.width),
@@ -88,7 +88,7 @@ class SmallOpenerPage extends StatelessWidget {
                       ),
                       style: ButtonStyle(
                         backgroundColor: WidgetStateProperty.all(
-                          const Color(0xFFDC4654).withOpacity(0.75),
+                          const Color(0xFFDC4654).withValues(alpha: 0.75),
                         ),
                       ),
                     ),
@@ -115,7 +115,7 @@ class SmallOpenerPage extends StatelessWidget {
                     SvgPicture.asset(
                       "images/ar.svg",
                       colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(0.85),
+                        Colors.white.withValues(alpha: 0.85),
                         BlendMode.srcIn,
                       ),
                     ),
@@ -127,14 +127,14 @@ class SmallOpenerPage extends StatelessWidget {
                       "images/amazon.svg",
                       height: 0.2 * size.height,
                       colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(0.75),
+                        Colors.white.withValues(alpha: 0.75),
                         BlendMode.srcIn,
                       ),
                     ),
                     SvgPicture.asset(
                       "images/img.svg",
                       colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(0.75),
+                        Colors.white.withValues(alpha: 0.75),
                         BlendMode.srcIn,
                       ),
                     ),
@@ -142,7 +142,7 @@ class SmallOpenerPage extends StatelessWidget {
                       "images/placement.svg",
                       height: 0.2 * size.height,
                       colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(0.75),
+                        Colors.white.withValues(alpha: 0.75),
                         BlendMode.srcIn,
                       ),
                     ),
@@ -150,14 +150,14 @@ class SmallOpenerPage extends StatelessWidget {
                       "images/noticeboard.svg",
                       height: 0.2 * size.height,
                       colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(0.75),
+                        Colors.white.withValues(alpha: 0.75),
                         BlendMode.srcIn,
                       ),
                     ),
                     SvgPicture.asset(
                       "images/lyf.svg",
                       colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(0.75),
+                        Colors.white.withValues(alpha: 0.75),
                         BlendMode.srcIn,
                       ),
                     ),
@@ -165,7 +165,7 @@ class SmallOpenerPage extends StatelessWidget {
                       "images/bugheist.svg",
                       height: 0.1 * size.height,
                       colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(0.75),
+                        Colors.white.withValues(alpha: 0.75),
                         BlendMode.srcIn,
                       ),
                     ),
@@ -176,7 +176,7 @@ class SmallOpenerPage extends StatelessWidget {
                     SvgPicture.asset(
                       "images/covbot.svg",
                       colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(0.75),
+                        Colors.white.withValues(alpha: 0.75),
                         BlendMode.srcIn,
                       ),
                     ),
@@ -184,7 +184,7 @@ class SmallOpenerPage extends StatelessWidget {
                       "images/jane.svg",
                       height: 0.5 * size.height,
                       colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(0.75),
+                        Colors.white.withValues(alpha: 0.75),
                         BlendMode.srcIn,
                       ),
                     ),

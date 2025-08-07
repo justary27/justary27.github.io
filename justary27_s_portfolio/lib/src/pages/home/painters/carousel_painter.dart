@@ -5,7 +5,7 @@ class CarouselPainter extends CustomPainter {
   final double angle;
   final double radius;
   final Paint sectorPaint = Paint()
-    ..color = const Color(0xFF0d0d0d).withOpacity(0.2)
+    ..color = const Color(0xFF0d0d0d).withValues(alpha: 0.2)
     ..style = PaintingStyle.fill;
 
   final Paint borderPaint = Paint()

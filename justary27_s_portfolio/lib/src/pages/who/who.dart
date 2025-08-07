@@ -29,7 +29,7 @@ class _WhoPageState extends ConsumerState<WhoPage> {
 
     return GlowingOverscrollIndicator(
       axisDirection: AxisDirection.up,
-      color: const Color.fromRGBO(198, 197, 255, 1.0).withOpacity(0.3),
+      color: const Color.fromRGBO(198, 197, 255, 1.0).withValues(alpha: 0.3),
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
@@ -246,7 +246,7 @@ class _WhoPageState extends ConsumerState<WhoPage> {
                       button: TextButton.icon(
                         icon: Icon(
                           Icons.arrow_forward_ios_rounded,
-                          color: Colors.white.withOpacity(0.7),
+                          color: Colors.white.withValues(alpha: 0.7),
                         ),
                         onPressed: () {
                           context.push(RouteHandler.blogPage);
@@ -255,7 +255,7 @@ class _WhoPageState extends ConsumerState<WhoPage> {
                           "Blog",
                           style: TextStyle(
                             fontFamily: "ABeeZee",
-                            color: Colors.white.withOpacity(0.7),
+                            color: Colors.white.withValues(alpha: 0.7),
                             fontSize: 20,
                           ),
                         ),

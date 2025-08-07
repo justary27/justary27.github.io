@@ -63,7 +63,7 @@ Widget blogProvider(
                           style: TextStyle(
                             fontFamily: "Ubuntu",
                             fontStyle: FontStyle.italic,
-                            color: Colors.white.withOpacity(0.5),
+                            color: Colors.white.withValues(alpha: 0.5),
                           ),
                         ),
                         SizedBox(
@@ -201,7 +201,7 @@ Widget blogProvider(
                         "CREATED ON",
                         style: TextStyle(
                           fontFamily: "Ubuntu",
-                          color: Colors.white.withOpacity(0.75),
+                          color: Colors.white.withValues(alpha: 0.75),
                         ),
                       ),
                       Row(
@@ -229,7 +229,7 @@ Widget blogProvider(
                         "ATTACHMENTS",
                         style: TextStyle(
                           fontFamily: "Ubuntu",
-                          color: Colors.white.withOpacity(0.75),
+                          color: Colors.white.withValues(alpha: 0.75),
                         ),
                       ),
                       TextButton.icon(

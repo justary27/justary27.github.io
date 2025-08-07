@@ -15,6 +15,13 @@ class Database {
     return blogs;
   }
 
+  static Future<Blog> getBlog(String blogId) async {
+    DocumentSnapshot blogDoc =
+        await firestore.collection("blogs").doc(blogId).get();
+
+    return Blog.fromJson(blogDoc);
+  }
+
   static writeBlog(Map<String, dynamic> blogMap) async {
     try {
       firestore.collection("blogs").add(blogMap);

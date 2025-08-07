@@ -29,9 +29,7 @@ class WorkDescriptor extends StatelessWidget {
       width: size.width,
       decoration: decoration,
       alignment: Alignment.center,
-      constraints: BoxConstraints(
-        minHeight: size.height,
-      ),
+      constraints: BoxConstraints(minHeight: size.height),
       child: Stack(
         children: [
           Positioned(
@@ -41,12 +39,8 @@ class WorkDescriptor extends StatelessWidget {
             top: 0,
             bottom: 0,
             child: Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: 0.015 * size.width,
-              ),
-              constraints: BoxConstraints(
-                minHeight: size.height,
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 0.015 * size.width),
+              constraints: BoxConstraints(minHeight: size.height),
               child: model,
             ),
           ),
@@ -57,17 +51,16 @@ class WorkDescriptor extends StatelessWidget {
               vertical: 0.05 * size.height,
               // right: 0.1 * size.width,
             ),
-            constraints: BoxConstraints(
-              minHeight: size.height,
-            ),
+            constraints: BoxConstraints(minHeight: size.height),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: (isRightAligned == null)
-                  ? CrossAxisAlignment.start
-                  : CrossAxisAlignment.end,
+              crossAxisAlignment:
+                  (isRightAligned == null)
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.end,
               children: buildWorkWidget(),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -75,19 +68,15 @@ class WorkDescriptor extends StatelessWidget {
 
   List<Widget> buildWorkWidget() {
     return [
-      FittedBox(
-        fit: BoxFit.scaleDown,
-        child: title,
-      ),
+      FittedBox(fit: BoxFit.scaleDown, child: title),
       subtitle,
       Container(
-        margin: const EdgeInsets.symmetric(
-          vertical: 10.0,
-        ),
-        child: Row(
-          mainAxisAlignment: (isRightAligned == null)
-              ? MainAxisAlignment.start
-              : MainAxisAlignment.end,
+        margin: const EdgeInsets.symmetric(vertical: 10.0),
+        child: Wrap(
+          alignment:
+              (isRightAligned == null)
+                  ? WrapAlignment.start
+                  : WrapAlignment.end,
           children: List.generate(
             tags.length,
             (int index) => Padding(
@@ -103,15 +92,13 @@ class WorkDescriptor extends StatelessWidget {
       ),
       SizedBox(
         width: 0.4 * size.width,
-        child: MouseRegion(
-          cursor: SystemMouseCursors.text,
-          child: description,
-        ),
+        child: MouseRegion(cursor: SystemMouseCursors.text, child: description),
       ),
       Row(
-        mainAxisAlignment: (isRightAligned == null)
-            ? MainAxisAlignment.start
-            : MainAxisAlignment.end,
+        mainAxisAlignment:
+            (isRightAligned == null)
+                ? MainAxisAlignment.start
+                : MainAxisAlignment.end,
         children: List.generate(
           buttonLinks.length,
           (int index) => Padding(
@@ -123,7 +110,7 @@ class WorkDescriptor extends StatelessWidget {
             child: buttonLinks[index],
           ),
         ),
-      )
+      ),
     ];
   }
 }

@@ -29,9 +29,9 @@ class _LargeNavBarState extends State<LargeNavBar> {
 
   Color _getBgColor() {
     if (GoRouterState.of(context).uri.path == RouteHandler.homePage) {
-      return Colors.black.withOpacity(0.4);
+      return Colors.black.withValues(alpha: 0.4);
     } else {
-      return Colors.black.withOpacity(0.2);
+      return Colors.black.withValues(alpha: 0.2);
     }
   }
 
@@ -55,7 +55,10 @@ class _LargeNavBarState extends State<LargeNavBar> {
         ),
       ),
       leading: Container(
-        margin: EdgeInsets.only(left: 0.01 * widget.size.width),
+        margin: EdgeInsets.only(
+          left: 0.01 * widget.size.width,
+        ),
+        padding: EdgeInsets.symmetric(vertical: 16.0),
         child: MouseRegion(
           cursor: SystemMouseCursors.click,
           child: GestureDetector(

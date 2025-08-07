@@ -67,8 +67,10 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                 ),
               ),
               child: CustomPaint(
-                painter: RoorkeePainter(RouteManager.currentColor,
-                    const Color.fromRGBO(145, 155, 153, 1.0).withOpacity(0.4)),
+                painter: RoorkeePainter(
+                    RouteManager.currentColor,
+                    const Color.fromRGBO(145, 155, 153, 1.0)
+                        .withValues(alpha: 0.4)),
               ),
             ),
             SizedBox(
@@ -136,7 +138,8 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                       children: [
                         MouseRegion(
                           onEnter: (hover) {
-                            if (hoverColor != Colors.white.withOpacity(0.7)) {
+                            if (hoverColor !=
+                                Colors.white.withValues(alpha: 0.7)) {
                               textHovered.value = true;
                             }
                           },
@@ -154,7 +157,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 fontSize: size.width * NC.taLine[deviceType]!,
                                 color: (textHovered.value)
                                     ? hoverColor
-                                    : Colors.white.withOpacity(0.7),
+                                    : Colors.white.withValues(alpha: 0.7),
                               ),
                             ),
                           ),
@@ -170,7 +173,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 child: MouseRegion(
                                   onEnter: (hover) {
                                     if (hoverColor !=
-                                        Colors.white.withOpacity(0.7)) {
+                                        Colors.white.withValues(alpha: 0.7)) {
                                       tHovered.value = true;
                                     }
                                   },
@@ -189,7 +192,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                       ),
                                       color: (tHovered.value)
                                           ? hoverColor
-                                          : Colors.white.withOpacity(0.7),
+                                          : Colors.white.withValues(alpha: 0.7),
                                     ),
                                   ),
                                 ),
@@ -197,7 +200,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                               MouseRegion(
                                 onEnter: (hover) {
                                   if (hoverColor !=
-                                      Colors.white.withOpacity(0.7)) {
+                                      Colors.white.withValues(alpha: 0.7)) {
                                     gHovered.value = true;
                                   }
                                 },
@@ -216,14 +219,14 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                     ),
                                     color: (gHovered.value)
                                         ? hoverColor
-                                        : Colors.white.withOpacity(0.7),
+                                        : Colors.white.withValues(alpha: 0.7),
                                   ),
                                 ),
                               ),
                               MouseRegion(
                                 onEnter: (hover) {
                                   if (hoverColor !=
-                                      Colors.white.withOpacity(0.7)) {
+                                      Colors.white.withValues(alpha: 0.7)) {
                                     lHovered.value = true;
                                   }
                                 },
@@ -242,7 +245,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                     ),
                                     color: (lHovered.value)
                                         ? hoverColor
-                                        : Colors.white.withOpacity(0.7),
+                                        : Colors.white.withValues(alpha: 0.7),
                                   ),
                                 ),
                               ),
@@ -286,8 +289,10 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                     ]),
               ),
               child: CustomPaint(
-                painter: RoorkeePainter(RouteManager.currentColor,
-                    const Color.fromRGBO(145, 155, 153, 1.0).withOpacity(0.4)),
+                painter: RoorkeePainter(
+                    RouteManager.currentColor,
+                    const Color.fromRGBO(145, 155, 153, 1.0)
+                        .withValues(alpha: 0.4)),
               ),
             ),
             SizedBox(
@@ -359,7 +364,8 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                       children: [
                         MouseRegion(
                           onEnter: (hover) {
-                            if (hoverColor != Colors.white.withOpacity(0.7)) {
+                            if (hoverColor !=
+                                Colors.white.withValues(alpha: 0.7)) {
                               textHovered.value = true;
                             }
                           },
@@ -377,7 +383,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 fontSize: size.width * NC.taLine[deviceType]!,
                                 color: (textHovered.value)
                                     ? hoverColor
-                                    : Colors.white.withOpacity(0.7),
+                                    : Colors.white.withValues(alpha: 0.7),
                               ),
                             ),
                           ),
@@ -391,7 +397,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                               MouseRegion(
                                 onEnter: (hover) {
                                   if (hoverColor !=
-                                      Colors.white.withOpacity(0.7)) {
+                                      Colors.white.withValues(alpha: 0.7)) {
                                     tHovered.value = true;
                                   }
                                 },
@@ -408,7 +414,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                     ),
                                     color: (tHovered.value)
                                         ? hoverColor
-                                        : Colors.white.withOpacity(0.7),
+                                        : Colors.white.withValues(alpha: 0.7),
                                     parentContext: context,
                                   ),
                                 ),
@@ -416,7 +422,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                               MouseRegion(
                                 onEnter: (hover) {
                                   if (hoverColor !=
-                                      Colors.white.withOpacity(0.7)) {
+                                      Colors.white.withValues(alpha: 0.7)) {
                                     gHovered.value = true;
                                   }
                                 },
@@ -433,7 +439,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                     ),
                                     color: (gHovered.value)
                                         ? hoverColor
-                                        : Colors.white.withOpacity(0.7),
+                                        : Colors.white.withValues(alpha: 0.7),
                                     parentContext: context,
                                   ),
                                 ),
@@ -441,7 +447,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                               MouseRegion(
                                 onEnter: (hover) {
                                   if (hoverColor !=
-                                      Colors.white.withOpacity(0.7)) {
+                                      Colors.white.withValues(alpha: 0.7)) {
                                     lHovered.value = true;
                                   }
                                 },
@@ -459,7 +465,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                     ),
                                     color: (lHovered.value)
                                         ? hoverColor
-                                        : Colors.white.withOpacity(0.7),
+                                        : Colors.white.withValues(alpha: 0.7),
                                     parentContext: context,
                                   ),
                                 ),

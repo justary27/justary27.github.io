@@ -655,7 +655,7 @@ class _LargeIntroWorkState extends State<LargeIntroWork>
                             ),
                             style: ButtonStyle(
                               backgroundColor: WidgetStateProperty.all(
-                                const Color(0xFF0d0d0d).withOpacity(0.75),
+                                const Color(0xFF0d0d0d).withValues(alpha: 0.75),
                               ),
                             ),
                           ),
@@ -881,7 +881,8 @@ class _LargeWhoBlogBriefState extends State<LargeWhoBlogBrief>
                               ),
                               style: ButtonStyle(
                                 backgroundColor: WidgetStateProperty.all(
-                                  const Color(0xFF0d0d0d).withOpacity(0.75),
+                                  const Color(0xFF0d0d0d)
+                                      .withValues(alpha: 0.75),
                                 ),
                               ),
                             ),
@@ -906,7 +907,8 @@ class _LargeWhoBlogBriefState extends State<LargeWhoBlogBrief>
                               ),
                               style: ButtonStyle(
                                 backgroundColor: WidgetStateProperty.all(
-                                  const Color(0xFF0d0d0d).withOpacity(0.75),
+                                  const Color(0xFF0d0d0d)
+                                      .withValues(alpha: 0.75),
                                 ),
                               ),
                             ),

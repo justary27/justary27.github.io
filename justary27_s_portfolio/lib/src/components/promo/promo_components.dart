@@ -45,7 +45,7 @@ class PromoRedirector extends StatelessWidget {
                   textStyle: TextStyle(
                     // fontFamily: "Caveat",
                     fontWeight: FontWeight.bold,
-                    color: Colors.black.withOpacity(0.5),
+                    color: Colors.black.withValues(alpha: 0.5),
                     fontSize: PC.taLine[deviceType]! * size.width,
                   ),
                 ),
