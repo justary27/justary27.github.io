@@ -2345,7 +2345,7 @@ class PositionsTab extends StatelessWidget {
             .toList();
 
     return SizedBox(
-      height: screen.height,
+      height: 0.9 * screen.height,
       child: Stack(
         children: [
           PositionCard(
@@ -2428,7 +2428,7 @@ class ProjectsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: screen.height,
+      height: 0.9 * screen.height,
       child: Stack(
         children: [
           WorkExperienceCard(
@@ -2509,7 +2509,7 @@ class WorkExperienceTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: screen.height,
+      height: 0.9 * screen.height,
       child: Stack(
         children: [
           WorkExperienceCard(

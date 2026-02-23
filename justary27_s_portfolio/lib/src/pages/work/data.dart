@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../enums/work.dart';
 import '../../models/work.dart';
 
 class WorkExperienceData {
   static final List<WorkExperience> experiences = [
+    // -------------------------------------------------------------------------
     // CloudDefense.AI
+    // -------------------------------------------------------------------------
     WorkExperience(
       id: 'clouddefense',
       company: 'CloudDefense.AI',
       coreGraphic: Graphic(
         type: GraphicType.animation,
-        path: 'assets/models/cdai.gltf', // Your logo model
+        path: 'assets/models/cdai.gltf',
       ),
       coreInfo: const CoreInfo(
         role: 'Cloud Security Research Intern',
         duration: 'Dec 2023 - Jun 2024',
         overview:
-            'CloudDefense is a comprehensive platform for CNAPP and infrastructure security, encompassing CSPM, CIEM,CWP, and Kubernetes Security Posture Management (KSPM)',
+            'CloudDefense is a comprehensive platform for CNAPP and infrastructure security, encompassing CSPM, CIEM, CWP, and Kubernetes Security Posture Management (KSPM)',
       ),
       scrollablePoints: const [
         ScrollablePoint(
@@ -56,26 +59,23 @@ class WorkExperienceData {
           ),
         ),
       ],
-      links: const [
-        WorkLink(
-          label: 'Website',
-          url: 'https://clouddefense.ai',
-          icon: Icons.language,
-        ),
-      ],
+      // No public links — internal product, per original commented code
+      links: const [],
       primaryColor: const Color(0xFF56958F),
       secondaryColor: const Color(0xFF389583),
       highlightColor: const Color(0xFF82F6B0),
       cardBackgroundColor: const Color(0xFFF5F9F8),
     ),
 
+    // -------------------------------------------------------------------------
     // Amazon
+    // -------------------------------------------------------------------------
     WorkExperience(
       id: 'amazon',
       company: 'Amazon',
       coreGraphic: Graphic(
         type: GraphicType.animation,
-        path: 'assets/models/cdai.gltf', // Your logo model
+        path: 'assets/models/amazon.gltf',
       ),
       coreInfo: const CoreInfo(
         role: 'Software Development Engineer Intern',
@@ -132,9 +132,9 @@ class WorkExperienceData {
       ],
       links: const [
         WorkLink(
-          label: 'Prime Video',
-          url: 'https://www.primevideo.com',
-          icon: Icons.play_circle_outline,
+          label: 'Amazon',
+          url: 'https://www.amazon.com',
+          icon: FontAwesomeIcons.amazon,
         ),
       ],
       primaryColor: const Color(0xFFFF9900),
@@ -157,7 +157,7 @@ class ProjectData {
       company: 'Placement Online',
       coreGraphic: Graphic(
         type: GraphicType.animation,
-        path: 'assets/models/cdai.gltf', // TODO: replace with actual asset
+        path: 'assets/models/placement.gltf',
       ),
       coreInfo: const CoreInfo(
         role: 'Mobile Application',
@@ -171,7 +171,7 @@ class ProjectData {
               'Launched the app on iOS, making it available to the entire campus community',
           graphic: Graphic(
             type: GraphicType.animation,
-            path: 'assets/models/cdai.gltf', // TODO
+            path: 'assets/models/placement.gltf',
           ),
         ),
         ScrollablePoint(
@@ -179,15 +179,27 @@ class ProjectData {
               'Maintained an active user base of 2000+ students across placement and internship cycles',
           graphic: Graphic(
             type: GraphicType.animation,
-            path: 'assets/models/cdai.gltf', // TODO
+            path: 'assets/models/placement.gltf',
           ),
         ),
       ],
       links: const [
         WorkLink(
           label: 'GitHub',
-          url: 'https://github.com/justary27', // TODO
-          icon: Icons.code,
+          url: 'https://github.com/IMGIITRoorkee/placement-flutter',
+          icon: FontAwesomeIcons.github,
+        ),
+        WorkLink(
+          label: 'Play Store',
+          url:
+              'https://play.google.com/store/apps/details?id=com.channeli.img.placementonline',
+          icon: FontAwesomeIcons.googlePlay,
+        ),
+        WorkLink(
+          label: 'App Store',
+          url:
+              'https://apps.apple.com/in/app/channel-i-placement-online/id1667945708',
+          icon: FontAwesomeIcons.appStoreIos,
         ),
       ],
       primaryColor: const Color(0xFF0E2B85),
@@ -204,7 +216,7 @@ class ProjectData {
       company: 'Noticeboard',
       coreGraphic: Graphic(
         type: GraphicType.animation,
-        path: 'assets/models/cdai.gltf', // TODO
+        path: 'assets/models/noticeboard.gltf',
       ),
       coreInfo: const CoreInfo(
         role: 'Mobile Application',
@@ -218,22 +230,34 @@ class ProjectData {
               'Revamped the app from scratch and shipped on both Android and iOS',
           graphic: Graphic(
             type: GraphicType.animation,
-            path: 'assets/models/cdai.gltf', // TODO
+            path: 'assets/models/noticeboard.gltf',
           ),
         ),
         ScrollablePoint(
           text: 'Serves 10,000+ active users across the IIT Roorkee campus',
           graphic: Graphic(
             type: GraphicType.animation,
-            path: 'assets/models/cdai.gltf', // TODO
+            path: 'assets/models/noticeboard.gltf',
           ),
         ),
       ],
       links: const [
         WorkLink(
           label: 'GitHub',
-          url: 'https://github.com/justary27', // TODO
-          icon: Icons.code,
+          url: 'https://github.com/IMGIITRoorkee/noticeboard-mobile-app',
+          icon: FontAwesomeIcons.github,
+        ),
+        WorkLink(
+          label: 'Play Store',
+          url:
+              'https://play.google.com/store/apps/details?id=com.img.noticeboard',
+          icon: FontAwesomeIcons.googlePlay,
+        ),
+        WorkLink(
+          label: 'App Store',
+          url:
+              'https://apps.apple.com/in/app/channel-i-noticeboard/id6443708603',
+          icon: FontAwesomeIcons.appStoreIos,
         ),
       ],
       primaryColor: const Color(0xFF389583),
@@ -250,7 +274,7 @@ class ProjectData {
       company: 'Lyf',
       coreGraphic: Graphic(
         type: GraphicType.animation,
-        path: 'assets/models/cdai.gltf', // TODO
+        path: 'assets/models/lyf.gltf',
       ),
       coreInfo: const CoreInfo(
         role: 'Personal Project · Mobile Application',
@@ -264,7 +288,7 @@ class ProjectData {
               'Built smart todo reminders that surface tasks at the right time',
           graphic: Graphic(
             type: GraphicType.animation,
-            path: 'assets/models/cdai.gltf', // TODO
+            path: 'assets/models/lyf.gltf',
           ),
         ),
         ScrollablePoint(
@@ -272,15 +296,21 @@ class ProjectData {
               'Implemented PDF generation for diary entries — a feature no ordinary diary app has',
           graphic: Graphic(
             type: GraphicType.animation,
-            path: 'assets/models/cdai.gltf', // TODO
+            path: 'assets/models/lyf.gltf',
           ),
         ),
       ],
       links: const [
         WorkLink(
           label: 'GitHub',
-          url: 'https://github.com/justary27', // TODO
-          icon: Icons.code,
+          url: 'https://github.com/justary27/Lyf',
+          icon: FontAwesomeIcons.github,
+        ),
+        WorkLink(
+          label: 'Figma',
+          url:
+              'https://www.figma.com/file/3lWdqxgt6QpTEOvfW5Vwu1/Lyf?node-id=123%3A2',
+          icon: FontAwesomeIcons.figma,
         ),
       ],
       primaryColor: const Color(0xFFA81D13),
@@ -297,35 +327,52 @@ class ProjectData {
       company: 'BugHeist UI',
       coreGraphic: Graphic(
         type: GraphicType.animation,
-        path: 'assets/models/cdai.gltf', // TODO
+        path: 'assets/models/gsoc.gltf',
       ),
       coreInfo: const CoreInfo(
-        role: 'Open Source · GSoC\'22',
+        role: 'Open Source · GSoC \'22',
         duration: '2022',
         overview:
             'Contributed to BugHeist, an open-source bug hunting platform, as part of Google Summer of Code 2022 under OWASP.',
       ),
       scrollablePoints: const [
         ScrollablePoint(
-          text: 'Contributed 36+ PRs to the BugHeist project during GSoC\'22',
+          text: 'Contributed 36+ PRs to the BugHeist project during GSoC \'22',
           graphic: Graphic(
             type: GraphicType.animation,
-            path: 'assets/models/cdai.gltf', // TODO
+            path: 'assets/models/gsoc.gltf',
           ),
         ),
         ScrollablePoint(
           text: 'Drove ~70% of total contributions to the project that summer',
           graphic: Graphic(
             type: GraphicType.animation,
-            path: 'assets/models/cdai.gltf', // TODO
+            path: 'assets/models/gsoc.gltf',
           ),
         ),
       ],
       links: const [
         WorkLink(
           label: 'GitHub',
-          url: 'https://github.com/OWASP-BLT/BLT-Flutter', // TODO: confirm
-          icon: Icons.code,
+          url: 'https://github.com/OWASP-BLT/BLT-Flutter',
+          icon: FontAwesomeIcons.github,
+        ),
+        WorkLink(
+          label: 'App Store',
+          url: 'https://apps.apple.com/us/app/owasp-blt/id6448071954',
+          icon: FontAwesomeIcons.appStoreIos,
+        ),
+        WorkLink(
+          label: 'Medium — Beginning',
+          url:
+              'https://medium.com/@justary27/my-gsoc22-voyage-beginning-4296df5af625',
+          icon: FontAwesomeIcons.medium,
+        ),
+        WorkLink(
+          label: 'Medium — Conclusion',
+          url:
+              'https://medium.com/@justary27/my-gsoc22-voyage-conclusion-e0bf34fec239',
+          icon: FontAwesomeIcons.medium,
         ),
       ],
       primaryColor: const Color(0xFFE67E22),
@@ -342,7 +389,7 @@ class ProjectData {
       company: 'GSoC \'22',
       coreGraphic: Graphic(
         type: GraphicType.animation,
-        path: 'assets/models/cdai.gltf', // TODO
+        path: 'assets/models/gsoc.gltf',
       ),
       coreInfo: const CoreInfo(
         role: 'Google Summer of Code · Contributor',
@@ -356,7 +403,7 @@ class ProjectData {
               'Selected from a competitive applicant pool to contribute to OWASP\'s BugHeist project',
           graphic: Graphic(
             type: GraphicType.animation,
-            path: 'assets/models/cdai.gltf', // TODO
+            path: 'assets/models/gsoc.gltf',
           ),
         ),
         ScrollablePoint(
@@ -364,15 +411,33 @@ class ProjectData {
               'Delivered the full GSoC project scope on time, earning a passing evaluation',
           graphic: Graphic(
             type: GraphicType.animation,
-            path: 'assets/models/cdai.gltf', // TODO
+            path: 'assets/models/gsoc.gltf',
           ),
         ),
       ],
       links: const [
         WorkLink(
-          label: 'GSoC',
-          url: 'https://summerofcode.withgoogle.com/', // TODO
-          icon: Icons.open_in_new,
+          label: 'GSoC Archive',
+          url:
+              'https://summerofcode.withgoogle.com/archive/2022/projects/ShGlbTKv',
+          icon: FontAwesomeIcons.google,
+        ),
+        WorkLink(
+          label: 'GitHub',
+          url: 'https://github.com/Bugheist/Flutter',
+          icon: FontAwesomeIcons.github,
+        ),
+        WorkLink(
+          label: 'Medium — Beginning',
+          url:
+              'https://medium.com/@justary27/my-gsoc22-voyage-beginning-4296df5af625',
+          icon: FontAwesomeIcons.medium,
+        ),
+        WorkLink(
+          label: 'Medium — Conclusion',
+          url:
+              'https://medium.com/@justary27/my-gsoc22-voyage-conclusion-e0bf34fec239',
+          icon: FontAwesomeIcons.medium,
         ),
       ],
       primaryColor: const Color(0xFF4285F4),
@@ -389,29 +454,49 @@ class ProjectData {
       company: 'CovBot',
       coreGraphic: Graphic(
         type: GraphicType.animation,
-        path: 'assets/models/cdai.gltf', // TODO
+        path: 'assets/models/covbot.gltf',
       ),
       coreInfo: const CoreInfo(
-        role: 'Personal Project · Chatbot',
+        role: 'Personal Project · Discord Bot',
         duration: '2021',
         overview:
-            'A COVID-19 information chatbot built during the pandemic to provide quick, reliable answers to common questions.',
+            'A COVID-19 information Discord bot built during the pandemic to provide quick, reliable answers to common questions. Featured in Mashable India.',
       ),
       scrollablePoints: const [
         ScrollablePoint(
           text:
-              'Built a conversational chatbot providing accurate COVID-19 information during the pandemic',
+              'Built a conversational bot providing accurate COVID-19 information during the pandemic',
           graphic: Graphic(
             type: GraphicType.animation,
-            path: 'assets/models/cdai.gltf', // TODO
+            path: 'assets/models/covbot.gltf',
+          ),
+        ),
+        ScrollablePoint(
+          text:
+              'Featured in Mashable India for helping users find oxygen and community resources',
+          graphic: Graphic(
+            type: GraphicType.animation,
+            path: 'assets/models/covbot.gltf',
           ),
         ),
       ],
       links: const [
         WorkLink(
           label: 'GitHub',
-          url: 'https://github.com/justary27', // TODO
-          icon: Icons.code,
+          url: 'https://github.com/justary27/CovBot',
+          icon: FontAwesomeIcons.github,
+        ),
+        WorkLink(
+          label: 'Discord',
+          url:
+              'https://discord.com/oauth2/authorize?client_id=835222640821796924&scope=bot',
+          icon: FontAwesomeIcons.discord,
+        ),
+        WorkLink(
+          label: 'Mashable',
+          url:
+              'https://in.mashable.com/social-good/22667/covid-discord-group-helps-indians-find-oxygen-answers-and-community',
+          icon: FontAwesomeIcons.newspaper,
         ),
       ],
       primaryColor: const Color(0xFF00796B),
@@ -428,29 +513,35 @@ class ProjectData {
       company: 'Jane',
       coreGraphic: Graphic(
         type: GraphicType.animation,
-        path: 'assets/models/cdai.gltf', // TODO
+        path: 'assets/models/jane.gltf',
       ),
       coreInfo: const CoreInfo(
-        role: 'Personal Project · Flutter App',
+        role: 'Personal Project · Discord Bot',
         duration: '2021',
         overview:
-            'A personal project exploring Flutter\'s capabilities — Jane is a utility app with a focus on clean design and developer experience.',
+            'A multi-purpose Discord bot to make your stay at Discord comfy — combining utility, fun, and moderation features in one.',
       ),
       scrollablePoints: const [
         ScrollablePoint(
           text:
-              'Explored advanced Flutter patterns and state management techniques through Jane',
+              'Built a multi-purpose Discord bot with utility, fun, and moderation features',
           graphic: Graphic(
             type: GraphicType.animation,
-            path: 'assets/models/cdai.gltf', // TODO
+            path: 'assets/models/jane.gltf',
           ),
         ),
       ],
       links: const [
         WorkLink(
-          label: 'GitHub',
-          url: 'https://github.com/justary27', // TODO
-          icon: Icons.code,
+          label: 'Web',
+          url: 'https://justary27.github.io/Jane/', // TODO: confirm URL
+          icon: FontAwesomeIcons.firefoxBrowser,
+        ),
+        WorkLink(
+          label: 'Discord',
+          url:
+              'https://discord.com/oauth2/authorize?client_id=835222640821796924&scope=bot',
+          icon: FontAwesomeIcons.discord,
         ),
       ],
       primaryColor: const Color(0xFF7B1FA2),
@@ -483,7 +574,7 @@ class PositionData {
         WorkLink(
           label: 'IMG',
           url: 'https://img.channeli.in',
-          icon: Icons.language,
+          icon: FontAwesomeIcons.globe,
         ),
       ],
       linkedProjectIds: ['noticeboard', 'placement_online'],
@@ -501,7 +592,7 @@ class PositionData {
       organization: 'GSoC \'23',
       coreGraphic: Graphic(
         type: GraphicType.animation,
-        path: 'assets/models/cdai.gltf', // TODO: replace with GSoC model
+        path: 'assets/models/gsoc.gltf',
       ),
       coreInfo: const CoreInfo(
         role: 'Google Summer of Code · Mentor',
@@ -511,9 +602,15 @@ class PositionData {
       ),
       links: const [
         WorkLink(
-          label: 'GSoC',
-          url: 'https://summerofcode.withgoogle.com/',
-          icon: Icons.open_in_new,
+          label: 'GSoC Archive',
+          url:
+              'https://summerofcode.withgoogle.com/archive/2023/projects/FrMdpNvR',
+          icon: FontAwesomeIcons.google,
+        ),
+        WorkLink(
+          label: 'GitHub',
+          url: 'https://github.com/OWASP-BLT/BLT-Flutter',
+          icon: FontAwesomeIcons.github,
         ),
       ],
       linkedProjectIds: ['bugheist_ui', 'gsoc22'],
