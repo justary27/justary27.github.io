@@ -6,10 +6,7 @@ import '../enums/device_type.dart';
 
 class Navbar extends StatefulWidget {
   final GlobalKey<ScaffoldState> navigatorKey;
-  const Navbar({
-    super.key,
-    required this.navigatorKey,
-  });
+  const Navbar({super.key, required this.navigatorKey});
 
   @override
   State<Navbar> createState() => _NavbarState();
@@ -29,10 +26,7 @@ class _NavbarState extends State<Navbar> {
             deviceType: deviceType,
           );
         } else {
-          return LargeNavBar(
-            size: size,
-            deviceType: deviceType,
-          );
+          return LargeNavBar(size: size, deviceType: deviceType);
         }
       },
     );

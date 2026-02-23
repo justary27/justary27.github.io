@@ -7,10 +7,7 @@ enum DeviceType implements Comparable<DeviceType> {
   largeLaptop(min: 1537, max: 1920),
   smallDesktop(min: 1921, max: 2560);
 
-  const DeviceType({
-    required this.min,
-    required this.max,
-  });
+  const DeviceType({required this.min, required this.max});
 
   final double min;
   final double max;

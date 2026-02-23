@@ -56,8 +56,12 @@ class _SmallDrawerState extends State<SmallDrawer> {
               child: CustomPaint(
                 painter: RoorkeePainter(
                   RouteManager.currentColor,
-                  const Color.fromRGBO(145, 155, 153, 1.0)
-                      .withValues(alpha: 0.4),
+                  const Color.fromRGBO(
+                    145,
+                    155,
+                    153,
+                    1.0,
+                  ).withValues(alpha: 0.4),
                 ),
               ),
             ),
@@ -72,9 +76,9 @@ class _SmallDrawerState extends State<SmallDrawer> {
                       Padding(
                         padding: EdgeInsets.all(0.025 * widget.size.width),
                         child: IconButton(
-                          onPressed: () => _handleRouteNavigation(
-                            RouteHandler.homePage,
-                          ),
+                          onPressed:
+                              () =>
+                                  _handleRouteNavigation(RouteHandler.homePage),
                           color: Colors.transparent,
                           icon: SvgPicture.asset(
                             "images/ar.svg",
@@ -88,9 +92,7 @@ class _SmallDrawerState extends State<SmallDrawer> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 0.1 * widget.size.height,
-                  ),
+                  SizedBox(height: 0.1 * widget.size.height),
                   ListTile(
                     title: const Text(
                       "Who",
@@ -99,9 +101,7 @@ class _SmallDrawerState extends State<SmallDrawer> {
                         color: Colors.white,
                       ),
                     ),
-                    onTap: () => _handleRouteNavigation(
-                      RouteHandler.whoPage,
-                    ),
+                    onTap: () => _handleRouteNavigation(RouteHandler.whoPage),
                   ),
                   ListTile(
                     title: const Text(
@@ -111,9 +111,7 @@ class _SmallDrawerState extends State<SmallDrawer> {
                         color: Colors.white,
                       ),
                     ),
-                    onTap: () => _handleRouteNavigation(
-                      RouteHandler.workPage,
-                    ),
+                    onTap: () => _handleRouteNavigation(RouteHandler.workPage),
                   ),
                   ListTile(
                     title: const Text(
@@ -123,9 +121,7 @@ class _SmallDrawerState extends State<SmallDrawer> {
                         color: Colors.white,
                       ),
                     ),
-                    onTap: () => _handleRouteNavigation(
-                      RouteHandler.blogPage,
-                    ),
+                    onTap: () => _handleRouteNavigation(RouteHandler.blogPage),
                   ),
                   ListTile(
                     title: const Text(
@@ -149,7 +145,7 @@ class _SmallDrawerState extends State<SmallDrawer> {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

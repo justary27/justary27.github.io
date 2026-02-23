@@ -61,7 +61,9 @@ class PromoRedirector extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: 0.2 * size.width, vertical: 0.04 * size.height),
+                horizontal: 0.2 * size.width,
+                vertical: 0.04 * size.height,
+              ),
               child: Text(
                 pageDescriptor,
                 textAlign: TextAlign.center,
@@ -78,7 +80,7 @@ class PromoRedirector extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 0.2 * size.width),
               child: button,
-            )
+            ),
           ],
         ),
       ),

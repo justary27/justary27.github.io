@@ -35,27 +35,14 @@ class LargeOpenerPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            LargeIntroWelcome(
-              size: size,
-            ),
-            LargeIntroDetailed(
-              size: size,
-              deviceType: deviceType,
-            ),
-            LargeIntroWork(
-              size: size,
-              deviceType: deviceType,
-            ),
-            LargeWhoBlogBrief(
-              size: size,
-              deviceType: deviceType,
-            ),
+            LargeIntroWelcome(size: size),
+            LargeIntroDetailed(size: size, deviceType: deviceType),
+            LargeIntroWork(size: size, deviceType: deviceType),
+            LargeWhoBlogBrief(size: size, deviceType: deviceType),
             SizedBox(
               height: size.height,
               width: size.width,
-              child: LargeIntroBrief(
-                size: size,
-              ),
+              child: LargeIntroBrief(size: size),
             ),
           ],
         ),
@@ -66,10 +53,7 @@ class LargeOpenerPage extends StatelessWidget {
 
 class LargeIntroWelcome extends StatefulWidget {
   final Size size;
-  const LargeIntroWelcome({
-    super.key,
-    required this.size,
-  });
+  const LargeIntroWelcome({super.key, required this.size});
 
   @override
   State<LargeIntroWelcome> createState() => _LargeIntroWelcomeState();
@@ -90,9 +74,10 @@ class _LargeIntroWelcomeState extends State<LargeIntroWelcome>
 
   @override
   Widget build(BuildContext context) {
-    double radius = (widget.size.width > widget.size.height)
-        ? 0.4 * widget.size.width
-        : 0.4 * widget.size.height;
+    double radius =
+        (widget.size.width > widget.size.height)
+            ? 0.4 * widget.size.width
+            : 0.4 * widget.size.height;
 
     return SizedBox(
       height: widget.size.height,
@@ -110,10 +95,7 @@ class _LargeIntroWelcomeState extends State<LargeIntroWelcome>
                     angle: _controller.value * 360,
                     radius: radius,
                   ),
-                  child: SizedBox(
-                    width: radius * 2,
-                    height: radius * 2,
-                  ),
+                  child: SizedBox(width: radius * 2, height: radius * 2),
                 ),
               ),
               Positioned(
@@ -237,12 +219,7 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
     _offsetAnimation = Tween<Offset>(
       begin: Offset.zero,
       end: const Offset(0, 0.045),
-    ).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeOut,
-      ),
-    );
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
     _controller.repeat(reverse: true);
   }
@@ -272,9 +249,11 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                       Transform.rotate(
                         angle: -math.pi / 9,
                         child: Container(
-                          width: OC.rotLine[widget.deviceType]!['width']! *
+                          width:
+                              OC.rotLine[widget.deviceType]!['width']! *
                               widget.size.width,
-                          height: OC.rotLine[widget.deviceType]!['height']! *
+                          height:
+                              OC.rotLine[widget.deviceType]!['height']! *
                               widget.size.width,
                           color: const Color(0xFF0d0d0d),
                         ),
@@ -465,6 +444,15 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                           ),
                           parentContext: context,
                         ),
+                        AnchorButton(
+                          destUrl: 'https://www.docker.com/',
+                          icon: Icon(
+                            FontAwesomeIcons.docker,
+                            size: OC.techStack[widget.deviceType],
+                            color: const Color(0xFF0d0d0d),
+                          ),
+                          parentContext: context,
+                        ),
                       ],
                     ),
                   ),
@@ -489,9 +477,11 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                     Transform.rotate(
                       angle: -math.pi / 9,
                       child: Container(
-                        width: OC.rotLine[widget.deviceType]!['width']! *
+                        width:
+                            OC.rotLine[widget.deviceType]!['width']! *
                             widget.size.width,
-                        height: OC.rotLine[widget.deviceType]!['height']! *
+                        height:
+                            OC.rotLine[widget.deviceType]!['height']! *
                             widget.size.width,
                         color: const Color(0xFF0d0d0d),
                       ),
@@ -527,9 +517,10 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                       ) {
                         return Center(
                           child: CircularProgressIndicator(
-                            value: totalBytes != null
-                                ? bytesDownloaded / totalBytes
-                                : null,
+                            value:
+                                totalBytes != null
+                                    ? bytesDownloaded / totalBytes
+                                    : null,
                             backgroundColor: const Color(0xFF0d0d0d),
                           ),
                         );
@@ -556,8 +547,11 @@ class LargeIntroWork extends StatefulWidget {
   final Size size;
   final DeviceType deviceType;
 
-  const LargeIntroWork(
-      {super.key, required this.size, required this.deviceType});
+  const LargeIntroWork({
+    super.key,
+    required this.size,
+    required this.deviceType,
+  });
 
   @override
   State<LargeIntroWork> createState() => _LargeIntroWorkState();
@@ -596,10 +590,7 @@ class _LargeIntroWorkState extends State<LargeIntroWork>
                   angle: _controller.value * 2.0 * math.pi,
                   child: CustomPaint(
                     painter: SemiCirclePainter(),
-                    child: SizedBox(
-                      width: radius * 2,
-                      height: radius * 2,
-                    ),
+                    child: SizedBox(width: radius * 2, height: radius * 2),
                   ),
                 ),
               ),
@@ -642,8 +633,8 @@ class _LargeIntroWorkState extends State<LargeIntroWork>
                               Icons.arrow_forward_ios_rounded,
                               color: Colors.white,
                             ),
-                            onPressed: () =>
-                                context.push(RouteHandler.workPage),
+                            onPressed:
+                                () => context.push(RouteHandler.workPage),
                             label: Text(
                               "Work",
                               style: TextStyle(
@@ -659,7 +650,7 @@ class _LargeIntroWorkState extends State<LargeIntroWork>
                               ),
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -761,7 +752,7 @@ class _LargeIntroWorkState extends State<LargeIntroWork>
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         );
@@ -868,21 +859,23 @@ class _LargeWhoBlogBriefState extends State<LargeWhoBlogBrief>
                                 Icons.arrow_forward_ios_rounded,
                                 color: Colors.white,
                               ),
-                              onPressed: () =>
-                                  context.push(RouteHandler.whoPage),
+                              onPressed:
+                                  () => context.push(RouteHandler.whoPage),
                               label: Text(
                                 "Who",
                                 style: TextStyle(
                                   fontFamily: "Ubuntu",
                                   color: Colors.white,
-                                  fontSize: OC.buttons[widget.deviceType]! *
+                                  fontSize:
+                                      OC.buttons[widget.deviceType]! *
                                       size.width,
                                 ),
                               ),
                               style: ButtonStyle(
                                 backgroundColor: WidgetStateProperty.all(
-                                  const Color(0xFF0d0d0d)
-                                      .withValues(alpha: 0.75),
+                                  const Color(
+                                    0xFF0d0d0d,
+                                  ).withValues(alpha: 0.75),
                                 ),
                               ),
                             ),
@@ -894,21 +887,23 @@ class _LargeWhoBlogBriefState extends State<LargeWhoBlogBrief>
                                 Icons.arrow_forward_ios_rounded,
                                 color: Colors.white,
                               ),
-                              onPressed: () =>
-                                  context.push(RouteHandler.blogPage),
+                              onPressed:
+                                  () => context.push(RouteHandler.blogPage),
                               label: Text(
                                 "Blog",
                                 style: TextStyle(
                                   fontFamily: "Ubuntu",
                                   color: Colors.white,
-                                  fontSize: OC.buttons[widget.deviceType]! *
+                                  fontSize:
+                                      OC.buttons[widget.deviceType]! *
                                       size.width,
                                 ),
                               ),
                               style: ButtonStyle(
                                 backgroundColor: WidgetStateProperty.all(
-                                  const Color(0xFF0d0d0d)
-                                      .withValues(alpha: 0.75),
+                                  const Color(
+                                    0xFF0d0d0d,
+                                  ).withValues(alpha: 0.75),
                                 ),
                               ),
                             ),
@@ -965,10 +960,7 @@ class _LargeIntroBriefState extends State<LargeIntroBrief>
     return MouseRegion(
       onEnter: (event) => _controller.forward(),
       onExit: (event) => _controller.reverse(),
-      child: CustomPaint(
-        size: widget.size,
-        painter: PathPainter(_animation),
-      ),
+      child: CustomPaint(size: widget.size, painter: PathPainter(_animation)),
     );
   }
 

@@ -50,9 +50,7 @@ class _FooterState extends State<Footer> {
           width: size.width,
           height: 0.3 * size.height,
           color: const Color.fromRGBO(134, 149, 179, 1.0),
-          child: CustomPaint(
-            painter: CircuitPainter(),
-          ),
+          child: CustomPaint(painter: CircuitPainter()),
         ),
         Container(
           alignment: Alignment.topLeft,
@@ -135,116 +133,122 @@ class _FooterState extends State<Footer> {
               Container(
                 width: 0.50 * size.width,
                 alignment: Alignment.center,
-                child: (deviceType < DeviceType.smallTablet)
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  AnchorButton(
-                                    iconSize: FC.techStack[deviceType],
-                                    destUrl: 'mailto:aryan_r@ch.iitr.ac.in',
-                                    icon: const Icon(
-                                      Icons.alternate_email_rounded,
-                                    ),
-                                    color: Colors.white.withValues(alpha: 0.7),
-                                    parentContext: context,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        0.04 * size.width, 0, 0, 0),
-                                    child: AnchorButton(
+                child:
+                    (deviceType < DeviceType.smallTablet)
+                        ? Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    AnchorButton(
                                       iconSize: FC.techStack[deviceType],
-                                      destUrl: 'https://twitter.com/JustAry27',
+                                      destUrl: 'mailto:aryan_r@ch.iitr.ac.in',
                                       icon: const Icon(
-                                        FontAwesomeIcons.xTwitter,
+                                        Icons.alternate_email_rounded,
                                       ),
-                                      color:
-                                          Colors.white.withValues(alpha: 0.7),
+                                      color: Colors.white.withValues(
+                                        alpha: 0.7,
+                                      ),
                                       parentContext: context,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  AnchorButton(
-                                    iconSize: FC.techStack[deviceType],
-                                    destUrl: 'https://github.com/justary27',
-                                    icon: const Icon(
-                                      FontAwesomeIcons.github,
-                                    ),
-                                    color: Colors.white.withValues(alpha: 0.7),
-                                    parentContext: context,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(
-                                        0.04 * size.width, 0, 0, 0),
-                                    child: AnchorButton(
-                                      iconSize: FC.techStack[deviceType],
-                                      destUrl:
-                                          'https://www.linkedin.com/in/aryan-ranjan27/',
-                                      icon: const Icon(
-                                        FontAwesomeIcons.linkedin,
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                        0.04 * size.width,
+                                        0,
+                                        0,
+                                        0,
                                       ),
-                                      color:
-                                          Colors.white.withValues(alpha: 0.7),
+                                      child: AnchorButton(
+                                        iconSize: FC.techStack[deviceType],
+                                        destUrl:
+                                            'https://twitter.com/JustAry27',
+                                        icon: const Icon(
+                                          FontAwesomeIcons.xTwitter,
+                                        ),
+                                        color: Colors.white.withValues(
+                                          alpha: 0.7,
+                                        ),
+                                        parentContext: context,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    AnchorButton(
+                                      iconSize: FC.techStack[deviceType],
+                                      destUrl: 'https://github.com/justary27',
+                                      icon: const Icon(FontAwesomeIcons.github),
+                                      color: Colors.white.withValues(
+                                        alpha: 0.7,
+                                      ),
                                       parentContext: context,
                                     ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          )
-                        ],
-                      )
-                    : OverflowBar(
-                        alignment: MainAxisAlignment.center,
-                        children: [
-                          AnchorButton(
-                            iconSize: FC.techStack[deviceType],
-                            destUrl: 'mailto:aryan_r@ch.iitr.ac.in',
-                            icon: const Icon(
-                              Icons.alternate_email_rounded,
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(
+                                        0.04 * size.width,
+                                        0,
+                                        0,
+                                        0,
+                                      ),
+                                      child: AnchorButton(
+                                        iconSize: FC.techStack[deviceType],
+                                        destUrl:
+                                            'https://www.linkedin.com/in/aryan-ranjan27/',
+                                        icon: const Icon(
+                                          FontAwesomeIcons.linkedin,
+                                        ),
+                                        color: Colors.white.withValues(
+                                          alpha: 0.7,
+                                        ),
+                                        parentContext: context,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                            color: Colors.white.withValues(alpha: 0.7),
-                            parentContext: context,
-                          ),
-                          AnchorButton(
-                            iconSize: FC.techStack[deviceType],
-                            destUrl: 'https://twitter.com/JustAry27',
-                            icon: const Icon(
-                              FontAwesomeIcons.xTwitter,
+                          ],
+                        )
+                        : OverflowBar(
+                          alignment: MainAxisAlignment.center,
+                          children: [
+                            AnchorButton(
+                              iconSize: FC.techStack[deviceType],
+                              destUrl: 'mailto:aryan_r@ch.iitr.ac.in',
+                              icon: const Icon(Icons.alternate_email_rounded),
+                              color: Colors.white.withValues(alpha: 0.7),
+                              parentContext: context,
                             ),
-                            color: Colors.white.withValues(alpha: 0.7),
-                            parentContext: context,
-                          ),
-                          AnchorButton(
-                            iconSize: FC.techStack[deviceType],
-                            destUrl: 'https://github.com/justary27',
-                            icon: const Icon(
-                              FontAwesomeIcons.github,
+                            AnchorButton(
+                              iconSize: FC.techStack[deviceType],
+                              destUrl: 'https://twitter.com/JustAry27',
+                              icon: const Icon(FontAwesomeIcons.xTwitter),
+                              color: Colors.white.withValues(alpha: 0.7),
+                              parentContext: context,
                             ),
-                            color: Colors.white.withValues(alpha: 0.7),
-                            parentContext: context,
-                          ),
-                          AnchorButton(
-                            iconSize: FC.techStack[deviceType],
-                            destUrl:
-                                'https://www.linkedin.com/in/aryan-ranjan27/',
-                            icon: const Icon(
-                              FontAwesomeIcons.linkedin,
+                            AnchorButton(
+                              iconSize: FC.techStack[deviceType],
+                              destUrl: 'https://github.com/justary27',
+                              icon: const Icon(FontAwesomeIcons.github),
+                              color: Colors.white.withValues(alpha: 0.7),
+                              parentContext: context,
                             ),
-                            color: Colors.white.withValues(alpha: 0.7),
-                            parentContext: context,
-                          ),
-                        ],
-                      ),
+                            AnchorButton(
+                              iconSize: FC.techStack[deviceType],
+                              destUrl:
+                                  'https://www.linkedin.com/in/aryan-ranjan27/',
+                              icon: const Icon(FontAwesomeIcons.linkedin),
+                              color: Colors.white.withValues(alpha: 0.7),
+                              parentContext: context,
+                            ),
+                          ],
+                        ),
               ),
             ],
           ),
@@ -257,11 +261,12 @@ class _FooterState extends State<Footer> {
 class CircuitPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..style = PaintingStyle.stroke
-      ..color = Colors.white.withValues(alpha: 0.7)
-      ..strokeJoin = StrokeJoin.round
-      ..strokeWidth = 4;
+    Paint paint =
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..color = Colors.white.withValues(alpha: 0.7)
+          ..strokeJoin = StrokeJoin.round
+          ..strokeWidth = 4;
     Path path = Path();
 
     path.moveTo(0.97 * size.width, 0.9 * size.height);
@@ -274,8 +279,12 @@ class CircuitPainter extends CustomPainter {
     );
 
     path.moveTo(0.97 * size.width, 0.9 * size.height);
-    path.quadraticBezierTo(0.72 * size.width, 0.98 * size.height,
-        0.7 * size.width, 0.99 * size.height);
+    path.quadraticBezierTo(
+      0.72 * size.width,
+      0.98 * size.height,
+      0.7 * size.width,
+      0.99 * size.height,
+    );
     path.lineTo(0.2 * size.width, 0.99 * size.height);
     path.lineTo(size.width, size.height);
     path.lineTo(size.width, 0);

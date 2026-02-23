@@ -8,15 +8,14 @@ class RoorkeePainter extends CustomPainter {
   RoorkeePainter(this.color1, this.color2);
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..style = PaintingStyle.fill
-      ..shader = LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomLeft,
-          colors: [
-            color1,
-            color2,
-          ]).createShader(Offset.zero & size);
+    Paint paint =
+        Paint()
+          ..style = PaintingStyle.fill
+          ..shader = LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomLeft,
+            colors: [color1, color2],
+          ).createShader(Offset.zero & size);
     Path path = Path();
 
     path.moveTo(0, 0.65 * size.height);

@@ -40,9 +40,7 @@ class _AnchorButtonState extends State<AnchorButton> {
               padding: const EdgeInsets.all(4),
               child: Text(
                 widget.destUrl,
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.85),
-                ),
+                style: TextStyle(color: Colors.white.withValues(alpha: 0.85)),
               ),
             ),
           ),
@@ -61,10 +59,7 @@ class _AnchorButtonState extends State<AnchorButton> {
   }
 
   Future<void> _launchLink(String url) async {
-    await launchUrl(
-      Uri.parse(url),
-      webOnlyWindowName: '_blank',
-    );
+    await launchUrl(Uri.parse(url), webOnlyWindowName: '_blank');
   }
 
   @override
@@ -76,9 +71,7 @@ class _AnchorButtonState extends State<AnchorButton> {
         icon: widget.icon,
         iconSize: widget.iconSize,
         color: widget.color,
-        onPressed: () => _launchLink(
-          widget.destUrl,
-        ),
+        onPressed: () => _launchLink(widget.destUrl),
       ),
     );
   }

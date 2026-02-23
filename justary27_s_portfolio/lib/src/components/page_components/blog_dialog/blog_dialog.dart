@@ -6,144 +6,36 @@ import '../../../enums/device_type.dart';
 
 import 'blog_dialog_constraints.dart';
 
-Widget blogProvider(
-  Size size,
-  Blog blog,
-  DeviceType deviceType,
-) {
+Widget blogProvider(Size size, Blog blog, DeviceType deviceType) {
   Future<void> launchLink(String url) async {
-    await launchUrl(
-      Uri.parse(url),
-      webOnlyWindowName: '_blank',
-    );
+    await launchUrl(Uri.parse(url), webOnlyWindowName: '_blank');
   }
 
   return Card(
     clipBehavior: Clip.antiAlias,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(15),
-    ),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
     margin: EdgeInsets.zero,
     child: Container(
       width: 0.75 * size.width,
       height: 0.8 * size.height,
       color: const Color(0xFFf2f2f2),
-      child: (deviceType < DeviceType.largeTablet)
-          ? Column(
-              children: [
-                Container(
-                  height: 0.18 * size.height,
-                  width: 0.75 * size.width,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFFA81D13),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 0.025 * size.height,
-                      horizontal: 0.025 * size.width,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          blog.blogTitle,
-                          style: TextStyle(
-                            fontFamily: "Caveat",
-                            color: Colors.white,
-                            fontSize: BDC.blogTitle[deviceType]! * size.width,
-                          ),
-                        ),
-                        Text(
-                          blog.blogTagLine,
-                          style: TextStyle(
-                            fontFamily: "Ubuntu",
-                            fontStyle: FontStyle.italic,
-                            color: Colors.white.withValues(alpha: 0.5),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 0.015 * size.height,
-                        ),
-                        Row(
-                          children: [
-                            Row(
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Icon(
-                                    Icons.date_range_outlined,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Text(
-                                  blog.blogCreatedOn,
-                                  style: const TextStyle(
-                                    fontFamily: "Ubuntu",
-                                    color: Colors.white,
-                                  ),
-                                )
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Icon(
-                                    Icons.link_rounded,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                TextButton(
-                                  onPressed: () => launchLink(blog.link),
-                                  child: Text(
-                                    "${blog.link.substring(0, 10)}...",
-                                    style: const TextStyle(
-                                      fontFamily: "Ubuntu",
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 0.60 * size.height,
-                  padding: EdgeInsets.symmetric(
-                    vertical: 0.05 * size.height,
-                    horizontal: 0.025 * size.width,
-                  ),
-                  child: SingleChildScrollView(
-                    child: Text(
-                      blog.blogDescription.trim(),
-                      style: const TextStyle(
-                        fontFamily: "ABeeZee",
-                        color: Colors.black,
+      child:
+          (deviceType < DeviceType.largeTablet)
+              ? Column(
+                children: [
+                  Container(
+                    height: 0.18 * size.height,
+                    width: 0.75 * size.width,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFA81D13),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15),
                       ),
                     ),
-                  ),
-                )
-              ],
-            )
-          : Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                SizedBox(
-                  width: 0.55 * size.width,
-                  child: SingleChildScrollView(
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                        vertical: 0.05 * size.height,
+                        vertical: 0.025 * size.height,
                         horizontal: 0.025 * size.width,
                       ),
                       child: Column(
@@ -154,103 +46,198 @@ Widget blogProvider(
                             blog.blogTitle,
                             style: TextStyle(
                               fontFamily: "Caveat",
-                              color: const Color(0xFFA81D13),
+                              color: Colors.white,
                               fontSize: BDC.blogTitle[deviceType]! * size.width,
                             ),
                           ),
                           Text(
                             blog.blogTagLine,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontFamily: "Ubuntu",
                               fontStyle: FontStyle.italic,
-                              color: Colors.grey,
+                              color: Colors.white.withValues(alpha: 0.5),
                             ),
                           ),
-                          SizedBox(
-                            height: 0.05 * size.height,
-                          ),
-                          Text(
-                            blog.blogDescription.trim(),
-                            style: const TextStyle(
-                              fontFamily: "ABeeZee",
-                              color: Colors.black,
-                            ),
+                          SizedBox(height: 0.015 * size.height),
+                          Row(
+                            children: [
+                              Row(
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Icon(
+                                      Icons.date_range_outlined,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Text(
+                                    blog.blogCreatedOn,
+                                    style: const TextStyle(
+                                      fontFamily: "Ubuntu",
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Icon(
+                                      Icons.link_rounded,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () => launchLink(blog.link),
+                                    child: Text(
+                                      "${blog.link.substring(0, 10)}...",
+                                      style: const TextStyle(
+                                        fontFamily: "Ubuntu",
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ),
                   ),
-                ),
-                Container(
-                  width: 0.20 * size.width,
-                  padding: EdgeInsets.symmetric(
-                    vertical: 0.075 * size.height,
-                    horizontal: 0.025 * size.width,
-                  ),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(15),
-                      topRight: Radius.circular(15),
+                  Container(
+                    height: 0.60 * size.height,
+                    padding: EdgeInsets.symmetric(
+                      vertical: 0.05 * size.height,
+                      horizontal: 0.025 * size.width,
                     ),
-                    color: Color(0xFFA81D13),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "CREATED ON",
-                        style: TextStyle(
-                          fontFamily: "Ubuntu",
-                          color: Colors.white.withValues(alpha: 0.75),
+                    child: SingleChildScrollView(
+                      child: Text(
+                        blog.blogDescription.trim(),
+                        style: const TextStyle(
+                          fontFamily: "ABeeZee",
+                          color: Colors.black,
                         ),
                       ),
-                      Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.date_range_outlined,
-                              color: Colors.white,
+                    ),
+                  ),
+                ],
+              )
+              : Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  SizedBox(
+                    width: 0.55 * size.width,
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 0.05 * size.height,
+                          horizontal: 0.025 * size.width,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              blog.blogTitle,
+                              style: TextStyle(
+                                fontFamily: "Caveat",
+                                color: const Color(0xFFA81D13),
+                                fontSize:
+                                    BDC.blogTitle[deviceType]! * size.width,
+                              ),
                             ),
+                            Text(
+                              blog.blogTagLine,
+                              style: const TextStyle(
+                                fontFamily: "Ubuntu",
+                                fontStyle: FontStyle.italic,
+                                color: Colors.grey,
+                              ),
+                            ),
+                            SizedBox(height: 0.05 * size.height),
+                            Text(
+                              blog.blogDescription.trim(),
+                              style: const TextStyle(
+                                fontFamily: "ABeeZee",
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 0.20 * size.width,
+                    padding: EdgeInsets.symmetric(
+                      vertical: 0.075 * size.height,
+                      horizontal: 0.025 * size.width,
+                    ),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(15),
+                        topRight: Radius.circular(15),
+                      ),
+                      color: Color(0xFFA81D13),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "CREATED ON",
+                          style: TextStyle(
+                            fontFamily: "Ubuntu",
+                            color: Colors.white.withValues(alpha: 0.75),
                           ),
-                          Text(
-                            blog.blogCreatedOn,
+                        ),
+                        Row(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Icon(
+                                Icons.date_range_outlined,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              blog.blogCreatedOn,
+                              style: const TextStyle(
+                                fontFamily: "Ubuntu",
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 0.05 * size.height),
+                        Text(
+                          "ATTACHMENTS",
+                          style: TextStyle(
+                            fontFamily: "Ubuntu",
+                            color: Colors.white.withValues(alpha: 0.75),
+                          ),
+                        ),
+                        TextButton.icon(
+                          onPressed: () => launchLink(blog.link),
+                          icon: const Icon(
+                            Icons.link_rounded,
+                            color: Colors.white,
+                          ),
+                          label: Text(
+                            "${blog.link.substring(0, 10)}...",
                             style: const TextStyle(
                               fontFamily: "Ubuntu",
                               color: Colors.white,
                             ),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 0.05 * size.height,
-                      ),
-                      Text(
-                        "ATTACHMENTS",
-                        style: TextStyle(
-                          fontFamily: "Ubuntu",
-                          color: Colors.white.withValues(alpha: 0.75),
-                        ),
-                      ),
-                      TextButton.icon(
-                        onPressed: () => launchLink(blog.link),
-                        icon: const Icon(
-                          Icons.link_rounded,
-                          color: Colors.white,
-                        ),
-                        label: Text(
-                          "${blog.link.substring(0, 10)}...",
-                          style: const TextStyle(
-                            fontFamily: "Ubuntu",
-                            color: Colors.white,
                           ),
                         ),
-                      )
-                    ],
+                      ],
+                    ),
                   ),
-                )
-              ],
-            ),
+                ],
+              ),
     ),
   );
 }

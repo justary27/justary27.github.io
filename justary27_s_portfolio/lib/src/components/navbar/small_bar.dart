@@ -37,10 +37,7 @@ class _SmallNavBarState extends State<SmallNavBar> {
       flexibleSpace: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Colors.black.withValues(alpha: 0.2),
-              Colors.transparent,
-            ],
+            colors: [Colors.black.withValues(alpha: 0.2), Colors.transparent],
             begin: Alignment.topLeft,
             end: Alignment.bottomLeft,
           ),
@@ -58,9 +55,7 @@ class _SmallNavBarState extends State<SmallNavBar> {
               BlendMode.srcIn,
             ),
           ),
-          onPressed: () => _handleRouteNavigation(
-            RouteHandler.homePage,
-          ),
+          onPressed: () => _handleRouteNavigation(RouteHandler.homePage),
           color: Colors.transparent,
         ),
       ),
