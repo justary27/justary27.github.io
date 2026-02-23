@@ -72,3 +72,30 @@ class WorkExperience {
     required this.secondaryColor,
   });
 }
+
+/// Position of Responsibility model
+class Position {
+  final String id;
+  final String organization;
+  final Graphic coreGraphic;
+  final CoreInfo coreInfo;
+  final List<WorkLink> links;
+  final List<String> linkedProjectIds;
+  final Color cardBackgroundColor;
+  final Color highlightColor;
+  final Color primaryColor;
+  final Color secondaryColor;
+
+  const Position({
+    required this.id,
+    required this.organization,
+    required this.coreGraphic,
+    required this.coreInfo,
+    this.links = const [],
+    this.linkedProjectIds = const [],
+    this.cardBackgroundColor = Colors.white,
+    required this.highlightColor,
+    required this.primaryColor,
+    required this.secondaryColor,
+  });
+}

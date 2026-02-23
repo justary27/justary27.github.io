@@ -1691,6 +1691,7 @@
 //     );
 //   }
 // }
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -1700,13 +1701,31 @@ import '../../components/footer.dart';
 import '../../components/page_components/work_components.dart';
 import '../../components/promo/promo_components.dart';
 import '../../components/quick_navbar.dart';
+import '../../components/roorkee_painter.dart';
 import '../../models/screen_model.dart';
 import '../../providers/screen_provider.dart';
-import '../../components/roorkee_painter.dart';
 
-import 'work_constraints.dart';
 import 'data.dart';
+import 'work_constraints.dart';
 
+// ============================================================================
+// PER-TAB SCROLL STATE HELPER
+// ============================================================================
+class _TabScrollState {
+  int currentItemIndex = 0;
+  int currentPointIndex = -1; // -1 = core section
+  bool hasCompleted = false;
+
+  void reset() {
+    currentItemIndex = 0;
+    currentPointIndex = -1;
+    hasCompleted = false;
+  }
+}
+
+// ============================================================================
+// PAGE
+// ============================================================================
 class WorkPage extends ConsumerStatefulWidget {
   const WorkPage({super.key});
 
@@ -1731,35 +1750,68 @@ class _WorkPageState extends ConsumerState<WorkPage>
   static const double _scrollOffsetAdjustment = 2.0;
 
   // ============================================================================
-  // STATE
+  // STATE — SHARED SCROLL
   // ============================================================================
   late TabController _tabController;
   late ScrollController _scrollController;
 
-  // Experience navigation state
-  int _currentCompanyIndex = 0;
-  int _currentPointIndex = -1; // -1 means showing core section
-
-  // Scroll-jacking state
   bool _isFrozen = false;
-  bool _hasCompletedAllPoints = false;
   double _freezeOffset = 0;
   double _accumulatedDelta = 0;
 
   // ============================================================================
-  // GETTERS
+  // STATE — PER-TAB
   // ============================================================================
-  int get _totalPoints => WorkExperienceData.experiences.fold(
-    0,
-    (sum, exp) => sum + exp.scrollablePoints.length + 1, // +1 for core section
-  );
+  final List<_TabScrollState> _tabStates = [
+    _TabScrollState(), // Work Experience
+    _TabScrollState(), // Projects
+    _TabScrollState(), // Positions
+  ];
 
-  int get _globalPointIndex {
-    int index = 0;
-    for (int i = 0; i < _currentCompanyIndex; i++) {
-      index += WorkExperienceData.experiences[i].scrollablePoints.length + 1;
+  // Lazy loading — WorkEx is built immediately; others on first visit
+  final List<bool> _tabBuilt = [true, false, false];
+
+  // ============================================================================
+  // CONVENIENCE GETTERS
+  // ============================================================================
+  _TabScrollState get _current => _tabStates[_tabController.index];
+
+  bool get _isPositionsTab => _tabController.index == _positionsTabIndex;
+
+  /// Total scroll states for the active tab.
+  int get _totalPoints {
+    switch (_tabController.index) {
+      case _experienceTabIndex:
+        return WorkExperienceData.experiences.fold(
+          0,
+          (sum, exp) => sum + exp.scrollablePoints.length + 1,
+        );
+      case _projectsTabIndex:
+        return ProjectData.projects.fold(
+          0,
+          (p, proj) => p + proj.scrollablePoints.length + 1,
+        );
+      case _positionsTabIndex:
+        return PositionData.positions.length; // one state per position
+      default:
+        return 0;
     }
-    return index + _currentPointIndex + 1;
+  }
+
+  /// Global point index (0-based) within the active tab.
+  int get _globalPointIndex {
+    if (_isPositionsTab) return _current.currentItemIndex;
+
+    final items =
+        _tabController.index == _experienceTabIndex
+            ? WorkExperienceData.experiences
+            : ProjectData.projects;
+
+    int index = 0;
+    for (int i = 0; i < _current.currentItemIndex; i++) {
+      index += items[i].scrollablePoints.length + 1;
+    }
+    return index + _current.currentPointIndex + 1;
   }
 
   // ============================================================================
@@ -1780,21 +1832,90 @@ class _WorkPageState extends ConsumerState<WorkPage>
   }
 
   // ============================================================================
-  // NAVIGATION METHODS
+  // TAB NAVIGATION
   // ============================================================================
-  void _nextPoint() {
-    final currentExperience =
-        WorkExperienceData.experiences[_currentCompanyIndex];
-    final maxPointIndex = currentExperience.scrollablePoints.length - 1;
-    final isLastCompany =
-        _currentCompanyIndex == WorkExperienceData.experiences.length - 1;
+  void _handleTabChange(int index) {
+    setState(() {
+      _isFrozen = false;
+      _accumulatedDelta = 0;
+      _tabController.animateTo(index);
+      _tabBuilt[index] = true;
+
+      // Scroll to top of tab section on switch
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted && _scrollController.hasClients) {
+          _scrollController.jumpTo(0);
+        }
+      });
+    });
+  }
+
+  /// Called from PositionsTab when a linked project chip is tapped.
+  void _navigateToProject(String projectId) {
+    final targetIndex = ProjectData.projects.indexWhere(
+      (p) => p.id == projectId,
+    );
+    if (targetIndex == -1) return;
 
     setState(() {
-      if (_currentPointIndex < maxPointIndex) {
-        _currentPointIndex++;
-      } else if (!isLastCompany) {
-        _currentCompanyIndex++;
-        _currentPointIndex = -1; // Reset to core section
+      _isFrozen = false;
+      _accumulatedDelta = 0;
+      _tabBuilt[_projectsTabIndex] = true;
+      _tabController.animateTo(_projectsTabIndex);
+
+      // Jump to the target project's core section
+      _tabStates[_projectsTabIndex].currentItemIndex = targetIndex;
+      _tabStates[_projectsTabIndex].currentPointIndex = -1;
+      _tabStates[_projectsTabIndex].hasCompleted = false;
+    });
+
+    // Freeze into the projects tab at the target project
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted && _scrollController.hasClients) {
+        final screenHeight = MediaQuery.of(context).size.height;
+        _scrollController.jumpTo(screenHeight);
+        setState(() {
+          _isFrozen = true;
+          _freezeOffset = screenHeight;
+        });
+      }
+    });
+  }
+
+  // ============================================================================
+  // ITEM NAVIGATION
+  // ============================================================================
+  void _nextPoint() {
+    if (_isPositionsTab) {
+      // Positions have no sub-points — advance directly to next position
+      final isLast =
+          _current.currentItemIndex == PositionData.positions.length - 1;
+      setState(() {
+        if (!isLast) {
+          _current.currentItemIndex++;
+        } else {
+          _completeScrollSession();
+        }
+      });
+      return;
+    }
+
+    // WorkEx / Projects — standard sub-point navigation
+    final items =
+        _tabController.index == _experienceTabIndex
+            ? WorkExperienceData.experiences
+            : ProjectData.projects;
+
+    final currentItem = items[_current.currentItemIndex];
+    final maxPointIndex = currentItem.scrollablePoints.length - 1;
+    final isLastItem = _current.currentItemIndex == items.length - 1;
+
+    setState(() {
+      if (_current.currentPointIndex < maxPointIndex) {
+        _current.currentPointIndex++;
+      } else if (!isLastItem) {
+        _current.currentItemIndex++;
+        _current.currentPointIndex = -1;
       } else {
         _completeScrollSession();
       }
@@ -1802,51 +1923,62 @@ class _WorkPageState extends ConsumerState<WorkPage>
   }
 
   void _prevPoint() {
+    if (_isPositionsTab) {
+      final isFirst = _current.currentItemIndex == 0;
+      setState(() {
+        if (!isFirst) {
+          _current.currentItemIndex--;
+        } else {
+          _unfreeze(scrollingDown: false);
+        }
+      });
+      return;
+    }
+
+    final items =
+        _tabController.index == _experienceTabIndex
+            ? WorkExperienceData.experiences
+            : ProjectData.projects;
+
     setState(() {
-      if (_currentPointIndex > -1) {
-        _currentPointIndex--;
-      } else if (_currentCompanyIndex > 0) {
-        _currentCompanyIndex--;
-        _currentPointIndex =
-            WorkExperienceData
-                .experiences[_currentCompanyIndex]
-                .scrollablePoints
-                .length -
-            1;
+      if (_current.currentPointIndex > -1) {
+        _current.currentPointIndex--;
+      } else if (_current.currentItemIndex > 0) {
+        _current.currentItemIndex--;
+        _current.currentPointIndex =
+            items[_current.currentItemIndex].scrollablePoints.length - 1;
       } else {
         _unfreeze(scrollingDown: false);
       }
     });
   }
 
-  void _jumpToCompany(int index) {
-    if (index == _currentCompanyIndex) return;
+  void _jumpToItem(int index) {
+    if (index == _current.currentItemIndex) return;
 
     final screenHeight = MediaQuery.of(context).size.height;
 
     setState(() {
-      _currentCompanyIndex = index;
-      _currentPointIndex = -1;
+      _current.currentItemIndex = index;
+      _current.currentPointIndex = _isPositionsTab ? 0 : -1;
       _isFrozen = true;
-      _hasCompletedAllPoints = false;
+      _current.hasCompleted = false;
       _freezeOffset = screenHeight;
       _accumulatedDelta = 0;
     });
   }
 
   void _completeScrollSession() {
-    setState(() {
-      _hasCompletedAllPoints = true;
-      _isFrozen = false;
-    });
+    _current.hasCompleted = true;
+    _isFrozen = false;
     _unfreeze(scrollingDown: true);
   }
 
   void _resetScrollSession() {
     setState(() {
-      _hasCompletedAllPoints = false;
-      _currentCompanyIndex = 0;
-      _currentPointIndex = -1;
+      _current.hasCompleted = false;
+      _current.currentItemIndex = 0;
+      _current.currentPointIndex = _isPositionsTab ? 0 : -1;
     });
   }
 
@@ -1856,9 +1988,7 @@ class _WorkPageState extends ConsumerState<WorkPage>
   void _unfreeze({required bool scrollingDown}) {
     if (!_scrollController.hasClients) return;
 
-    setState(() {
-      _isFrozen = false;
-    });
+    setState(() => _isFrozen = false);
 
     final offset =
         scrollingDown
@@ -1886,20 +2016,27 @@ class _WorkPageState extends ConsumerState<WorkPage>
     required double screenHeight,
     required bool isReverse,
   }) {
+    final items =
+        _tabController.index == _experienceTabIndex
+            ? WorkExperienceData.experiences
+            : _tabController.index == _projectsTabIndex
+            ? ProjectData.projects
+            : null; // positions
+
+    final lastItemIndex =
+        _isPositionsTab ? PositionData.positions.length - 1 : items!.length - 1;
+
     setState(() {
       _isFrozen = true;
       _freezeOffset = screenHeight;
-      _currentCompanyIndex =
-          isReverse ? WorkExperienceData.experiences.length - 1 : 0;
-      _currentPointIndex =
-          isReverse
-              ? WorkExperienceData
-                      .experiences[_currentCompanyIndex]
-                      .scrollablePoints
-                      .length -
-                  1
+      _current.currentItemIndex = isReverse ? lastItemIndex : 0;
+      _current.currentPointIndex =
+          isReverse && !_isPositionsTab
+              ? items![lastItemIndex].scrollablePoints.length - 1
+              : _isPositionsTab
+              ? 0
               : -1;
-      _hasCompletedAllPoints = false;
+      _current.hasCompleted = false;
       _accumulatedDelta = 0;
     });
 
@@ -1910,8 +2047,6 @@ class _WorkPageState extends ConsumerState<WorkPage>
   // SCROLL HANDLER
   // ============================================================================
   bool _onScroll(ScrollNotification notification) {
-    if (_tabController.index != _experienceTabIndex) return false;
-
     final screenHeight = MediaQuery.of(context).size.height;
     final freezePoint = screenHeight;
 
@@ -1919,15 +2054,15 @@ class _WorkPageState extends ConsumerState<WorkPage>
       final delta = notification.scrollDelta ?? 0;
       final offset = notification.metrics.pixels;
 
-      // Enter freeze mode (scrolling down from top)
-      if (!_isFrozen && !_hasCompletedAllPoints && offset >= freezePoint) {
+      // Enter freeze mode (scrolling down into tab section)
+      if (!_isFrozen && !_current.hasCompleted && offset >= freezePoint) {
         _enterFreezeMode(screenHeight: screenHeight, isReverse: false);
         return true;
       }
 
       // Enter reverse freeze mode (scrolling up from below)
       if (!_isFrozen &&
-          _hasCompletedAllPoints &&
+          _current.hasCompleted &&
           offset > freezePoint * _freezePointBelow &&
           offset <= freezePoint * _freezePointMax &&
           delta < 0) {
@@ -1935,8 +2070,8 @@ class _WorkPageState extends ConsumerState<WorkPage>
         return true;
       }
 
-      // Reset when scrolling back to top
-      if (_hasCompletedAllPoints && offset < freezePoint * _freezePointAbove) {
+      // Reset when scrolled back to top
+      if (_current.hasCompleted && offset < freezePoint * _freezePointAbove) {
         _resetScrollSession();
       }
     }
@@ -1964,14 +2099,14 @@ class _WorkPageState extends ConsumerState<WorkPage>
   }
 
   // ============================================================================
-  // UTILITY METHODS
+  // UTILITY
   // ============================================================================
   Future<void> _launchLink(String url) async {
     await launchUrl(Uri.parse(url), webOnlyWindowName: '_blank');
   }
 
   // ============================================================================
-  // UI BUILD METHODS
+  // BUILD
   // ============================================================================
   @override
   Widget build(BuildContext context) {
@@ -1979,9 +2114,7 @@ class _WorkPageState extends ConsumerState<WorkPage>
 
     return Listener(
       onPointerSignal: (event) {
-        if (event is PointerScrollEvent) {
-          _handlePointerScroll(event);
-        }
+        if (event is PointerScrollEvent) _handlePointerScroll(event);
       },
       child: NotificationListener<ScrollNotification>(
         onNotification: _onScroll,
@@ -2004,6 +2137,9 @@ class _WorkPageState extends ConsumerState<WorkPage>
     );
   }
 
+  // ============================================================================
+  // HERO
+  // ============================================================================
   Widget _buildHeroSection(Screen screen) {
     return Container(
       width: screen.width,
@@ -2028,6 +2164,9 @@ class _WorkPageState extends ConsumerState<WorkPage>
     );
   }
 
+  // ============================================================================
+  // TAB SECTION
+  // ============================================================================
   Widget _buildTabSection(Screen screen) {
     return Container(
       color: Colors.white,
@@ -2058,7 +2197,8 @@ class _WorkPageState extends ConsumerState<WorkPage>
 
     return GestureDetector(
       onTap: () => _handleTabChange(index),
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         decoration: BoxDecoration(
           color:
@@ -2079,76 +2219,63 @@ class _WorkPageState extends ConsumerState<WorkPage>
     );
   }
 
-  void _handleTabChange(int index) {
-    setState(() {
-      _tabController.animateTo(index);
-      _isFrozen = false;
-      _hasCompletedAllPoints = false;
-      _currentCompanyIndex = 0;
-      _currentPointIndex = -1;
-    });
-  }
-
   Widget _buildTabContent(Screen screen) {
-    if (_tabController.index != _experienceTabIndex) {
-      return SizedBox(
-        height: screen.height,
-        child: const Center(child: Text("Content goes here")),
-      );
-    }
+    final tabIndex = _tabController.index;
+    final state = _tabStates[tabIndex];
 
-    return SizedBox(
-      height: screen.height,
-      child: Stack(
-        children: [
-          WorkExperienceCard(
-            experience: WorkExperienceData.experiences[_currentCompanyIndex],
-            activePointIndex: _currentPointIndex,
-            size: screen.getScreenSize(),
-          ),
-          if (_isFrozen) _buildQuickNavBar(),
-          if (_isFrozen) _buildPointCounter(),
-        ],
-      ),
+    return IndexedStack(
+      index: tabIndex,
+      children: [
+        // ── Work Experience ──────────────────────────────────────────────────
+        _tabBuilt[_experienceTabIndex]
+            ? WorkExperienceTab(
+              screen: screen,
+              currentCompanyIndex:
+                  _tabStates[_experienceTabIndex].currentItemIndex,
+              currentPointIndex:
+                  _tabStates[_experienceTabIndex].currentPointIndex,
+              isFrozen: _isFrozen && tabIndex == _experienceTabIndex,
+              globalPointIndex:
+                  tabIndex == _experienceTabIndex ? _globalPointIndex : 0,
+              totalPoints: tabIndex == _experienceTabIndex ? _totalPoints : 1,
+              onJumpToCompany: _jumpToItem,
+            )
+            : SizedBox(height: screen.height),
+
+        // ── Projects ─────────────────────────────────────────────────────────
+        _tabBuilt[_projectsTabIndex]
+            ? ProjectsTab(
+              screen: screen,
+              currentProjectIndex:
+                  _tabStates[_projectsTabIndex].currentItemIndex,
+              currentPointIndex:
+                  _tabStates[_projectsTabIndex].currentPointIndex,
+              isFrozen: _isFrozen && tabIndex == _projectsTabIndex,
+              globalPointIndex:
+                  tabIndex == _projectsTabIndex ? _globalPointIndex : 0,
+              totalPoints: tabIndex == _projectsTabIndex ? _totalPoints : 1,
+              onJumpToProject: _jumpToItem,
+            )
+            : SizedBox(height: screen.height),
+
+        // ── Positions ────────────────────────────────────────────────────────
+        _tabBuilt[_positionsTabIndex]
+            ? PositionsTab(
+              screen: screen,
+              currentPositionIndex:
+                  _tabStates[_positionsTabIndex].currentItemIndex,
+              isFrozen: _isFrozen && tabIndex == _positionsTabIndex,
+              onJumpToPosition: _jumpToItem,
+              onNavigateToProject: _navigateToProject,
+            )
+            : SizedBox(height: screen.height),
+      ],
     );
   }
 
-  Widget _buildQuickNavBar() {
-    return Positioned(
-      right: 40,
-      top: 0,
-      bottom: 0,
-      child: Center(
-        child: QuickNavBar(
-          items:
-              WorkExperienceData.experiences.map((exp) {
-                return QuickNavItem(label: exp.company, icon: Icons.business);
-              }).toList(),
-          currentIndex: _currentCompanyIndex,
-          onItemTap: _jumpToCompany,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildPointCounter() {
-    return Positioned(
-      bottom: 20,
-      left: 0,
-      right: 0,
-      child: Center(
-        child: Text(
-          'Point ${_globalPointIndex + 1}/$_totalPoints',
-          style: const TextStyle(
-            fontFamily: "ABeeZee",
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
-    );
-  }
-
+  // ============================================================================
+  // PROMO
+  // ============================================================================
   Widget _buildPromoSection(Screen screen) {
     return PromoRedirector(
       size: screen.getScreenSize(),
@@ -2181,6 +2308,253 @@ class _WorkPageState extends ConsumerState<WorkPage>
             fontFamily: "ABeeZee",
             color: Colors.white.withValues(alpha: 0.7),
             fontSize: 20,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Pure display widget for the Positions of Responsibility tab.
+/// No sub-points — each position is a single scroll state (core section only).
+/// All scroll state is owned by WorkPage and passed in as parameters.
+class PositionsTab extends StatelessWidget {
+  final Screen screen;
+  final int currentPositionIndex;
+  final bool isFrozen;
+  final void Function(int index) onJumpToPosition;
+  final void Function(String projectId) onNavigateToProject;
+
+  const PositionsTab({
+    super.key,
+    required this.screen,
+    required this.currentPositionIndex,
+    required this.isFrozen,
+    required this.onJumpToPosition,
+    required this.onNavigateToProject,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final position = PositionData.positions[currentPositionIndex];
+
+    // Resolve linked projects from ProjectData
+    final linkedProjects =
+        ProjectData.projects
+            .where((p) => position.linkedProjectIds.contains(p.id))
+            .toList();
+
+    return SizedBox(
+      height: screen.height,
+      child: Stack(
+        children: [
+          PositionCard(
+            position: position,
+            size: screen.getScreenSize(),
+            linkedProjects: linkedProjects,
+            onProjectTap: onNavigateToProject,
+          ),
+          if (isFrozen) _buildQuickNavBar(),
+          if (isFrozen) _buildPositionCounter(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildQuickNavBar() {
+    return Positioned(
+      right: 40,
+      top: 0,
+      bottom: 0,
+      child: Center(
+        child: QuickNavBar(
+          items:
+              PositionData.positions.map((p) {
+                return QuickNavItem(
+                  label: p.organization,
+                  icon: Icons.star_outline,
+                );
+              }).toList(),
+          currentIndex: currentPositionIndex,
+          onItemTap: onJumpToPosition,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPositionCounter() {
+    return Positioned(
+      bottom: 20,
+      left: 0,
+      right: 0,
+      child: Center(
+        child: Text(
+          '${currentPositionIndex + 1} / ${PositionData.positions.length}',
+          style: const TextStyle(
+            fontFamily: "ABeeZee",
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            color: Colors.black54,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Pure display widget for the Projects tab.
+/// Structurally identical to WorkExperienceTab — same scroll-jacking, same card.
+/// All scroll state is owned by WorkPage and passed in as parameters.
+class ProjectsTab extends StatelessWidget {
+  final Screen screen;
+  final int currentProjectIndex;
+  final int currentPointIndex;
+  final bool isFrozen;
+  final int globalPointIndex;
+  final int totalPoints;
+  final void Function(int index) onJumpToProject;
+
+  const ProjectsTab({
+    super.key,
+    required this.screen,
+    required this.currentProjectIndex,
+    required this.currentPointIndex,
+    required this.isFrozen,
+    required this.globalPointIndex,
+    required this.totalPoints,
+    required this.onJumpToProject,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: screen.height,
+      child: Stack(
+        children: [
+          WorkExperienceCard(
+            experience: ProjectData.projects[currentProjectIndex],
+            activePointIndex: currentPointIndex,
+            size: screen.getScreenSize(),
+          ),
+          if (isFrozen) _buildQuickNavBar(),
+          if (isFrozen) _buildPointCounter(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildQuickNavBar() {
+    return Positioned(
+      right: 40,
+      top: 0,
+      bottom: 0,
+      child: Center(
+        child: QuickNavBar(
+          items:
+              ProjectData.projects.map((p) {
+                return QuickNavItem(
+                  label: p.company,
+                  icon: Icons.folder_outlined,
+                );
+              }).toList(),
+          currentIndex: currentProjectIndex,
+          onItemTap: onJumpToProject,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPointCounter() {
+    return Positioned(
+      bottom: 20,
+      left: 0,
+      right: 0,
+      child: Center(
+        child: Text(
+          '${globalPointIndex + 1} / $totalPoints',
+          style: const TextStyle(
+            fontFamily: "ABeeZee",
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            color: Colors.black54,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Pure display widget for the Work Experience tab.
+/// All scroll state is owned by WorkPage and passed in as parameters.
+class WorkExperienceTab extends StatelessWidget {
+  final Screen screen;
+  final int currentCompanyIndex;
+  final int currentPointIndex;
+  final bool isFrozen;
+  final int globalPointIndex;
+  final int totalPoints;
+  final void Function(int index) onJumpToCompany;
+
+  const WorkExperienceTab({
+    super.key,
+    required this.screen,
+    required this.currentCompanyIndex,
+    required this.currentPointIndex,
+    required this.isFrozen,
+    required this.globalPointIndex,
+    required this.totalPoints,
+    required this.onJumpToCompany,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: screen.height,
+      child: Stack(
+        children: [
+          WorkExperienceCard(
+            experience: WorkExperienceData.experiences[currentCompanyIndex],
+            activePointIndex: currentPointIndex,
+            size: screen.getScreenSize(),
+          ),
+          if (isFrozen) _buildQuickNavBar(),
+          if (isFrozen) _buildPointCounter(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildQuickNavBar() {
+    return Positioned(
+      right: 40,
+      top: 0,
+      bottom: 0,
+      child: Center(
+        child: QuickNavBar(
+          items:
+              WorkExperienceData.experiences.map((exp) {
+                return QuickNavItem(label: exp.company, icon: Icons.business);
+              }).toList(),
+          currentIndex: currentCompanyIndex,
+          onItemTap: onJumpToCompany,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPointCounter() {
+    return Positioned(
+      bottom: 20,
+      left: 0,
+      right: 0,
+      child: Center(
+        child: Text(
+          '${globalPointIndex + 1} / $totalPoints',
+          style: const TextStyle(
+            fontFamily: "ABeeZee",
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            color: Colors.black54,
           ),
         ),
       ),
