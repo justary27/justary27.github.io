@@ -1703,6 +1703,7 @@ import '../../components/promo/promo_components.dart';
 import '../../components/quick_navbar.dart';
 import '../../components/roorkee_painter.dart';
 import '../../models/screen_model.dart';
+import '../../providers/navbar_provider.dart';
 import '../../providers/screen_provider.dart';
 
 import 'data.dart';
@@ -1748,6 +1749,8 @@ class _WorkPageState extends ConsumerState<WorkPage>
   static const double _freezePointBelow = 1.1;
   static const double _freezePointMax = 2.0;
   static const double _scrollOffsetAdjustment = 2.0;
+  static const double _navbarShowThreshold = 80.0;
+  double _navbarScrollAccumulator = 0;
 
   // ============================================================================
   // STATE — SHARED SCROLL
@@ -1826,6 +1829,8 @@ class _WorkPageState extends ConsumerState<WorkPage>
 
   @override
   void dispose() {
+    // Restore navbar for other pages
+    ref.read(navbarVisibleProvider.notifier).state = true;
     _tabController.dispose();
     _scrollController.dispose();
     super.dispose();
@@ -1840,14 +1845,32 @@ class _WorkPageState extends ConsumerState<WorkPage>
       _accumulatedDelta = 0;
       _tabController.animateTo(index);
       _tabBuilt[index] = true;
-
-      // Scroll to top of tab section on switch
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted && _scrollController.hasClients) {
-          _scrollController.jumpTo(0);
-        }
-      });
     });
+  }
+
+  void _updateNavbarVisibility(double delta) {
+    if (!_scrollController.hasClients) return;
+
+    final offset = _scrollController.offset;
+    final heroHeight = MediaQuery.of(context).size.height;
+    final notifier = ref.read(navbarVisibleProvider.notifier);
+
+    if (offset < heroHeight) {
+      // Back in hero territory — always show and reset accumulator
+      _navbarScrollAccumulator = 0;
+      notifier.state = true;
+    } else if (delta > 0) {
+      // Scrolling down past hero — hide immediately, reset accumulator
+      _navbarScrollAccumulator = 0;
+      notifier.state = false;
+    } else if (delta < 0) {
+      // Scrolling up — accumulate, only show after threshold
+      _navbarScrollAccumulator += delta.abs();
+      if (_navbarScrollAccumulator >= _navbarShowThreshold) {
+        _navbarScrollAccumulator = 0;
+        notifier.state = true;
+      }
+    }
   }
 
   /// Called from PositionsTab when a linked project chip is tapped.
@@ -2054,6 +2077,8 @@ class _WorkPageState extends ConsumerState<WorkPage>
       final delta = notification.scrollDelta ?? 0;
       final offset = notification.metrics.pixels;
 
+      _updateNavbarVisibility(delta);
+
       // Enter freeze mode (scrolling down into tab section)
       if (!_isFrozen && !_current.hasCompleted && offset >= freezePoint) {
         _enterFreezeMode(screenHeight: screenHeight, isReverse: false);
@@ -2176,44 +2201,17 @@ class _WorkPageState extends ConsumerState<WorkPage>
 
   Widget _buildTabBar(Screen screen) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 0.025 * screen.width,
-        vertical: 0.025 * screen.height,
+      padding: EdgeInsets.only(
+        left: 0.025 * screen.width,
+        top: 0.025 * screen.height,
+        bottom: 0.025 * screen.height,
       ),
-      child: Row(
-        children: [
-          _buildTabButton("Work Experience", _experienceTabIndex),
-          const SizedBox(width: 12),
-          _buildTabButton("Projects", _projectsTabIndex),
-          const SizedBox(width: 12),
-          _buildTabButton("Positions", _positionsTabIndex),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildTabButton(String label, int index) {
-    final isSelected = _tabController.index == index;
-
-    return GestureDetector(
-      onTap: () => _handleTabChange(index),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-        decoration: BoxDecoration(
-          color:
-              isSelected
-                  ? const Color.fromRGBO(22, 133, 111, 1)
-                  : Colors.grey[200],
-          borderRadius: BorderRadius.circular(50),
-        ),
-        child: Text(
-          label,
-          style: TextStyle(
-            fontFamily: "ABeeZee",
-            fontWeight: FontWeight.bold,
-            color: isSelected ? Colors.white : Colors.black87,
-          ),
+      child: Align(
+        alignment: Alignment.centerLeft, // ← fixes centre-alignment bug
+        child: _TrapezoidTabBar(
+          labels: const ['Work Experience', 'Projects', 'Positions'],
+          selectedIndex: _tabController.index,
+          onTabSelected: _handleTabChange,
         ),
       ),
     );
@@ -2338,7 +2336,6 @@ class PositionsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final position = PositionData.positions[currentPositionIndex];
 
-    // Resolve linked projects from ProjectData
     final linkedProjects =
         ProjectData.projects
             .where((p) => position.linkedProjectIds.contains(p.id))
@@ -2372,7 +2369,8 @@ class PositionsTab extends StatelessWidget {
               PositionData.positions.map((p) {
                 return QuickNavItem(
                   label: p.organization,
-                  icon: Icons.star_outline,
+                  svgPath: p.logoSvgPath,
+                  icon: p.logoSvgPath == null ? Icons.star_outline : null,
                 );
               }).toList(),
           currentIndex: currentPositionIndex,
@@ -2455,6 +2453,7 @@ class ProjectsTab extends StatelessWidget {
                 return QuickNavItem(
                   label: p.company,
                   icon: Icons.folder_outlined,
+                  svgPath: p.logoSvgPath,
                 );
               }).toList(),
           currentIndex: currentProjectIndex,
@@ -2533,7 +2532,12 @@ class WorkExperienceTab extends StatelessWidget {
         child: QuickNavBar(
           items:
               WorkExperienceData.experiences.map((exp) {
-                return QuickNavItem(label: exp.company, icon: Icons.business);
+                return QuickNavItem(
+                  label: exp.company,
+                  svgPath: exp.logoSvgPath,
+                  // Fall back to a generic icon for entries without an SVG yet
+                  icon: exp.logoSvgPath == null ? Icons.business : null,
+                );
               }).toList(),
           currentIndex: currentCompanyIndex,
           onItemTap: onJumpToCompany,
@@ -2560,4 +2564,216 @@ class WorkExperienceTab extends StatelessWidget {
       ),
     );
   }
+}
+
+class _TrapezoidTabBar extends StatelessWidget {
+  final List<String> labels;
+  final int selectedIndex;
+  final ValueChanged<int> onTabSelected;
+
+  static const double _slant = 22.0;
+  static const double _height = 48.0;
+  static const double _hPad = 28.0;
+  static const double _fontSize = 14.0;
+  static const Color _activeColor = Color.fromRGBO(22, 133, 111, 1);
+  static const String _fontFamily = 'ABeeZee';
+
+  const _TrapezoidTabBar({
+    required this.labels,
+    required this.selectedIndex,
+    required this.onTabSelected,
+  });
+
+  List<double> _computeWidths() {
+    return labels.map((label) {
+      final tp = TextPainter(
+        text: TextSpan(
+          text: label,
+          style: const TextStyle(
+            fontFamily: _fontFamily,
+            fontWeight: FontWeight.bold,
+            fontSize: _fontSize,
+          ),
+        ),
+        textDirection: TextDirection.ltr,
+      )..layout();
+      return tp.width + 2 * _hPad;
+    }).toList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final widths = _computeWidths();
+    final totalWidth = widths.fold(0.0, (a, b) => a + b);
+    // Canvas needs extra `_slant` pixels on the right for the bottom-right corner
+    final canvasWidth = totalWidth + _slant;
+
+    return GestureDetector(
+      onTapUp: (details) {
+        final tx = details.localPosition.dx;
+        final ty = details.localPosition.dy;
+        double cumulative = 0;
+        for (int i = 0; i < labels.length; i++) {
+          cumulative += widths[i];
+          // Right boundary of segment i at tap height ty (\ slant: shifts right)
+          final boundaryX = cumulative + _slant * (ty / _height);
+          if (tx <= boundaryX || i == labels.length - 1) {
+            onTabSelected(i);
+            break;
+          }
+        }
+      },
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: CustomPaint(
+          size: Size(canvasWidth, _height),
+          painter: _TrapezoidPainter(
+            widths: widths,
+            selectedIndex: selectedIndex,
+            labels: labels,
+            slant: _slant,
+            height: _height,
+            activeColor: _activeColor,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _TrapezoidPainter extends CustomPainter {
+  final List<double> widths;
+  final int selectedIndex;
+  final List<String> labels;
+  final double slant;
+  final double height;
+  final Color activeColor;
+
+  static const Color _inactiveColor = Color(0xFFE0E0E0); // grey[200]
+  static const Color _borderColor = Color(0xFFBDBDBD); // grey[400]
+  static const double _borderWidth = 1.0;
+  static const double _fontSize = 14.0;
+  static const String _fontFamily = 'ABeeZee';
+
+  _TrapezoidPainter({
+    required this.widths,
+    required this.selectedIndex,
+    required this.labels,
+    required this.slant,
+    required this.height,
+    required this.activeColor,
+  });
+
+  /// Path for segment [i].
+  /// leftEdge = sum of widths[0..i-1]  (top-left x coordinate).
+  /// \ slant means bottom corners shift RIGHT by [slant].
+  Path _segmentPath(int i, double leftEdge) {
+    final rightEdge = leftEdge + widths[i];
+    final path = Path();
+    path.moveTo(leftEdge, 0); // top-left
+    path.lineTo(rightEdge, 0); // top-right
+    path.lineTo(rightEdge + slant, height); // bottom-right  ← \ slant
+    if (i == 0) {
+      path.lineTo(leftEdge, height); // bottom-left: vertical
+    } else {
+      path.lineTo(leftEdge + slant, height); // bottom-left: also slanted
+    }
+    path.close();
+    return path;
+  }
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    // Pre-compute left edges
+    final positions = <double>[];
+    double acc = 0;
+    for (final w in widths) {
+      positions.add(acc);
+      acc += w;
+    }
+
+    // ── 1. Fill inactive segments first ──────────────────────────────────────
+    for (int i = 0; i < widths.length; i++) {
+      if (i == selectedIndex) continue;
+      canvas.drawPath(
+        _segmentPath(i, positions[i]),
+        Paint()
+          ..color = _inactiveColor
+          ..style = PaintingStyle.fill,
+      );
+    }
+
+    // ── 2. Fill active segment on top ─────────────────────────────────────────
+    canvas.drawPath(
+      _segmentPath(selectedIndex, positions[selectedIndex]),
+      Paint()
+        ..color = activeColor
+        ..style = PaintingStyle.fill,
+    );
+
+    // ── 3. Outer border ───────────────────────────────────────────────────────
+    final totalWidth = widths.fold(0.0, (a, b) => a + b);
+    final outerPath =
+        Path()
+          ..moveTo(0, 0)
+          ..lineTo(totalWidth, 0)
+          ..lineTo(totalWidth + slant, height)
+          ..lineTo(0, height)
+          ..close();
+
+    canvas.drawPath(
+      outerPath,
+      Paint()
+        ..color = _borderColor
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = _borderWidth,
+    );
+
+    // ── 4. Internal \ dividers ─────────────────────────────────────────────────
+    final dividerPaint =
+        Paint()
+          ..color = _borderColor
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = _borderWidth;
+
+    double cumX = 0;
+    for (int i = 0; i < widths.length - 1; i++) {
+      cumX += widths[i];
+      canvas.drawLine(
+        Offset(cumX, 0), // top point
+        Offset(cumX + slant, height), // bottom point  ← \ direction
+        dividerPaint,
+      );
+    }
+
+    // ── 5. Text labels centred in each segment ────────────────────────────────
+    for (int i = 0; i < widths.length; i++) {
+      final isActive = i == selectedIndex;
+      final tp = TextPainter(
+        text: TextSpan(
+          text: labels[i],
+          style: TextStyle(
+            fontFamily: _fontFamily,
+            fontWeight: FontWeight.bold,
+            fontSize: _fontSize,
+            color: isActive ? Colors.white : Colors.black87,
+          ),
+        ),
+        textDirection: TextDirection.ltr,
+      )..layout();
+
+      // Centre of the segment parallelogram at mid-height
+      // At y = height/2, left edge is at: leftEdge + slant*0.5 (for i>0), else leftEdge
+      final leftAtMid = i == 0 ? positions[i] : positions[i] + slant * 0.5;
+      final rightAtMid = positions[i] + widths[i] + slant * 0.5;
+      final cx = (leftAtMid + rightAtMid) / 2;
+      final cy = height / 2;
+
+      tp.paint(canvas, Offset(cx - tp.width / 2, cy - tp.height / 2));
+    }
+  }
+
+  @override
+  bool shouldRepaint(_TrapezoidPainter old) =>
+      old.selectedIndex != selectedIndex;
 }

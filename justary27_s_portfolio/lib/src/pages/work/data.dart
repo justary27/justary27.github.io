@@ -6,11 +6,80 @@ import '../../models/work.dart';
 class WorkExperienceData {
   static final List<WorkExperience> experiences = [
     // -------------------------------------------------------------------------
+    // Repello AI  (most recent — top of list)
+    // -------------------------------------------------------------------------
+    WorkExperience(
+      id: 'repello',
+      company: 'Repello AI',
+      logoSvgPath: null, // TODO: add images/repello.svg when asset is ready
+      coreGraphic: Graphic(
+        type: GraphicType.animation,
+        path: 'assets/models/cdai.gltf', // TODO: replace with repello model
+      ),
+      coreInfo: const CoreInfo(
+        role: 'Founding Software Development Engineer',
+        duration: 'Sep 2024 - Present',
+        overview:
+            'Repello AI is an AI security company building ARTEMIS — an AI Red Teaming platform. Joined as a founding SDE, contributing across the full product: from the front-end redesign to the security engine and SDK.',
+      ),
+      scrollablePoints: const [
+        ScrollablePoint(
+          text:
+              'Contributed 70% of the ARTEMIS product — drove a full redesign and shipped Cloud, JIRA integrations, Custom prompt runs, Scan Report PDF generation, and SSO login',
+          graphic: Graphic(
+            type: GraphicType.animation,
+            path: 'assets/models/cdai.gltf', // TODO
+            description: 'ARTEMIS Product',
+          ),
+        ),
+        ScrollablePoint(
+          text:
+              'Added OWASP, MITRE, and NIST compliance frameworks to the ARTEMIS engine and improved Attack Success Rate by 65–70%',
+          graphic: Graphic(
+            type: GraphicType.animation,
+            path: 'assets/models/cdai.gltf', // TODO
+            description: 'Security Engine',
+          ),
+        ),
+        ScrollablePoint(
+          text:
+              'Developed a client SDK and CI/CD integrations for ARTEMIS — a security scanner for MCP clients connecting to MCP servers',
+          graphic: Graphic(
+            type: GraphicType.animation,
+            path: 'assets/models/cdai.gltf', // TODO
+            description: 'SDK & CI/CD',
+          ),
+        ),
+        ScrollablePoint(
+          text:
+              'Built AgentWiz — an open-source tool for extracting agentic workflows and performing threat assessment for Agentic AI apps (200+ stars)',
+          graphic: Graphic(
+            type: GraphicType.animation,
+            path: 'assets/models/cdai.gltf', // TODO
+            description: 'AgentWiz',
+          ),
+        ),
+      ],
+      links: const [
+        WorkLink(
+          label: 'Repello AI',
+          url: 'https://repello.ai',
+          icon: FontAwesomeIcons.globe,
+        ),
+      ],
+      primaryColor: const Color(0xFF6C3CE1),
+      secondaryColor: const Color(0xFF8B5CF6),
+      highlightColor: const Color(0xFFDDD6FE),
+      cardBackgroundColor: const Color(0xFFFAF9FF),
+    ),
+
+    // -------------------------------------------------------------------------
     // CloudDefense.AI
     // -------------------------------------------------------------------------
     WorkExperience(
       id: 'clouddefense',
       company: 'CloudDefense.AI',
+      logoSvgPath: null, // TODO: add images/cdai.svg when asset is ready
       coreGraphic: Graphic(
         type: GraphicType.animation,
         path: 'assets/models/cdai.gltf',
@@ -19,7 +88,7 @@ class WorkExperienceData {
         role: 'Cloud Security Research Intern',
         duration: 'Dec 2023 - Jun 2024',
         overview:
-            'CloudDefense is a comprehensive platform for CNAPP and infrastructure security, encompassing CSPM, CIEM, CWP, and Kubernetes Security Posture Management (KSPM)',
+            'CloudDefense is a comprehensive platform for CNAPP and infrastructure security, encompassing CSPM, CIEM, CWP, and Kubernetes Security Posture Management (KSPM).',
       ),
       scrollablePoints: const [
         ScrollablePoint(
@@ -59,7 +128,7 @@ class WorkExperienceData {
           ),
         ),
       ],
-      // No public links — internal product, per original commented code
+      // No public links — internal product
       links: const [],
       primaryColor: const Color(0xFF56958F),
       secondaryColor: const Color(0xFF389583),
@@ -73,6 +142,7 @@ class WorkExperienceData {
     WorkExperience(
       id: 'amazon',
       company: 'Amazon',
+      logoSvgPath: 'images/amazon.svg',
       coreGraphic: Graphic(
         type: GraphicType.animation,
         path: 'assets/models/amazon.gltf',
@@ -81,7 +151,7 @@ class WorkExperienceData {
         role: 'Software Development Engineer Intern',
         duration: 'May 2023 - Jul 2023',
         overview:
-            'Developed staging website for Prime Video campaign previews and achieved 2% reduction in customer impact.',
+            'Worked at Amazon on the Prime Video team as an SDE intern, building a staging website for the Market Landing Page campaign previews.',
       ),
       scrollablePoints: const [
         ScrollablePoint(
@@ -142,11 +212,95 @@ class WorkExperienceData {
       highlightColor: const Color(0xFFFFD699),
       cardBackgroundColor: const Color(0xFFFFF9F0),
     ),
+
+    // -------------------------------------------------------------------------
+    // GSoC '22 — Contributor
+    // -------------------------------------------------------------------------
+    WorkExperience(
+      id: 'gsoc22',
+      company: 'GSoC \'22',
+      logoSvgPath: 'images/gsoc.svg',
+      coreGraphic: Graphic(
+        type: GraphicType.animation,
+        path: 'assets/models/gsoc.gltf',
+      ),
+      coreInfo: const CoreInfo(
+        role: 'Google Summer of Code · Contributor',
+        duration: 'May 2022 - Sep 2022',
+        overview:
+            'Selected as a GSoC contributor under OWASP. Worked on the BugHeist Flutter app — designed UI, built features, and engineered backend APIs.',
+      ),
+      scrollablePoints: const [
+        ScrollablePoint(
+          text:
+              'Selected from a competitive global applicant pool to contribute to OWASP\'s BugHeist project under GSoC',
+          graphic: Graphic(
+            type: GraphicType.animation,
+            path: 'assets/models/gsoc.gltf',
+            description: 'GSoC Selection',
+          ),
+        ),
+        ScrollablePoint(
+          text:
+              'Closed 36 issues across 12 pull requests — driving ~70% of total project contributions that summer',
+          graphic: Graphic(
+            type: GraphicType.animation,
+            path: 'assets/models/gsoc.gltf',
+            description: 'Contributions',
+          ),
+        ),
+        ScrollablePoint(
+          text:
+              'Designed and revamped the BugHeist Flutter app UI and engineered new backend APIs',
+          graphic: Graphic(
+            type: GraphicType.animation,
+            path: 'assets/models/gsoc.gltf',
+            description: 'Product Work',
+          ),
+        ),
+        ScrollablePoint(
+          text:
+              'Received a certificate of appreciation from the project mentor for exceptional contributions',
+          graphic: Graphic(
+            type: GraphicType.animation,
+            path: 'assets/models/gsoc.gltf',
+            description: 'Recognition',
+          ),
+        ),
+      ],
+      links: const [
+        WorkLink(
+          label: 'GSoC Archive',
+          url:
+              'https://summerofcode.withgoogle.com/archive/2022/projects/ShGlbTKv',
+          icon: FontAwesomeIcons.google,
+        ),
+        WorkLink(
+          label: 'GitHub',
+          url: 'https://github.com/Bugheist/Flutter',
+          icon: FontAwesomeIcons.github,
+        ),
+        WorkLink(
+          label: 'Medium — Beginning',
+          url:
+              'https://medium.com/@justary27/my-gsoc22-voyage-beginning-4296df5af625',
+          icon: FontAwesomeIcons.medium,
+        ),
+        WorkLink(
+          label: 'Medium — Conclusion',
+          url:
+              'https://medium.com/@justary27/my-gsoc22-voyage-conclusion-e0bf34fec239',
+          icon: FontAwesomeIcons.medium,
+        ),
+      ],
+      primaryColor: const Color(0xFF4285F4),
+      secondaryColor: const Color(0xFF34A853),
+      highlightColor: const Color(0xFFB3D1FF),
+      cardBackgroundColor: const Color(0xFFF5F8FF),
+    ),
   ];
 }
 
-/// Projects reuse the WorkExperience model — same scroll-jacking structure.
-/// Replace placeholder paths and text with real assets when ready.
 class ProjectData {
   static final List<WorkExperience> projects = [
     // -------------------------------------------------------------------------
@@ -155,6 +309,7 @@ class ProjectData {
     WorkExperience(
       id: 'placement_online',
       company: 'Placement Online',
+      logoSvgPath: 'images/placement.svg',
       coreGraphic: Graphic(
         type: GraphicType.animation,
         path: 'assets/models/placement.gltf',
@@ -214,6 +369,7 @@ class ProjectData {
     WorkExperience(
       id: 'noticeboard',
       company: 'Noticeboard',
+      logoSvgPath: 'images/noticeboard.svg',
       coreGraphic: Graphic(
         type: GraphicType.animation,
         path: 'assets/models/noticeboard.gltf',
@@ -272,6 +428,7 @@ class ProjectData {
     WorkExperience(
       id: 'lyf',
       company: 'Lyf',
+      logoSvgPath: 'images/lyf.svg',
       coreGraphic: Graphic(
         type: GraphicType.animation,
         path: 'assets/models/lyf.gltf',
@@ -320,59 +477,57 @@ class ProjectData {
     ),
 
     // -------------------------------------------------------------------------
-    // BugHeist UI
+    // BugHeist UI  — Figma UI design project
     // -------------------------------------------------------------------------
     WorkExperience(
       id: 'bugheist_ui',
       company: 'BugHeist UI',
+      logoSvgPath: 'images/bugheist.svg',
       coreGraphic: Graphic(
         type: GraphicType.animation,
-        path: 'assets/models/gsoc.gltf',
+        path: 'assets/models/blt.gltf',
       ),
       coreInfo: const CoreInfo(
-        role: 'Open Source · GSoC \'22',
+        role: 'UI Design · Figma',
         duration: '2022',
         overview:
-            'Contributed to BugHeist, an open-source bug hunting platform, as part of Google Summer of Code 2022 under OWASP.',
+            'Designed the complete UI for BugHeist — a reward-based bug-hunting platform — entirely in Figma, learning UI/UX design from scratch. Covers all key screens with a full component library and interactive prototype.',
       ),
       scrollablePoints: const [
         ScrollablePoint(
-          text: 'Contributed 36+ PRs to the BugHeist project during GSoC \'22',
+          text:
+              'Designed every screen of the BugHeist app UI from scratch in Figma, independently picking up UI/UX principles along the way',
           graphic: Graphic(
             type: GraphicType.animation,
-            path: 'assets/models/gsoc.gltf',
+            path: 'assets/models/blt.gltf',
+            description: 'Full UI Design',
           ),
         ),
         ScrollablePoint(
-          text: 'Drove ~70% of total contributions to the project that summer',
+          text:
+              'Built a comprehensive component library with proper variants, states, and auto-layout — ensuring a consistent and scalable design system',
           graphic: Graphic(
             type: GraphicType.animation,
-            path: 'assets/models/gsoc.gltf',
+            path: 'assets/models/blt.gltf',
+            description: 'Component Library',
+          ),
+        ),
+        ScrollablePoint(
+          text:
+              'Prototyped the entire user flow in Figma — linking all screens with interactions to create a fully navigable, click-through prototype',
+          graphic: Graphic(
+            type: GraphicType.animation,
+            path: 'assets/models/blt.gltf',
+            description: 'Interactive Prototype',
           ),
         ),
       ],
       links: const [
         WorkLink(
-          label: 'GitHub',
-          url: 'https://github.com/OWASP-BLT/BLT-Flutter',
-          icon: FontAwesomeIcons.github,
-        ),
-        WorkLink(
-          label: 'App Store',
-          url: 'https://apps.apple.com/us/app/owasp-blt/id6448071954',
-          icon: FontAwesomeIcons.appStoreIos,
-        ),
-        WorkLink(
-          label: 'Medium — Beginning',
+          label: 'Figma',
           url:
-              'https://medium.com/@justary27/my-gsoc22-voyage-beginning-4296df5af625',
-          icon: FontAwesomeIcons.medium,
-        ),
-        WorkLink(
-          label: 'Medium — Conclusion',
-          url:
-              'https://medium.com/@justary27/my-gsoc22-voyage-conclusion-e0bf34fec239',
-          icon: FontAwesomeIcons.medium,
+              'https://www.figma.com/file/NYD5WZzJywnO338lchnece/BugHeist?node-id=8%3A1129',
+          icon: FontAwesomeIcons.figma,
         ),
       ],
       primaryColor: const Color(0xFFE67E22),
@@ -382,76 +537,12 @@ class ProjectData {
     ),
 
     // -------------------------------------------------------------------------
-    // GSoC '22 — Contributor
-    // -------------------------------------------------------------------------
-    WorkExperience(
-      id: 'gsoc22',
-      company: 'GSoC \'22',
-      coreGraphic: Graphic(
-        type: GraphicType.animation,
-        path: 'assets/models/gsoc.gltf',
-      ),
-      coreInfo: const CoreInfo(
-        role: 'Google Summer of Code · Contributor',
-        duration: 'May 2022 - Sep 2022',
-        overview:
-            'Selected as a GSoC contributor under OWASP. Worked on the BugHeist Flutter app, building new features and improving the overall codebase.',
-      ),
-      scrollablePoints: const [
-        ScrollablePoint(
-          text:
-              'Selected from a competitive applicant pool to contribute to OWASP\'s BugHeist project',
-          graphic: Graphic(
-            type: GraphicType.animation,
-            path: 'assets/models/gsoc.gltf',
-          ),
-        ),
-        ScrollablePoint(
-          text:
-              'Delivered the full GSoC project scope on time, earning a passing evaluation',
-          graphic: Graphic(
-            type: GraphicType.animation,
-            path: 'assets/models/gsoc.gltf',
-          ),
-        ),
-      ],
-      links: const [
-        WorkLink(
-          label: 'GSoC Archive',
-          url:
-              'https://summerofcode.withgoogle.com/archive/2022/projects/ShGlbTKv',
-          icon: FontAwesomeIcons.google,
-        ),
-        WorkLink(
-          label: 'GitHub',
-          url: 'https://github.com/Bugheist/Flutter',
-          icon: FontAwesomeIcons.github,
-        ),
-        WorkLink(
-          label: 'Medium — Beginning',
-          url:
-              'https://medium.com/@justary27/my-gsoc22-voyage-beginning-4296df5af625',
-          icon: FontAwesomeIcons.medium,
-        ),
-        WorkLink(
-          label: 'Medium — Conclusion',
-          url:
-              'https://medium.com/@justary27/my-gsoc22-voyage-conclusion-e0bf34fec239',
-          icon: FontAwesomeIcons.medium,
-        ),
-      ],
-      primaryColor: const Color(0xFF4285F4),
-      secondaryColor: const Color(0xFF34A853),
-      highlightColor: const Color(0xFFB3D1FF),
-      cardBackgroundColor: const Color(0xFFF5F8FF),
-    ),
-
-    // -------------------------------------------------------------------------
     // CovBot
     // -------------------------------------------------------------------------
     WorkExperience(
       id: 'covbot',
       company: 'CovBot',
+      logoSvgPath: 'images/covbot.svg',
       coreGraphic: Graphic(
         type: GraphicType.animation,
         path: 'assets/models/covbot.gltf',
@@ -473,7 +564,7 @@ class ProjectData {
         ),
         ScrollablePoint(
           text:
-              'Featured in Mashable India for helping users find oxygen and community resources',
+              'Featured in Mashable India for helping users find oxygen and community resources during the crisis',
           graphic: Graphic(
             type: GraphicType.animation,
             path: 'assets/models/covbot.gltf',
@@ -511,6 +602,7 @@ class ProjectData {
     WorkExperience(
       id: 'jane',
       company: 'Jane',
+      logoSvgPath: 'images/jane.svg',
       coreGraphic: Graphic(
         type: GraphicType.animation,
         path: 'assets/models/jane.gltf',
@@ -560,9 +652,10 @@ class PositionData {
     Position(
       id: 'img_chief',
       organization: 'IMG IIT Roorkee',
+      logoSvgPath: 'images/img.svg',
       coreGraphic: Graphic(
         type: GraphicType.animation,
-        path: 'assets/models/cdai.gltf', // TODO: replace with IMG logo model
+        path: 'assets/models/img.gltf', // TODO: replace with IMG model
       ),
       coreInfo: const CoreInfo(
         role: 'Chief · Mobile Development & Open Source',
@@ -590,6 +683,7 @@ class PositionData {
     Position(
       id: 'gsoc23_mentor',
       organization: 'GSoC \'23',
+      logoSvgPath: 'images/gsoc.svg',
       coreGraphic: Graphic(
         type: GraphicType.animation,
         path: 'assets/models/gsoc.gltf',
@@ -613,7 +707,8 @@ class PositionData {
           icon: FontAwesomeIcons.github,
         ),
       ],
-      linkedProjectIds: ['bugheist_ui', 'gsoc22'],
+      // gsoc22 moved to Work Experience — links only to the UI design project
+      linkedProjectIds: ['bugheist_ui'],
       primaryColor: const Color(0xFF4285F4),
       secondaryColor: const Color(0xFF34A853),
       highlightColor: const Color(0xFFB3D1FF),

@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class QuickNavBar extends StatefulWidget {
   final List<QuickNavItem> items;
@@ -74,7 +75,6 @@ class _QuickNavBarState extends State<QuickNavBar>
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: List.generate(widget.items.length, (index) {
-              // Add spacing between items
               if (index > 0) {
                 return Column(
                   children: [const SizedBox(height: 4), _buildNavItem(index)],
@@ -92,6 +92,14 @@ class _QuickNavBarState extends State<QuickNavBar>
     final item = widget.items[index];
     final isHovered = _hoveredIndex == index;
     final isActive = widget.currentIndex == index;
+
+    // Resolve icon color for the current state
+    final iconColor =
+        isActive
+            ? Colors.white
+            : isHovered
+            ? const Color(0xFF389583)
+            : Colors.grey.shade600;
 
     return MouseRegion(
       onEnter: (_) => setState(() => _hoveredIndex = index),
@@ -157,16 +165,24 @@ class _QuickNavBarState extends State<QuickNavBar>
                           ]
                           : null,
                 ),
-                child: Icon(
-                  item.icon,
-                  size: isActive ? 22 : (isHovered ? 20 : 18),
-                  color:
-                      isActive
-                          ? Colors.white
-                          : isHovered
-                          ? const Color(0xFF389583)
-                          : Colors.grey.shade600,
-                ),
+                // Render SVG logo if path provided, otherwise fall back to IconData
+                child:
+                    item.svgPath != null
+                        ? Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: SvgPicture.asset(
+                            item.svgPath!,
+                            colorFilter: ColorFilter.mode(
+                              iconColor,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                        )
+                        : Icon(
+                          item.icon ?? Icons.circle_outlined,
+                          size: isActive ? 22 : (isHovered ? 20 : 18),
+                          color: iconColor,
+                        ),
               ),
 
               // Tooltip label on hover (left side)
@@ -257,7 +273,16 @@ class _QuickNavBarState extends State<QuickNavBar>
 
 class QuickNavItem {
   final String label;
-  final IconData icon;
 
-  const QuickNavItem({required this.label, required this.icon});
+  /// Fallback icon shown when [svgPath] is null.
+  final IconData? icon;
+
+  /// Path to a local SVG asset. When set, this takes priority over [icon].
+  final String? svgPath;
+
+  const QuickNavItem({required this.label, this.icon, this.svgPath})
+    : assert(
+        icon != null || svgPath != null,
+        'QuickNavItem requires either an icon or an svgPath',
+      );
 }

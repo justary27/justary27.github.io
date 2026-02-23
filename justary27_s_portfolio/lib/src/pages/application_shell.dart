@@ -5,6 +5,7 @@ import '../components/navbar.dart';
 import '../enums/device_type.dart';
 import '../models/screen_model.dart';
 import '../components/navbar/drawer.dart';
+import '../providers/navbar_provider.dart';
 import '../providers/screen_provider.dart';
 
 GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -36,21 +37,27 @@ class ApplicationShell extends ConsumerWidget {
                   ? 0.1 * constraints.maxHeight
                   : 0.075 * constraints.maxHeight,
             ),
-            child: Navbar(
-              navigatorKey: scaffoldKey,
+            child: ClipRect(
+              child: AnimatedSlide(
+                offset:
+                    ref.watch(navbarVisibleProvider)
+                        ? Offset.zero
+                        : const Offset(0, -1),
+                duration: const Duration(milliseconds: 250),
+                curve: Curves.easeInOut,
+                child: Navbar(navigatorKey: scaffoldKey),
+              ),
             ),
           ),
           body: child,
-          endDrawer: (deviceType < DeviceType.largeTablet)
-              ? SmallDrawer(
-                  navigator: scaffoldKey,
-                  size: Size(
-                    constraints.maxWidth,
-                    constraints.maxHeight,
-                  ),
-                  deviceType: deviceType,
-                )
-              : null,
+          endDrawer:
+              (deviceType < DeviceType.largeTablet)
+                  ? SmallDrawer(
+                    navigator: scaffoldKey,
+                    size: Size(constraints.maxWidth, constraints.maxHeight),
+                    deviceType: deviceType,
+                  )
+                  : null,
         );
       },
     );

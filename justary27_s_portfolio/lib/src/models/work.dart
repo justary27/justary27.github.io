@@ -59,6 +59,10 @@ class WorkExperience {
   final Color primaryColor;
   final Color secondaryColor;
 
+  /// Path to a local SVG asset used as the logo in the QuickNavBar.
+  /// If null, a generic [Icons.business] icon is shown instead.
+  final String? logoSvgPath;
+
   const WorkExperience({
     required this.id,
     required this.company,
@@ -70,6 +74,7 @@ class WorkExperience {
     required this.highlightColor,
     required this.primaryColor,
     required this.secondaryColor,
+    this.logoSvgPath,
   });
 }
 
@@ -86,6 +91,10 @@ class Position {
   final Color primaryColor;
   final Color secondaryColor;
 
+  /// Path to a local SVG asset used as the logo in the QuickNavBar.
+  /// If null, a generic [Icons.star_outline] icon is shown instead.
+  final String? logoSvgPath;
+
   const Position({
     required this.id,
     required this.organization,
@@ -97,5 +106,6 @@ class Position {
     required this.highlightColor,
     required this.primaryColor,
     required this.secondaryColor,
+    this.logoSvgPath,
   });
 }
