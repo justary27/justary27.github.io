@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../components/navbar.dart';
 import '../enums/device_type.dart';
 import '../models/screen.dart';
-import '../components/navbar/drawer.dart';
+import '../components/drawer.dart';
 import '../providers/navbar.dart';
 import '../providers/screen.dart';
 

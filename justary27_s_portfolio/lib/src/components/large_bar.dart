@@ -2,9 +2,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../enums/device_type.dart';
-import '../../constants/route.dart';
-import '../../components/navbar/contact.dart';
+import '../enums/device_type.dart';
+import '../constants/route.dart';
+import 'contact.dart';
 
 class LargeNavBar extends StatefulWidget {
   final Size size;

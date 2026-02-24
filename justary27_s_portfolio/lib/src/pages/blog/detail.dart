@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:justary27_s_portfolio/src/models/blog.dart';
 import 'package:markdown_widget/config/markdown_generator.dart';
 
-import '../../models/screen_model.dart';
+import '../../models/screen.dart';
 import '../../providers/screen.dart';
 import '../../services/database.dart';
 
