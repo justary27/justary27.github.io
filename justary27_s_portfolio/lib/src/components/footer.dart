@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../components/anchor.dart';
 import '../enums/device_type.dart';
-import '../handlers/route_handler.dart';
+import '../constants/route.dart';
 
 /// Storage class for Footer constraints.
 class FC {

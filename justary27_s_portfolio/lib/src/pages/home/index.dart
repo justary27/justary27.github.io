@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../models/screen_model.dart';
+import '../../models/screen.dart';
 import 'large_opener.dart';
 import 'small_opener.dart';
 
-import '../../providers/screen_provider.dart';
+import '../../providers/screen.dart';
 import '../../enums/device_type.dart';
 
 class HomePage extends ConsumerStatefulWidget {

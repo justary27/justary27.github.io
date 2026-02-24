@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../components/navbar.dart';
 import '../enums/device_type.dart';
-import '../models/screen_model.dart';
+import '../models/screen.dart';
 import '../components/navbar/drawer.dart';
-import '../providers/navbar_provider.dart';
-import '../providers/screen_provider.dart';
+import '../providers/navbar.dart';
+import '../providers/screen.dart';
 
 GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 

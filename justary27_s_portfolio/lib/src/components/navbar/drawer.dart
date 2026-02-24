@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../roorkee_painter.dart';
 import '../../routes/routing.dart';
 import '../../enums/device_type.dart';
-import '../../handlers/route_handler.dart';
+import '../../constants/route.dart';
 
 import 'contact.dart';
 

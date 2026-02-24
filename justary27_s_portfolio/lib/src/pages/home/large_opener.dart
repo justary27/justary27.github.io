@@ -13,11 +13,11 @@ import '../../components/anchor.dart';
 import '../../enums/device_type.dart';
 import './painters/path_painter.dart';
 import './painters/carousel_painter.dart';
-import '../../handlers/route_handler.dart';
+import '../../constants/route.dart';
 import './painters/semi_circle_painter.dart';
 
-import 'home_constants.dart';
-import 'opener_constraints.dart';
+import 'data.dart';
+import 'constraints.dart';
 
 class LargeOpenerPage extends StatelessWidget {
   final Size size;

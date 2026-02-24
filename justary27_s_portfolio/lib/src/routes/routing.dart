@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:justary27_s_portfolio/src/models/blog_model.dart';
+import 'package:justary27_s_portfolio/src/models/blog.dart';
 
-import '../pages/who/who.dart';
-import '../pages/work/work.dart';
-import '../pages/blog/blog.dart';
-import '../pages/home/home.dart';
-import '../pages/blog/blog_details.dart';
-import '../pages/notFound/notfound.dart';
-import '../handlers/route_handler.dart';
+import '../pages/who/index.dart';
+import '../pages/work/index.dart';
+import '../pages/blog/index.dart';
+import '../pages/home/index.dart';
+import '../pages/blog/detail.dart';
+import '../pages/notFound/index.dart';
+import '../constants/route.dart';
 import '../pages/application_shell.dart';
 
 GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(

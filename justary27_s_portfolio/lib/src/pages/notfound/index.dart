@@ -4,10 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../enums/device_type.dart';
-import '../../handlers/route_handler.dart';
-import '../../models/screen_model.dart';
-import '../../providers/screen_provider.dart';
-import '../notfound/notfound_constraints.dart';
+import '../../constants/route.dart';
+import '../../models/screen.dart';
+import '../../providers/screen.dart';
+import 'constraints.dart';
 
 class NotFoundPage extends ConsumerStatefulWidget {
   const NotFoundPage({super.key});

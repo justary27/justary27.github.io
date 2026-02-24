@@ -5,14 +5,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../components/footer.dart';
 import '../../enums/device_type.dart';
-import '../../models/screen_model.dart';
-import '../../handlers/route_handler.dart';
-import '../../providers/screen_provider.dart';
+import '../../models/screen.dart';
+import '../../constants/route.dart';
+import '../../providers/screen.dart';
 import '../../components/roorkee_painter.dart';
-import '../../components/promo/promo_components.dart';
+import '../../components/promo.dart';
 
-import 'who_constants.dart';
-import 'who_constraints.dart';
+import 'data.dart';
+import 'constraints.dart';
 
 class WhoPage extends ConsumerStatefulWidget {
   const WhoPage({super.key});
@@ -51,26 +51,26 @@ class _WhoPageState extends ConsumerState<WhoPage> {
                           ],
                         ),
                       ),
-                      child: CustomPaint(
-                        painter: WhoPainter(),
-                      ),
+                      child: CustomPaint(painter: WhoPainter()),
                     ),
                     Container(
                       width: screen.width,
                       height: screen.height,
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomLeft,
-                            colors: [
-                              Color.fromRGBO(218, 224, 224, 1.0),
-                              Color.fromRGBO(183, 193, 192, 1.0)
-                            ]),
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomLeft,
+                          colors: [
+                            Color.fromRGBO(218, 224, 224, 1.0),
+                            Color.fromRGBO(183, 193, 192, 1.0),
+                          ],
+                        ),
                       ),
                       child: CustomPaint(
                         painter: RoorkeePainter(
-                            const Color.fromRGBO(14, 43, 133, 1.0),
-                            const Color.fromRGBO(184, 194, 215, 1.0)),
+                          const Color.fromRGBO(14, 43, 133, 1.0),
+                          const Color.fromRGBO(184, 194, 215, 1.0),
+                        ),
                       ),
                     ),
                   ],
@@ -115,7 +115,11 @@ class _WhoPageState extends ConsumerState<WhoPage> {
                                     textStyle: TextStyle(
                                       // fontFamily: "Caveat",
                                       color: const Color.fromRGBO(
-                                          14, 43, 133, 1.0),
+                                        14,
+                                        43,
+                                        133,
+                                        1.0,
+                                      ),
                                       fontSize:
                                           WC.time[deviceType]! * screen.width,
                                       // fontWeight: FontWeight.bold,
@@ -129,7 +133,8 @@ class _WhoPageState extends ConsumerState<WhoPage> {
                                     textStyle: TextStyle(
                                       // fontFamily: "ABeeZee",
                                       color: Colors.black,
-                                      fontSize: WC.timeDesc[deviceType]! *
+                                      fontSize:
+                                          WC.timeDesc[deviceType]! *
                                           screen.width,
                                     ),
                                   ),
@@ -161,7 +166,11 @@ class _WhoPageState extends ConsumerState<WhoPage> {
                                     textStyle: TextStyle(
                                       // fontFamily: "Caveat",
                                       color: const Color.fromRGBO(
-                                          14, 43, 133, 1.0),
+                                        14,
+                                        43,
+                                        133,
+                                        1.0,
+                                      ),
                                       fontSize:
                                           WC.time[deviceType]! * screen.width,
                                     ),
@@ -174,7 +183,8 @@ class _WhoPageState extends ConsumerState<WhoPage> {
                                     textStyle: TextStyle(
                                       // fontFamily: "ABeeZee",
                                       color: Colors.black,
-                                      fontSize: WC.timeDesc[deviceType]! *
+                                      fontSize:
+                                          WC.timeDesc[deviceType]! *
                                           screen.width,
                                     ),
                                   ),
@@ -214,7 +224,11 @@ class _WhoPageState extends ConsumerState<WhoPage> {
                                     textStyle: TextStyle(
                                       // fontFamily: "Caveat",
                                       color: const Color.fromRGBO(
-                                          14, 43, 133, 1.0),
+                                        14,
+                                        43,
+                                        133,
+                                        1.0,
+                                      ),
                                       fontSize:
                                           WC.time[deviceType]! * screen.width,
                                     ),
@@ -227,11 +241,12 @@ class _WhoPageState extends ConsumerState<WhoPage> {
                                     textStyle: TextStyle(
                                       // fontFamily: "ABeeZee",
                                       color: Colors.black,
-                                      fontSize: WC.timeDesc[deviceType]! *
+                                      fontSize:
+                                          WC.timeDesc[deviceType]! *
                                           screen.width,
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -261,13 +276,11 @@ class _WhoPageState extends ConsumerState<WhoPage> {
                         ),
                       ),
                     ),
-                    Footer(
-                      size: screen.getScreenSize(),
-                    ),
+                    Footer(size: screen.getScreenSize()),
                   ],
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -278,11 +291,12 @@ class _WhoPageState extends ConsumerState<WhoPage> {
 class WhoPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..style = PaintingStyle.stroke
-      ..color = const Color.fromRGBO(14, 43, 133, 1.0)
-      ..strokeCap = StrokeCap.round
-      ..strokeWidth = 10;
+    Paint paint =
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..color = const Color.fromRGBO(14, 43, 133, 1.0)
+          ..strokeCap = StrokeCap.round
+          ..strokeWidth = 10;
 
     Path path = Path();
 
@@ -323,19 +337,37 @@ class WhoPainter extends CustomPainter {
 
     canvas.drawPath(path, paint);
     canvas.drawCircle(
-        Offset(0.125 * size.width, 0.2727 * size.height), 35, paint);
+      Offset(0.125 * size.width, 0.2727 * size.height),
+      35,
+      paint,
+    );
     canvas.drawCircle(
-        Offset(0.875 * size.width, 0.5909 * size.height), 35, paint);
+      Offset(0.875 * size.width, 0.5909 * size.height),
+      35,
+      paint,
+    );
     canvas.drawCircle(
-        Offset(0.125 * size.width, 0.8636 * size.height), 35, paint);
+      Offset(0.125 * size.width, 0.8636 * size.height),
+      35,
+      paint,
+    );
 
     paint.style = PaintingStyle.fill;
     canvas.drawCircle(
-        Offset(0.125 * size.width, 0.2727 * size.height), 20, paint);
+      Offset(0.125 * size.width, 0.2727 * size.height),
+      20,
+      paint,
+    );
     canvas.drawCircle(
-        Offset(0.875 * size.width, 0.5909 * size.height), 20, paint);
+      Offset(0.875 * size.width, 0.5909 * size.height),
+      20,
+      paint,
+    );
     canvas.drawCircle(
-        Offset(0.125 * size.width, 0.8636 * size.height), 20, paint);
+      Offset(0.125 * size.width, 0.8636 * size.height),
+      20,
+      paint,
+    );
   }
 
   @override

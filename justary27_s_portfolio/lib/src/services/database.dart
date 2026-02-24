@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../models/blog_model.dart';
+import '../models/blog.dart';
 
 class Database {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;

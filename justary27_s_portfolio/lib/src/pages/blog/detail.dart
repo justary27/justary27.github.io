@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:justary27_s_portfolio/src/models/blog_model.dart';
+import 'package:justary27_s_portfolio/src/models/blog.dart';
 import 'package:markdown_widget/config/markdown_generator.dart';
 
 import '../../models/screen_model.dart';
-import '../../providers/screen_provider.dart';
+import '../../providers/screen.dart';
 import '../../services/database.dart';
 
 class BlogDetailsPage extends ConsumerStatefulWidget {

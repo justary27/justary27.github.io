@@ -4,9 +4,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../enums/device_type.dart';
-import '../../handlers/route_handler.dart';
+import '../../constants/route.dart';
 
-import 'opener_constraints.dart';
+import 'constraints.dart';
 
 class SmallOpenerPage extends StatelessWidget {
   final Size size;
@@ -27,17 +27,15 @@ class SmallOpenerPage extends StatelessWidget {
             height: size.height,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    Color.fromARGB(255, 255, 255, 255),
-                    Color.fromARGB(255, 243, 248, 247)
-                  ]),
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color.fromARGB(255, 255, 255, 255),
+                  Color.fromARGB(255, 243, 248, 247),
+                ],
+              ),
             ),
-            child: SizedBox(
-              width: size.width,
-              height: size.height,
-            ),
+            child: SizedBox(width: size.width, height: size.height),
           ),
           Container(
             width: size.width,
@@ -92,7 +90,7 @@ class SmallOpenerPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -107,10 +105,7 @@ class SmallOpenerPage extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(0.075 * size.width),
                 child: CarouselSlider(
-                  options: CarouselOptions(
-                    viewportFraction: 1,
-                    autoPlay: true,
-                  ),
+                  options: CarouselOptions(viewportFraction: 1, autoPlay: true),
                   items: [
                     SvgPicture.asset(
                       "images/ar.svg",

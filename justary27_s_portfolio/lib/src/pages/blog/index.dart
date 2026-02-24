@@ -3,17 +3,17 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../components/footer.dart';
-import '../../models/blog_model.dart';
+import '../../models/blog.dart';
 import '../../services/database.dart';
 import '../../enums/device_type.dart';
-import '../../models/screen_model.dart';
-import '../../handlers/route_handler.dart';
-import '../../handlers/scroll_handler.dart';
-import '../../providers/screen_provider.dart';
+import '../../models/screen.dart';
+import '../../constants/route.dart';
+import '../../constants/scroll_handler.dart';
+import '../../providers/screen.dart';
 import '../../components/roorkee_painter.dart';
-import '../../components/promo/promo_components.dart';
+import '../../components/promo.dart';
 
-import 'blog_constraints.dart';
+import 'constraints.dart';
 
 class BlogPage extends ConsumerStatefulWidget {
   const BlogPage({super.key});

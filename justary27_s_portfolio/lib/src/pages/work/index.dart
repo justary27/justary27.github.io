@@ -1699,15 +1699,15 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../components/footer.dart';
 import '../../components/page_components/work_components.dart';
-import '../../components/promo/promo_components.dart';
+import '../../components/promo.dart';
 import '../../components/quick_navbar.dart';
 import '../../components/roorkee_painter.dart';
-import '../../models/screen_model.dart';
-import '../../providers/navbar_provider.dart';
-import '../../providers/screen_provider.dart';
+import '../../models/screen.dart';
+import '../../providers/navbar.dart';
+import '../../providers/screen.dart';
 
 import 'data.dart';
-import 'work_constraints.dart';
+import 'constraints.dart';
 
 // ============================================================================
 // PER-TAB SCROLL STATE HELPER

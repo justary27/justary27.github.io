@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../models/blog_model.dart';
+import '../../../models/blog.dart';
 import '../../../enums/device_type.dart';
 
-import 'blog_dialog_constraints.dart';
+/// Storage class for `BlogDialog` constraints
+class BDC {
+  BDC._();
+
+  static const Map<DeviceType, double> blogTitle = {
+    DeviceType.smallMobile: 0.10,
+    DeviceType.largeMobile: 0.10,
+    DeviceType.smallTablet: 0.0725,
+    DeviceType.largeTablet: 0.065,
+    DeviceType.smallLaptop: 0.05,
+    DeviceType.largeLaptop: 0.05,
+    DeviceType.smallDesktop: 0.05,
+  };
+}
 
 Widget blogProvider(Size size, Blog blog, DeviceType deviceType) {
   Future<void> launchLink(String url) async {

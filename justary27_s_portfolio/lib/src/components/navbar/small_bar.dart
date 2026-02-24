@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../enums/device_type.dart';
-import '../../handlers/route_handler.dart';
+import '../../constants/route.dart';
 
 class SmallNavBar extends StatefulWidget {
   final GlobalKey<ScaffoldState> navigatorKey;
