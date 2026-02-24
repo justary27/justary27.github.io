@@ -1,3 +1,6 @@
+import '../../models/who.dart';
+import 'package:flutter/material.dart';
+
 String pastDesc = """It's almost 2 years now of me stayin' in IITR. 
 There's only so much of what I have learned that I can say! The life here has 
 been a constants source of adventure, throwing me into violent storms or in 
@@ -31,3 +34,91 @@ and blockchain and of course exceling in DSA; From the earlier tagline of
 "I know the path isn't gonna be easy, but nothin' worthwhile is. Isn't it?", 
 I have moved to a new one: "One life ends the previous day, 
 and you start another one the next day!"  """;
+
+class WhoData {
+  WhoData._();
+
+  static final List<WhoSection> sections = [
+    // -------------------------------------------------------------------------
+    // Present
+    // -------------------------------------------------------------------------
+    WhoSection(
+      label: 'Present',
+      accentShade: const Color.fromRGBO(14, 43, 133, 1.0),
+      steps: [
+        WhoSubStep(
+          text: 'TODO: 8club — current role, what you\'re working on.',
+          photos: const [],
+        ),
+        WhoSubStep(
+          text:
+              'TODO: Personal tidbits — hobbies, interests, what keeps you sane outside work.',
+          photos: [],
+        ),
+      ],
+    ),
+
+    // -------------------------------------------------------------------------
+    // Past
+    // -------------------------------------------------------------------------
+    WhoSection(
+      label: 'Past',
+      accentShade: Color.fromRGBO(74, 103, 193, 1.0),
+      steps: [
+        WhoSubStep(
+          text: 'TODO: Repello AI — the founding engineer chapter.',
+          photos: [],
+        ),
+        WhoSubStep(
+          text:
+              'TODO: IIT-R Year 1 — first steps, first friends, first taste of it all.',
+          photos: [],
+        ),
+        WhoSubStep(
+          text:
+              'TODO: IIT-R Year 2 — finding your footing, early projects, GSoC.',
+          photos: [],
+        ),
+        WhoSubStep(
+          text: 'TODO: IIT-R Year 3 — Amazon intern, growing as an engineer.',
+          photos: [],
+        ),
+        WhoSubStep(
+          text:
+              'TODO: IIT-R Year 4 — CloudDefense, GSoC mentor, closing the chapter.',
+          photos: [],
+        ),
+        WhoSubStep(
+          text:
+              'TODO: Pre-IIT part 1 — the grind, the preparation, the years of building towards something.',
+          photos: [],
+        ),
+        WhoSubStep(
+          text:
+              'TODO: Pre-IIT part 2 — olympiads, AIR 1 in NAO, the achievements that shaped you.',
+          photos: [],
+        ),
+      ],
+    ),
+
+    // -------------------------------------------------------------------------
+    // Future
+    // -------------------------------------------------------------------------
+    WhoSection(
+      label: 'Future',
+      accentShade: Color.fromRGBO(134, 163, 223, 1.0),
+      steps: [
+        WhoSubStep(
+          text:
+              'TODO: Where you\'re headed — the direction, the goals, what drives you forward.',
+          photos: const [],
+        ),
+        WhoSubStep(
+          text:
+              'TODO: The philosophical note — the tagline, the outlook, the next chapter.',
+          photos: const [],
+        ),
+      ],
+    ),
+  ];
+}
