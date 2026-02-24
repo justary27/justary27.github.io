@@ -8,7 +8,7 @@ import '../../services/database.dart';
 import '../../enums/device_type.dart';
 import '../../models/screen.dart';
 import '../../constants/route.dart';
-import '../../constants/scroll_handler.dart';
+import '../../constants/scroll.dart';
 import '../../providers/screen.dart';
 import '../../components/roorkee_painter.dart';
 import '../../components/promo.dart';

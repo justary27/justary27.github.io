@@ -8,15 +8,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:pdfrx/pdfrx.dart';
 
-import './painters/who_painter.dart';
 import '../../components/anchor.dart';
 import '../../enums/device_type.dart';
-import './painters/path_painter.dart';
-import './painters/carousel_painter.dart';
 import '../../constants/route.dart';
-import './painters/semi_circle_painter.dart';
 
 import 'data.dart';
+import 'painters.dart';
 import 'constraints.dart';
 
 class LargeOpenerPage extends StatelessWidget {
