@@ -9,6 +9,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:pdfrx/pdfrx.dart';
 
 import '../../components/anchor.dart';
+import '../../components/footer.dart';
 import '../../enums/device_type.dart';
 import '../../constants/route.dart';
 
@@ -41,6 +42,7 @@ class LargeOpenerPage extends StatelessWidget {
               width: size.width,
               child: LargeIntroBrief(size: size),
             ),
+            Footer(size: size),
           ],
         ),
       ),

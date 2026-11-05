@@ -9,6 +9,7 @@ enum PillVariant { filled, outlined }
 
 class PillButton extends StatefulWidget {
   final String label;
+  final IconData? icon;
   final VoidCallback onPressed;
   final PillVariant variant;
   // Default to the route ink; the footer overrides them on its slate band.
@@ -18,6 +19,7 @@ class PillButton extends StatefulWidget {
   const PillButton({
     super.key,
     required this.label,
+    this.icon,
     required this.onPressed,
     this.variant = PillVariant.outlined,
     this.color,
@@ -71,7 +73,6 @@ class _PillButtonState extends State<PillButton> {
                   curve: MotionCurves.standard,
                   constraints: const BoxConstraints(minHeight: 44),
                   padding: const EdgeInsets.symmetric(horizontal: 22),
-                  alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: isFilled
                         ? color.withValues(alpha: _isHovered ? 0.88 : 1)
@@ -81,12 +82,23 @@ class _PillButtonState extends State<PillButton> {
                         ? null
                         : Border.all(color: color, width: 1.5),
                   ),
-                  child: Text(
-                    widget.label,
-                    style: AppText.label.copyWith(
-                      fontSize: 15,
-                      color: textColor,
-                    ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          widget.label,
+                          style: AppText.label.copyWith(
+                            fontSize: 15,
+                            color: textColor,
+                          ),
+                        ),
+                      ),
+                      if (widget.icon != null) ...[
+                        const SizedBox(width: Space.s8),
+                        Icon(widget.icon, size: 16, color: textColor),
+                      ],
+                    ],
                   ),
                 ),
                 if (_isFocused)

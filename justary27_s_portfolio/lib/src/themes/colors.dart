@@ -14,6 +14,7 @@ abstract final class AppColors {
 
   // Shared surfaces
   static const Color footerSlate = Color(0xFF5A6488);
+  static const Color onFooterMuted = Color(0xFFE4E7F2);
   static const Color arWatermark = Color(0xFF6B76A0);
   static const Color selection = Color(0xFF0B5E50);
   static const Color selectionHalo = Color(0xFFDDEFE8);

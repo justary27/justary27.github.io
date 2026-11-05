@@ -9,6 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/anchor.dart';
 import '../enums/device_type.dart';
 import '../constants/route.dart';
+import 'large_footer.dart';
 
 /// Storage class for Footer constraints.
 class FC {
@@ -45,6 +46,10 @@ class _FooterState extends State<Footer> {
   Widget build(BuildContext context) {
     Size size = widget.size;
     final DeviceType deviceType = DeviceType.getDeviceType(size.width);
+
+    if (!(deviceType < DeviceType.largeTablet)) {
+      return LargeFooter(size: size);
+    }
 
     return Stack(
       children: [
