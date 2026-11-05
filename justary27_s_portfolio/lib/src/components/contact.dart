@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -67,7 +67,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
     }
   }
 
-  buildSmallCard(Size size, DeviceType deviceType) {
+  Dialog buildSmallCard(Size size, DeviceType deviceType) {
     ValueNotifier<bool> isHovered = ValueNotifier(false);
     ValueNotifier<bool> tHovered = ValueNotifier(false);
     ValueNotifier<bool> gHovered = ValueNotifier(false);
@@ -141,7 +141,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                               child: ValueListenableBuilder(
                                 valueListenable: isHovered,
                                 builder:
-                                    (_, __, ___) => Text(
+                                    (_, _, _) => Text(
                                       "aryan_r@ch.iitr.ac.in",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
@@ -180,7 +180,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                           child: ValueListenableBuilder(
                             valueListenable: textHovered,
                             builder:
-                                (_, __, ___) => Text(
+                                (_, _, _) => Text(
                                   (textHovered.value)
                                       ? "Time is made, not found!"
                                       : "Time is made.",
@@ -223,12 +223,12 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                   child: ValueListenableBuilder(
                                     valueListenable: tHovered,
                                     builder:
-                                        (_, __, ___) => IconButton(
+                                        (_, _, _) => IconButton(
                                           onPressed:
                                               () => _launchLink(
                                                 'https://twitter.com/JustAry27',
                                               ),
-                                          icon: Icon(
+                                          icon: FaIcon(
                                             FontAwesomeIcons.xTwitter,
                                             size: NC.links[deviceType]!,
                                           ),
@@ -255,12 +255,12 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 child: ValueListenableBuilder(
                                   valueListenable: gHovered,
                                   builder:
-                                      (_, __, ___) => IconButton(
+                                      (_, _, _) => IconButton(
                                         onPressed:
                                             () => _launchLink(
                                               'https://github.com/justary27',
                                             ),
-                                        icon: Icon(
+                                        icon: FaIcon(
                                           FontAwesomeIcons.github,
                                           size: NC.links[deviceType]!,
                                         ),
@@ -286,12 +286,12 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 child: ValueListenableBuilder(
                                   valueListenable: lHovered,
                                   builder:
-                                      (_, __, ___) => IconButton(
+                                      (_, _, _) => IconButton(
                                         onPressed:
                                             () => _launchLink(
                                               'https://www.linkedin.com/in/aryan-ranjan27/',
                                             ),
-                                        icon: Icon(
+                                        icon: FaIcon(
                                           FontAwesomeIcons.linkedin,
                                           size: NC.links[deviceType]!,
                                         ),
@@ -398,7 +398,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                               child: ValueListenableBuilder(
                                 valueListenable: isHovered,
                                 builder:
-                                    (_, __, ___) => Text(
+                                    (_, _, _) => Text(
                                       "aryan_r@ch.iitr.ac.in",
                                       style: TextStyle(
                                         fontFamily: "Ubuntu",
@@ -436,7 +436,7 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                           child: ValueListenableBuilder(
                             valueListenable: textHovered,
                             builder:
-                                (_, __, ___) => Text(
+                                (_, _, _) => Text(
                                   (textHovered.value)
                                       ? "Time is made, not found!"
                                       : "Time is made.",
@@ -477,10 +477,10 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 child: ValueListenableBuilder(
                                   valueListenable: tHovered,
                                   builder:
-                                      (_, __, ___) => AnchorButton(
+                                      (_, _, _) => AnchorButton(
                                         destUrl:
                                             'https://twitter.com/JustAry27',
-                                        icon: Icon(
+                                        icon: FaIcon(
                                           FontAwesomeIcons.xTwitter,
                                           size: NC.links[deviceType]!,
                                         ),
@@ -507,9 +507,9 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 child: ValueListenableBuilder(
                                   valueListenable: gHovered,
                                   builder:
-                                      (_, __, ___) => AnchorButton(
+                                      (_, _, _) => AnchorButton(
                                         destUrl: 'https://github.com/justary27',
-                                        icon: Icon(
+                                        icon: FaIcon(
                                           FontAwesomeIcons.github,
                                           size: NC.links[deviceType]!,
                                         ),
@@ -536,10 +536,10 @@ class _ContactCardState extends ConsumerState<ContactCard> {
                                 child: ValueListenableBuilder(
                                   valueListenable: lHovered,
                                   builder:
-                                      (_, __, ___) => AnchorButton(
+                                      (_, _, _) => AnchorButton(
                                         destUrl:
                                             'https://www.linkedin.com/in/aryan-ranjan27/',
-                                        icon: Icon(
+                                        icon: FaIcon(
                                           FontAwesomeIcons.linkedin,
                                           size: NC.links[deviceType]!,
                                         ),

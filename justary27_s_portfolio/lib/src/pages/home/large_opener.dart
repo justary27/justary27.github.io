@@ -1,5 +1,5 @@
 import 'dart:math' as math;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_circular_text/circular_text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -284,7 +284,7 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                       children: [
                         AnchorButton(
                           destUrl: 'https://python.org',
-                          icon: Icon(
+                          icon: FaIcon(
                             FontAwesomeIcons.python,
                             size: OC.techStack[widget.deviceType],
                             color: const Color(0xFF0d0d0d),
@@ -301,7 +301,7 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                         ),
                         AnchorButton(
                           destUrl: 'https://www.javascript.com/',
-                          icon: Icon(
+                          icon: FaIcon(
                             FontAwesomeIcons.js,
                             size: OC.techStack[widget.deviceType],
                             color: const Color(0xFF0d0d0d),
@@ -326,7 +326,7 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                         ),
                         AnchorButton(
                           destUrl: 'https://go.dev/',
-                          icon: Icon(
+                          icon: FaIcon(
                             FontAwesomeIcons.golang,
                             size: OC.techStack[widget.deviceType],
                             color: const Color(0xFF0d0d0d),
@@ -335,7 +335,7 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                         ),
                         AnchorButton(
                           destUrl: 'https://www.java.com/en/',
-                          icon: Icon(
+                          icon: FaIcon(
                             FontAwesomeIcons.java,
                             size: OC.techStack[widget.deviceType],
                             color: const Color(0xFF0d0d0d),
@@ -373,7 +373,7 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                         ),
                         AnchorButton(
                           destUrl: 'https://html5.org/',
-                          icon: Icon(
+                          icon: FaIcon(
                             FontAwesomeIcons.html5,
                             size: OC.techStack[widget.deviceType],
                             color: const Color(0xFF0d0d0d),
@@ -383,7 +383,7 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                         AnchorButton(
                           destUrl:
                               'https://developer.mozilla.org/en-US/docs/Web/CSS',
-                          icon: Icon(
+                          icon: FaIcon(
                             FontAwesomeIcons.css3,
                             size: OC.techStack[widget.deviceType],
                             color: const Color(0xFF0d0d0d),
@@ -392,7 +392,7 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                         ),
                         AnchorButton(
                           destUrl: 'https://sass-lang.com/',
-                          icon: Icon(
+                          icon: FaIcon(
                             FontAwesomeIcons.sass,
                             size: OC.techStack[widget.deviceType],
                             color: const Color(0xFF0d0d0d),
@@ -417,7 +417,7 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                         ),
                         AnchorButton(
                           destUrl: 'https://reactjs.org',
-                          icon: Icon(
+                          icon: FaIcon(
                             FontAwesomeIcons.react,
                             size: OC.techStack[widget.deviceType],
                             color: const Color(0xFF0d0d0d),
@@ -434,7 +434,7 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                         ),
                         AnchorButton(
                           destUrl: 'https://aws.amazon.com/',
-                          icon: Icon(
+                          icon: FaIcon(
                             FontAwesomeIcons.aws,
                             size: OC.techStack[widget.deviceType],
                             color: const Color(0xFF0d0d0d),
@@ -443,7 +443,7 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                         ),
                         AnchorButton(
                           destUrl: 'https://www.docker.com/',
-                          icon: Icon(
+                          icon: FaIcon(
                             FontAwesomeIcons.docker,
                             size: OC.techStack[widget.deviceType],
                             color: const Color(0xFF0d0d0d),
@@ -506,7 +506,6 @@ class _LargeIntroDetailedState extends State<LargeIntroDetailed>
                   child: PdfViewer.asset(
                     'resume.pdf',
                     params: PdfViewerParams(
-                      enableTextSelection: true,
                       loadingBannerBuilder: (
                         context,
                         bytesDownloaded,
@@ -606,14 +605,34 @@ class _LargeIntroWorkState extends State<LargeIntroWork>
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Work.",
-                          style: TextStyle(
-                            fontFamily: "Allison",
-                            color: const Color(0xFF0d0d0d),
-                            fontWeight: FontWeight.bold,
-                            fontSize: OC.name[widget.deviceType]! * size.width,
-                          ),
+                        Row(
+                          children: [
+                            Transform.rotate(
+                              angle: -math.pi / 9,
+                              child: Container(
+                                width:
+                                    OC.rotLine[widget.deviceType]!['width']! *
+                                    size.width,
+                                height:
+                                    OC.rotLine[widget.deviceType]!['height']! *
+                                    size.width,
+                                color: const Color(0xFF0d0d0d),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "Work.",
+                                style: GoogleFonts.abel(
+                                  textStyle: const TextStyle(
+                                    color: Color(0xFF0d0d0d),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 50,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         Text(
                           "From humble beginnings with discord bots to working with large scale projects that impact a lot of users and working to develop cutting edge tech, it has been a long way, check out this journey of mine!",
@@ -820,15 +839,34 @@ class _LargeWhoBlogBriefState extends State<LargeWhoBlogBrief>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Know More About Me!",
-                      style: TextStyle(
-                        fontFamily: "Allison",
-                        color: const Color(0xFF0d0d0d),
-                        fontWeight: FontWeight.bold,
-                        fontSize: OC.name[widget.deviceType]! * size.width,
-                      ),
-                      // style: TextStyle(fontFamily: "Ubuntu"),
+                    Row(
+                      children: [
+                        Transform.rotate(
+                          angle: -math.pi / 9,
+                          child: Container(
+                            width:
+                                OC.rotLine[widget.deviceType]!['width']! *
+                                size.width,
+                            height:
+                                OC.rotLine[widget.deviceType]!['height']! *
+                                size.width,
+                            color: const Color(0xFF0d0d0d),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Know More About Me!",
+                            style: GoogleFonts.abel(
+                              textStyle: const TextStyle(
+                                color: Color(0xFF0d0d0d),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 50,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),

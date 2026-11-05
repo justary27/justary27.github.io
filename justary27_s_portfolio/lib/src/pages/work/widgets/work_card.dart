@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 
 import '../../../enums/work.dart';
@@ -10,26 +11,35 @@ class WorkExperienceCard extends StatelessWidget {
   final WorkExperience experience;
   final int activePointIndex;
   final Size size;
+  final bool graphicOnLeft;
 
   const WorkExperienceCard({
     super.key,
     required this.experience,
     required this.activePointIndex,
     required this.size,
+    this.graphicOnLeft = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    final graphic = _buildRightGraphics();
+    final textCard = _buildLeftCard(context);
+    final spacer = SizedBox(width: 0.03 * size.width);
+    // Leaves room on the right for the QuickNavBar (pinned at `right: 40`,
+    // plus its hover/active label which extends further left) so it doesn't
+    // sit on top of the text card's content when the graphic is on the left.
+    final navBarClearance = SizedBox(width: 0.14 * size.width);
+
     return SizedBox(
       width: size.width,
       height: size.height,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          _buildLeftCard(context),
-          SizedBox(width: 0.03 * size.width),
-          _buildRightGraphics(),
-        ],
+        children:
+            graphicOnLeft
+                ? [graphic, spacer, textCard, navBarClearance]
+                : [textCard, spacer, graphic],
       ),
     );
   }
@@ -199,7 +209,7 @@ class WorkExperienceCard extends StatelessWidget {
             return AnchorButton(
               parentContext: context,
               destUrl: link.url,
-              icon: Icon(link.icon, size: 24),
+              icon: FaIcon(link.icon, size: 24),
               iconSize: 24,
               color: experience.primaryColor,
             );

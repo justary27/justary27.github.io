@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
 
 import '../../../components/anchor.dart';
@@ -175,7 +176,7 @@ class PositionCard extends StatelessWidget {
             return AnchorButton(
               parentContext: context,
               destUrl: link.url,
-              icon: Icon(link.icon, size: 24),
+              icon: FaIcon(link.icon, size: 24),
               iconSize: 24,
               color: position.primaryColor,
             );

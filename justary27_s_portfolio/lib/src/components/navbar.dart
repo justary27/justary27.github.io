@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:justary27_s_portfolio/src/components/large_bar.dart';
 import 'package:justary27_s_portfolio/src/components/small_bar.dart';
 

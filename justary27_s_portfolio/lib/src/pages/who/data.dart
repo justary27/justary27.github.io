@@ -1,5 +1,14 @@
 import '../../models/who.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+
+// Placeholder nature photos (Wikimedia Commons, CC-licensed) so the
+// _PhotoCollage dice layout can be previewed with 1-5 photo counts before
+// real photos are added. Swap these out per step once real photos exist.
+const _forest = 'assets/images/who/forest.jpg';
+const _mountain = 'assets/images/who/mountain.jpg';
+const _waterfall = 'assets/images/who/waterfall.jpg';
+const _beach = 'assets/images/who/beach.jpg';
+const _sunset = 'assets/images/who/sunset.jpg';
 
 String pastDesc = """It's almost 2 years now of me stayin' in IITR. 
 There's only so much of what I have learned that I can say! The life here has 
@@ -48,12 +57,12 @@ class WhoData {
       steps: [
         WhoSubStep(
           text: 'TODO: 8club — current role, what you\'re working on.',
-          photos: const [],
+          photos: const [_forest],
         ),
         WhoSubStep(
           text:
               'TODO: Personal tidbits — hobbies, interests, what keeps you sane outside work.',
-          photos: [],
+          photos: [_forest, _mountain],
         ),
       ],
     ),
@@ -67,36 +76,36 @@ class WhoData {
       steps: [
         WhoSubStep(
           text: 'TODO: Repello AI — the founding engineer chapter.',
-          photos: [],
-        ),
-        WhoSubStep(
-          text:
-              'TODO: IIT-R Year 1 — first steps, first friends, first taste of it all.',
-          photos: [],
-        ),
-        WhoSubStep(
-          text:
-              'TODO: IIT-R Year 2 — finding your footing, early projects, GSoC.',
-          photos: [],
-        ),
-        WhoSubStep(
-          text: 'TODO: IIT-R Year 3 — Amazon intern, growing as an engineer.',
-          photos: [],
+          photos: [_forest, _mountain, _waterfall],
         ),
         WhoSubStep(
           text:
               'TODO: IIT-R Year 4 — CloudDefense, GSoC mentor, closing the chapter.',
-          photos: [],
+          photos: [_forest, _mountain, _waterfall, _beach],
+        ),
+        WhoSubStep(
+          text: 'TODO: IIT-R Year 3 — Amazon intern, growing as an engineer.',
+          photos: [_forest, _mountain, _waterfall, _beach, _sunset],
+        ),
+        WhoSubStep(
+          text:
+              'TODO: IIT-R Year 2 — finding your footing, early projects, GSoC.',
+          photos: [_mountain],
+        ),
+        WhoSubStep(
+          text:
+              'TODO: IIT-R Year 1 — first steps, first friends, first taste of it all.',
+          photos: [_waterfall, _beach],
         ),
         WhoSubStep(
           text:
               'TODO: Pre-IIT part 1 — the grind, the preparation, the years of building towards something.',
-          photos: [],
+          photos: [_beach, _sunset, _forest],
         ),
         WhoSubStep(
           text:
               'TODO: Pre-IIT part 2 — olympiads, AIR 1 in NAO, the achievements that shaped you.',
-          photos: [],
+          photos: [_sunset, _forest, _mountain, _waterfall],
         ),
       ],
     ),
@@ -111,12 +120,12 @@ class WhoData {
         WhoSubStep(
           text:
               'TODO: Where you\'re headed — the direction, the goals, what drives you forward.',
-          photos: const [],
+          photos: const [_forest, _mountain, _waterfall, _beach, _sunset],
         ),
         WhoSubStep(
           text:
               'TODO: The philosophical note — the tagline, the outlook, the next chapter.',
-          photos: const [],
+          photos: const [_sunset],
         ),
       ],
     ),

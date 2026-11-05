@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// A single scrollable sub-step within a Who section.
 /// Supports up to 5 photos for the collage.

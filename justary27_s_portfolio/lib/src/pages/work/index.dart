@@ -1693,7 +1693,7 @@
 // }
 
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -1832,7 +1832,7 @@ class _WorkPageState extends ConsumerState<WorkPage>
   @override
   void dispose() {
     // Restore navbar for other pages
-    ref.read(navbarVisibleProvider.notifier).state = true;
+    ref.read(navbarVisibleProvider.notifier).show();
     _tabController.dispose();
     _scrollController.dispose();
     super.dispose();
@@ -1860,17 +1860,17 @@ class _WorkPageState extends ConsumerState<WorkPage>
     if (offset < heroHeight) {
       // Back in hero territory — always show and reset accumulator
       _navbarScrollAccumulator = 0;
-      notifier.state = true;
+      notifier.show();
     } else if (delta > 0) {
       // Scrolling down past hero — hide immediately, reset accumulator
       _navbarScrollAccumulator = 0;
-      notifier.state = false;
+      notifier.hide();
     } else if (delta < 0) {
       // Scrolling up — accumulate, only show after threshold
       _navbarScrollAccumulator += delta.abs();
       if (_navbarScrollAccumulator >= _navbarShowThreshold) {
         _navbarScrollAccumulator = 0;
-        notifier.state = true;
+        notifier.show();
       }
     }
   }
@@ -2434,6 +2434,7 @@ class ProjectsTab extends StatelessWidget {
             experience: ProjectData.projects[currentProjectIndex],
             activePointIndex: currentPointIndex,
             size: screen.getScreenSize(),
+            graphicOnLeft: true,
           ),
           if (isFrozen) _buildQuickNavBar(),
           if (isFrozen) _buildPointCounter(),

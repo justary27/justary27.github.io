@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../enums/work.dart';
 
@@ -40,7 +41,7 @@ class ScrollablePoint {
 /// Link for work experience (company website, blog posts, etc.)
 class WorkLink {
   final String url;
-  final IconData icon;
+  final FaIconData icon;
   final String label;
 
   const WorkLink({required this.url, required this.icon, required this.label});

@@ -1,5 +1,5 @@
 import 'dart:math' as math;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../enums/device_type.dart';
@@ -90,7 +90,7 @@ class PromoRedirector extends StatelessWidget {
               child: Text(
                 pageDescriptor,
                 textAlign: TextAlign.center,
-                style: GoogleFonts.openSansCondensed(
+                style: GoogleFonts.openSans(
                   textStyle: TextStyle(
                     // fontFamily: "Caveat",
                     fontWeight: FontWeight.bold,

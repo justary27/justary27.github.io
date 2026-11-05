@@ -292,7 +292,7 @@
 import 'dart:math';
 
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -740,7 +740,7 @@ class _WhoSectionBox extends StatelessWidget {
                 children: [
                   // Left: label + step text
                   Expanded(
-                    flex: 7,
+                    flex: 6,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -791,7 +791,7 @@ class _WhoSectionBox extends StatelessWidget {
 
                   // Right: collage
                   Expanded(
-                    flex: 3,
+                    flex: 4,
                     child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 350),
                       child: _PhotoCollage(
@@ -849,11 +849,11 @@ class _PhotoCollage extends StatelessWidget {
   });
 
   static const List<Alignment> _dicePositions = [
-    Alignment(-0.6, -0.5),
-    Alignment(0.6, -0.5),
+    Alignment(-0.85, -0.7),
+    Alignment(0.85, -0.7),
     Alignment(0.0, 0.0),
-    Alignment(-0.6, 0.5),
-    Alignment(0.6, 0.5),
+    Alignment(-0.85, 0.7),
+    Alignment(0.85, 0.7),
   ];
 
   @override
@@ -867,36 +867,46 @@ class _PhotoCollage extends StatelessWidget {
       opacity: opacity,
       child: AspectRatio(
         aspectRatio: 1.0,
-        child: Stack(
-          alignment: Alignment.center,
-          children: List.generate(count, (i) {
-            final rotation = (rng.nextDouble() * 30 - 15) * (pi / 180);
+        // Tile size is a fraction of the box's own size, not a fixed pixel
+        // value — otherwise a large fixed size leaves no room for the dice
+        // layout to actually spread once the box itself is small (e.g. on
+        // narrower screens), and the photos just clump together.
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final tileSize = constraints.maxWidth * 0.56;
 
-            return Align(
-              alignment: _dicePositions[i],
-              child: Transform.rotate(
-                angle: rotation,
-                child: Container(
-                  width: 140,
-                  height: 140,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.2),
-                        blurRadius: 8,
-                        offset: const Offset(2, 4),
+            return Stack(
+              alignment: Alignment.center,
+              children: List.generate(count, (i) {
+                final rotation = (rng.nextDouble() * 30 - 15) * (pi / 180);
+
+                return Align(
+                  alignment: _dicePositions[i],
+                  child: Transform.rotate(
+                    angle: rotation,
+                    child: Container(
+                      width: tileSize,
+                      height: tileSize,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.2),
+                            blurRadius: 8,
+                            offset: const Offset(2, 4),
+                          ),
+                        ],
+                        image: DecorationImage(
+                          image: AssetImage(photos[i]),
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ],
-                    image: DecorationImage(
-                      image: AssetImage(photos[i]),
-                      fit: BoxFit.cover,
                     ),
                   ),
-                ),
-              ),
+                );
+              }),
             );
-          }),
+          },
         ),
       ),
     );

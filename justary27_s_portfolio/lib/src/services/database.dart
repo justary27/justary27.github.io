@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../models/blog.dart';
 
@@ -22,7 +22,7 @@ class Database {
     return Blog.fromJson(blogDoc);
   }
 
-  static writeBlog(Map<String, dynamic> blogMap) async {
+  static Future<void> writeBlog(Map<String, dynamic> blogMap) async {
     try {
       firestore.collection("blogs").add(blogMap);
       debugPrint("Success");

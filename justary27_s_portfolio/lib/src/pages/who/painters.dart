@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'data.dart';
 
@@ -79,6 +79,10 @@ class WhoPainter extends CustomPainter {
 // The path color shifts between section accent colors based on [frozenSectionIndex].
 // =============================================================================
 class WhoPathPainter extends CustomPainter {
+  // Node x-positions, pushed close to the page edges without touching them.
+  static const double _leftX = 0.06;
+  static const double _rightX = 0.94;
+
   /// 0.0–1.0, drives where the animated circle sits on the path.
   final double circleProgress;
 
@@ -104,27 +108,27 @@ class WhoPathPainter extends CustomPainter {
     final path = Path();
 
     // Entry — top of canvas
-    path.moveTo(0.125 * size.width, 0);
+    path.moveTo(_leftX * size.width, 0);
 
     // Node 1: Present — center of top third (size.height / 3 * 0.5)
-    final n1 = Offset(0.125 * size.width, size.height / 6);
+    final n1 = Offset(_leftX * size.width, size.height / 6);
     // Node 2: Past — center of middle third
-    final n2 = Offset(0.875 * size.width, size.height / 2);
+    final n2 = Offset(_rightX * size.width, size.height / 2);
     // Node 3: Future — center of bottom third
-    final n3 = Offset(0.125 * size.width, size.height * 5 / 6);
+    final n3 = Offset(_leftX * size.width, size.height * 5 / 6);
 
     // Curve from top into Node 1
-    path.quadraticBezierTo(0.125 * size.width, n1.dy * 0.3, n1.dx, n1.dy);
+    path.quadraticBezierTo(_leftX * size.width, n1.dy * 0.3, n1.dx, n1.dy);
 
     // Snake from Node 1 to Node 2
     path.quadraticBezierTo(
-      0.125 * size.width,
+      _leftX * size.width,
       (n1.dy + n2.dy) / 2,
       0.5 * size.width,
       (n1.dy + n2.dy) / 2,
     );
     path.quadraticBezierTo(
-      0.875 * size.width,
+      _rightX * size.width,
       (n1.dy + n2.dy) / 2,
       n2.dx,
       n2.dy,
@@ -132,13 +136,13 @@ class WhoPathPainter extends CustomPainter {
 
     // Snake from Node 2 to Node 3
     path.quadraticBezierTo(
-      0.875 * size.width,
+      _rightX * size.width,
       (n2.dy + n3.dy) / 2,
       0.5 * size.width,
       (n2.dy + n3.dy) / 2,
     );
     path.quadraticBezierTo(
-      0.125 * size.width,
+      _leftX * size.width,
       (n2.dy + n3.dy) / 2,
       n3.dx,
       n3.dy,
@@ -146,9 +150,9 @@ class WhoPathPainter extends CustomPainter {
 
     // Exit — bottom of canvas
     path.quadraticBezierTo(
-      0.125 * size.width,
+      _leftX * size.width,
       size.height * 0.95,
-      0.125 * size.width,
+      _leftX * size.width,
       size.height,
     );
 
@@ -171,9 +175,9 @@ class WhoPathPainter extends CustomPainter {
 
     // Static node rings at the 3 section centers
     final nodeOffsets = [
-      Offset(0.125 * size.width, size.height / 6),
-      Offset(0.875 * size.width, size.height / 2),
-      Offset(0.125 * size.width, size.height * 5 / 6),
+      Offset(_leftX * size.width, size.height / 6),
+      Offset(_rightX * size.width, size.height / 2),
+      Offset(_leftX * size.width, size.height * 5 / 6),
     ];
 
     for (int i = 0; i < nodeOffsets.length; i++) {

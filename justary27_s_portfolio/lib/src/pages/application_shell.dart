@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../components/navbar.dart';
@@ -21,11 +21,11 @@ class ApplicationShell extends ConsumerWidget {
       builder: (context, constraints) {
         DeviceType deviceType = DeviceType.getDeviceType(constraints.maxWidth);
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          ref.read(screenProvider.notifier).state = Screen(
-            constraints.maxWidth,
-            constraints.maxHeight,
-            deviceType,
-          );
+          ref
+              .read(screenProvider.notifier)
+              .update(
+                Screen(constraints.maxWidth, constraints.maxHeight, deviceType),
+              );
         });
 
         return Scaffold(
