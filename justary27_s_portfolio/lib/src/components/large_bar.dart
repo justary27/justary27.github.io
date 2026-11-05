@@ -1,12 +1,19 @@
+import 'dart:math';
+
 import 'package:flutter_svg/svg.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 
 import '../enums/device_type.dart';
 import '../constants/route.dart';
+import '../themes/motion.dart';
+import '../themes/route_ink.dart';
+import '../themes/typography.dart';
 import 'contact.dart';
 
 class LargeNavBar extends StatefulWidget {
+  static const double height = 72;
+
   final Size size;
   final DeviceType deviceType;
 
@@ -23,90 +30,79 @@ class _LargeNavBarState extends State<LargeNavBar> {
     }
   }
 
-  Color _getBgColor() {
-    if (GoRouterState.of(context).uri.path == RouteHandler.homePage) {
-      return Colors.black.withValues(alpha: 0.4);
-    } else {
-      return Colors.black.withValues(alpha: 0.2);
-    }
+  void _openContact() {
+    showDialog(
+      useRootNavigator: false,
+      context: context,
+      builder: (context) {
+        return ContactCard(size: widget.size, deviceType: widget.deviceType);
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final currentPath = GoRouterState.of(context).uri.path;
+    final ink = RouteInk.of(context);
+    final linkGap = (0.04 * widget.size.width).clamp(16.0, 48.0);
 
-    return AppBar(
-      centerTitle: true,
-      elevation: 0,
-      toolbarHeight: 0.15 * widget.size.height,
-      backgroundColor: Colors.transparent,
-      flexibleSpace: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [_getBgColor(), Colors.transparent],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomLeft,
-          ),
-        ),
+    return Container(
+      height: LargeNavBar.height,
+      padding: EdgeInsets.symmetric(
+        horizontal: max(16, 0.04 * widget.size.width),
       ),
-      leading: Container(
-        margin: EdgeInsets.only(left: 0.01 * widget.size.width),
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
-        child: _NavLogo(
-          color: Colors.white,
-          onTap: () => _handleRouteNavigation(RouteHandler.homePage),
-        ),
+      decoration: BoxDecoration(
+        color: ink.navbar,
+        border: Border(bottom: BorderSide(color: ink.navbarHairline)),
       ),
-      title: Row(
-        mainAxisSize: MainAxisSize.min,
+      child: Row(
         children: [
-          _NavButton(
-            label: "Who",
-            color: Colors.white,
-            isActive: currentPath == RouteHandler.whoPage,
-            onPressed: () => _handleRouteNavigation(RouteHandler.whoPage),
+          Expanded(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: _NavLogo(
+                color: ink.onNavbar,
+                onTap: () => _handleRouteNavigation(RouteHandler.homePage),
+              ),
+            ),
           ),
           _NavButton(
             label: "Work",
-            color: Colors.white,
+            color: ink.onNavbar,
             isActive: currentPath == RouteHandler.workPage,
             onPressed: () => _handleRouteNavigation(RouteHandler.workPage),
           ),
+          SizedBox(width: linkGap),
+          _NavButton(
+            label: "Who",
+            color: ink.onNavbar,
+            isActive: currentPath == RouteHandler.whoPage,
+            onPressed: () => _handleRouteNavigation(RouteHandler.whoPage),
+          ),
+          SizedBox(width: linkGap),
           _NavButton(
             label: "Blog",
-            color: Colors.white,
+            color: ink.onNavbar,
             isActive: currentPath.startsWith(RouteHandler.blogPage),
             onPressed: () => _handleRouteNavigation(RouteHandler.blogPage),
           ),
+          Expanded(
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: _NavButton(
+                label: "Contact",
+                color: ink.onNavbar,
+                isActive: false,
+                onPressed: _openContact,
+              ),
+            ),
+          ),
         ],
       ),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 16.0),
-          child: _NavButton(
-            label: "Contact",
-            color: Colors.white,
-            isActive: false,
-            onPressed: () {
-              showDialog(
-                useRootNavigator: false,
-                context: context,
-                builder: (context) {
-                  return ContactCard(
-                    size: widget.size,
-                    deviceType: widget.deviceType,
-                  );
-                },
-              );
-            },
-          ),
-        ),
-      ],
     );
   }
 }
 
-/// Logo widget with hover scale effect
 class _NavLogo extends StatefulWidget {
   final Color color;
   final VoidCallback onTap;
@@ -130,10 +126,13 @@ class _NavLogoState extends State<_NavLogo> {
         onTap: widget.onTap,
         child: AnimatedScale(
           scale: _isHovered ? 1.05 : 1.0,
-          duration: const Duration(milliseconds: 200),
-          curve: Curves.easeOut,
+          duration: Motion.swap,
+          curve: MotionCurves.standard,
           child: SvgPicture.asset(
-            "images/ar.svg",
+            "assets/images/ar.svg",
+            width: 26,
+            height: 40,
+            semanticsLabel: "Home",
             colorFilter: ColorFilter.mode(widget.color, BlendMode.srcIn),
           ),
         ),
@@ -142,7 +141,6 @@ class _NavLogoState extends State<_NavLogo> {
   }
 }
 
-/// Navigation button with animated underline
 class _NavButton extends StatefulWidget {
   final String label;
   final Color color;
@@ -165,85 +163,43 @@ class _NavButtonState extends State<_NavButton> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
+    return InkWell(
+      onTap: widget.onPressed,
+      onHover: (hovered) => setState(() => _isHovered = hovered),
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      focusColor: widget.color.withValues(alpha: 0.12),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-        child: InkWell(
-          onTap: widget.onPressed,
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          hoverColor: Colors.transparent,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  widget.label,
-                  style: TextStyle(
-                    fontFamily: "ABeeZee",
-                    color: widget.color,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                _AnimatedUnderline(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 5),
+              child: Text(
+                widget.label,
+                style: AppText.label.copyWith(
+                  fontSize: 15,
                   color: widget.color,
-                  isActive: widget.isActive,
-                  isHovered: _isHovered,
                 ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/// Animated underline that appears on hover or when page is active
-class _AnimatedUnderline extends StatelessWidget {
-  final Color color;
-  final bool isActive;
-  final bool isHovered;
-
-  const _AnimatedUnderline({
-    required this.color,
-    required this.isActive,
-    required this.isHovered,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final showUnderline = isActive || isHovered;
-        // Handle infinite constraints by providing a fallback width
-        final maxWidth =
-            constraints.maxWidth.isFinite ? constraints.maxWidth : 100.0;
-
-        return SizedBox(
-          width: maxWidth,
-          height: 2,
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeOut,
-              height: 2,
-              width: showUnderline ? maxWidth : 0,
-              decoration: BoxDecoration(
-                color: color,
-                borderRadius: BorderRadius.circular(1),
               ),
             ),
-          ),
-        );
-      },
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              height: 2,
+              child: AnimatedFractionallySizedBox(
+                duration: Motion.step,
+                curve: MotionCurves.standard,
+                alignment: Alignment.centerLeft,
+                widthFactor: widget.isActive || _isHovered ? 1 : 0,
+                child: ColoredBox(color: widget.color),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

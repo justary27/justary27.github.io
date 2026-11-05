@@ -30,7 +30,7 @@ GoRouter router = GoRouter(
     ShellRoute(
       navigatorKey: _siteNavigatorKey,
       builder: (BuildContext context, GoRouterState state, Widget child) {
-        return ApplicationShell(child: child);
+        return ApplicationShell(path: state.uri.path, child: child);
       },
       routes: <RouteBase>[
         GoRoute(
