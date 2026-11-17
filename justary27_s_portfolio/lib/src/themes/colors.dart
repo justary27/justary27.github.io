@@ -20,9 +20,12 @@ abstract final class AppColors {
   static const Color selectionHalo = Color(0xFFDDEFE8);
   static const Color paper = Color(0xFFFBF8F1);
   static const Color tape = Color(0xFFFFECAA);
+  static const Color tapeSheer = Color(0xE0FFECAA);
   static const Color marginNote = Color(0xFFFFF6C9);
   static const Color waxSeal = Color(0xFF262626);
   static const Color codeBackground = Color(0xFFEFF1F3);
+  static const Color deskLine = Color(0xFFD6D6D6);
+  static const Color deskGrid = Color(0x0F0D0D0D);
 
   // Route-specific extras
   static const Color whoAccentSoft = Color(0xFFB8C6FF);

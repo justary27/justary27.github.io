@@ -10,6 +10,7 @@ abstract final class Motion {
   static const Duration glideWithinYear = Duration(milliseconds: 350);
   static const Duration glideBetweenYears = Duration(milliseconds: 800);
   static const Duration draw = Duration(milliseconds: 900);
+  static const Duration skylineDraw = Duration(milliseconds: 1200);
   static const Duration slowDraw = Duration(milliseconds: 2200);
   static const Duration cadence = Duration(milliseconds: 3500);
 }

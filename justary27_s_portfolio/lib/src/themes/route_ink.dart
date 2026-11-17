@@ -18,6 +18,11 @@ class RouteInk extends ThemeExtension<RouteInk> {
   final LinearGradient? ground;
   final Color envelopePaper;
   final Color envelopeBody;
+  // The flap's top-to-bottom shades, the pocket's shade and the letter.
+  final Color envelopeFlap;
+  final Color envelopeFlapShade;
+  final Color envelopePocket;
+  final Color envelopeLetter;
 
   const RouteInk({
     required this.navbar,
@@ -28,6 +33,10 @@ class RouteInk extends ThemeExtension<RouteInk> {
     required this.ground,
     required this.envelopePaper,
     required this.envelopeBody,
+    required this.envelopeFlap,
+    required this.envelopeFlapShade,
+    required this.envelopePocket,
+    required this.envelopeLetter,
   });
 
   static const RouteInk home = RouteInk(
@@ -39,10 +48,15 @@ class RouteInk extends ThemeExtension<RouteInk> {
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: [Color(0xFFFFFFFF), Color(0xFFF2F2F2), Color(0xFFE2E6E6)],
+      stops: [0, 0.35, 1],
     ),
     ground: null,
     envelopePaper: Color(0xFFFBF8F1),
     envelopeBody: Color(0xFFE9E2D2),
+    envelopeFlap: Color(0xFFF4EFE3),
+    envelopeFlapShade: Color(0xFFE8E1CF),
+    envelopePocket: Color(0xFFEFE9DB),
+    envelopeLetter: Color(0xFFFBF8F1),
   );
 
   static const RouteInk work = RouteInk(
@@ -58,6 +72,10 @@ class RouteInk extends ThemeExtension<RouteInk> {
     ground: _pageGround,
     envelopePaper: Color(0xFFF1FBF5),
     envelopeBody: Color(0xFFD3ECDF),
+    envelopeFlap: Color(0xFFE6F7EE),
+    envelopeFlapShade: Color(0xFFD6EEE1),
+    envelopePocket: Color(0xFFE1F3E9),
+    envelopeLetter: Color(0xFFF8FDFA),
   );
 
   static const RouteInk who = RouteInk(
@@ -73,6 +91,10 @@ class RouteInk extends ThemeExtension<RouteInk> {
     ground: _pageGround,
     envelopePaper: Color(0xFFF6F5FF),
     envelopeBody: Color(0xFFDCDDF5),
+    envelopeFlap: Color(0xFFEEEEFC),
+    envelopeFlapShade: Color(0xFFDEDFF6),
+    envelopePocket: Color(0xFFE8E8FA),
+    envelopeLetter: Color(0xFFFBFBFF),
   );
 
   static const RouteInk blog = RouteInk(
@@ -88,6 +110,10 @@ class RouteInk extends ThemeExtension<RouteInk> {
     ground: _pageGround,
     envelopePaper: Color(0xFFFDF3F1),
     envelopeBody: Color(0xFFEED6D2),
+    envelopeFlap: Color(0xFFFAE8E4),
+    envelopeFlapShade: Color(0xFFF0D8D3),
+    envelopePocket: Color(0xFFF6E3DF),
+    envelopeLetter: Color(0xFFFFFAF9),
   );
 
   static RouteInk of(BuildContext context) =>
@@ -110,6 +136,10 @@ class RouteInk extends ThemeExtension<RouteInk> {
     LinearGradient? ground,
     Color? envelopePaper,
     Color? envelopeBody,
+    Color? envelopeFlap,
+    Color? envelopeFlapShade,
+    Color? envelopePocket,
+    Color? envelopeLetter,
   }) {
     return RouteInk(
       navbar: navbar ?? this.navbar,
@@ -120,6 +150,10 @@ class RouteInk extends ThemeExtension<RouteInk> {
       ground: ground ?? this.ground,
       envelopePaper: envelopePaper ?? this.envelopePaper,
       envelopeBody: envelopeBody ?? this.envelopeBody,
+      envelopeFlap: envelopeFlap ?? this.envelopeFlap,
+      envelopeFlapShade: envelopeFlapShade ?? this.envelopeFlapShade,
+      envelopePocket: envelopePocket ?? this.envelopePocket,
+      envelopeLetter: envelopeLetter ?? this.envelopeLetter,
     );
   }
 
@@ -135,6 +169,14 @@ class RouteInk extends ThemeExtension<RouteInk> {
       ground: LinearGradient.lerp(ground, other.ground, t),
       envelopePaper: Color.lerp(envelopePaper, other.envelopePaper, t)!,
       envelopeBody: Color.lerp(envelopeBody, other.envelopeBody, t)!,
+      envelopeFlap: Color.lerp(envelopeFlap, other.envelopeFlap, t)!,
+      envelopeFlapShade: Color.lerp(
+        envelopeFlapShade,
+        other.envelopeFlapShade,
+        t,
+      )!,
+      envelopePocket: Color.lerp(envelopePocket, other.envelopePocket, t)!,
+      envelopeLetter: Color.lerp(envelopeLetter, other.envelopeLetter, t)!,
     );
   }
 }
