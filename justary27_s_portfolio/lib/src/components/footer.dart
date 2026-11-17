@@ -1,30 +1,20 @@
-// ignore_for_file: avoid_web_libraries_in_flutter
+import 'dart:math';
 
-import 'dart:math' show cos, pi, sin;
-
-import 'package:material_ui/material_ui.dart';
-import 'package:go_router/go_router.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:material_ui/material_ui.dart';
 
-import '../components/anchor.dart';
-import '../enums/device_type.dart';
+import '../constants/contact.dart';
 import '../constants/route.dart';
-import 'large_footer.dart';
-
-/// Storage class for Footer constraints.
-class FC {
-  FC._();
-
-  static const Map<DeviceType, double> techStack = {
-    DeviceType.smallMobile: 30,
-    DeviceType.largeMobile: 30,
-    DeviceType.smallTablet: 35,
-    DeviceType.largeTablet: 35,
-    DeviceType.smallLaptop: 35,
-    DeviceType.largeLaptop: 40,
-    DeviceType.smallDesktop: 45,
-  };
-}
+import '../enums/layout.dart';
+import '../themes/colors.dart';
+import '../themes/dimens.dart';
+import '../themes/motion.dart';
+import '../themes/typography.dart';
+import 'app_link.dart';
+import 'ar_mark_painter.dart';
+import 'contact_envelope.dart';
+import 'ink_on_view.dart';
+import 'pill_button.dart';
 
 class Footer extends StatefulWidget {
   final Size size;
@@ -36,377 +26,240 @@ class Footer extends StatefulWidget {
 }
 
 class _FooterState extends State<Footer> {
-  void _handleRouteNavigation(String destination) {
-    if (GoRouterState.of(context).uri.path != destination) {
-      context.push(destination);
-    }
-  }
+  void _openContact() => showContactEnvelope(context);
 
   @override
   Widget build(BuildContext context) {
-    Size size = widget.size;
-    final DeviceType deviceType = DeviceType.getDeviceType(size.width);
-
-    if (!(deviceType < DeviceType.largeTablet)) {
-      return LargeFooter(size: size);
-    }
-
-    return Stack(
+    final layout = Layout.of(MediaQuery.sizeOf(context));
+    final compact = layout.isCompact;
+    final phone = layout.isPhone;
+    final signOff = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          width: size.width,
-          height: 0.3 * size.height,
-          color: const Color.fromRGBO(134, 149, 179, 1.0),
-          child: CustomPaint(painter: SakuraPainter()),
+        Text(
+          "Aryan Ranjan",
+          style: AppText.signatureFooter.copyWith(
+            color: Colors.white,
+            height: 0.9,
+          ),
         ),
-        Container(
-          alignment: Alignment.topLeft,
-          width: size.width,
-          height: 0.3 * size.height,
-          color: Colors.transparent,
+        const SizedBox(height: 14),
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 300),
+          child: Text(
+            "<placeholder>",
+            style: AppText.label.copyWith(
+              fontSize: 15,
+              fontWeight: FontWeight.w400,
+              height: 1.5,
+              color: AppColors.onFooterMuted,
+            ),
+          ),
+        ),
+      ],
+    );
+    final sidePadding = max(Space.s16, 0.04 * widget.size.width);
+
+    return Container(
+      width: double.infinity,
+      decoration: const BoxDecoration(color: AppColors.footerSlate),
+      clipBehavior: Clip.hardEdge,
+      child: Stack(
+        children: [
+          Positioned(
+            right: -40,
+            bottom: -74,
+            width: 240,
+            height: 240 / ArMarkPainter.aspectRatio,
+            child: RepaintBoundary(
+              child: InkOnView(
+                duration: Motion.slowDraw,
+                curve: MotionCurves.draw,
+                builder: (context, ink) {
+                  return CustomPaint(
+                    painter: ArMarkPainter(
+                      progress: ink,
+                      color: AppColors.arWatermark,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(sidePadding, 56, sidePadding, 28),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 1152),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // Tablet: the sign-off across the top, links and
+                    // actions in two columns under it.
+                    // Phone: everything in one column.
+                    if (phone)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: 28,
+                        children: [signOff, _buildLinks(), _buildActions()],
+                      )
+                    else if (compact)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: Space.s32,
+                        children: [
+                          signOff,
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            spacing: Space.s40,
+                            children: [
+                              Expanded(child: _buildLinks()),
+                              Expanded(child: _buildActions()),
+                            ],
+                          ),
+                        ],
+                      )
+                    else
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(flex: 14, child: signOff),
+                          const SizedBox(width: Space.s40),
+                          Expanded(flex: 10, child: _buildLinks()),
+                          const SizedBox(width: Space.s40),
+                          Expanded(flex: 16, child: _buildActions()),
+                        ],
+                      ),
+                    const SizedBox(height: 36),
+                    Container(
+                      padding: const EdgeInsets.only(top: 14),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          top: BorderSide(
+                            color: Colors.white.withValues(alpha: 0.2),
+                          ),
+                        ),
+                      ),
+                      child: Text(
+                        "© ${DateTime.now().year} Aryan Ranjan",
+                        style: AppText.label.copyWith(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.onFooterMuted,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildLinks() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        for (final (label, path) in const [
+          ("Work", RouteHandler.workPage),
+          ("Who", RouteHandler.whoPage),
+          ("Blog", RouteHandler.blogPage),
+        ])
+          AppLink(
+            to: path,
+            builder: (context, states) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: Text(
+                  label,
+                  style: AppText.label.copyWith(
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+                ),
+              );
+            },
+          ),
+      ],
+    );
+  }
+
+  Widget _buildActions() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          children: [
+            PillButton(
+              label: "Say hi",
+              icon: Icons.mail_outline,
+              variant: PillVariant.filled,
+              color: Colors.white,
+              onColor: AppColors.ink900,
+              onPressed: _openContact,
+            ),
+            PillButton(
+              label: "Résumé",
+              icon: Icons.file_download_outlined,
+              color: Colors.white,
+              to: ContactHandler.resumeUrl,
+            ),
+          ],
+        ),
+        const SizedBox(height: Space.s16),
+        AppLink(
+          to: ContactHandler.mailto,
+          builder: (context, states) {
+            return Text(
+              ContactHandler.email,
+              style: AppText.label.copyWith(
+                fontWeight: FontWeight.w400,
+                color: AppColors.onFooterMuted,
+                decoration: TextDecoration.underline,
+                decorationColor: AppColors.onFooterMuted,
+              ),
+            );
+          },
+        ),
+        const SizedBox(height: Space.s16),
+        Transform.translate(
+          offset: const Offset(-9, 0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                width: 0.32 * size.width,
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Aryan Ranjan",
-                      style: TextStyle(
-                        fontFamily: "Allison",
-                        color: Colors.white.withValues(alpha: 0.7),
-                        fontSize: 0.065 * size.width,
-                      ),
-                    ),
-                  ],
-                ),
+              AppLink.icon(
+                label: "LinkedIn",
+                icon: const FaIcon(FontAwesomeIcons.linkedin),
+                iconSize: 26,
+                color: Colors.white,
+                to: "https://www.linkedin.com/in/justary27",
               ),
-              SizedBox(
-                width: 0.18 * size.width,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
-                      child: MaterialButton(
-                        onPressed: () {
-                          _handleRouteNavigation(RouteHandler.whoPage);
-                        },
-                        child: const Text(
-                          "Who",
-                          style: TextStyle(
-                            fontFamily: "ABeeZee",
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
-                      child: MaterialButton(
-                        onPressed: () {
-                          _handleRouteNavigation(RouteHandler.workPage);
-                        },
-                        child: const Text(
-                          "Work",
-                          style: TextStyle(
-                            fontFamily: "ABeeZee",
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
-                      child: MaterialButton(
-                        onPressed: () {
-                          _handleRouteNavigation(RouteHandler.blogPage);
-                        },
-                        child: const Text(
-                          "Blog",
-                          style: TextStyle(
-                            fontFamily: "ABeeZee",
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              const SizedBox(width: 14),
+              AppLink.icon(
+                label: "GitHub",
+                icon: const FaIcon(FontAwesomeIcons.github),
+                iconSize: 26,
+                color: Colors.white,
+                to: "https://github.com/justary27",
               ),
-              Container(
-                width: 0.50 * size.width,
-                alignment: Alignment.center,
-                child:
-                    (deviceType < DeviceType.smallTablet)
-                        ? Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    AnchorButton(
-                                      iconSize: FC.techStack[deviceType],
-                                      destUrl: 'mailto:aryan_r@ch.iitr.ac.in',
-                                      icon: const Icon(
-                                        Icons.alternate_email_rounded,
-                                      ),
-                                      color: Colors.white.withValues(
-                                        alpha: 0.7,
-                                      ),
-                                      parentContext: context,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.fromLTRB(
-                                        0.04 * size.width,
-                                        0,
-                                        0,
-                                        0,
-                                      ),
-                                      child: AnchorButton(
-                                        iconSize: FC.techStack[deviceType],
-                                        destUrl:
-                                            'https://twitter.com/JustAry27',
-                                        icon: const FaIcon(
-                                          FontAwesomeIcons.xTwitter,
-                                        ),
-                                        color: Colors.white.withValues(
-                                          alpha: 0.7,
-                                        ),
-                                        parentContext: context,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    AnchorButton(
-                                      iconSize: FC.techStack[deviceType],
-                                      destUrl: 'https://github.com/justary27',
-                                      icon: const FaIcon(FontAwesomeIcons.github),
-                                      color: Colors.white.withValues(
-                                        alpha: 0.7,
-                                      ),
-                                      parentContext: context,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.fromLTRB(
-                                        0.04 * size.width,
-                                        0,
-                                        0,
-                                        0,
-                                      ),
-                                      child: AnchorButton(
-                                        iconSize: FC.techStack[deviceType],
-                                        destUrl:
-                                            'https://www.linkedin.com/in/aryan-ranjan27/',
-                                        icon: const FaIcon(
-                                          FontAwesomeIcons.linkedin,
-                                        ),
-                                        color: Colors.white.withValues(
-                                          alpha: 0.7,
-                                        ),
-                                        parentContext: context,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        )
-                        : OverflowBar(
-                          alignment: MainAxisAlignment.center,
-                          children: [
-                            AnchorButton(
-                              iconSize: FC.techStack[deviceType],
-                              destUrl: 'mailto:aryan_r@ch.iitr.ac.in',
-                              icon: const Icon(Icons.alternate_email_rounded),
-                              color: Colors.white.withValues(alpha: 0.7),
-                              parentContext: context,
-                            ),
-                            AnchorButton(
-                              iconSize: FC.techStack[deviceType],
-                              destUrl: 'https://twitter.com/JustAry27',
-                              icon: const FaIcon(FontAwesomeIcons.xTwitter),
-                              color: Colors.white.withValues(alpha: 0.7),
-                              parentContext: context,
-                            ),
-                            AnchorButton(
-                              iconSize: FC.techStack[deviceType],
-                              destUrl: 'https://github.com/justary27',
-                              icon: const FaIcon(FontAwesomeIcons.github),
-                              color: Colors.white.withValues(alpha: 0.7),
-                              parentContext: context,
-                            ),
-                            AnchorButton(
-                              iconSize: FC.techStack[deviceType],
-                              destUrl:
-                                  'https://www.linkedin.com/in/aryan-ranjan27/',
-                              icon: const FaIcon(FontAwesomeIcons.linkedin),
-                              color: Colors.white.withValues(alpha: 0.7),
-                              parentContext: context,
-                            ),
-                          ],
-                        ),
+              const SizedBox(width: 14),
+              AppLink.icon(
+                label: "X",
+                icon: const FaIcon(FontAwesomeIcons.xTwitter),
+                iconSize: 26,
+                color: Colors.white,
+                to: "https://x.com/JustAry27",
               ),
             ],
           ),
         ),
       ],
     );
-  }
-}
-
-/// Hand-drawn sakura (cherry blossom) branch, line-art style, anchored to
-/// the right side of the footer.
-class SakuraPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final branchPaint =
-        Paint()
-          ..style = PaintingStyle.stroke
-          ..color = Colors.white.withValues(alpha: 0.7)
-          ..strokeCap = StrokeCap.round
-          ..strokeJoin = StrokeJoin.round
-          ..strokeWidth = 3;
-
-    final twigPaint =
-        Paint()
-          ..style = PaintingStyle.stroke
-          ..color = Colors.white.withValues(alpha: 0.7)
-          ..strokeCap = StrokeCap.round
-          ..strokeJoin = StrokeJoin.round
-          ..strokeWidth = 2.2;
-
-    // Petals are filled, not just outlined — thin stroked circles read as
-    // near-invisible specks at this scale, filled dots read as flowers.
-    final petalPaint =
-        Paint()
-          ..style = PaintingStyle.fill
-          ..color = Colors.white.withValues(alpha: 0.65);
-
-    final centerPaint =
-        Paint()
-          ..style = PaintingStyle.fill
-          ..color = Colors.white.withValues(alpha: 0.9);
-
-    // Main branch: e^x-like — stays low and nearly flat from the start all
-    // the way past where the social icons end, then bends into a sudden,
-    // steep rise over the last stretch to the tip.
-    final mainBranch =
-        Path()
-          ..moveTo(0.46 * size.width, 0.98 * size.height)
-          ..cubicTo(
-            0.78 * size.width,
-            0.94 * size.height, // stays flat/low well past the icon row
-            0.92 * size.width,
-            0.80 * size.height, // still low here — the rise is yet to come
-            0.96 * size.width,
-            0.05 * size.height, // sudden shoot-up over the final stretch
-          );
-    canvas.drawPath(mainBranch, branchPaint);
-
-    // Side twigs sprouting from points along the main curve, alternating
-    // left and right so the branch doesn't read as a single bare line.
-    final twigA = // on the flat stretch, twigs back left/down
-        Path()
-          ..moveTo(0.702 * size.width, 0.903 * size.height)
-          ..quadraticBezierTo(
-            0.65 * size.width,
-            0.88 * size.height,
-            0.58 * size.width,
-            0.82 * size.height,
-          );
-    canvas.drawPath(twigA, twigPaint);
-
-    final twigB = // right where the flat stretch starts bending, twigs right
-        Path()
-          ..moveTo(0.838 * size.width, 0.738 * size.height)
-          ..quadraticBezierTo(
-            0.90 * size.width,
-            0.68 * size.height,
-            0.96 * size.width,
-            0.62 * size.height,
-          );
-    canvas.drawPath(twigB, twigPaint);
-
-    final twigC = // on the steep rise, twigs back left
-        Path()
-          ..moveTo(0.918 * size.width, 0.462 * size.height)
-          ..quadraticBezierTo(
-            0.85 * size.width,
-            0.35 * size.height,
-            0.78 * size.width,
-            0.25 * size.height,
-          );
-    canvas.drawPath(twigC, twigPaint);
-
-    // Blossoms sit directly on the branch/twig paths above (points taken
-    // along the curves), so the composition reads as one connected sprig.
-    // Includes midpoints, not just tips, so the branch looks in full bloom
-    // rather than a bare line with a flower at each end.
-    final blossomCenters = [
-      Offset(0.507 * size.width, 0.973 * size.height), // near the base
-      Offset(0.646 * size.width, 0.871 * size.height), // twig A mid
-      Offset(0.58 * size.width, 0.82 * size.height), // twig A tip
-      Offset(0.900 * size.width, 0.680 * size.height), // twig B mid
-      Offset(0.96 * size.width, 0.62 * size.height), // twig B tip
-      Offset(0.850 * size.width, 0.353 * size.height), // twig C mid
-      Offset(0.78 * size.width, 0.25 * size.height), // twig C tip
-      Offset(0.96 * size.width, 0.05 * size.height), // main branch tip
-    ];
-
-    for (final center in blossomCenters) {
-      _drawBlossom(
-        canvas,
-        center,
-        0.06 * size.height,
-        petalPaint,
-        centerPaint,
-      );
-    }
-
-    // Tiny unopened buds, marking where each twig meets the main branch.
-    final budCenters = [
-      Offset(0.592 * size.width, 0.954 * size.height),
-      Offset(0.702 * size.width, 0.903 * size.height),
-      Offset(0.838 * size.width, 0.738 * size.height),
-      Offset(0.918 * size.width, 0.462 * size.height),
-    ];
-
-    for (final center in budCenters) {
-      canvas.drawCircle(center, 0.016 * size.height, petalPaint);
-    }
-  }
-
-  void _drawBlossom(
-    Canvas canvas,
-    Offset center,
-    double radius,
-    Paint petalPaint,
-    Paint centerPaint,
-  ) {
-    const petalCount = 5;
-    final petalRadius = radius * 0.5;
-    for (var i = 0; i < petalCount; i++) {
-      final angle = (2 * pi / petalCount) * i - pi / 2;
-      final petalCenter =
-          center + Offset(cos(angle), sin(angle)) * radius * 0.58;
-      canvas.drawCircle(petalCenter, petalRadius, petalPaint);
-    }
-    canvas.drawCircle(center, radius * 0.22, centerPaint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
   }
 }

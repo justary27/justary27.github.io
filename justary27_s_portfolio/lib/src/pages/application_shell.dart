@@ -1,11 +1,9 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../components/large_bar.dart';
 import '../components/navbar.dart';
 import '../enums/device_type.dart';
 import '../models/screen.dart';
-import '../components/drawer.dart';
 import '../providers/navbar.dart';
 import '../providers/screen.dart';
 import '../themes/motion.dart';
@@ -36,11 +34,7 @@ class ApplicationShell extends ConsumerWidget {
           key: scaffoldKey,
           extendBodyBehindAppBar: true,
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(
-              (deviceType < DeviceType.largeTablet)
-                  ? 0.1 * constraints.maxHeight
-                  : LargeNavBar.height,
-            ),
+            preferredSize: const Size.fromHeight(NavBar.height),
             child: ClipRect(
               child: AnimatedSlide(
                 offset: ref.watch(navbarVisibleProvider)
@@ -48,18 +42,15 @@ class ApplicationShell extends ConsumerWidget {
                     : const Offset(0, -1),
                 duration: const Duration(milliseconds: 250),
                 curve: Curves.easeInOut,
-                child: Navbar(navigatorKey: scaffoldKey),
+                // The full navbar on every window; it fits down to 360.
+                child: NavBar(
+                  size: constraints.biggest,
+                  deviceType: deviceType,
+                ),
               ),
             ),
           ),
           body: child,
-          endDrawer: (deviceType < DeviceType.largeTablet)
-              ? SmallDrawer(
-                  navigator: scaffoldKey,
-                  size: Size(constraints.maxWidth, constraints.maxHeight),
-                  deviceType: deviceType,
-                )
-              : null,
         );
 
         return AnimatedTheme(
