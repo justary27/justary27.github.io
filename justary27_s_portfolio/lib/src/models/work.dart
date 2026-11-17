@@ -16,6 +16,35 @@ class CoreInfo {
   });
 }
 
+/// A title held before a promotion at the same company.
+class EarlierRole {
+  final String role;
+  final String duration;
+
+  const EarlierRole({required this.role, required this.duration});
+}
+
+/// One role at a company, for entries with a promotion. Newest first; each
+/// role keeps its own points and may carry its own headline number.
+class RoleChapter {
+  final String role;
+  // Upper-case tag for the step label, e.g. "SENIOR".
+  final String short;
+  final String duration;
+  final List<ScrollablePoint> points;
+  final String? headline;
+  final String? headlineCaption;
+
+  const RoleChapter({
+    required this.role,
+    required this.short,
+    required this.duration,
+    required this.points,
+    this.headline,
+    this.headlineCaption,
+  });
+}
+
 /// Graphic asset information
 class Graphic {
   final String path;
@@ -36,6 +65,9 @@ class ScrollablePoint {
     required this.graphic,
     this.highlightColor,
   });
+
+  // An empty diagram marks a text-only point: listed, but with no figure step.
+  bool get hasFigure => !(graphic.type == GraphicType.diagram && graphic.path.isEmpty);
 }
 
 /// Link for work experience (company website, blog posts, etc.)
@@ -64,6 +96,15 @@ class WorkExperience {
   /// If null, a generic [Icons.business] icon is shown instead.
   final String? logoSvgPath;
 
+  // Promotions: one chapter per role, newest first. Empty for a single role,
+  // which then comes from coreInfo and scrollablePoints.
+  final List<RoleChapter> chapters;
+  // The one number in the summary, with its caption.
+  final String? headline;
+  final String? headlineCaption;
+  // Meta-caps tags, e.g. "GO · SQS · FCM".
+  final String? stack;
+
   const WorkExperience({
     required this.id,
     required this.company,
@@ -76,7 +117,24 @@ class WorkExperience {
     required this.primaryColor,
     required this.secondaryColor,
     this.logoSvgPath,
+    this.chapters = const [],
+    this.headline,
+    this.headlineCaption,
+    this.stack,
   });
+}
+
+extension WorkRoles on WorkExperience {
+  List<RoleChapter> get roleChapters => chapters.isNotEmpty
+      ? chapters
+      : [
+          RoleChapter(
+            role: coreInfo.role,
+            short: "",
+            duration: coreInfo.duration,
+            points: scrollablePoints,
+          ),
+        ];
 }
 
 /// Position of Responsibility model
@@ -96,6 +154,13 @@ class Position {
   /// If null, a generic [Icons.star_outline] icon is shown instead.
   final String? logoSvgPath;
 
+  // Oldest first; the ladder ends at coreInfo's role.
+  final List<EarlierRole> earlierRoles;
+  // A role at this organisation told in Experience, shown as a dashed chip
+  // that jumps there instead of repeating it.
+  final String? earlierInExperience;
+  final String? experienceId;
+
   const Position({
     required this.id,
     required this.organization,
@@ -108,5 +173,8 @@ class Position {
     required this.primaryColor,
     required this.secondaryColor,
     this.logoSvgPath,
+    this.earlierRoles = const [],
+    this.earlierInExperience,
+    this.experienceId,
   });
 }
