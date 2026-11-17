@@ -1,26 +1,25 @@
 import 'dart:math';
 import 'dart:ui';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
+
+import '../../themes/colors.dart';
 
 class CarouselPainter extends CustomPainter {
   final double angle;
   final double radius;
-  final Paint sectorPaint =
-      Paint()
-        ..color = const Color(0xFF0d0d0d).withValues(alpha: 0.2)
-        ..style = PaintingStyle.fill;
+  final Paint sectorPaint = Paint()
+    ..color = AppColors.ink900.withValues(alpha: 0.2)
+    ..style = PaintingStyle.fill;
 
-  final Paint borderPaint =
-      Paint()
-        ..color = const Color(0xFF0d0d0d)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 2;
+  final Paint borderPaint = Paint()
+    ..color = AppColors.ink900
+    ..style = PaintingStyle.stroke
+    ..strokeWidth = 2;
 
-  final Paint smallBorderPaint =
-      Paint()
-        ..color = Colors.black87
-        ..style = PaintingStyle.fill
-        ..strokeWidth = 2;
+  final Paint smallBorderPaint = Paint()
+    ..color = Colors.black87
+    ..style = PaintingStyle.fill
+    ..strokeWidth = 2;
 
   CarouselPainter({required this.angle, required this.radius});
 
@@ -31,7 +30,7 @@ class CarouselPainter extends CustomPainter {
     final Offset center = Offset(size.width / 2, size.height / 2);
     final Rect rect = Rect.fromCircle(center: center, radius: radius);
 
-    canvas.drawCircle(center, 0.25 * radius, smallBorderPaint);
+    canvas.drawCircle(center, 0.225 * radius, smallBorderPaint);
 
     for (int i = 0; i < 3; i++) {
       final double sectorStartAngle = startAngle + i * 2 * sweepAngle;
@@ -45,100 +44,6 @@ class CarouselPainter extends CustomPainter {
       canvas.drawArc(rect, sectorStartAngle, sweepAngle, true, sectorPaint);
       canvas.drawArc(rect, sectorStartAngle, sweepAngle, true, borderPaint);
     }
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
-  }
-}
-
-class PathPainter extends CustomPainter {
-  final Animation<double> animation;
-
-  PathPainter(this.animation) : super(repaint: animation);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint =
-        Paint()
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 4.0
-          ..color = const Color(0xFF0d0d0d).withValues(alpha: 0.5);
-
-    Path path = Path();
-
-    path.moveTo(0, 0.65 * size.height);
-    path.lineTo(0.1 * size.width, 0.65 * size.height);
-    path.lineTo(0.1 * size.width, 0.7 * size.height);
-
-    path.lineTo(0.35 * size.width, 0.7 * size.height);
-    path.lineTo(0.35 * size.width, 0.65 * size.height);
-    path.lineTo(0.375 * size.width, 0.65 * size.height);
-
-    path.arcTo(
-      Rect.fromCenter(
-        center: Offset(size.width / 2, 0.65 * size.height),
-        height: 0.20 * size.width,
-        width: 0.25 * size.width,
-      ),
-      pi,
-      pi,
-      false,
-    );
-
-    path.lineTo(0.65 * size.width, 0.65 * size.height);
-    path.lineTo(0.65 * size.width, 0.7 * size.height);
-
-    path.lineTo(0.9 * size.width, 0.7 * size.height);
-    path.lineTo(0.9 * size.width, 0.65 * size.height);
-    path.lineTo(size.width, 0.65 * size.height);
-
-    path.lineTo(size.width, size.height);
-    path.lineTo(0, size.height);
-
-    final PathMetrics pathMetrics = path.computeMetrics();
-    for (PathMetric pathMetric in pathMetrics) {
-      final Path extractPath = pathMetric.extractPath(
-        0.0,
-        pathMetric.length * animation.value,
-      );
-      canvas.drawPath(extractPath, paint);
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant PathPainter oldDelegate) {
-    return oldDelegate.animation != animation;
-  }
-}
-
-class SemiCirclePainter extends CustomPainter {
-  final Paint painter =
-      Paint()
-        ..color = const Color(0xFF0d0d0d)
-        ..strokeWidth = 4
-        ..style = PaintingStyle.stroke;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    double radius = size.width / 2;
-    double circumference = 2 * pi * radius;
-    double dashWidth = 30.0;
-    double dashSpace = 20.0;
-    double dashCount = circumference / (dashWidth + dashSpace);
-
-    Path path = Path();
-    for (int i = 0; i < dashCount; i++) {
-      double startAngle = (i * (dashWidth + dashSpace)) / radius;
-      double endAngle = startAngle + (dashWidth / radius);
-      path.addArc(
-        Rect.fromCircle(center: Offset(radius, radius), radius: radius),
-        startAngle,
-        endAngle - startAngle,
-      );
-    }
-    canvas.drawPath(path, painter);
   }
 
   @override
@@ -213,4 +118,69 @@ class WhoPainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
   }
+}
+
+// Draws each glyph at its real width plus the DS tracking, which
+// fixed-angle circular text can't do.
+class MilestoneRingPainter extends CustomPainter {
+  final List<(String, double)> labels;
+  final double radius;
+  final Animation<double> turn;
+  final TextStyle style;
+  final double letterSpacing;
+
+  MilestoneRingPainter({
+    required this.labels,
+    required this.radius,
+    required this.turn,
+    required this.style,
+    this.letterSpacing = 5,
+  }) : super(repaint: turn);
+
+  late final List<List<TextPainter>> _glyphs = [
+    for (final (label, _) in labels)
+      [
+        for (final char in label.toUpperCase().characters)
+          TextPainter(
+            text: TextSpan(text: char, style: style),
+            textDirection: TextDirection.ltr,
+          )..layout(),
+      ],
+  ];
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Offset center = Offset(size.width / 2, size.height / 2);
+    final double rotation = turn.value * 2 * pi;
+
+    for (int i = 0; i < labels.length; i++) {
+      final List<TextPainter> glyphs = _glyphs[i];
+      final double arc =
+          glyphs.fold(0.0, (sum, g) => sum + g.width) +
+          letterSpacing * (glyphs.length - 1);
+      // Centred on its angle, like the old CircularText setup.
+      final double start =
+          labels[i].$2 * pi / 180 + rotation - arc / 2 / radius;
+      double cursor = 0;
+      for (final glyph in glyphs) {
+        final double angle = start + (cursor + glyph.width / 2) / radius;
+        final double baseline = glyph.computeDistanceToActualBaseline(
+          TextBaseline.alphabetic,
+        );
+        canvas
+          ..save()
+          ..translate(center.dx, center.dy)
+          ..rotate(angle + pi / 2);
+        glyph.paint(canvas, Offset(-glyph.width / 2, -radius - baseline));
+        canvas.restore();
+        cursor += glyph.width + letterSpacing;
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(MilestoneRingPainter oldDelegate) =>
+      oldDelegate.radius != radius ||
+      oldDelegate.labels != labels ||
+      oldDelegate.style != style;
 }

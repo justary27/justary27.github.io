@@ -1,27 +1,20 @@
-// ignore_for_file: avoid_web_libraries_in_flutter
+import 'dart:math';
 
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:material_ui/material_ui.dart';
 
-import '../components/anchor.dart';
-import '../enums/device_type.dart';
+import '../constants/contact.dart';
 import '../constants/route.dart';
-
-/// Storage class for Footer constraints.
-class FC {
-  FC._();
-
-  static const Map<DeviceType, double> techStack = {
-    DeviceType.smallMobile: 30,
-    DeviceType.largeMobile: 30,
-    DeviceType.smallTablet: 35,
-    DeviceType.largeTablet: 35,
-    DeviceType.smallLaptop: 35,
-    DeviceType.largeLaptop: 40,
-    DeviceType.smallDesktop: 45,
-  };
-}
+import '../enums/layout.dart';
+import '../themes/colors.dart';
+import '../themes/dimens.dart';
+import '../themes/motion.dart';
+import '../themes/typography.dart';
+import 'app_link.dart';
+import 'ar_mark_painter.dart';
+import 'contact_envelope.dart';
+import 'ink_on_view.dart';
+import 'pill_button.dart';
 
 class Footer extends StatefulWidget {
   final Size size;
@@ -33,267 +26,240 @@ class Footer extends StatefulWidget {
 }
 
 class _FooterState extends State<Footer> {
-  void _handleRouteNavigation(String destination) {
-    if (GoRouterState.of(context).uri.path != destination) {
-      context.push(destination);
-    }
-  }
+  void _openContact() => showContactEnvelope(context);
 
   @override
   Widget build(BuildContext context) {
-    Size size = widget.size;
-    final DeviceType deviceType = DeviceType.getDeviceType(size.width);
-
-    return Stack(
+    final layout = Layout.of(MediaQuery.sizeOf(context));
+    final compact = layout.isCompact;
+    final phone = layout.isPhone;
+    final signOff = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          width: size.width,
-          height: 0.3 * size.height,
-          color: const Color.fromRGBO(134, 149, 179, 1.0),
-          child: CustomPaint(painter: CircuitPainter()),
+        Text(
+          "Aryan Ranjan",
+          style: AppText.signatureFooter.copyWith(
+            color: Colors.white,
+            height: 0.9,
+          ),
         ),
-        Container(
-          alignment: Alignment.topLeft,
-          width: size.width,
-          height: 0.3 * size.height,
-          color: Colors.transparent,
+        const SizedBox(height: 14),
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 300),
+          child: Text(
+            "<placeholder>",
+            style: AppText.label.copyWith(
+              fontSize: 15,
+              fontWeight: FontWeight.w400,
+              height: 1.5,
+              color: AppColors.onFooterMuted,
+            ),
+          ),
+        ),
+      ],
+    );
+    final sidePadding = max(Space.s16, 0.04 * widget.size.width);
+
+    return Container(
+      width: double.infinity,
+      decoration: const BoxDecoration(color: AppColors.footerSlate),
+      clipBehavior: Clip.hardEdge,
+      child: Stack(
+        children: [
+          Positioned(
+            right: -40,
+            bottom: -74,
+            width: 240,
+            height: 240 / ArMarkPainter.aspectRatio,
+            child: RepaintBoundary(
+              child: InkOnView(
+                duration: Motion.slowDraw,
+                curve: MotionCurves.draw,
+                builder: (context, ink) {
+                  return CustomPaint(
+                    painter: ArMarkPainter(
+                      progress: ink,
+                      color: AppColors.arWatermark,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(sidePadding, 56, sidePadding, 28),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 1152),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // Tablet: the sign-off across the top, links and
+                    // actions in two columns under it.
+                    // Phone: everything in one column.
+                    if (phone)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: 28,
+                        children: [signOff, _buildLinks(), _buildActions()],
+                      )
+                    else if (compact)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: Space.s32,
+                        children: [
+                          signOff,
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            spacing: Space.s40,
+                            children: [
+                              Expanded(child: _buildLinks()),
+                              Expanded(child: _buildActions()),
+                            ],
+                          ),
+                        ],
+                      )
+                    else
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(flex: 14, child: signOff),
+                          const SizedBox(width: Space.s40),
+                          Expanded(flex: 10, child: _buildLinks()),
+                          const SizedBox(width: Space.s40),
+                          Expanded(flex: 16, child: _buildActions()),
+                        ],
+                      ),
+                    const SizedBox(height: 36),
+                    Container(
+                      padding: const EdgeInsets.only(top: 14),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          top: BorderSide(
+                            color: Colors.white.withValues(alpha: 0.2),
+                          ),
+                        ),
+                      ),
+                      child: Text(
+                        "© ${DateTime.now().year} Aryan Ranjan",
+                        style: AppText.label.copyWith(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.onFooterMuted,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildLinks() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        for (final (label, path) in const [
+          ("Work", RouteHandler.workPage),
+          ("Who", RouteHandler.whoPage),
+          ("Blog", RouteHandler.blogPage),
+        ])
+          AppLink(
+            to: path,
+            builder: (context, states) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: Text(
+                  label,
+                  style: AppText.label.copyWith(
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
+                ),
+              );
+            },
+          ),
+      ],
+    );
+  }
+
+  Widget _buildActions() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          children: [
+            PillButton(
+              label: "Say hi",
+              icon: Icons.mail_outline,
+              variant: PillVariant.filled,
+              color: Colors.white,
+              onColor: AppColors.ink900,
+              onPressed: _openContact,
+            ),
+            PillButton(
+              label: "Résumé",
+              icon: Icons.file_download_outlined,
+              color: Colors.white,
+              to: ContactHandler.resumeUrl,
+            ),
+          ],
+        ),
+        const SizedBox(height: Space.s16),
+        AppLink(
+          to: ContactHandler.mailto,
+          builder: (context, states) {
+            return Text(
+              ContactHandler.email,
+              style: AppText.label.copyWith(
+                fontWeight: FontWeight.w400,
+                color: AppColors.onFooterMuted,
+                decoration: TextDecoration.underline,
+                decorationColor: AppColors.onFooterMuted,
+              ),
+            );
+          },
+        ),
+        const SizedBox(height: Space.s16),
+        Transform.translate(
+          offset: const Offset(-9, 0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                width: 0.32 * size.width,
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Aryan Ranjan",
-                      style: TextStyle(
-                        fontFamily: "Allison",
-                        color: Colors.white.withValues(alpha: 0.7),
-                        fontSize: 0.065 * size.width,
-                      ),
-                    ),
-                  ],
-                ),
+              AppLink.icon(
+                label: "LinkedIn",
+                icon: const FaIcon(FontAwesomeIcons.linkedin),
+                iconSize: 26,
+                color: Colors.white,
+                to: "https://www.linkedin.com/in/justary27",
               ),
-              SizedBox(
-                width: 0.18 * size.width,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
-                      child: MaterialButton(
-                        onPressed: () {
-                          _handleRouteNavigation(RouteHandler.whoPage);
-                        },
-                        child: const Text(
-                          "Who",
-                          style: TextStyle(
-                            fontFamily: "ABeeZee",
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
-                      child: MaterialButton(
-                        onPressed: () {
-                          _handleRouteNavigation(RouteHandler.workPage);
-                        },
-                        child: const Text(
-                          "Work",
-                          style: TextStyle(
-                            fontFamily: "ABeeZee",
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0.01 * size.height, 0, 0),
-                      child: MaterialButton(
-                        onPressed: () {
-                          _handleRouteNavigation(RouteHandler.blogPage);
-                        },
-                        child: const Text(
-                          "Blog",
-                          style: TextStyle(
-                            fontFamily: "ABeeZee",
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              const SizedBox(width: 14),
+              AppLink.icon(
+                label: "GitHub",
+                icon: const FaIcon(FontAwesomeIcons.github),
+                iconSize: 26,
+                color: Colors.white,
+                to: "https://github.com/justary27",
               ),
-              Container(
-                width: 0.50 * size.width,
-                alignment: Alignment.center,
-                child:
-                    (deviceType < DeviceType.smallTablet)
-                        ? Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    AnchorButton(
-                                      iconSize: FC.techStack[deviceType],
-                                      destUrl: 'mailto:aryan_r@ch.iitr.ac.in',
-                                      icon: const Icon(
-                                        Icons.alternate_email_rounded,
-                                      ),
-                                      color: Colors.white.withValues(
-                                        alpha: 0.7,
-                                      ),
-                                      parentContext: context,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.fromLTRB(
-                                        0.04 * size.width,
-                                        0,
-                                        0,
-                                        0,
-                                      ),
-                                      child: AnchorButton(
-                                        iconSize: FC.techStack[deviceType],
-                                        destUrl:
-                                            'https://twitter.com/JustAry27',
-                                        icon: const Icon(
-                                          FontAwesomeIcons.xTwitter,
-                                        ),
-                                        color: Colors.white.withValues(
-                                          alpha: 0.7,
-                                        ),
-                                        parentContext: context,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    AnchorButton(
-                                      iconSize: FC.techStack[deviceType],
-                                      destUrl: 'https://github.com/justary27',
-                                      icon: const Icon(FontAwesomeIcons.github),
-                                      color: Colors.white.withValues(
-                                        alpha: 0.7,
-                                      ),
-                                      parentContext: context,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.fromLTRB(
-                                        0.04 * size.width,
-                                        0,
-                                        0,
-                                        0,
-                                      ),
-                                      child: AnchorButton(
-                                        iconSize: FC.techStack[deviceType],
-                                        destUrl:
-                                            'https://www.linkedin.com/in/aryan-ranjan27/',
-                                        icon: const Icon(
-                                          FontAwesomeIcons.linkedin,
-                                        ),
-                                        color: Colors.white.withValues(
-                                          alpha: 0.7,
-                                        ),
-                                        parentContext: context,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        )
-                        : OverflowBar(
-                          alignment: MainAxisAlignment.center,
-                          children: [
-                            AnchorButton(
-                              iconSize: FC.techStack[deviceType],
-                              destUrl: 'mailto:aryan_r@ch.iitr.ac.in',
-                              icon: const Icon(Icons.alternate_email_rounded),
-                              color: Colors.white.withValues(alpha: 0.7),
-                              parentContext: context,
-                            ),
-                            AnchorButton(
-                              iconSize: FC.techStack[deviceType],
-                              destUrl: 'https://twitter.com/JustAry27',
-                              icon: const Icon(FontAwesomeIcons.xTwitter),
-                              color: Colors.white.withValues(alpha: 0.7),
-                              parentContext: context,
-                            ),
-                            AnchorButton(
-                              iconSize: FC.techStack[deviceType],
-                              destUrl: 'https://github.com/justary27',
-                              icon: const Icon(FontAwesomeIcons.github),
-                              color: Colors.white.withValues(alpha: 0.7),
-                              parentContext: context,
-                            ),
-                            AnchorButton(
-                              iconSize: FC.techStack[deviceType],
-                              destUrl:
-                                  'https://www.linkedin.com/in/aryan-ranjan27/',
-                              icon: const Icon(FontAwesomeIcons.linkedin),
-                              color: Colors.white.withValues(alpha: 0.7),
-                              parentContext: context,
-                            ),
-                          ],
-                        ),
+              const SizedBox(width: 14),
+              AppLink.icon(
+                label: "X",
+                icon: const FaIcon(FontAwesomeIcons.xTwitter),
+                iconSize: 26,
+                color: Colors.white,
+                to: "https://x.com/JustAry27",
               ),
             ],
           ),
         ),
       ],
     );
-  }
-}
-
-class CircuitPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint =
-        Paint()
-          ..style = PaintingStyle.stroke
-          ..color = Colors.white.withValues(alpha: 0.7)
-          ..strokeJoin = StrokeJoin.round
-          ..strokeWidth = 4;
-    Path path = Path();
-
-    path.moveTo(0.97 * size.width, 0.9 * size.height);
-
-    path.quadraticBezierTo(
-      0.98 * size.width,
-      0.89 * size.height,
-      1.00 * size.width,
-      0.00 * size.height,
-    );
-
-    path.moveTo(0.97 * size.width, 0.9 * size.height);
-    path.quadraticBezierTo(
-      0.72 * size.width,
-      0.98 * size.height,
-      0.7 * size.width,
-      0.99 * size.height,
-    );
-    path.lineTo(0.2 * size.width, 0.99 * size.height);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width, 0);
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
   }
 }

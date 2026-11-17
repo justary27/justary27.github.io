@@ -1,0 +1,56 @@
+<svg width="2000" height="2000" viewBox="0 0 2000 2000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_8club)">
+<rect width="2000" height="2000" fill="url(#bg_x)"/>
+<rect width="2000" height="2000" fill="url(#bg_y)"/>
+<rect width="2000" height="2000" fill="url(#bg_glow)"/>
+<rect width="2000" height="2000" fill="url(#flutes)" mask="url(#flute_fade)"/>
+<rect width="2000" height="2000" filter="url(#grain)" opacity="0.18"/>
+<path d="M1019 451C1245 451 1400 569 1400 729C1400 844 1330 929 1231 987C1355 1039 1426 1139 1426 1274C1426 1474 1255 1600 1019 1600C783 1600 612 1474 612 1274C612 1139 683 1039 807 987C708 929 638 844 638 729C638 569 793 451 1019 451ZM1018 655C936 655 888 704 888 784C888 864 936 912 1018 912C1100 912 1148 864 1148 784C1148 704 1100 655 1018 655ZM1016 1097C917 1097 858 1154 858 1241C858 1329 917 1385 1016 1385C1115 1385 1174 1329 1174 1241C1174 1154 1115 1097 1016 1097Z" fill="#1E1A5C" fill-opacity="0.55" fill-rule="evenodd" filter="url(#shadow)"/>
+<path d="M1027 445C1253 445 1408 563 1408 723C1408 838 1338 923 1239 981C1363 1033 1434 1133 1434 1268C1434 1468 1263 1594 1027 1594C791 1594 620 1468 620 1268C620 1133 691 1033 815 981C716 923 646 838 646 723C646 563 801 445 1027 445ZM1026 649C944 649 896 698 896 778C896 858 944 906 1026 906C1108 906 1156 858 1156 778C1156 698 1108 649 1026 649ZM1024 1091C925 1091 866 1148 866 1235C866 1323 925 1379 1024 1379C1123 1379 1182 1323 1182 1235C1182 1148 1123 1091 1024 1091Z" fill="#DCDCFA" fill-rule="evenodd"/>
+<path d="M999 427C1225 427 1380 545 1380 705C1380 820 1310 905 1211 963C1335 1015 1406 1115 1406 1250C1406 1450 1235 1576 999 1576C763 1576 592 1450 592 1250C592 1115 663 1015 787 963C688 905 618 820 618 705C618 545 773 427 999 427ZM998 631C916 631 868 680 868 760C868 840 916 888 998 888C1080 888 1128 840 1128 760C1128 680 1080 631 998 631ZM996 1073C897 1073 838 1130 838 1217C838 1305 897 1361 996 1361C1095 1361 1154 1305 1154 1217C1154 1130 1095 1073 996 1073Z" fill="white" fill-rule="evenodd"/>
+</g>
+<defs>
+<linearGradient id="bg_x" x1="0" y1="0" x2="2000" y2="0" gradientUnits="userSpaceOnUse">
+<stop offset="0.12" stop-color="#1F1F22"/>
+<stop offset="0.45" stop-color="#3C3C6E"/>
+<stop offset="0.75" stop-color="#6F66DE"/>
+<stop offset="1" stop-color="#7E62EA"/>
+</linearGradient>
+<linearGradient id="bg_y" x1="0" y1="0" x2="0" y2="2000" gradientUnits="userSpaceOnUse">
+<stop offset="0.35" stop-color="#6E72F2" stop-opacity="0"/>
+<stop offset="0.8" stop-color="#6E72F2" stop-opacity="0.85"/>
+<stop offset="1" stop-color="#6B78F4"/>
+</linearGradient>
+<radialGradient id="bg_glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 1900) rotate(-40) scale(640 520)">
+<stop stop-color="#D08FEA" stop-opacity="0.8"/>
+<stop offset="1" stop-color="#D08FEA" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="flute" x1="0" y1="0" x2="144" y2="0" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0D0D2A" stop-opacity="0.18"/>
+<stop offset="0.12" stop-color="white" stop-opacity="0"/>
+<stop offset="0.85" stop-color="white" stop-opacity="0.06"/>
+<stop offset="1" stop-color="white" stop-opacity="0.1"/>
+</linearGradient>
+<pattern id="flutes" width="144" height="2000" patternUnits="userSpaceOnUse">
+<rect width="144" height="2000" fill="url(#flute)"/>
+</pattern>
+<filter id="shadow" x="400" y="250" width="1250" height="1550" filterUnits="userSpaceOnUse">
+<feOffset dx="10" dy="40"/>
+<feGaussianBlur stdDeviation="45"/>
+</filter>
+<filter id="grain" x="0" y="0" width="2000" height="2000" filterUnits="userSpaceOnUse">
+<feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+<feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 -0.35"/>
+</filter>
+<radialGradient id="fade" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1250 1950) scale(900 550)">
+<stop offset="0.6" stop-color="black"/>
+<stop offset="1" stop-color="white"/>
+</radialGradient>
+<mask id="flute_fade" maskUnits="userSpaceOnUse" x="0" y="0" width="2000" height="2000">
+<rect width="2000" height="2000" fill="url(#fade)"/>
+</mask>
+<clipPath id="clip0_8club">
+<rect width="2000" height="2000" fill="white"/>
+</clipPath>
+</defs>
+</svg>

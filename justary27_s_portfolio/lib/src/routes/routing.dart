@@ -1,13 +1,17 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:justary27_s_portfolio/src/models/blog.dart';
 
+import '../models/screen.dart';
 import '../pages/who/index.dart';
 import '../pages/work/index.dart';
 import '../pages/blog/index.dart';
 import '../pages/home/index.dart';
+import '../providers/screen.dart';
 import '../pages/blog/detail.dart';
-import '../pages/notFound/index.dart';
+import '../pages/blog/notes.dart';
+import '../pages/notfound/index.dart';
 import '../constants/route.dart';
 import '../pages/application_shell.dart';
 
@@ -30,7 +34,7 @@ GoRouter router = GoRouter(
     ShellRoute(
       navigatorKey: _siteNavigatorKey,
       builder: (BuildContext context, GoRouterState state, Widget child) {
-        return ApplicationShell(child: child);
+        return ApplicationShell(path: state.uri.path, child: child);
       },
       routes: <RouteBase>[
         GoRoute(
@@ -60,7 +64,12 @@ GoRouter router = GoRouter(
                 );
               },
               transitionDuration: const Duration(milliseconds: 750),
-              child: const HomePage(),
+              child: _Sized(
+                (s) => HomePage(
+                  size: s.getScreenSize(),
+                  deviceType: s.deviceType,
+                ),
+              ),
             );
           },
         ),
@@ -91,7 +100,7 @@ GoRouter router = GoRouter(
                 );
               },
               transitionDuration: const Duration(milliseconds: 750),
-              child: const WhoPage(),
+              child: _Sized((s) => WhoPage(size: s.getScreenSize())),
             );
           },
         ),
@@ -122,7 +131,7 @@ GoRouter router = GoRouter(
                 );
               },
               transitionDuration: const Duration(milliseconds: 750),
-              child: const WorkPage(),
+              child: _Sized((s) => WorkPage(size: s.getScreenSize())),
             );
           },
         ),
@@ -154,7 +163,7 @@ GoRouter router = GoRouter(
                 );
               },
               transitionDuration: const Duration(milliseconds: 750),
-              child: const BlogPage(),
+              child: _Sized((s) => BlogPage(size: s.getScreenSize())),
             );
           },
           routes: [
@@ -162,7 +171,9 @@ GoRouter router = GoRouter(
               path: ":blogId",
               pageBuilder: (context, state) {
                 final blogId = state.pathParameters['blogId'];
-                final blog = state.extra as Blog?;
+                final extra = state.extra;
+                final zoomed = extra is ZoomedOpen;
+                final blog = zoomed ? extra.blog : extra as Blog?;
                 RouteManager.currentColor = RouteHandler.blogColor;
 
                 return CustomTransitionPage(
@@ -186,7 +197,9 @@ GoRouter router = GoRouter(
                       child: child,
                     );
                   },
-                  transitionDuration: const Duration(milliseconds: 750),
+                  transitionDuration: zoomed
+                      ? Duration.zero
+                      : const Duration(milliseconds: 750),
                   child: BlogDetailsPage(blog: blog, blogId: blogId),
                 );
               },
@@ -216,3 +229,14 @@ GoRouter router = GoRouter(
   //   }
   // },
 );
+
+// Pages are sized from the shell's screen and reflow per Layout.
+class _Sized extends ConsumerWidget {
+  final Widget Function(Screen screen) page;
+
+  const _Sized(this.page);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) =>
+      page(ref.watch(screenProvider));
+}

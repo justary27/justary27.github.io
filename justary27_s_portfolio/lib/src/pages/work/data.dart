@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../enums/work.dart';
 import '../../models/work.dart';
@@ -6,10 +6,97 @@ import '../../models/work.dart';
 class WorkExperienceData {
   static final List<WorkExperience> experiences = [
     // -------------------------------------------------------------------------
+    // 8club  (current — top of list)
+    // -------------------------------------------------------------------------
+    WorkExperience(
+      id: '8club',
+      company: '8club',
+      logoSvgPath: 'images/8club.svg',
+      coreGraphic: const Graphic(
+        type: GraphicType.animation,
+        path: 'assets/models/8club.gltf',
+      ),
+      coreInfo: const CoreInfo(
+        role: 'Senior Fullstack AI Engineer',
+        duration: '<placeholder>',
+        overview: '<placeholder>',
+      ),
+      // Board: Patronus and Feed v2 sit under the senior role; each role
+      // keeps its own points, all text-only for now.
+      chapters: const [
+        RoleChapter(
+          role: 'Senior Fullstack AI Engineer',
+          short: 'SENIOR',
+          duration: '<placeholder>',
+          points: [
+            ScrollablePoint(
+              text: 'Patronus: a notification service I designed in Go, at 10.2M/hr.',
+              graphic: Graphic(type: GraphicType.diagram, path: ''),
+            ),
+            ScrollablePoint(
+              text: 'Feed v2: −90% memory, via hybrid fan-out and batch scoring.',
+              graphic: Graphic(type: GraphicType.diagram, path: ''),
+            ),
+            ScrollablePoint(
+              text: '<placeholder>',
+              graphic: Graphic(type: GraphicType.diagram, path: ''),
+            ),
+          ],
+        ),
+        RoleChapter(
+          role: 'Fullstack AI Engineer',
+          short: 'FULLSTACK',
+          duration: '<placeholder>',
+          headline: '<placeholder>',
+          headlineCaption: '<placeholder>',
+          points: [
+            ScrollablePoint(
+              text: '<placeholder>',
+              graphic: Graphic(type: GraphicType.diagram, path: ''),
+            ),
+            ScrollablePoint(
+              text: '<placeholder>',
+              graphic: Graphic(type: GraphicType.diagram, path: ''),
+            ),
+          ],
+        ),
+      ],
+      headline: '10.2M/hr',
+      headlineCaption: 'A notification service I designed in Go.',
+      stack: 'GO · SQS · FCM · FASTAPI · REDIS',
+      scrollablePoints: const [
+        ScrollablePoint(
+          text:
+              'Patronus: a notification service I designed in Go, at 10.2M/hr.',
+          graphic: Graphic(
+            type: GraphicType.diagram,
+            path: '',
+            description: 'Patronus',
+          ),
+        ),
+        ScrollablePoint(
+          text: 'Feed v2: −90% memory, via hybrid fan-out and batch scoring.',
+          graphic: Graphic(
+            type: GraphicType.diagram,
+            path: '',
+            description: 'Feed v2',
+          ),
+        ),
+      ],
+      primaryColor: const Color(0xFF0D0D0D),
+      secondaryColor: const Color(0xFF333333),
+      highlightColor: const Color(0xFFE6E6E6),
+      cardBackgroundColor: const Color(0xFFF7F7F7),
+    ),
+
+    // -------------------------------------------------------------------------
     // Repello AI  (most recent — top of list)
     // -------------------------------------------------------------------------
     WorkExperience(
       id: 'repello',
+      headline: '70%',
+      headlineCaption: 'Of the product, as founding engineer.',
+      stack: 'PYTHON · REACT · AWS',
       company: 'Repello AI',
       logoSvgPath: null, // TODO: add images/repello.svg when asset is ready
       coreGraphic: Graphic(
@@ -79,7 +166,7 @@ class WorkExperienceData {
     WorkExperience(
       id: 'clouddefense',
       company: 'CloudDefense.AI',
-      logoSvgPath: null, // TODO: add images/cdai.svg when asset is ready
+      logoSvgPath: 'images/cdai.svg',
       coreGraphic: Graphic(
         type: GraphicType.animation,
         path: 'assets/models/cdai.gltf',
@@ -308,6 +395,8 @@ class ProjectData {
     // -------------------------------------------------------------------------
     WorkExperience(
       id: 'placement_online',
+      headline: '2,000+',
+      headlineCaption: 'active students',
       company: 'Placement Online',
       logoSvgPath: 'images/placement.svg',
       coreGraphic: Graphic(
@@ -368,6 +457,8 @@ class ProjectData {
     // -------------------------------------------------------------------------
     WorkExperience(
       id: 'noticeboard',
+      headline: '10,000+',
+      headlineCaption: 'active users',
       company: 'Noticeboard',
       logoSvgPath: 'images/noticeboard.svg',
       coreGraphic: Graphic(
@@ -541,6 +632,8 @@ class ProjectData {
     // -------------------------------------------------------------------------
     WorkExperience(
       id: 'covbot',
+      headline: 'Mashable India',
+      headlineCaption: 'featured in',
       company: 'CovBot',
       logoSvgPath: 'images/covbot.svg',
       coreGraphic: Graphic(
@@ -651,6 +744,10 @@ class PositionData {
     // -------------------------------------------------------------------------
     Position(
       id: 'img_chief',
+      // Its overview: joined as a Project Leader, rose to Chief.
+      earlierRoles: const [
+        EarlierRole(role: 'Project Leader', duration: '<placeholder>'),
+      ],
       organization: 'IMG IIT Roorkee',
       logoSvgPath: 'images/img.svg',
       coreGraphic: Graphic(
@@ -682,6 +779,8 @@ class PositionData {
     // -------------------------------------------------------------------------
     Position(
       id: 'gsoc23_mentor',
+      earlierInExperience: 'GSoC \'22 Contributor',
+      experienceId: 'gsoc22',
       organization: 'GSoC \'23',
       logoSvgPath: 'images/gsoc.svg',
       coreGraphic: Graphic(
